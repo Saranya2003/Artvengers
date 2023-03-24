@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-    hello world?
+    hello world?<br>
+    <img src="./img/D0007.jpg">
+    <img src="./img/D0008.jpg">
+    <img src="./img/D0071.jpg">
   </div>
 </template>
 
@@ -28,5 +31,8 @@ li {
 }
 a {
   color: #42b983;
+}
+img{
+  width: 60%;
 }
 </style>
