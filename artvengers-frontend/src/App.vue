@@ -4,11 +4,13 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import firstPage from './components/FirstPage.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    firstPage
   }
 }
 </script>
