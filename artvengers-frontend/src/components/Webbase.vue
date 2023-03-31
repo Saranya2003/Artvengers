@@ -1,12 +1,12 @@
 <template>
     <div class="hello">
-      hello world?<br>
+      <h1>helloworld?</h1> <br>
     </div>
   </template>
   
   <script>
   export default {
-    name: 'HelloWorld',
+    name: 'Webbase',
     props: {
       msg: String
     }
@@ -15,8 +15,10 @@
   
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
-  h3 {
+  h1 {
     margin: 40px 0 0;
+    font-family: 'Times New Roman', Times, serif;
+    color: blue;
   }
   ul {
     list-style-type: none;
@@ -32,4 +34,5 @@
   img{
     width: 60%;
   }
+  
   </style>

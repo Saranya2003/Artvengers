@@ -1,9 +1,8 @@
 <template>
   <div class="hello">
-    hello world?<br>
-    <img src="./img/D0007.jpg">
-    <img src="./img/D0008.jpg">
-    <img src="./img/D0071.jpg">
+    Discover more passion of your art. Empower your imagination. Get to know
+    your art today.
+    <router-link :to="{ path: './components/Login.vue' }"><button>Login</button></router-link>
   </div>
 </template>
 
@@ -34,5 +33,8 @@ a {
 }
 img{
   width: 60%;
+}
+div{
+  font-size: 30px;
 }
 </style>
