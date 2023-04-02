@@ -2,7 +2,6 @@
   <div class="hello">
     Discover more passion of your art. Empower your imagination. Get to know
     your art today.
-    <router-link :to="{ path: './components/Login.vue' }"><button>Login</button></router-link>
   </div>
 </template>
 
