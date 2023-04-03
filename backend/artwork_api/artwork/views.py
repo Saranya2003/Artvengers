@@ -1,24 +1,30 @@
 from rest_framework import generics
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
-from rest_framework.authtoken.views import ObtainAuthToken
+from knox.models import AuthToken
 
 from .models import ArtworkPost
-from .serializers import ArtworkSerializer
+from .serializers import ArtworkSerializer,UserSerializer, RegisterSerializer
+
 
 # Create your views here.
 class ListArtwork(generics.ListCreateAPIView):
     queryset = ArtworkPost.objects.all()
     serializer_class = ArtworkSerializer
+    ordering =['-id']
 
 class DetailArtwork(generics.RetrieveUpdateDestroyAPIView):
     queryset = ArtworkPost.objects.all()
     serializer_class = ArtworkSerializer
 
-class Login(ObtainAuthToken):
+# Register API
+class RegisterAPI(generics.GenericAPIView):
+    serializer_class = RegisterSerializer
+
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data('user')
-        token, created = Token.objects.get_or_create(user=user)
-        return Response({'token': token.key, 'user_id':user.id})
+        user = serializer.save()
+        return Response({
+        "user": UserSerializer(user, context=self.get_serializer_context()).data,
+        "token": AuthToken.objects.create(user)[1]
+        })

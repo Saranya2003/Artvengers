@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'artwork',
+    'knox',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
+        'knox.auth.TokenAuthentication',
     ]
 }
 
