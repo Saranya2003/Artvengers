@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<h1>Artvengers</h1>
+
+<br><br><br>
+
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            Already have account? <a href="{% url 'login' %}">Login</a>.
+        </div>
+        <br>
+        <button>Create an account</button>
+        <br>
+        <br>
+        
+    </form>
+</div>

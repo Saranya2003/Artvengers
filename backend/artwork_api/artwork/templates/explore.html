@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<h2>Album</h2>
+<br>
+<h2>Artwork</h2>
+{% for artpost in object_list %}
+
+        <a href="{%  url 'post_detail' artpost.pk %}"><img src="{{ artpost.imageUploader.url }}"></a>
+
+
+{% endfor %}
+<br>
+

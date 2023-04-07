@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<h1>{{artpost.artTitle}}</h1>
+<img src="{{ artpost.imageUploader.url }}">
+<small>{{ artpost.imageUploadercreated_date }}<br>
+
+{{ artpost.artistName }}<br>{{ artpost.description }}
+</small>
+
+<br>
+<a href="{% url 'post_list'%}">Back</a>
