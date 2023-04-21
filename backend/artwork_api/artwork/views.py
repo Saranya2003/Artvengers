@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView,CreateView, UpdateView
 
-from .models import ArtworkPost
+from .models import ArtworkPost,Album
 from .serializers import ArtworkSerializer
 
 
@@ -33,3 +33,20 @@ def explore(request):
 def dashboard(request):
     return render(request,'dashboard.html')
 
+class AddArtwork(CreateView):
+    model = ArtworkPost
+    template_name = 'artwork_upload.html'
+
+class AddAlbum(CreateView):
+    model = Album
+    template_name = 'add_album.html'
+
+class UpdateAlbum(UpdateView):
+    model = Album
+    template_name = 'update_album.html'
+    fields = ['Title','Description','Tag']
+
+class UpdateArtworks(UpdateView):
+    model = Album
+    template_name = 'update_artwork.html'
+    fields = ['Title','Description']

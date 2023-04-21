@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'webBase.html' %}
+{% block content %}
+<h1>Edit your profile</h1>
+<br>
+<div >
+    <form method="POST" >
+        {% csrf_token %}
+        {{ form.as_p }}
+
+
+        <a href="{% url 'changePassword' %}">Change Password here</a><br><br>
+        <br>
+       
+        <button>Update your profile</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,14 +1,37 @@
 <!DOCTYPE html>
+{% extends 'webBase.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'explore'%}">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My artworks</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
 <br>
-<h2>Album</h2>
+<h2>Your Album</h2>&emsp;<a href="{%  url 'add_album' %}">Create new album</a>
 <br>
-<h2>Artwork</h2>
 {% for artpost in object_list %}
 
-        <a href="{%  url 'post_detail' artpost.pk %}"><img src="{{ artpost.imageUploader.url }}"></a>
+        <a href="{%  url 'artwork_detail' artpost.pk %}"><img src="{{ artpost.imageUploader.url }}"></a>
+
+
+{% endfor %}
+<br>
+<h2>Your Artwork</h2>&emsp;<a href="{%  url 'add_artwork' %}">Post new artwork</a>
+<br>
+{% for artpost in object_list %}
+
+        <a href="{%  url 'artwork_detail' artpost.pk %}"><img src="{{ artpost.imageUploader.url }}"></a>
 
 
 {% endfor %}
 <br>
 
+{% endblock %}

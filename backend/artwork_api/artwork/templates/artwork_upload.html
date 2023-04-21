@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends 'webBase.html' %}
+{% block content %}
+
+<h1>Add a new artwork</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Publish the artwork post</button>
+</form>
+
+{% endblock %}

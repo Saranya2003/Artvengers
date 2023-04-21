@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+{% extends 'webBase.html' %}
+{% block content %}
+    
+
 <h1>{{artpost.artTitle}}</h1>
 <img src="{{ artpost.imageUploader.url }}">
 <small>{{ artpost.imageUploadercreated_date }}<br>
@@ -7,4 +11,11 @@
 </small>
 
 <br>
-<a href="{% url 'post_list'%}">Back</a>
+<br>
+<h3>Comments</h3>
+<br>
+
+<a href="{% url 'artwork_list'%}">Back</a>
+
+
+{% endblock %}
