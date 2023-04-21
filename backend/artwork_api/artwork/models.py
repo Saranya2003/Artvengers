@@ -11,6 +11,9 @@ class ArtworkPost(models.Model):
     Description = models.TextField()
     Tag = models.CharField(max_length=255)
     Artwork = models.ImageField(null=True,blank=True,upload_to="media/img/")
+
+    def get_absolute_url(self):
+        return reverse('dashboard')
     
 
 class Album(models.Model):
@@ -19,3 +22,14 @@ class Album(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     Description = models.TextField()
     CoverPhoto = models.ImageField(null=True,blank=True,upload_to="media/img/")
+
+    def get_absolute_url(self):
+        return reverse('dashboard')
+
+class Comment(models.Model):
+    post = models.ForeignKey(ArtworkPost,related_name="comments", on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    comment = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return '%s - %s'%(self.post.title,self.name)
