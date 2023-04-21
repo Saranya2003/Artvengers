@@ -6,7 +6,7 @@ from datetime import datetime,date
 # Create your models here.
 class ArtworkPost(models.Model):
     Title = models.CharField(max_length=255)
-    artistName = models.ForeignKey(User, on_delete=models.CASCADE)
+    artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     Description = models.TextField()
     Tag = models.CharField(max_length=255)
@@ -17,11 +17,11 @@ class ArtworkPost(models.Model):
     
 
 class Album(models.Model):
-    Title = models.CharField(max_length=255)
-    artistName = models.ForeignKey(User, on_delete=models.CASCADE)
+    Album_Title = models.CharField(max_length=255)
+    artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     Description = models.TextField()
-    CoverPhoto = models.ImageField(null=True,blank=True,upload_to="media/img/")
+    Cover_Photo = models.ImageField(null=True,blank=True,upload_to="media/img/")
 
     def get_absolute_url(self):
         return reverse('dashboard')

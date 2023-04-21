@@ -3,11 +3,14 @@
 {% block content %}
 
 <h1>Add a new artwork</h1>
-<form method="POST">
+<div class="form-group">
+  <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Publish the artwork post</button>
-</form>
+</form>  
+</div>
+
 <script>
     var name = "{{user.id}}";
     document.getElementById("user").value = name;
