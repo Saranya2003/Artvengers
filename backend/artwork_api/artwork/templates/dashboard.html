@@ -17,20 +17,65 @@
 <br>
 <h2>Your Album</h2>&emsp;<a href="{%  url 'add_album' %}">Create new album</a>
 <br>
-{% for artpost in object_list %}
-
-        <a href="{%  url 'artwork_detail' artpost.pk %}"><img src="{{ artpost.imageUploader.url }}"></a>
-
-
-{% endfor %}
+<div>
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../media/images/Doll.png" class="d-block w-25" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../media/images/Akane_Sakakibara.png" class="d-block w-25" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../media/images/Doll.png" class="d-block w-25" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<br>
+<br>
 <br>
 <h2>Your Artwork</h2>&emsp;<a href="{%  url 'add_artwork' %}">Post new artwork</a>
 <br>
-{% for artpost in object_list %}
-
-        <a href="{%  url 'artwork_detail' artpost.pk %}"><img src="{{ artpost.imageUploader.url }}"></a>
-
-
+<div>
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../media/images/Doll.png" class="d-block w-25" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../media/images/Akane_Sakakibara.png" class="d-block w-25" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../media/images/Doll.png" class="d-block w-25" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+{% for artwork in object_list %}
+{% if user.id == artwork.artist_Name.id %}
+<div>
+  <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%"></a>
+        <a href="{%  url 'artwork_edit' artwork.pk %}">Edit</a><br>
+  </div>
+  {% endif %}
+        
 {% endfor %}
 <br>
 

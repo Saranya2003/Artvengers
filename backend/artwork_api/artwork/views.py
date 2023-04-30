@@ -4,7 +4,7 @@ from django.views.generic import ListView,DetailView,CreateView, UpdateView
 
 from .models import ArtworkPost,Album
 from .serializers import ArtworkSerializer
-from .forms import ArtworkForm
+from .forms import AlbumForm, ArtworkForm
 
 
 # Create your views here.
@@ -28,11 +28,13 @@ class Artwork_Post_Detail(DetailView):
     model = ArtworkPost
     template_name = 'art_post_detail.html' 
 
-def explore(request):
-    return render(request,'explore.html')
+class ExploreView(ListView):
+    model = ArtworkPost
+    template_name = 'explore.html'
 
-def dashboard(request):
-    return render(request,'dashboard.html')
+class DashboardView(ListView):
+    model = ArtworkPost
+    template_name = 'dashboard.html'
 
 class AddArtwork(CreateView):
     model = ArtworkPost
@@ -41,15 +43,15 @@ class AddArtwork(CreateView):
 
 class AddAlbum(CreateView):
     model = Album
+    form_class = AlbumForm
     template_name = 'add_album.html'
-    fields = '__all__'
 
 class UpdateAlbum(UpdateView):
     model = Album
     template_name = 'update_album.html'
-    fields = ['Title','Description','Tag']
+    fields = ['Title','Description','Cover_Photo']
 
 class UpdateArtworks(UpdateView):
-    model = Album
+    model = ArtworkPost
     template_name = 'update_artwork.html'
-    fields = ['Title','Description']
+    fields = ['Title','Description','Tag','Artwork']

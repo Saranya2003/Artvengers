@@ -3,19 +3,22 @@
 {% block content %}
     
 
-<h1>{{artpost.artTitle}}</h1>
-<img src="{{ artpost.imageUploader.url }}">
-<small>{{ artpost.imageUploadercreated_date }}<br>
+<h1>{{artwork.Title}}</h1>
+<img src="{{ artwork.Artwork.url }}"  width="30%">
 
-{{ artpost.artistName }}<br>{{ artpost.description }}
+{{ artwork.artist_Name }}<br>{{ artwork.Description }}
 </small>
 
 <br>
 <br>
 <h3>Comments</h3>
 <br>
-
-<a href="{% url 'artwork_list'%}">Back</a>
+<div>
+Username 
+<br>
+comments 
+<br>
+</div>
 
 
 {% endblock %}

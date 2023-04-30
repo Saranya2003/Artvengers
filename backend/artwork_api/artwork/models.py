@@ -21,7 +21,7 @@ class Album(models.Model):
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     Description = models.TextField()
-    Cover_Photo = models.ImageField(null=True,blank=True,upload_to="media/img/")
+    Cover_Photo = models.ImageField(null=True,blank=True,upload_to="media/img/album_cover")
 
     def get_absolute_url(self):
         return reverse('dashboard')

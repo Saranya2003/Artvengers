@@ -2,15 +2,13 @@
 {% extends 'webBase.html' %}
 {% block content %}
 
-<h1>Add a new artwork</h1>
-<br>
-<br>
-<table>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    
-</form>
-</table>
-<button type="submit">Update the post</button>
+<h1>Edit artwork</h1>
+<div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Update the post</button>
+  </form>  
+  </div>
+
 {% endblock %}

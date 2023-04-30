@@ -2,6 +2,19 @@
 {% extends 'webBase.html' %}
 {% block content %}
 
+
+<h1>Create a new album</h1>
+<br>
+<br>
+<table>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+</form>
+</table>
+<button type="submit" class="btn btn-primary">Create album/collection</button>
+
 <script>
     var name = "{{user.id}}";
     document.getElementById("user").value = name;

@@ -7,13 +7,11 @@ from django.forms import fields
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput())
-    first_name = forms.CharField(max_length=100,widget=forms.TextInput())
-    last_name = forms.CharField(max_length=100,widget=forms.TextInput())
 
 
     class Meta:
         model = User
-        fields = ('username','first_name','last_name','email','password1','password2')
+        fields = ('username','email','password1','password2')
 
 
     def __init__(self, *args, **kwargs):
@@ -26,14 +24,12 @@ class SignupForm(UserCreationForm):
 
 
 class EditProfileForm(UserChangeForm):
-    first_name = forms.CharField(max_length=100,widget=forms.TextInput())
-    last_name = forms.CharField(max_length=100,widget=forms.TextInput())
     username = forms.CharField(max_length=100,widget=forms.TextInput())
 
 
     class Meta:
         model = User
-        fields = ('username','first_name','last_name','password')
+        fields = ('username','password')
 
 
 class ChangePasswordForm(PasswordChangeForm):
