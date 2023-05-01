@@ -6,7 +6,7 @@ from django.forms import fields
 
 
 class SignupForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.EmailInput())
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
 
     class Meta:

@@ -33,3 +33,13 @@ class Comment(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return '%s - %s'%(self.post.title,self.name)
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_picture = models.ImageField(null=True,blank=True,upload_to="media/img/profile_pic")
+    Instagram = models.CharField(max_length=255)
+    Twitter = models.CharField(max_length=255)
+    Facebook = models.CharField(max_length=255)
+    def __str__(self):
+        return str(self.user)

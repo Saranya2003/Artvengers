@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-<h1>Edit your profile</h1>
+<h1>Profile</h1>
 <br>
-<div >
-    <form method="POST" >
-        {% csrf_token %}
-        {{ form.as_p }}
-
-
-        <a href="{% url 'changePassword' %}">Change Password here</a><br><br>
-        <br>
-       
-        <button class="btn btn-primary">Update your profile</button>
-    </form>
+{{ user.profile.bio }}
+<div class="form-group">
+    {{ user.profile.Instagram }}
+    {{ user.profile.Twitter }}
+    {{ user.profile.Facebook }}
 </div>
 
 {% endblock %}
