@@ -15,7 +15,7 @@
       </nav>
 
 <br>
-<h2>Your Album</h2>&emsp;<a href="{%  url 'add_album' %}">Create new album</a>
+Your Album&emsp;&emsp;&emsp;&emsp;<a href="{%  url 'add_album' %}">Create new album</a>
 <br>
 <div>
   <div id="carouselExample" class="carousel slide">
@@ -43,37 +43,14 @@
 <br>
 <br>
 <br>
-<h2>Your Artwork</h2>&emsp;<a href="{%  url 'add_artwork' %}">Post new artwork</a>
+Your Artwork&emsp;&emsp;&emsp;&emsp;<a href="{%  url 'add_artwork' %}">Post new artwork</a>
 <br>
-<div>
-  <div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../media/images/Doll.png" class="d-block w-25" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../media/images/Akane_Sakakibara.png" class="d-block w-25" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../media/images/Doll.png" class="d-block w-25" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</div>
 {% for artwork in object_list %}
   {% if user.id == artwork.artist_Name.id %}
   <div>
-    <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%" style="width: 150px; height: 150px; object-fit: cover;"></a>
-          <a href="{%  url 'artwork_edit' artwork.pk %}">Edit</a><br>
-          <a href="#">Delete</a><br>
+    <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%" style="width: 200px; height: 200px; object-fit: cover;"></a>
+          <a href="{%  url 'artwork_edit' artwork.pk %}">Edit</a>
+          <a href="#">Delete</a>
     </div>
   {% endif %}
         
