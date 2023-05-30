@@ -69,11 +69,12 @@
   </div>
 </div>
 {% for artwork in object_list %}
-{% if user.id == artwork.artist_Name.id %}
-<div>
-  <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%"></a>
-        <a href="{%  url 'artwork_edit' artwork.pk %}">Edit</a><br>
-  </div>
+  {% if user.id == artwork.artist_Name.id %}
+  <div>
+    <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%" style="width: 150px; height: 150px; object-fit: cover;"></a>
+          <a href="{%  url 'artwork_edit' artwork.pk %}">Edit</a><br>
+          <a href="#">Delete</a><br>
+    </div>
   {% endif %}
         
 {% endfor %}

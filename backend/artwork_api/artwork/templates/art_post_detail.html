@@ -1,24 +1,40 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
+
 {% block content %}
-    
+<div class="container text-center">
+    <div class="row align-items-start">
+      <div class="col-sm">
+        <h1>{{ artwork.Title }}</h1>
+        Title<br>
+        <img src="{{ artwork.Artwork.url }}"  width="30%">
+        Image<br>
+      </div>
+      <div class="col-sm">
+        <h3>Description</h3><br><br>
+        {{ artwork.artist_Name }}<br>Description = {{ artwork.Description }}
+        </small>
 
-<h1>{{artwork.Title}}</h1>
-<img src="{{ artwork.Artwork.url }}"  width="30%">
+        <br>
+        Tags
+        {% for artwork in object_list %}
+          <a href="#">Tags = {{ artwork.Tags }}</a>
+        {% endfor %}
+        <br><br>
+        <h3>Comments</h3>
+        <br>
+        <div>
+        Username 
+        <br>
+        comments 
+        <br>
+        </div>
+      </div>
+    </div>
+  </div>
+     
 
-{{ artwork.artist_Name }}<br>{{ artwork.Description }}
-</small>
 
-<br>
-<br>
-<h3>Comments</h3>
-<br>
-<div>
-Username 
-<br>
-comments 
-<br>
-</div>
 
 
 {% endblock %}

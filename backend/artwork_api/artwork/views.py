@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework import generics,viewsets, permissions
 from django.views.generic import ListView,DetailView,CreateView, UpdateView
 
@@ -28,13 +28,32 @@ class Artwork_Post_Detail(DetailView):
     model = ArtworkPost
     template_name = 'art_post_detail.html' 
 
+    def get_context_data(self, *args, **kwargs):
+        context = super(Artwork_Post_Detail, self).get_context_data()
+        stuff = get_object_or_404(ArtworkPost,id=self.kwargs['pk'])
+        context['artwork'] = ArtworkPost.objects.all()
+        return context
+
 class ExploreView(ListView):
     model = ArtworkPost
     template_name = 'explore.html'
+    ordering =['-id']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['album'] = Album.objects.all()
+        context['artwork'] = ArtworkPost.objects.all()
+        return context
 
 class DashboardView(ListView):
     model = ArtworkPost
     template_name = 'dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['album'] = Album.objects.all()
+        context['artwork'] = ArtworkPost.objects.all()
+        return context
 
 class AddArtwork(CreateView):
     model = ArtworkPost
@@ -55,3 +74,7 @@ class UpdateArtworks(UpdateView):
     model = ArtworkPost
     template_name = 'update_artwork.html'
     fields = ['Title','Description','Tag','Artwork']
+
+class SearchArtwork(ListView):
+    model = ArtworkPost
+    template_name = 'search_page.html'
