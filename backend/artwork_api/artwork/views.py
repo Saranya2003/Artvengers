@@ -20,19 +20,9 @@ class DetailArtwork(generics.RetrieveUpdateDestroyAPIView):
 def home(request):
     return render(request,'home.html',{})
 
-class Artwork_Post_List(ListView):
-    model = ArtworkPost
-    template_name = 'art_post_list.html'
-
-class Artwork_Post_Detail(DetailView):
+class ArtworkPostDetail(DetailView):
     model = ArtworkPost
     template_name = 'art_post_detail.html' 
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(Artwork_Post_Detail, self).get_context_data()
-        stuff = get_object_or_404(ArtworkPost,id=self.kwargs['pk'])
-        context['artwork'] = ArtworkPost.objects.all()
-        return context
 
 class ExploreView(ListView):
     model = ArtworkPost

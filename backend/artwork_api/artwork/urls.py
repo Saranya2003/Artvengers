@@ -7,7 +7,7 @@ urlpatterns = [
     path('list/', views.ListArtwork.as_view()),
     path('list/<int:pk>/', views.DetailArtwork.as_view()),
     path('', views.home, name="home"),
-    path('artwork/<int:pk>', views.Artwork_Post_Detail.as_view(), name="artwork_detail"),
+    path('artwork/<int:pk>', views.ArtworkPostDetail.as_view(), name="artwork_detail"),
     path('artwork/edit/<int:pk>', views.UpdateArtworks.as_view(), name="artwork_edit"),
     path('explore/', views.ExploreView.as_view(), name="explore"),
     path('dashboard/', views.DashboardView.as_view(), name="dashboard"),
