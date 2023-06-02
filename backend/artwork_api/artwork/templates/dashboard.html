@@ -57,11 +57,9 @@ Your Artwork&emsp;&emsp;&emsp;&emsp;<a class="btn btn-primary" href="{%  url 'ad
 <br>
 {% for artwork in object_list %}
   {% if user.id == artwork.artist_Name.id %}
-  <div>
     <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%" style="width: 200px; height: 200px; object-fit: cover;"></a>
-          <a href="{%  url 'artwork_edit' artwork.pk %}">Edit</a>
-          <a href="#">Delete</a>
-    </div>
+          <a class="btn btn-secondary" href="{%  url 'artwork_edit' artwork.pk %}" role="button">Edit</a>
+          <a class="btn btn-danger" href="#" role="button">Delete</a>
   {% endif %}
         
 {% endfor %}

@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
+<br>
 <h1>Edit your profile</h1>
 <br>
 
 <div class="form-group" style="text-align:center;">
     <form method="POST" >
         {% csrf_token %}
+        {{ user.profile.profile_picture }}<br>
+        {{ user.profile.email }}<br>
         {{ form.as_p }}<br>
-        {{ user.profile.bio }}
+        {{ user.profile.bio }}<br>
 
 
         <a href="{% url 'changePassword' %}" class="btn btn-primary" role="button">Change Password here</a><br><br>

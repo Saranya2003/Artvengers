@@ -25,11 +25,12 @@ class SignupForm(UserCreationForm):
 
 class EditProfileForm(UserChangeForm):
     username = forms.CharField(max_length=100,widget=forms.TextInput())
+    email = forms.EmailField(max_length=100,widget=forms.TextInput())
 
 
     class Meta:
         model = User
-        fields = ('username','password')
+        fields = ('username','email','password')
 
 
 class ChangePasswordForm(PasswordChangeForm):
