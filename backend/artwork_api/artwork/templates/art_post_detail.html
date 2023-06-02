@@ -12,13 +12,13 @@
       </div>
       <div class="col-sm">
         <h3>Description</h3><br><br>
-        {{ artwork.artist_Name }}<br>Description = {{ artwork.Description }}
+        <small>{{ artwork.artist_Name }}<br>Description{{ artwork.Description }}
         </small>
 
         <br>
         Tags
-        {% for artwork in object_list %}
-          <a href="#">Tags = {{ artwork.Tags }}</a>
+        {% for tag in artwork.tags.all %}
+        <a class="btn btn-primary rounded-pill" href="#" role="button">{{ tag }}</a>
         {% endfor %}
         <br><br>
         <h3>Comments</h3>

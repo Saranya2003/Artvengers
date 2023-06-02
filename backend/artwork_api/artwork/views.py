@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics,viewsets, permissions
-from django.views.generic import ListView,DetailView,CreateView, UpdateView
+from django.views.generic import ListView,DetailView,CreateView, UpdateView, TemplateView
 
 from .models import ArtworkPost,Album
-from .serializers import ArtworkSerializer
+from .serializers import AlbumSerializer, ArtworkSerializer
 from .forms import AlbumForm, ArtworkForm
 
 
@@ -12,6 +12,15 @@ class ListArtwork(generics.ListCreateAPIView):
     queryset = ArtworkPost.objects.all()
     serializer_class = ArtworkSerializer
     ordering =['-id']
+
+class ListAlbum(generics.ListCreateAPIView):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+    ordering =['-id']
+    
+class DetailAlbum(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
 
 class DetailArtwork(generics.RetrieveUpdateDestroyAPIView):
     queryset = ArtworkPost.objects.all()
