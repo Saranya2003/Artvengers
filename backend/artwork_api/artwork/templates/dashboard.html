@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-<nav class="navbar navbar-expand-lg navbar-bd-blue-800 bg-bd-blue-800">
+<style>         
+  .navbar-custom {  
+      background-color: #526AA7;  
+  }  
+    
+  .navbar-custom .navbar-brand,  
+  .navbar-custom .navbar-text {  
+      color: rgb(102, 13, 245);  
+  }  
+</style>  
+<nav class="navbar navbar-expand-lg navbar-custom">
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -15,7 +25,7 @@
       </nav>
 
 <br>
-Your Album&emsp;&emsp;&emsp;&emsp;<a href="{%  url 'add_album' %}">Create new album</a>
+Your Album&emsp;&emsp;&emsp;&emsp;<a class="btn btn-primary" href="{%  url 'add_album' %}" role="button">Create new album</a>
 <br>
 <div>
   <div id="carouselExample" class="carousel slide">
@@ -43,7 +53,7 @@ Your Album&emsp;&emsp;&emsp;&emsp;<a href="{%  url 'add_album' %}">Create new al
 <br>
 <br>
 <br>
-Your Artwork&emsp;&emsp;&emsp;&emsp;<a href="{%  url 'add_artwork' %}">Post new artwork</a>
+Your Artwork&emsp;&emsp;&emsp;&emsp;<a class="btn btn-primary" href="{%  url 'add_artwork' %}" role="button">Post new artwork</a>
 <br>
 {% for artwork in object_list %}
   {% if user.id == artwork.artist_Name.id %}
