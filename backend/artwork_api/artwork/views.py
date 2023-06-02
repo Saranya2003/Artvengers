@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework import generics,viewsets, permissions
 from django.views.generic import ListView,DetailView,CreateView, UpdateView, TemplateView
 
-from .models import ArtworkPost,Album
+from .models import ArtworkPost,Album, Tag
 from .serializers import AlbumSerializer, ArtworkSerializer
 from .forms import AlbumForm, ArtworkForm
 
@@ -77,3 +77,15 @@ class UpdateArtworks(UpdateView):
 class SearchArtwork(ListView):
     model = ArtworkPost
     template_name = 'search_page.html'
+
+def list_artwork_by_tag(request,tag_id):
+    tag = get_object_or_404(Tag, id=tag_id)
+
+    artwork = ArtworkPost.objects.filter(tags=tag)
+
+    context = {
+        "tag_name":tag.tag,
+        "artwork":artwork
+    }
+
+    return render(request,"artwork_tag.html",context)

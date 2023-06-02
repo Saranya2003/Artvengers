@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% extends 'webBase.html' %}
+{% block content %}
+{% if tag_name %}
+    <h2>Tag: {{tag_name}}</h2>
+{% else %}
+    <h2>No artworks available</h2>
+{% endif %}
+
+{% endblock %}
