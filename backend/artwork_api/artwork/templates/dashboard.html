@@ -2,23 +2,21 @@
 {% extends 'webBase.html' %}
 {% block content %}
 <style>         
-  .navbar-custom {  
-      background-color: #526AA7;  
+  .navbar-custom2 {  
+      background-color: #EB5160;  
   }  
-    
-  .navbar-custom .navbar-brand,  
-  .navbar-custom .navbar-text {  
-      color: rgb(102, 13, 245);  
+  .navbar-custom2 .nav-item active{
+    background-color: #330C2F;
   }  
-</style>  
-<nav class="navbar navbar-expand-lg navbar-custom">
+</style>   
+<nav class="navbar navbar-expand-lg navbar-custom2">
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'explore'%}">Explore</a>
+              <a class="nav-link text-white" href="{% url 'explore'%}">Explore</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link active" href="#">My artworks</a>
+              <a class="nav-link active text-white" href="#">My artworks</a>
             </li>
           </ul>
         </div>

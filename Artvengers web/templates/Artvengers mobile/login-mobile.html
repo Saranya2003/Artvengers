@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./login-mobile.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra Petch:ital,wght@0,400;1,400;1,500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="login-mobile">
+      <form class="frame-parent34">
+        <input
+          class="frame-child111"
+          type="text"
+          placeholder="Username or Email"
+        />
+
+        <input class="frame-child112" type="text" placeholder="Password" />
+
+        <label class="dont-have-an">Don’t have an account?</label>
+        <a class="sign-up1" href="./register.html" id="signUp">Sign up</a>
+      </form>
+      <button class="rectangle-parent29" autofocus id="frameButton">
+        <div class="frame-child113"></div>
+        <div class="login2">Login</div>
+      </button>
+    </div>
+
+    <script>
+      var signUp = document.getElementById("signUp");
+      if (signUp) {
+        signUp.addEventListener("click", function (e) {
+          window.location.href = "./register-mobile.html";
+        });
+      }
+      
+      var frameButton = document.getElementById("frameButton");
+      if (frameButton) {
+        frameButton.addEventListener("click", function (e) {
+          window.location.href = "./explore-album-mobile.html";
+        });
+      }
+      </script>
+  </body>
+</html>

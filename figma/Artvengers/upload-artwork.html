@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./upload-artwork.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra Petch:ital,wght@0,400;1,400;1,500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="upload-artwork">
+      <form class="title-group" method="post">
+        <div class="title1">Title:</div>
+        <input class="frame-child10" type="text" required />
+
+        <div class="tag-seperate-with-container1">
+          <p class="tag1">Tag</p>
+          <p class="tag1">(Seperate with coma):</p>
+        </div>
+        <div class="artwork1">Artwork:</div>
+        <textarea class="frame-child11"> </textarea>
+        <div class="description1">Description:</div>
+        <div class="flag-as-sensitive1">Flag as sensitive content?</div>
+        <textarea class="frame-child12"> </textarea>
+        <input class="frame-child13" type="file" required />
+
+        <a class="publish-the-artwork-post-wrapper" href="./explore.html">
+          <div class="publish-the-artwork">Publish the artwork post</div>
+        </a>
+        <div class="frame-div">
+          <div class="frame-child14"></div>
+          <div class="frame-child15"></div>
+          <div class="frame-child16"></div>
+        </div>
+        <div class="artwork-file1">artwork file</div>
+      </form>
+      <nav class="frame-nav">
+        <input
+          class="frame-child17"
+          type="text"
+          placeholder="Search"
+          id="frameInput1"
+        />
+
+        <a class="image-22" href="./search-result.html"> </a>
+        <a class="image-1-frame" href="./user-profile.html" id="frameLink1">
+          <img class="image-1-icon3" alt="" src="./public/image-11@2x.png" />
+        </a>
+        <a
+          class="untitled209-20230605132102-12"
+          href="./explore.html"
+          id="untitled209202306051321021"
+        >
+        </a>
+      </nav>
+    </div>
+
+    <script>
+      var frameInput1 = document.getElementById("frameInput1");
+      if (frameInput1) {
+        frameInput1.addEventListener("click", function (e) {
+          window.location.href = "./search-result.html";
+        });
+      }
+      
+      var frameLink1 = document.getElementById("frameLink1");
+      if (frameLink1) {
+        frameLink1.addEventListener("click", function (e) {
+          window.location.href = "./user-profile.html";
+        });
+      }
+      
+      var untitled209202306051321021 = document.getElementById(
+        "untitled209202306051321021"
+      );
+      if (untitled209202306051321021) {
+        untitled209202306051321021.addEventListener("click", function (e) {
+          window.location.href = "./explore.html";
+        });
+      }
+      </script>
+  </body>
+</html>

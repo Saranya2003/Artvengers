@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra Petch:ital,wght@0,400;1,400;1,500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="login2">
+      <form class="frame-parent19">
+        <input
+          class="frame-child58"
+          type="text"
+          placeholder="Username or Email"
+        />
+
+        <input class="frame-child59" type="text" placeholder="Password" />
+
+        <label class="dont-have-an">Don’t have an account?</label>
+        <a class="sign-up" href="./register.html" id="signUp">Sign up</a>
+      </form>
+      <button class="rectangle-parent5" autofocus id="frameButton">
+        <div class="frame-child60"></div>
+        <div class="login3">Login</div>
+      </button>
+      <img
+        class="untitled209-20230605132102-2-icon2"
+        alt=""
+        src="./public/untitled209-20230605132102-2@2x.png"
+      />
+    </div>
+
+    <script>
+      var signUp = document.getElementById("signUp");
+      if (signUp) {
+        signUp.addEventListener("click", function (e) {
+          window.location.href = "./register.html";
+        });
+      }
+      
+      var frameButton = document.getElementById("frameButton");
+      if (frameButton) {
+        frameButton.addEventListener("click", function (e) {
+          window.location.href = "./explore.html";
+        });
+      }
+      </script>
+  </body>
+</html>

@@ -1,0 +1,420 @@
+.explore21 {
+  position: absolute;
+  top: 40px;
+  left: 23px;
+  font-weight: 500;
+}
+.image-4-icon20 {
+  position: absolute;
+  top: 2px;
+  left: 30px;
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+}
+.explore-parent18 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 97px;
+  height: 60px;
+  overflow: hidden;
+}
+.dashboard21 {
+  position: absolute;
+  top: 40px;
+  left: 11px;
+  font-weight: 500;
+}
+.image-5-icon20 {
+  position: absolute;
+  top: 0;
+  left: 28px;
+  width: 41px;
+  height: 41px;
+  object-fit: cover;
+}
+.dashboard-parent18 {
+  position: absolute;
+  top: 0;
+  left: 97px;
+  background-color: var(--color-lightseagreen);
+  width: 97px;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.upload20 {
+  position: absolute;
+  top: 40px;
+  left: 24px;
+  font-weight: 500;
+}
+.image-6-icon20 {
+  position: absolute;
+  top: 5px;
+  left: 31px;
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+.upload-parent18 {
+  position: absolute;
+  top: 0;
+  left: 194px;
+  width: 97px;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.profile21 {
+  position: absolute;
+  top: 40px;
+  left: 26px;
+  font-weight: 500;
+}
+.image-7-icon20 {
+  position: absolute;
+  top: 0;
+  left: 27px;
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+}
+.frame-parent27,
+.profile-parent18 {
+  position: absolute;
+  height: 60px;
+  overflow: hidden;
+}
+.profile-parent18 {
+  top: 0;
+  left: 291px;
+  width: 97px;
+  cursor: pointer;
+}
+.frame-parent27 {
+  top: 784px;
+  left: 0;
+  background-color: var(--color-powderblue);
+  width: 390px;
+  text-align: left;
+  font-size: var(--mobile-foot-menu-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}
+.i4,
+.my-albums1 {
+  position: absolute;
+  top: 6px;
+  left: 13px;
+  font-weight: 500;
+}
+.my-albums1 {
+  left: 39px;
+}
+.container {
+  position: absolute;
+  top: 98px;
+  left: 15px;
+  border-radius: var(--br-15xl);
+  border: 1px solid var(--color-white);
+  box-sizing: border-box;
+  width: 161px;
+  height: 38px;
+  overflow: hidden;
+  font-size: var(--artvengers-description-size);
+  color: var(--color-white);
+}
+.d0072-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 336px;
+  height: 476px;
+  object-fit: cover;
+}
+.d0072-1-container,
+.d0072-1-frame,
+.d0072-1-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 57px;
+  left: 62px;
+  background-color: var(--color-lightskyblue);
+  width: 244px;
+  height: 223px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.d0072-1-container,
+.d0072-1-frame {
+  top: 29px;
+  left: 31px;
+}
+.d0072-1-frame {
+  top: 0;
+  left: 0;
+}
+.album-title1 {
+  position: relative;
+}
+.album-title-wrapper {
+  position: absolute;
+  top: 210px;
+  left: 0;
+  background-color: var(--color-gray-300);
+  box-shadow: 0 25px 22px rgba(0, 0, 0, 0.54) inset;
+  width: 306px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: var(--artvengers-form-size);
+}
+.delete-frame,
+.delete2 {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+}
+.delete-frame {
+  text-decoration: none;
+  top: 238px;
+  left: 227px;
+  background-color: var(--color-red);
+  width: 62px;
+  height: 30px;
+  overflow: hidden;
+  color: var(--color-white);
+}
+.edit2 {
+  position: absolute;
+  top: 7px;
+  left: 13px;
+}
+.edit-frame,
+.frame-parent28 {
+  text-decoration: none;
+  position: absolute;
+  overflow: hidden;
+  color: inherit;
+}
+.edit-frame {
+  top: 238px;
+  left: 153px;
+  background-color: var(--color-white);
+  width: 59px;
+  height: 31px;
+  cursor: pointer;
+}
+.frame-parent28 {
+  top: 484px;
+  left: 47px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+}
+.d0065-2-icon4,
+.d0067-1-icon4,
+.d0068-1-icon4 {
+  position: absolute;
+  top: 0;
+  left: 23px;
+  width: 254px;
+  height: 254px;
+  object-fit: cover;
+}
+.d0067-1-icon4,
+.d0068-1-icon4 {
+  left: 0;
+  width: 264px;
+  height: 264px;
+}
+.d0068-1-icon4 {
+  width: 306px;
+  height: 306px;
+}
+.frame-parent29 {
+  text-decoration: none;
+  position: absolute;
+  top: 179px;
+  left: 47px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  color: inherit;
+}
+.untitled209-20230605132102-120 {
+  text-decoration: none;
+  position: absolute;
+  top: 6px;
+  left: 153px;
+  width: 83px;
+  height: 72px;
+  background-image: url(./public/untitled209202306051321021@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  cursor: pointer;
+}
+.frame-child100 {
+  top: 0;
+  left: -22px;
+  background-color: var(--color-gainsboro);
+}
+.frame-child100,
+.frame-child101,
+.frame-child102 {
+  position: absolute;
+  width: 134px;
+  height: 9px;
+}
+.frame-child101 {
+  top: 19px;
+  left: -28px;
+  background-color: var(--color-gainsboro);
+}
+.frame-child102 {
+  top: 38px;
+  left: 0;
+}
+.rectangle-parent26 {
+  position: absolute;
+  top: 18px;
+  left: 15px;
+  width: 47px;
+  height: 47px;
+  overflow: hidden;
+}
+.image-220 {
+  text-decoration: none;
+  position: absolute;
+  top: 26px;
+  left: 339px;
+  width: 32px;
+  height: 32px;
+  background-image: url(./public/image2@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  cursor: pointer;
+}
+.untitled209-20230605132102-1-parent18 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-steelblue-200);
+  width: 390px;
+  height: 78px;
+  overflow: hidden;
+}
+.dashboard-album-mobile {
+  position: relative;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 844px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--tag-artwork-details-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}
+.profile {
+  position: absolute;
+  top: 24px;
+  left: 30px;
+  font-weight: 500;
+}
+.dashboard-wrapper,
+.explore-wrapper,
+.log-out-wrapper,
+.profile-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 351px;
+  height: 96px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.dashboard-wrapper,
+.explore-wrapper,
+.log-out-wrapper {
+  top: 96px;
+}
+.explore-wrapper,
+.log-out-wrapper {
+  top: 192px;
+}
+.log-out-wrapper {
+  top: 288px;
+}
+.menu-mobile {
+  position: relative;
+  background-color: var(--color-powderblue);
+  width: 351px;
+  height: 725px;
+  overflow: hidden;
+  max-width: 90%;
+  max-height: 90%;
+  text-align: left;
+  font-size: var(--artvengers-body-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}
+.my-albums {
+  position: absolute;
+  top: 12px;
+  left: 23px;
+  font-weight: 500;
+}
+.my-albums-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 223px;
+  height: 71px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.my-artworks {
+  position: absolute;
+  top: 12px;
+  left: 9px;
+  font-weight: 500;
+}
+.frame-root,
+.my-artworks-wrapper {
+  box-sizing: border-box;
+  width: 223px;
+  overflow: hidden;
+}
+.my-artworks-wrapper {
+  position: absolute;
+  top: 71px;
+  left: 0;
+  border-bottom: 1px solid var(--color-black);
+  height: 71px;
+  cursor: pointer;
+}
+.frame-root {
+  position: relative;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-white);
+  height: 142px;
+  max-width: 90%;
+  max-height: 90%;
+  text-align: left;
+  font-size: var(--artvengers-body-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}

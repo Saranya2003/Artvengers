@@ -1,0 +1,92 @@
+.frame-child58 {
+  border: 0;
+  background-color: transparent;
+  top: 35px;
+  left: 58px;
+  border-radius: var(--br-21xl);
+  width: 433px;
+  height: 84px;
+  overflow: hidden;
+}
+.dont-have-an,
+.frame-child58,
+.frame-child59,
+.sign-up {
+  position: absolute;
+  font-size: var(--artvengers-form-size);
+  font-family: var(--artvengers-body);
+}
+.frame-child59 {
+  border: 0;
+  background-color: transparent;
+  top: 138px;
+  left: 59px;
+  border-radius: var(--br-21xl);
+  width: 433px;
+  height: 84px;
+  overflow: hidden;
+}
+.dont-have-an,
+.sign-up {
+  cursor: pointer;
+  top: 241px;
+  left: 87px;
+  color: var(--color-white);
+  text-align: left;
+}
+.sign-up {
+  text-decoration: underline;
+  left: 358px;
+}
+.frame-parent19 {
+  position: absolute;
+  top: 374px;
+  left: 445px;
+  width: 550px;
+  height: 276px;
+  overflow: hidden;
+}
+.frame-child60 {
+  position: absolute;
+  top: -27px;
+  left: -68px;
+  background-color: var(--color-indianred);
+  width: 549px;
+  height: 165px;
+}
+.login3 {
+  position: absolute;
+  top: 4px;
+  left: 123px;
+  font-size: 64px;
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.rectangle-parent5 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 693px;
+  left: 503px;
+  width: 426px;
+  height: 84px;
+  overflow: hidden;
+}
+.untitled209-20230605132102-2-icon2 {
+  position: absolute;
+  top: 16px;
+  left: 525px;
+  width: 370px;
+  height: 320px;
+  object-fit: cover;
+}
+.login2 {
+  position: relative;
+  background-color: var(--color-steelblue-100);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+}

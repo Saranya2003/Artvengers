@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./users-dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra Petch:ital,wght@0,400;1,400;1,500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="users-dashboard">
+      <nav class="rectangle-parent3">
+        <div class="frame-child49"></div>
+        <a class="explore" href="./explore.html">Explore</a>
+        <div class="my-artworks">My artworks</div>
+      </nav>
+      <nav class="frame-parent12">
+        <input
+          class="frame-child50"
+          type="text"
+          placeholder="Search"
+          id="frameInput"
+        />
+
+        <a class="image-210" href="./search-result.html"> </a>
+        <a class="image-1-wrapper7" href="./user-profile.html" id="frameLink">
+          <img class="image-1-icon11" alt="" src="./public/image-11@2x.png" />
+        </a>
+        <a
+          class="untitled209-20230605132102-110"
+          href="./explore.html"
+          id="untitled209202306051321021"
+        >
+        </a>
+      </nav>
+      <div class="frame-parent13">
+        <a class="post-new-artwork-wrapper" href="./upload-artwork.html">
+          <div class="post-new-artwork">Post new artwork</div>
+        </a>
+        <div class="your-artwork">Your Artwork</div>
+        <section class="frame-section">
+          <a class="d0079-1-parent" href="./artwork-view.html">
+            <img class="d0079-1-icon" alt="" src="./public/d0079-1@2x.png" />
+
+            <div class="delete-wrapper">
+              <div class="delete">Delete</div>
+            </div>
+            <a class="edit-wrapper" href="./edit-artwork.html" id="frameLink3">
+              <div class="edit">Edit</div>
+            </a>
+          </a>
+          <a class="d0012-1-parent" href="./artwork-view.html">
+            <img class="d0012-1-icon" alt="" src="./public/d0012-1@2x.png" />
+
+            <div class="delete-wrapper">
+              <div class="delete">Delete</div>
+            </div>
+            <a class="edit-wrapper" href="./edit-artwork.html" id="frameLink5">
+              <div class="edit">Edit</div>
+            </a>
+          </a>
+          <a class="d0009-1-parent" href="./artwork-view.html">
+            <img class="d0009-1-icon" alt="" src="./public/d0009-1@2x.png" />
+
+            <div class="delete-wrapper">
+              <div class="delete">Delete</div>
+            </div>
+            <a class="edit-wrapper" href="./edit-artwork.html" id="frameLink7">
+              <div class="edit">Edit</div>
+            </a>
+          </a>
+          <a class="d0006-1-parent" href="./artwork-view.html">
+            <img class="d0006-1-icon" alt="" src="./public/d0006-1@2x.png" />
+
+            <div class="delete-wrapper">
+              <div class="delete">Delete</div>
+            </div>
+            <a class="edit-wrapper" href="./edit-artwork.html" id="frameLink9">
+              <div class="edit">Edit</div>
+            </a>
+          </a>
+          <div class="wrapper">
+            <i class="i1">&gt;</i>
+          </div>
+          <div class="container">
+            <i class="i1">&lt;</i>
+          </div>
+        </section>
+      </div>
+      <div class="your-album-parent">
+        <div class="your-album">Your Album</div>
+        <a
+          class="create-new-album-wrapper"
+          href="./create-album.html"
+          id="frameLink10"
+        >
+          <div class="post-new-artwork">Create new album</div>
+        </a>
+        <section class="frame-parent14">
+          <a class="img-9206-2-parent" href="./album-view.html">
+            <img
+              class="img-9206-2-icon"
+              alt=""
+              src="./public/img-9206-2@2x.png"
+            />
+
+            <a class="delete-wrapper2">
+              <div class="delete">Delete</div>
+            </a>
+            <a class="edit-wrapper" href="./update-album.html" id="frameLink13">
+              <div class="edit">Edit</div>
+            </a>
+          </a>
+          <a class="d0072-1-parent" href="./album-view.html">
+            <img class="d0072-1-icon" alt="" src="./public/d0072-1@2x.png" />
+
+            <a class="delete-wrapper2">
+              <div class="delete">Delete</div>
+            </a>
+            <a class="edit-wrapper" href="./update-album.html" id="frameLink16">
+              <div class="edit">Edit</div>
+            </a>
+          </a>
+          <a class="d0030-1-parent" href="./album-view.html">
+            <img class="d0030-1-icon" alt="" src="./public/d0030-1@2x.png" />
+
+            <a class="delete-wrapper2">
+              <div class="delete">Delete</div>
+            </a>
+            <a class="edit-wrapper" href="./update-album.html" id="frameLink19">
+              <div class="edit">Edit</div>
+            </a>
+          </a>
+          <a class="d0008-1-parent" href="./album-view.html">
+            <img class="d0008-1-icon" alt="" src="./public/d0008-1@2x.png" />
+
+            <a class="delete-wrapper2">
+              <div class="delete">Delete</div>
+            </a>
+            <a class="edit-wrapper" href="./update-album.html" id="frameLink22">
+              <div class="edit">Edit</div>
+            </a>
+          </a>
+          <div class="wrapper">
+            <i class="i1">&gt;</i>
+          </div>
+          <div class="container">
+            <i class="i1">&lt;</i>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      var frameInput = document.getElementById("frameInput");
+      if (frameInput) {
+        frameInput.addEventListener("click", function (e) {
+          window.location.href = "./search-result.html";
+        });
+      }
+      
+      var frameLink = document.getElementById("frameLink");
+      if (frameLink) {
+        frameLink.addEventListener("click", function (e) {
+          window.location.href = "./user-profile.html";
+        });
+      }
+      
+      var untitled209202306051321021 = document.getElementById(
+        "untitled209202306051321021"
+      );
+      if (untitled209202306051321021) {
+        untitled209202306051321021.addEventListener("click", function (e) {
+          window.location.href = "./explore.html";
+        });
+      }
+      
+      var frameLink3 = document.getElementById("frameLink3");
+      if (frameLink3) {
+        frameLink3.addEventListener("click", function (e) {
+          window.location.href = "./edit-artwork.html";
+        });
+      }
+      
+      var frameLink5 = document.getElementById("frameLink5");
+      if (frameLink5) {
+        frameLink5.addEventListener("click", function (e) {
+          window.location.href = "./edit-artwork.html";
+        });
+      }
+      
+      var frameLink7 = document.getElementById("frameLink7");
+      if (frameLink7) {
+        frameLink7.addEventListener("click", function (e) {
+          window.location.href = "./edit-artwork.html";
+        });
+      }
+      
+      var frameLink9 = document.getElementById("frameLink9");
+      if (frameLink9) {
+        frameLink9.addEventListener("click", function (e) {
+          window.location.href = "./edit-artwork.html";
+        });
+      }
+      
+      var frameLink10 = document.getElementById("frameLink10");
+      if (frameLink10) {
+        frameLink10.addEventListener("click", function (e) {
+          window.location.href = "./create-album.html";
+        });
+      }
+      
+      var frameLink13 = document.getElementById("frameLink13");
+      if (frameLink13) {
+        frameLink13.addEventListener("click", function (e) {
+          window.location.href = "./edit-artwork.html";
+        });
+      }
+      
+      var frameLink16 = document.getElementById("frameLink16");
+      if (frameLink16) {
+        frameLink16.addEventListener("click", function (e) {
+          window.location.href = "./edit-artwork.html";
+        });
+      }
+      
+      var frameLink19 = document.getElementById("frameLink19");
+      if (frameLink19) {
+        frameLink19.addEventListener("click", function (e) {
+          window.location.href = "./edit-artwork.html";
+        });
+      }
+      
+      var frameLink22 = document.getElementById("frameLink22");
+      if (frameLink22) {
+        frameLink22.addEventListener("click", function (e) {
+          window.location.href = "./edit-artwork.html";
+        });
+      }
+      </script>
+  </body>
+</html>

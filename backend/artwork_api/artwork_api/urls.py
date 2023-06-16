@@ -24,4 +24,5 @@ urlpatterns = [
     path('',include('artwork.urls')),
     path('artist/',include('django.contrib.auth.urls')),
     path('artist/',include('artist.urls')),
+    #path('', include('pwa.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

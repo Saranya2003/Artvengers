@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./frame-90.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra Petch:ital,wght@0,400;1,400;1,500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="frame-top">
+      <div class="albums-wrapper" id="popupframeContainer">
+        <i class="albums">Albums</i>
+      </div>
+      <div class="artworks-wrapper" id="popupframeContainer1">
+        <i class="albums">Artworks</i>
+      </div>
+    </div>
+
+    <script>
+      var popupframeContainer = document.getElementById("popupframeContainer");
+      if (popupframeContainer) {
+        popupframeContainer.addEventListener("click", function (e) {
+          window.location.href = "./explore-album-mobile.html";
+        });
+      }
+      
+      var popupframeContainer1 = document.getElementById("popupframeContainer1");
+      if (popupframeContainer1) {
+        popupframeContainer1.addEventListener("click", function (e) {
+          window.location.href = "./explore-artwork-mobile.html";
+        });
+      }
+      </script>
+  </body>
+</html>

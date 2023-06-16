@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
+<center>
 <h2>Search results</h2>
 <ul>
     {% for artwork in object_list %}
@@ -10,5 +11,5 @@
 
     {% endfor %}
 </ul>
-
+</center>
 {% endblock %}

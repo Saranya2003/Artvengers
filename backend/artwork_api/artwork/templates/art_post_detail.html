@@ -2,32 +2,50 @@
 {% extends 'webBase.html' %}
 {% block content %}
 
-<div class="container text-center">
+<div class="container">
     <div class="row align-items-start">
       <div class="col-sm">
-        <h1>{{ artwork.title }}</h1>
+        <br><br>
+        <h1>{{ artwork.Title }}</h1>
         Title<br>
         <img src="{{ artwork.Artwork.url }}"  width="30%">
         Image<br>
       </div>
       <div class="col-sm">
-        <h3>Description</h3><br><br>
+        <br><br>
+        <h3>Description</h3>
         <small>{{ artwork.artist_Name }}<br>Description{{ artwork.Description }}
         </small>
-
-        <br>
         Tags
-        {% for tag in artwork.tags.all %}
-        <a class="btn btn-primary rounded-pill" href="#" role="button">{{ tag }}</a>
-        {% endfor %}
-        <br><br>
+        {% for tag in object_list %}
+          <a class="btn btn-primary rounded-pill" href="#" role="button">{{ artwork.Tags }}</a>
+          {% endfor %}
+        <br>
         <h3>Comments</h3>
         <br>
+        <form method="POST">
+          {% csrf_token %}
+              {{ form.as_p }}
+            <button class="btn btn-primary rounded-pill">Post</button>
+        </form>
+          
+        <br>
         <div>
-        Username 
-        <br>
-        comments 
-        <br>
+          {% if not post.comments.all %}
+          No comments yet.
+      {% else %}
+      <br>
+          {% for comment in post.comments.all %}
+              <strong>
+                  {{ comment.artist_Name }} - {{ comment.date_added}}
+              </strong>
+              <br>
+              {{ comment.comment }}
+              <br>
+              <br>
+          {% endfor %}
+      {% endif %}
+      <br>
         </div>
       </div>
     </div>

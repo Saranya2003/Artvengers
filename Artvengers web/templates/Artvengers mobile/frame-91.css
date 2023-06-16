@@ -1,0 +1,49 @@
+.my-albums {
+  position: absolute;
+  top: 12px;
+  left: 23px;
+  font-weight: 500;
+}
+.my-albums-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 223px;
+  height: 71px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.my-artworks {
+  position: absolute;
+  top: 12px;
+  left: 9px;
+  font-weight: 500;
+}
+.frame-root,
+.my-artworks-wrapper {
+  box-sizing: border-box;
+  width: 223px;
+  overflow: hidden;
+}
+.my-artworks-wrapper {
+  position: absolute;
+  top: 71px;
+  left: 0;
+  border-bottom: 1px solid var(--color-black);
+  height: 71px;
+  cursor: pointer;
+}
+.frame-root {
+  position: relative;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-white);
+  height: 142px;
+  max-width: 90%;
+  max-height: 90%;
+  text-align: left;
+  font-size: var(--artvengers-body-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}

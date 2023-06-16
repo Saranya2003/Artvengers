@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./upload-mobile.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra Petch:ital,wght@0,400;1,400;1,500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="upload-mobile">
+      <nav class="frame-parent15">
+        <div class="explore-parent9">
+          <i class="explore12">Explore</i>
+          <img class="image-4-icon11" alt="" src="./public/image-4@2x.png" />
+        </div>
+        <div class="dashboard-parent9" id="frameContainer2">
+          <i class="dashboard12">Dashboard</i>
+          <img class="image-5-icon11" alt="" src="./public/image-5@2x.png" />
+        </div>
+        <div class="upload-parent9" id="frameContainer3">
+          <i class="upload11">Upload</i>
+          <img class="image-6-icon11" alt="" src="./public/image-6@2x.png" />
+        </div>
+        <div class="profile-parent9" id="frameContainer4">
+          <i class="profile12">Profile</i>
+          <img class="image-7-icon11" alt="" src="./public/image-7@2x.png" />
+        </div>
+      </nav>
+      <button class="frame-button" autofocus id="frameButton">
+        <div class="frame-child59"></div>
+        <div class="create-new-album">Create new album</div>
+      </button>
+      <button class="rectangle-parent14" autofocus id="frameButton1">
+        <div class="frame-child59"></div>
+        <div class="create-new-album">Post new artwork</div>
+      </button>
+      <nav class="untitled209-20230605132102-1-parent9">
+        <a
+          class="untitled209-20230605132102-111"
+          href="./explore.html"
+          id="untitled209202306051321021"
+        >
+        </a>
+        <div class="rectangle-parent15" id="frameContainer6">
+          <div class="frame-child61"></div>
+          <div class="frame-child62"></div>
+          <img class="frame-child63" alt="" src="./public/rectangle-7.svg" />
+        </div>
+        <a class="image-211" href="./search-result.html" id="image2"> </a>
+      </nav>
+    </div>
+
+    <div id="menuMobile" class="popup-overlay" style="display: none">
+      <div class="menu-mobile">
+        <div class="profile-wrapper" id="popupframeContainer">
+          <i class="profile">Profile</i>
+        </div>
+        <div class="dashboard-wrapper" id="popupframeContainer1">
+          <i class="profile">Dashboard</i>
+        </div>
+        <div class="explore-wrapper" id="popupframeContainer2">
+          <i class="profile">Explore</i>
+        </div>
+        <div class="log-out-wrapper" id="popupframeContainer3">
+          <i class="profile">Log out</i>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var popupframeContainer = document.getElementById("popupframeContainer");
+      if (popupframeContainer) {
+        popupframeContainer.addEventListener("click", function (e) {
+          window.location.href = "./user-profile-mobile.html";
+        });
+      }
+      
+      var popupframeContainer1 = document.getElementById("popupframeContainer1");
+      if (popupframeContainer1) {
+        popupframeContainer1.addEventListener("click", function (e) {
+          window.location.href = "./dashboard-album-mobile.html";
+        });
+      }
+      
+      var popupframeContainer2 = document.getElementById("popupframeContainer2");
+      if (popupframeContainer2) {
+        popupframeContainer2.addEventListener("click", function (e) {
+          window.location.href = "./explore-album-mobile.html";
+        });
+      }
+      
+      var popupframeContainer3 = document.getElementById("popupframeContainer3");
+      if (popupframeContainer3) {
+        popupframeContainer3.addEventListener("click", function (e) {
+          window.location.href = "./first-page-mobile.html";
+        });
+      }
+      
+      var frameContainer2 = document.getElementById("frameContainer2");
+      if (frameContainer2) {
+        frameContainer2.addEventListener("click", function (e) {
+          window.location.href = "./dashboard-album-mobile.html";
+        });
+      }
+      
+      var frameContainer3 = document.getElementById("frameContainer3");
+      if (frameContainer3) {
+        frameContainer3.addEventListener("click", function (e) {
+          window.location.href = "upload-mobile.html";
+        });
+      }
+      
+      var frameContainer4 = document.getElementById("frameContainer4");
+      if (frameContainer4) {
+        frameContainer4.addEventListener("click", function (e) {
+          window.location.href = "./user-profile-mobile.html";
+        });
+      }
+      
+      var frameButton = document.getElementById("frameButton");
+      if (frameButton) {
+        frameButton.addEventListener("click", function (e) {
+          window.location.href = "./create-album-mobile.html";
+        });
+      }
+      
+      var frameButton1 = document.getElementById("frameButton1");
+      if (frameButton1) {
+        frameButton1.addEventListener("click", function (e) {
+          window.location.href = "./create-artwork-mobile1.html";
+        });
+      }
+      
+      var untitled209202306051321021 = document.getElementById(
+        "untitled209202306051321021"
+      );
+      if (untitled209202306051321021) {
+        untitled209202306051321021.addEventListener("click", function (e) {
+          window.location.href = "./explore.html";
+        });
+      }
+      
+      var frameContainer6 = document.getElementById("frameContainer6");
+      if (frameContainer6) {
+        frameContainer6.addEventListener("click", function () {
+          var popup = document.getElementById("menuMobile");
+          if (!popup) return;
+          var popupStyle = popup.style;
+          if (popupStyle) {
+            popupStyle.display = "flex";
+            popupStyle.zIndex = 100;
+            popupStyle.backgroundColor = "rgba(113, 113, 113, 0.3)";
+            popupStyle.alignItems = "center";
+            popupStyle.justifyContent = "center";
+          }
+          popup.setAttribute("closable", "");
+      
+          var onClick =
+            popup.onClick ||
+            function (e) {
+              if (e.target === popup && popup.hasAttribute("closable")) {
+                popupStyle.display = "none";
+              }
+            };
+          popup.addEventListener("click", onClick);
+        });
+      }
+      
+      var image2 = document.getElementById("image2");
+      if (image2) {
+        image2.addEventListener("click", function (e) {
+          window.location.href = "./search-page-mobile.html";
+        });
+      }
+      </script>
+  </body>
+</html>

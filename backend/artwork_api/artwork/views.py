@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework import generics,viewsets, permissions
 from django.views.generic import ListView,DetailView,CreateView, UpdateView, TemplateView
 
-from .models import ArtworkPost,Album, Tag
+from .models import ArtworkPost,Album, Comment, Tag
 from .serializers import AlbumSerializer, ArtworkSerializer
 from .forms import AlbumForm, ArtworkForm
 
@@ -33,6 +33,11 @@ class ArtworkPostDetail(DetailView):
     model = ArtworkPost
     template_name = 'art_post_detail.html' 
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comment'] = Comment.objects.all()
+        return context
+
 class ExploreView(ListView):
     model = ArtworkPost
     template_name = 'explore.html'
@@ -43,10 +48,18 @@ class ExploreView(ListView):
         context['album'] = Album.objects.all()
         context['artwork'] = ArtworkPost.objects.all()
         return context
+    
+def explore(request):
+    album_display = Album.objects.all()
+    artwork_display = ArtworkPost.objects.all()
+    ordering =['-id']
+    
+    return render(request,'explore.html',{"Album":album_display,"ArtworkPost":artwork_display,"ordering":ordering})
 
 class DashboardView(ListView):
     model = ArtworkPost
     template_name = 'dashboard.html'
+    ordering =['-id']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -74,9 +87,9 @@ class UpdateArtworks(UpdateView):
     template_name = 'update_artwork.html'
     fields = ['Title','Description','Tag','Artwork']
 
-class SearchArtwork(ListView):
-    model = ArtworkPost
-    template_name = 'search_page.html'
+def SearchView(request):
+    
+    return render(request,'search_page.html',{})
 
 def list_artwork_by_tag(request,tag_id):
     tag = get_object_or_404(Tag, id=tag_id)
@@ -89,3 +102,4 @@ def list_artwork_by_tag(request,tag_id):
     }
 
     return render(request,"artwork_tag.html",context)
+

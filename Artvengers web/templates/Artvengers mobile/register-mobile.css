@@ -1,0 +1,106 @@
+.frame-child106,
+.frame-child107,
+.frame-child108 {
+  border: 0;
+  background-color: transparent;
+  border-radius: var(--br-21xl);
+  height: 84px;
+  overflow: hidden;
+}
+.frame-child106 {
+  font-family: var(--artvengers-body);
+  font-size: var(--artvengers-form-size);
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  width: 349px;
+}
+.frame-child107,
+.frame-child108 {
+  width: 348px;
+}
+.frame-child107 {
+  font-family: var(--artvengers-body);
+  font-size: var(--artvengers-form-size);
+  position: absolute;
+  top: 131px;
+  left: 29px;
+}
+.frame-child108 {
+  top: 234px;
+  left: 28px;
+}
+.already-have-an,
+.frame-child108,
+.frame-child109,
+.login1 {
+  position: absolute;
+  font-size: var(--artvengers-form-size);
+  font-family: var(--artvengers-body);
+}
+.frame-child109 {
+  border: 0;
+  background-color: transparent;
+  top: 337px;
+  left: 29px;
+  border-radius: var(--br-21xl);
+  width: 348px;
+  height: 84px;
+  overflow: hidden;
+}
+.already-have-an,
+.login1 {
+  top: 459px;
+  left: 13px;
+  color: var(--color-white);
+  text-align: left;
+}
+.login1 {
+  text-decoration: underline;
+  left: 318px;
+  cursor: pointer;
+}
+.frame-parent33 {
+  position: absolute;
+  top: 147px;
+  left: 0;
+  width: 390px;
+  height: 497px;
+  overflow: hidden;
+}
+.frame-child110 {
+  position: absolute;
+  top: -27px;
+  left: -68px;
+  background-color: var(--color-indianred);
+  width: 549px;
+  height: 165px;
+}
+.create-an-account {
+  position: absolute;
+  top: 18px;
+  left: 10px;
+  font-size: var(--artvengers-body-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.rectangle-parent28 {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 671px;
+  left: 35px;
+  width: 320px;
+  height: 84px;
+  overflow: hidden;
+}
+.register-mobile {
+  position: relative;
+  background-color: var(--color-steelblue-100);
+  width: 100%;
+  height: 844px;
+  overflow: hidden;
+}

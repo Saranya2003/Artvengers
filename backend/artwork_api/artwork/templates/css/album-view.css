@@ -1,0 +1,267 @@
+.img-9200-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 487px;
+  height: 487px;
+  object-fit: cover;
+}
+.artwork-title21 {
+  position: relative;
+}
+.artwork-title-wrapper17 {
+  position: absolute;
+  top: 210px;
+  left: 0;
+  background-color: var(--color-gray-300);
+  box-shadow: 0 25px 22px rgba(0, 0, 0, 0.54) inset;
+  width: 306px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.img-9200-1-parent,
+.img-9202-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 112px;
+  left: 49px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.img-9202-1-parent {
+  left: 367px;
+}
+.img-9206-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 503px;
+  height: 503px;
+  object-fit: cover;
+}
+.img-9206-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 112px;
+  left: 685px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.img-9207-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 473px;
+  height: 473px;
+  object-fit: cover;
+}
+.frame-child41,
+.frame-child42,
+.frame-child43,
+.frame-child44,
+.img-9207-1-parent {
+  position: absolute;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+}
+.img-9207-1-parent {
+  text-decoration: none;
+  top: 112px;
+  left: 1003px;
+  cursor: pointer;
+  color: inherit;
+}
+.frame-child41,
+.frame-child42,
+.frame-child43,
+.frame-child44 {
+  top: 429px;
+  left: 49px;
+}
+.frame-child42,
+.frame-child43,
+.frame-child44 {
+  left: 367px;
+}
+.frame-child43,
+.frame-child44 {
+  left: 685px;
+}
+.frame-child44 {
+  left: 1003px;
+}
+.img-9204-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 520px;
+  object-fit: cover;
+}
+.img-9204-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 429px;
+  left: 49px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.img-9203-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 464px;
+  height: 464px;
+  object-fit: cover;
+}
+.img-9203-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 429px;
+  left: 367px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.img-9205-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 446px;
+  height: 446px;
+  object-fit: cover;
+}
+.img-9205-1-parent,
+.img-9209-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 429px;
+  left: 685px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.img-9209-1-parent {
+  left: 1003px;
+}
+.album-title {
+  position: absolute;
+  top: 24px;
+  left: 49px;
+  font-size: var(--artvengers-body-size);
+  color: var(--color-white);
+}
+.frame-child45,
+.frame-parent9 {
+  position: absolute;
+  top: 135px;
+  left: 30px;
+  width: 1355px;
+  height: 788px;
+  overflow: hidden;
+}
+.frame-child45 {
+  border: 1px solid var(--color-black);
+  font-family: var(--font-inter);
+  font-size: var(--artvengers-tag-size);
+  background-color: var(--color-gray-200);
+  top: 30px;
+  left: 1137px;
+  border-radius: var(--br-xl);
+  box-sizing: border-box;
+  width: 263px;
+  height: 59px;
+  cursor: pointer;
+}
+.image-28 {
+  text-decoration: none;
+  position: absolute;
+  top: 43px;
+  left: 1353px;
+  width: 32px;
+  height: 32px;
+  background-image: url(./public/image2@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.image-1-icon9 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.image-1-wrapper6,
+.untitled209-20230605132102-18 {
+  text-decoration: none;
+  position: absolute;
+  cursor: pointer;
+}
+.image-1-wrapper6 {
+  top: 29px;
+  left: 1055px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}
+.untitled209-20230605132102-18 {
+  top: 0;
+  left: 26px;
+  width: 136px;
+  height: 118px;
+  background-image: url(./public/untitled209202306051321021@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.frame-parent10 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-steelblue-200);
+  width: 1440px;
+  height: 119px;
+  overflow: hidden;
+}
+.album-view {
+  position: relative;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--artvengers-tag-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}

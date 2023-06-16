@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra Petch:ital,wght@0,400;1,400;1,500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="first-page-mobile">
+      <div class="frame-parent">
+        <button class="rectangle-parent" id="frameButton">
+          <div class="frame-child"></div>
+          <div class="login">Login</div>
+        </button>
+        <button class="rectangle-group" id="frameButton1">
+          <div class="frame-child"></div>
+          <div class="sign-up">Sign up</div>
+        </button>
+      </div>
+      <p class="discover-more-passion">
+        Discover more passion of your art. Empower your imagination. Get to know
+        your art today.
+      </p>
+    </div>
+
+    <script>
+      var frameButton = document.getElementById("frameButton");
+      if (frameButton) {
+        frameButton.addEventListener("click", function (e) {
+          window.location.href = "./login-mobile.html";
+        });
+      }
+      
+      var frameButton1 = document.getElementById("frameButton1");
+      if (frameButton1) {
+        frameButton1.addEventListener("click", function (e) {
+          window.location.href = "./register-mobile.html";
+        });
+      }
+      </script>
+  </body>
+</html>

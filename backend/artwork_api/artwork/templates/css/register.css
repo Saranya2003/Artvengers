@@ -1,0 +1,111 @@
+.frame-child51 {
+  font-family: var(--artvengers-body);
+  font-size: var(--artvengers-tag-size);
+  position: absolute;
+  top: 28px;
+  left: 421px;
+}
+.frame-child51,
+.frame-child52,
+.frame-child53 {
+  border: 0;
+  background-color: transparent;
+  border-radius: var(--br-21xl);
+  width: 433px;
+  height: 84px;
+  overflow: hidden;
+}
+.frame-child52 {
+  font-family: var(--artvengers-body);
+  font-size: var(--artvengers-tag-size);
+  position: absolute;
+  top: 131px;
+  left: 422px;
+}
+.frame-child53 {
+  top: 234px;
+  left: 421px;
+}
+.already-have-an,
+.frame-child53,
+.frame-child54,
+.login1 {
+  position: absolute;
+  font-size: var(--artvengers-tag-size);
+  font-family: var(--artvengers-body);
+}
+.frame-child54 {
+  border: 0;
+  background-color: transparent;
+  top: 337px;
+  left: 422px;
+  border-radius: var(--br-21xl);
+  width: 433px;
+  height: 84px;
+  overflow: hidden;
+}
+.already-have-an,
+.login1 {
+  top: 440px;
+  left: 449px;
+  color: var(--color-white);
+  text-align: left;
+}
+.login1 {
+  text-decoration: underline;
+  left: 754px;
+  cursor: pointer;
+}
+.frame-parent20 {
+  position: absolute;
+  top: 329px;
+  left: 79px;
+  width: 1276px;
+  height: 497px;
+  overflow: hidden;
+}
+.frame-child55 {
+  position: absolute;
+  top: -27px;
+  left: -68px;
+  background-color: var(--color-indianred);
+  width: 549px;
+  height: 165px;
+}
+.create-an-account {
+  position: absolute;
+  top: 20px;
+  left: 57px;
+  font-size: var(--artvengers-body-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.frame-button {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 853px;
+  left: 497px;
+  width: 426px;
+  height: 84px;
+  overflow: hidden;
+}
+.untitled209-20230605132102-2-icon1 {
+  position: absolute;
+  top: 16px;
+  left: 525px;
+  width: 370px;
+  height: 320px;
+  object-fit: cover;
+}
+.register {
+  position: relative;
+  background-color: var(--color-steelblue-100);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  cursor: pointer;
+}

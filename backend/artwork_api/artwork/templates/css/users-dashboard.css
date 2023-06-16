@@ -1,0 +1,490 @@
+.frame-child49 {
+  position: absolute;
+  top: 0;
+  left: 179px;
+  background-color: var(--color-gray-100);
+  width: 249px;
+  height: 74px;
+}
+.explore,
+.my-artworks {
+  position: absolute;
+  top: 15px;
+}
+.explore {
+  text-decoration: none;
+  left: 36px;
+  color: inherit;
+}
+.my-artworks {
+  left: 199px;
+}
+.rectangle-parent4 {
+  position: absolute;
+  top: 119px;
+  left: 0;
+  background-color: var(--color-indianred);
+  width: 1440px;
+  height: 74px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--artvengers-body-size);
+  color: var(--color-white);
+  font-family: var(--artvengers-body);
+}
+.frame-child50 {
+  border: 1px solid var(--color-black);
+  font-family: var(--font-inter);
+  font-size: var(--artvengers-tag-size);
+  background-color: var(--color-gray-200);
+  position: absolute;
+  top: 30px;
+  left: 1137px;
+  border-radius: var(--br-xl);
+  box-sizing: border-box;
+  width: 263px;
+  height: 59px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.image-210 {
+  text-decoration: none;
+  position: absolute;
+  top: 43px;
+  left: 1353px;
+  width: 32px;
+  height: 32px;
+  background-image: url(./public/image2@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.image-1-icon11 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.image-1-wrapper8,
+.untitled209-20230605132102-110 {
+  text-decoration: none;
+  position: absolute;
+  cursor: pointer;
+}
+.image-1-wrapper8 {
+  top: 29px;
+  left: 1055px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}
+.untitled209-20230605132102-110 {
+  top: 0;
+  left: 26px;
+  width: 136px;
+  height: 118px;
+  background-image: url(./public/untitled209202306051321021@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.frame-parent12 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-steelblue-200);
+  width: 1440px;
+  height: 119px;
+  overflow: hidden;
+}
+.post-new-artwork {
+  position: absolute;
+  top: 3px;
+  left: 14px;
+}
+.post-new-artwork-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 1017px;
+  background-color: var(--color-indianred);
+  width: 304px;
+  height: 44px;
+  overflow: hidden;
+  color: inherit;
+}
+.my-artworks1 {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  font-size: var(--artvengers-body-size);
+}
+.d0079-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 768px;
+  height: 432px;
+  object-fit: cover;
+}
+.artwork-title29 {
+  position: relative;
+}
+.delete,
+.delete-wrapper {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+}
+.delete-wrapper {
+  top: 238px;
+  left: 227px;
+  background-color: var(--color-red);
+  width: 62px;
+  height: 30px;
+  overflow: hidden;
+  color: var(--color-white);
+}
+.edit {
+  position: absolute;
+  top: 7px;
+  left: 13px;
+}
+.d0079-1-parent,
+.edit-wrapper {
+  text-decoration: none;
+  position: absolute;
+  overflow: hidden;
+  color: inherit;
+}
+.edit-wrapper {
+  top: 238px;
+  left: 153px;
+  background-color: var(--color-white);
+  width: 59px;
+  height: 31px;
+  cursor: pointer;
+}
+.d0079-1-parent {
+  top: 0;
+  left: 63px;
+  background-color: var(--color-lightcoral);
+  width: 306px;
+  height: 280px;
+}
+.d0012-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 446px;
+  height: 670px;
+  object-fit: cover;
+}
+.d0012-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 381px;
+  background-color: var(--color-lightcoral);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  color: inherit;
+}
+.d0009-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 938px;
+  height: 528px;
+  object-fit: cover;
+}
+.d0009-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 699px;
+  background-color: var(--color-lightcoral);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  color: inherit;
+}
+.d0006-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 428px;
+  height: 642px;
+  object-fit: cover;
+}
+.d0006-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 1017px;
+  background-color: var(--color-lightcoral);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  color: inherit;
+}
+.i3 {
+  position: absolute;
+  top: 117px;
+  left: 21px;
+}
+.frame,
+.wrapper1 {
+  top: 0;
+  background-color: var(--color-indianred);
+  width: 63px;
+  height: 280px;
+  font-size: var(--artvengers-tag-size);
+  color: var(--color-white);
+}
+.frame {
+  position: absolute;
+  left: 1323px;
+  overflow: hidden;
+}
+.wrapper1 {
+  left: 0;
+}
+.frame-parent13,
+.frame-parent14,
+.wrapper1 {
+  position: absolute;
+  overflow: hidden;
+}
+.frame-parent14 {
+  top: 61px;
+  left: 0;
+  width: 1384px;
+  height: 280px;
+  font-size: var(--tag-artwork-details-size);
+  color: var(--color-black);
+}
+.frame-parent13 {
+  top: 650px;
+  left: 27px;
+  width: 1386px;
+  height: 341px;
+}
+.my-albums {
+  position: absolute;
+  top: 0;
+  left: 43px;
+}
+.create-new-album-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 1019px;
+  background-color: var(--color-indianred);
+  width: 304px;
+  height: 44px;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: var(--font-size-13xl);
+  color: inherit;
+}
+.d0065-2-icon {
+  position: absolute;
+  top: 0;
+  left: 23px;
+  width: 254px;
+  height: 254px;
+  object-fit: cover;
+}
+.d0065-2-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 57px;
+  left: 62px;
+  background-color: var(--color-lightskyblue);
+  width: 244px;
+  height: 223px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.d0067-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 264px;
+  height: 264px;
+  object-fit: cover;
+}
+.d0067-1-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 29px;
+  left: 31px;
+  background-color: var(--color-lightskyblue);
+  width: 244px;
+  height: 223px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.d0068-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 306px;
+  height: 306px;
+  object-fit: cover;
+}
+.d0068-1-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-lightskyblue);
+  width: 244px;
+  height: 223px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.album-title-wrapper {
+  position: absolute;
+  top: 210px;
+  left: 0;
+  background-color: var(--color-gray-300);
+  box-shadow: 0 25px 22px rgba(0, 0, 0, 0.54) inset;
+  width: 306px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: var(--artvengers-tag-size);
+}
+.delete-wrapper2,
+.frame-parent16 {
+  text-decoration: none;
+  position: absolute;
+  overflow: hidden;
+}
+.delete-wrapper2 {
+  top: 238px;
+  left: 227px;
+  background-color: var(--color-red);
+  width: 62px;
+  height: 30px;
+  color: var(--color-white);
+}
+.frame-parent16 {
+  top: 0;
+  left: 63px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  color: inherit;
+}
+.d0072-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 336px;
+  height: 476px;
+  object-fit: cover;
+}
+.frame-parent17 {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 381px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  color: inherit;
+}
+.akane-sakakibara-1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 332px;
+  height: 332px;
+  object-fit: cover;
+}
+.frame-parent18 {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 699px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  color: inherit;
+}
+.d0002-1-icon,
+.d0004-1-icon,
+.d0008-3-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 532px;
+  height: 299px;
+  object-fit: cover;
+}
+.d0002-1-icon,
+.d0004-1-icon {
+  width: 564px;
+  height: 317px;
+}
+.d0002-1-icon {
+  width: 597px;
+  height: 335px;
+}
+.frame-parent19 {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 1017px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  color: inherit;
+}
+.frame-parent15,
+.my-albums-parent {
+  position: absolute;
+  width: 1386px;
+  overflow: hidden;
+}
+.frame-parent15 {
+  top: 61px;
+  left: 0;
+  height: 280px;
+  font-size: var(--tag-artwork-details-size);
+  color: var(--color-black);
+}
+.my-albums-parent {
+  top: 251px;
+  left: 27px;
+  height: 341px;
+  font-size: var(--artvengers-body-size);
+}
+.users-dashboard {
+  position: relative;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-13xl);
+  color: var(--color-white);
+  font-family: var(--artvengers-body);
+}

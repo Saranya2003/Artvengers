@@ -1,0 +1,211 @@
+.title3 {
+  position: absolute;
+  top: 17px;
+  left: 18px;
+  font-size: var(--artvengers-form-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.frame-child29 {
+  border: 1px solid var(--color-white);
+  background-color: transparent;
+  position: absolute;
+  top: 8px;
+  left: 305px;
+  box-sizing: border-box;
+  width: 502px;
+  height: 48px;
+  overflow: hidden;
+}
+.cover-photo1,
+.select-artwork-to,
+.setting-as-private1 {
+  position: absolute;
+  left: 18px;
+  font-size: var(--artvengers-form-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.cover-photo1 {
+  top: 178px;
+  display: inline-block;
+  width: 188px;
+  height: 58px;
+}
+.select-artwork-to,
+.setting-as-private1 {
+  top: 99px;
+}
+.select-artwork-to {
+  top: 286px;
+}
+.frame-child30 {
+  position: absolute;
+  top: 176px;
+  left: 305px;
+  background-color: var(--color-indianred);
+  width: 286px;
+  height: 60px;
+  overflow: hidden;
+}
+.create-albumcollection {
+  position: absolute;
+  top: 16px;
+  left: 8px;
+  font-size: var(--artvengers-form-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.create-albumcollection-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 373px;
+  left: 407px;
+  background-color: var(--color-indianred);
+  width: 286px;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.frame-child31,
+.frame-child32 {
+  position: absolute;
+  top: -12px;
+  left: -16px;
+  background-color: var(--color-gainsboro);
+  width: 126px;
+  height: 72px;
+}
+.frame-child32 {
+  background-color: var(--color-steelblue-200);
+  display: none;
+}
+.frame-child33,
+.rectangle-parent2 {
+  position: absolute;
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  height: 39px;
+}
+.frame-child33 {
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  width: 39px;
+}
+.rectangle-parent2 {
+  top: 94px;
+  left: 406px;
+  border-radius: var(--br-26xl);
+  width: 78px;
+  overflow: hidden;
+}
+.frame-child34 {
+  position: absolute;
+  top: 270px;
+  left: 415px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-indianred);
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.cover-photo-file1 {
+  position: absolute;
+  top: 207px;
+  left: 624px;
+  font-size: var(--artvengers-form-size);
+  font-family: var(--font-inter);
+  color: var(--color-white);
+  text-align: left;
+}
+.frame-child35,
+.frame-form {
+  position: absolute;
+  top: 149px;
+  left: 191px;
+  width: 853px;
+  height: 523px;
+  overflow: hidden;
+}
+.frame-child35 {
+  border: 1px solid var(--color-black);
+  font-family: var(--font-inter);
+  font-size: var(--artvengers-form-size);
+  background-color: var(--color-gray-200);
+  top: 30px;
+  left: 1137px;
+  border-radius: var(--br-xl);
+  box-sizing: border-box;
+  width: 263px;
+  height: 59px;
+  cursor: pointer;
+}
+.image-26 {
+  text-decoration: none;
+  position: absolute;
+  top: 43px;
+  left: 1353px;
+  width: 32px;
+  height: 32px;
+  background-image: url(./public/image2@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.image-1-icon7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.image-1-wrapper3,
+.untitled209-20230605132102-16 {
+  text-decoration: none;
+  position: absolute;
+  cursor: pointer;
+}
+.image-1-wrapper3 {
+  top: 29px;
+  left: 1055px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}
+.untitled209-20230605132102-16 {
+  top: 0;
+  left: 26px;
+  width: 136px;
+  height: 118px;
+  background-image: url(./public/untitled209202306051321021@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.frame-parent6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-powderblue);
+  width: 1440px;
+  height: 119px;
+  overflow: hidden;
+}
+.create-album {
+  position: relative;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+}

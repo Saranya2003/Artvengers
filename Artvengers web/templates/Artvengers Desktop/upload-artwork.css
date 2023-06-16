@@ -1,0 +1,233 @@
+.title2 {
+  position: absolute;
+  top: 18px;
+  left: 13px;
+  font-size: var(--artvengers-tag-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.frame-child20 {
+  border: 1px solid var(--color-white);
+  background-color: transparent;
+  position: absolute;
+  top: 17px;
+  left: 226px;
+  box-sizing: border-box;
+  width: 502px;
+  height: 48px;
+  overflow: hidden;
+}
+.tag1 {
+  margin: 0;
+}
+.artwork1,
+.tag-separate-with-container1 {
+  position: absolute;
+  top: 462px;
+  left: 13px;
+  font-size: var(--artvengers-tag-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+  display: inline-block;
+  width: 188px;
+  height: 58px;
+}
+.artwork1 {
+  top: 620px;
+}
+.frame-child21 {
+  border: 1px solid var(--color-white);
+  background-color: transparent;
+  position: absolute;
+  top: 512px;
+  left: 226px;
+  box-sizing: border-box;
+  width: 502px;
+  height: 48px;
+  overflow: hidden;
+}
+.description1,
+.flag-as-sensitive1 {
+  position: absolute;
+  top: 95px;
+  left: 13px;
+  font-size: var(--artvengers-tag-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.flag-as-sensitive1 {
+  top: 363px;
+}
+.frame-child22,
+.frame-child23 {
+  position: absolute;
+  left: 226px;
+  overflow: hidden;
+}
+.frame-child22 {
+  border: 1px solid var(--color-white);
+  background-color: transparent;
+  top: 95px;
+  box-sizing: border-box;
+  width: 502px;
+  height: 198px;
+}
+.frame-child23 {
+  top: 618px;
+  background-color: var(--color-indianred);
+  width: 286px;
+  height: 60px;
+  cursor: pointer;
+}
+.publish-the-artwork {
+  position: absolute;
+  top: 16px;
+  left: 4px;
+  font-size: var(--artvengers-tag-size);
+  font-family: var(--artvengers-body);
+  color: var(--color-white);
+  text-align: left;
+}
+.publish-the-artwork-post-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 756px;
+  left: 402px;
+  background-color: var(--color-indianred);
+  width: 286px;
+  height: 60px;
+  overflow: hidden;
+}
+.frame-child24,
+.frame-child25 {
+  position: absolute;
+  top: -12px;
+  left: -16px;
+  background-color: var(--color-gainsboro);
+  width: 126px;
+  height: 72px;
+}
+.frame-child25 {
+  background-color: var(--color-steelblue-200);
+  display: none;
+}
+.frame-child26 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 39px;
+  height: 39px;
+}
+.frame-child27,
+.rectangle-parent2 {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.rectangle-parent2 {
+  top: 358px;
+  left: 450px;
+  border-radius: var(--br-26xl);
+  border: 1px solid var(--color-black);
+  width: 78px;
+  height: 39px;
+}
+.frame-child27 {
+  top: 584px;
+  left: 537px;
+  border: 1px solid var(--color-white);
+  width: 461px;
+  height: 131px;
+}
+.frame-child28,
+.title-container {
+  position: absolute;
+  top: 140px;
+  left: 196px;
+  width: 1014px;
+  height: 838px;
+  overflow: hidden;
+}
+.frame-child28 {
+  border: 1px solid var(--color-black);
+  font-family: var(--font-inter);
+  font-size: var(--artvengers-tag-size);
+  background-color: var(--color-gray-200);
+  top: 30px;
+  left: 1137px;
+  border-radius: var(--br-xl);
+  box-sizing: border-box;
+  width: 263px;
+  height: 59px;
+  cursor: pointer;
+}
+.image-24 {
+  text-decoration: none;
+  position: absolute;
+  top: 43px;
+  left: 1353px;
+  width: 32px;
+  height: 32px;
+  background-image: url(./public/image2@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.image-1-icon5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.image-1-wrapper2,
+.untitled209-20230605132102-14 {
+  text-decoration: none;
+  position: absolute;
+  cursor: pointer;
+}
+.image-1-wrapper2 {
+  top: 29px;
+  left: 1055px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}
+.untitled209-20230605132102-14 {
+  top: 0;
+  left: 26px;
+  width: 136px;
+  height: 118px;
+  background-image: url(./public/untitled209202306051321021@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.frame-parent3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-steelblue-200);
+  width: 1440px;
+  height: 119px;
+  overflow: hidden;
+}
+.upload-artwork {
+  position: relative;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+}

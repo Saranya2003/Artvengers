@@ -1,0 +1,508 @@
+.albums,
+.artworks {
+  margin: 0;
+  position: absolute;
+  top: 270px;
+  left: 47px;
+  font-size: var(--artvengers-body-size);
+  font-weight: 400;
+  font-family: inherit;
+}
+.artworks {
+  top: 659px;
+}
+.frame-child56 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-gray-100);
+  width: 181px;
+  height: 74px;
+}
+.explore2,
+.my-artworks2 {
+  position: absolute;
+  top: 15px;
+  left: 36px;
+}
+.my-artworks2 {
+  text-decoration: none;
+  left: 199px;
+  color: inherit;
+  cursor: pointer;
+}
+.rectangle-parent5 {
+  position: absolute;
+  top: 119px;
+  left: 0;
+  background-color: var(--color-indianred);
+  width: 1440px;
+  height: 74px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--artvengers-body-size);
+  color: var(--color-white);
+  font-family: var(--artvengers-body);
+}
+.anime-container,
+.anime1 {
+  position: absolute;
+  top: 4px;
+  left: 29px;
+}
+.anime-container {
+  text-decoration: none;
+  top: 219px;
+  left: 47px;
+  border-radius: var(--br-18xl);
+  background-color: var(--color-indianred);
+  width: 126px;
+  height: 39px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.manga,
+.manga-wrapper {
+  position: absolute;
+  top: 4px;
+  left: 26px;
+}
+.manga-wrapper {
+  text-decoration: none;
+  top: 219px;
+  left: 193px;
+  border-radius: var(--br-18xl);
+  background-color: var(--color-indianred);
+  width: 126px;
+  height: 39px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.sketch,
+.sketch-wrapper {
+  position: absolute;
+  top: 4px;
+  left: 25px;
+}
+.sketch-wrapper {
+  text-decoration: none;
+  top: 219px;
+  left: 339px;
+  border-radius: var(--br-18xl);
+  background-color: var(--color-indianred);
+  width: 126px;
+  height: 39px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.doodle,
+.doodle-wrapper {
+  position: absolute;
+  top: 4px;
+  left: 24px;
+}
+.doodle-wrapper {
+  text-decoration: none;
+  top: 219px;
+  left: 485px;
+  border-radius: var(--br-18xl);
+  background-color: var(--color-indianred);
+  width: 126px;
+  height: 39px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.d0083-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 546px;
+  height: 307px;
+  object-fit: cover;
+}
+.d0083-1-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 57px;
+  left: 62px;
+  background-color: var(--color-lightskyblue);
+  width: 244px;
+  height: 223px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.d0085-2-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 526px;
+  height: 296px;
+  object-fit: cover;
+}
+.d0085-2-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 29px;
+  left: 31px;
+  background-color: var(--color-lightskyblue);
+  width: 244px;
+  height: 223px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.d0077-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 618px;
+  height: 347px;
+  object-fit: cover;
+}
+.d0077-1-wrapper {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-lightskyblue);
+  width: 244px;
+  height: 223px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.album-title5 {
+  position: relative;
+}
+.album-title-wrapper2 {
+  position: absolute;
+  top: 210px;
+  left: 0;
+  background-color: var(--color-gray-300);
+  box-shadow: 0 25px 22px rgba(0, 0, 0, 0.54) inset;
+  width: 306px;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.frame-parent21 {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 63px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.d0002-1-icon1,
+.d0004-1-icon1,
+.d0008-3-icon1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 532px;
+  height: 299px;
+  object-fit: cover;
+}
+.d0002-1-icon1,
+.d0004-1-icon1 {
+  width: 564px;
+  height: 317px;
+}
+.d0002-1-icon1 {
+  width: 597px;
+  height: 335px;
+}
+.frame-parent22 {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 381px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.d0065-2-icon1,
+.d0067-1-icon1 {
+  position: absolute;
+  top: 0;
+  left: 23px;
+  width: 254px;
+  height: 254px;
+  object-fit: cover;
+}
+.d0067-1-icon1 {
+  left: 0;
+  width: 264px;
+  height: 264px;
+}
+.d0068-1-icon1,
+.frame-parent23 {
+  position: absolute;
+  top: 0;
+  width: 306px;
+}
+.d0068-1-icon1 {
+  left: 0;
+  height: 306px;
+  object-fit: cover;
+}
+.frame-parent23 {
+  text-decoration: none;
+  left: 699px;
+  background-color: var(--color-lightskyblue);
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.d0027-1-icon,
+.d0034-1-icon,
+.d0039-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 418px;
+  height: 584px;
+  object-fit: cover;
+}
+.d0034-1-icon,
+.d0039-1-icon {
+  width: 390px;
+  height: 544px;
+}
+.d0034-1-icon {
+  width: 512px;
+  height: 716px;
+}
+.frame-parent24 {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 1017px;
+  background-color: var(--color-lightskyblue);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.i7 {
+  position: absolute;
+  top: 117px;
+  left: 21px;
+}
+.wrapper4 {
+  top: 0;
+  left: 1323px;
+  background-color: var(--color-indianred);
+  width: 63px;
+  color: var(--color-white);
+}
+.frame-section,
+.wrapper4,
+.wrapper5 {
+  position: absolute;
+  height: 280px;
+  overflow: hidden;
+}
+.wrapper5 {
+  top: 0;
+  left: 0;
+  background-color: var(--color-indianred);
+  width: 63px;
+  color: var(--color-white);
+}
+.frame-section {
+  top: 326px;
+  left: 26px;
+  width: 1386px;
+  text-align: left;
+  font-size: var(--artvengers-tag-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}
+.d0065-1-icon,
+.d0065-1-parent {
+  position: absolute;
+  top: 0;
+  width: 306px;
+}
+.d0065-1-icon {
+  left: 0;
+  height: 319px;
+  object-fit: cover;
+}
+.d0065-1-parent {
+  text-decoration: none;
+  left: 63px;
+  background-color: var(--color-lightcoral);
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.d0085-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 616px;
+  height: 346px;
+  object-fit: cover;
+}
+.d0085-1-parent {
+  text-decoration: none;
+  left: 381px;
+  background-color: var(--color-lightcoral);
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.d0024-1-icon,
+.d0024-1-parent,
+.d0085-1-parent {
+  position: absolute;
+  top: 0;
+  width: 306px;
+}
+.d0024-1-icon {
+  left: 0;
+  height: 489px;
+  object-fit: cover;
+}
+.d0024-1-parent {
+  text-decoration: none;
+  left: 699px;
+  background-color: var(--color-lightcoral);
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.d0087-1-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 551px;
+  height: 389px;
+  object-fit: cover;
+}
+.d0087-1-parent {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 1017px;
+  background-color: var(--color-lightcoral);
+  width: 306px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  color: inherit;
+}
+.frame-child57,
+.frame-parent25 {
+  font-size: var(--artvengers-tag-size);
+  position: absolute;
+  overflow: hidden;
+}
+.frame-parent25 {
+  top: 725px;
+  left: 26px;
+  width: 1386px;
+  height: 280px;
+  text-align: left;
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}
+.frame-child57 {
+  border: 1px solid var(--color-black);
+  font-family: var(--font-inter);
+  background-color: var(--color-gray-200);
+  top: 30px;
+  left: 1137px;
+  border-radius: var(--br-xl);
+  box-sizing: border-box;
+  width: 263px;
+  height: 59px;
+  cursor: pointer;
+}
+.image-211 {
+  text-decoration: none;
+  position: absolute;
+  top: 43px;
+  left: 1353px;
+  width: 32px;
+  height: 32px;
+  background-image: url(./public/image2@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.image-1-icon12 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+.image-1-wrapper9,
+.untitled209-20230605132102-111 {
+  text-decoration: none;
+  position: absolute;
+  cursor: pointer;
+}
+.image-1-wrapper9 {
+  top: 29px;
+  left: 1055px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+}
+.untitled209-20230605132102-111 {
+  top: 0;
+  left: 26px;
+  width: 136px;
+  height: 118px;
+  background-image: url(./public/untitled209202306051321021@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.frame-parent26 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-steelblue-200);
+  width: 1440px;
+  height: 119px;
+  overflow: hidden;
+}
+.explore1 {
+  position: relative;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--artvengers-tag-size);
+  color: var(--color-white);
+  font-family: var(--artvengers-body);
+}

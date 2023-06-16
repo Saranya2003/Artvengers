@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./edit-artwork.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Chakra Petch:ital,wght@0,400;1,400;1,500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <div class="edit-artwork">
+      <a class="update-the-post-wrapper" href="./explore.html">
+        <div class="update-the-post">Update the post</div>
+      </a>
+      <div class="title-parent">
+        <div class="title">Title:</div>
+        <input class="frame-child5" type="text" />
+
+        <div class="tag-seperate-with-container">
+          <p class="tag">Tag</p>
+          <p class="tag">(Seperate with coma):</p>
+        </div>
+        <div class="artwork">Artwork:</div>
+        <input class="frame-child6" type="text" />
+
+        <div class="description">Description:</div>
+        <div class="flag-as-sensitive">Flag as sensitive content?</div>
+        <textarea class="frame-textarea"> </textarea>
+        <input class="frame-child7" type="file" required />
+
+        <div class="rectangle-container">
+          <div class="rectangle-div"></div>
+          <div class="frame-child8"></div>
+          <div class="ellipse-div"></div>
+        </div>
+        <div class="artwork-file">artwork file</div>
+      </div>
+      <nav class="frame-container">
+        <input
+          class="frame-child9"
+          type="text"
+          placeholder="Search"
+          id="frameInput2"
+        />
+
+        <a class="image-21" href="./search-result.html"> </a>
+        <a class="image-1-container" href="./user-profile.html" id="frameLink1">
+          <img class="image-1-icon2" alt="" src="./public/image-11@2x.png" />
+        </a>
+        <a
+          class="untitled209-20230605132102-11"
+          href="./explore.html"
+          id="untitled209202306051321021"
+        >
+        </a>
+      </nav>
+    </div>
+
+    <script>
+      var frameInput2 = document.getElementById("frameInput2");
+      if (frameInput2) {
+        frameInput2.addEventListener("click", function (e) {
+          window.location.href = "./search-result.html";
+        });
+      }
+      
+      var frameLink1 = document.getElementById("frameLink1");
+      if (frameLink1) {
+        frameLink1.addEventListener("click", function (e) {
+          window.location.href = "./user-profile.html";
+        });
+      }
+      
+      var untitled209202306051321021 = document.getElementById(
+        "untitled209202306051321021"
+      );
+      if (untitled209202306051321021) {
+        untitled209202306051321021.addEventListener("click", function (e) {
+          window.location.href = "./explore.html";
+        });
+      }
+      </script>
+  </body>
+</html>

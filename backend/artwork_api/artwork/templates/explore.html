@@ -3,23 +3,18 @@
 {% extends 'webBase.html' %}
 {% block content %}
 <style>         
-  .navbar-custom {  
-      background-color: #526AA7;  
-  }  
-    
-  .navbar-custom .navbar-brand,  
-  .navbar-custom .navbar-text {  
-      color: rgb(102, 13, 245);  
-  }  
+  .navbar-custom2 {  
+      background-color: #EB5160;  
+  }    
 </style>  
-<nav class="navbar navbar-expand-lg navbar-custom">
+<nav class="navbar navbar-expand-lg navbar-custom2">
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link active" href="#">Explore</a>
+              <a class="nav-link active text-white" href="#">Explore</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'dashboard'%}">My artworks</a>
+              <a class="nav-link text-white" href="{% url 'dashboard'%}">My artworks</a>
             </li>
           </ul>
         </div>
@@ -58,7 +53,7 @@
 <br>
 <h2>Artwork</h2><br>
 {% for artwork in object_list %}
-  <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%" style="width: 200px; height: 200px; object-fit: cover;"></a>
+  <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; "></a>
 
 
 

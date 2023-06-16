@@ -1,0 +1,381 @@
+.explore16 {
+  position: absolute;
+  top: 40px;
+  left: 23px;
+  font-weight: 500;
+}
+.image-4-icon15 {
+  position: absolute;
+  top: 2px;
+  left: 30px;
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+}
+.explore-parent13 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-lightseagreen);
+  width: 97px;
+  height: 60px;
+  overflow: hidden;
+}
+.dashboard16 {
+  position: absolute;
+  top: 40px;
+  left: 11px;
+  font-weight: 500;
+}
+.image-5-icon15 {
+  position: absolute;
+  top: 0;
+  left: 28px;
+  width: 41px;
+  height: 41px;
+  object-fit: cover;
+}
+.dashboard-parent13 {
+  position: absolute;
+  top: 0;
+  left: 97px;
+  width: 97px;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.upload15 {
+  position: absolute;
+  top: 40px;
+  left: 24px;
+  font-weight: 500;
+}
+.image-6-icon15 {
+  position: absolute;
+  top: 5px;
+  left: 31px;
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+.upload-parent13 {
+  position: absolute;
+  top: 0;
+  left: 194px;
+  width: 97px;
+  height: 60px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.profile16 {
+  position: absolute;
+  top: 40px;
+  left: 26px;
+  font-weight: 500;
+}
+.image-7-icon15 {
+  position: absolute;
+  top: 0;
+  left: 27px;
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+}
+.frame-parent19,
+.profile-parent13 {
+  position: absolute;
+  height: 60px;
+  overflow: hidden;
+}
+.profile-parent13 {
+  top: 0;
+  left: 291px;
+  width: 97px;
+  cursor: pointer;
+}
+.frame-parent19 {
+  top: 784px;
+  left: 0;
+  background-color: var(--color-powderblue);
+  width: 390px;
+  text-align: left;
+  font-size: var(--mobile-foot-menu-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}
+.d0089-1-icon1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 412px;
+  height: 279px;
+  object-fit: cover;
+}
+.d0089-1-container {
+  position: absolute;
+  top: 59px;
+  left: 0;
+  background-color: var(--color-lightskyblue);
+  width: 389px;
+  height: 234px;
+  overflow: hidden;
+}
+.artwork-title5 {
+  position: absolute;
+  top: 0;
+  left: 93px;
+}
+.artwork-view-mobile-child,
+.frame-parent20 {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 389px;
+  height: 293px;
+  overflow: hidden;
+}
+.artwork-view-mobile-child {
+  top: 78px;
+  width: 390px;
+  height: 309px;
+}
+.lorem-ipsum-dolor {
+  margin: 0;
+}
+.lorem-ipsum-dolor-container,
+.tag-1 {
+  position: absolute;
+  display: inline-block;
+}
+.lorem-ipsum-dolor-container {
+  top: 97px;
+  left: 18px;
+  font-weight: 500;
+  width: 355px;
+}
+.tag-1 {
+  top: 0;
+  left: 16px;
+  width: 56px;
+  height: 25px;
+}
+.tag-1-wrapper {
+  position: absolute;
+  left: 110px;
+  background-color: var(--color-indianred);
+  overflow: hidden;
+  cursor: pointer;
+}
+.tag-1-container,
+.tag-1-frame,
+.tag-1-wrapper {
+  text-decoration: none;
+  top: 352px;
+  border-radius: var(--br-18xl);
+  width: 79px;
+  height: 25px;
+  color: inherit;
+}
+.tag-1-container {
+  position: absolute;
+  left: 18px;
+  background-color: var(--color-indianred);
+  overflow: hidden;
+  cursor: pointer;
+}
+.tag-1-frame {
+  left: 202px;
+}
+.frame-a,
+.frame-child73,
+.tag-1-frame {
+  position: absolute;
+  background-color: var(--color-indianred);
+  overflow: hidden;
+  cursor: pointer;
+}
+.frame-a {
+  text-decoration: none;
+  top: 352px;
+  left: 294px;
+  border-radius: var(--br-18xl);
+  width: 79px;
+  height: 25px;
+  color: inherit;
+}
+.frame-child73 {
+  top: 9px;
+  left: 18px;
+  border-radius: var(--br-11xl);
+  width: 32px;
+  height: 32px;
+}
+.description3,
+.i3 {
+  position: absolute;
+  top: 12px;
+  left: 58px;
+}
+.description3 {
+  top: 8px;
+  left: 44px;
+}
+.description-container {
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+  width: 194px;
+  height: 41px;
+}
+.comments-container,
+.description-container,
+.frame-parent21 {
+  position: absolute;
+  border: 1px solid var(--color-white);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.comments-container {
+  top: 0;
+  left: 194px;
+  width: 194px;
+  height: 41px;
+  cursor: pointer;
+  color: var(--color-white);
+}
+.frame-parent21 {
+  top: 49px;
+  left: 0;
+  width: 388px;
+  height: 42px;
+  color: var(--color-black);
+}
+.lorem-ipsum-dolor-sit-amet-co-parent {
+  position: absolute;
+  top: 396px;
+  left: 0;
+  width: 388px;
+  height: 388px;
+  overflow: hidden;
+  font-size: var(--artvengers-description-size);
+}
+.untitled209-20230605132102-115 {
+  text-decoration: none;
+  position: absolute;
+  top: 6px;
+  left: 153px;
+  width: 83px;
+  height: 72px;
+  background-image: url(./public/untitled209202306051321021@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  cursor: pointer;
+}
+.frame-child74 {
+  top: 0;
+  left: -22px;
+  background-color: var(--color-gainsboro);
+}
+.frame-child74,
+.frame-child75,
+.frame-child76 {
+  position: absolute;
+  width: 134px;
+  height: 9px;
+}
+.frame-child75 {
+  top: 19px;
+  left: -28px;
+  background-color: var(--color-gainsboro);
+}
+.frame-child76 {
+  top: 38px;
+  left: 0;
+}
+.rectangle-parent19 {
+  position: absolute;
+  top: 18px;
+  left: 15px;
+  width: 47px;
+  height: 47px;
+  overflow: hidden;
+}
+.image-215 {
+  text-decoration: none;
+  position: absolute;
+  top: 26px;
+  left: 339px;
+  width: 32px;
+  height: 32px;
+  background-image: url(./public/image2@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  cursor: pointer;
+}
+.untitled209-20230605132102-1-parent13 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-steelblue-200);
+  width: 390px;
+  height: 78px;
+  overflow: hidden;
+}
+.artwork-view-mobile1 {
+  position: relative;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 844px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--artvengers-body-size);
+  color: var(--color-white);
+  font-family: var(--artvengers-body);
+}
+.profile {
+  position: absolute;
+  top: 24px;
+  left: 30px;
+  font-weight: 500;
+}
+.dashboard-wrapper,
+.explore-wrapper,
+.log-out-wrapper,
+.profile-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 351px;
+  height: 96px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.dashboard-wrapper,
+.explore-wrapper,
+.log-out-wrapper {
+  top: 96px;
+}
+.explore-wrapper,
+.log-out-wrapper {
+  top: 192px;
+}
+.log-out-wrapper {
+  top: 288px;
+}
+.menu-mobile {
+  position: relative;
+  background-color: var(--color-powderblue);
+  width: 351px;
+  height: 725px;
+  overflow: hidden;
+  max-width: 90%;
+  max-height: 90%;
+  text-align: left;
+  font-size: var(--artvengers-body-size);
+  color: var(--color-black);
+  font-family: var(--artvengers-body);
+}
