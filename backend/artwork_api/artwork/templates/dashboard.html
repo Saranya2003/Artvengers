@@ -4,10 +4,10 @@
 <style>         
   .navbar-custom2 {  
       background-color: #EB5160;  
-  }  
-  .navbar-custom2 .nav-item active{
+  }
+  .active-custom{
     background-color: #330C2F;
-  }  
+  }   
 </style>   
 <nav class="navbar navbar-expand-lg navbar-custom2">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -15,15 +15,15 @@
             <li class="nav-item">
               <a class="nav-link text-white" href="{% url 'explore'%}">Explore</a>
             </li>
-            <li class="nav-item active">
-              <a class="nav-link active text-white" href="#">My artworks</a>
+            <li class="nav-item active-custom">
+              <a class="nav-link active-custom text-white" href="#">My artworks</a>
             </li>
           </ul>
         </div>
       </nav>
 
 <br>
-Your Album&emsp;&emsp;&emsp;&emsp;<a class="btn btn-primary" href="{%  url 'add_album' %}" role="button">Create new album</a>
+Your Album&emsp;&emsp;&emsp;&emsp;<a class="btn btn-custom" href="{%  url 'add_album' %}" role="button">Create new album</a>
 <br>
 <div>
   <div id="carouselExample" class="carousel slide">
@@ -51,16 +51,50 @@ Your Album&emsp;&emsp;&emsp;&emsp;<a class="btn btn-primary" href="{%  url 'add_
 <br>
 <br>
 <br>
-Your Artwork&emsp;&emsp;&emsp;&emsp;<a class="btn btn-primary" href="{%  url 'add_artwork' %}" role="button">Post new artwork</a>
-<br>
-{% for artwork in object_list %}
-  {% if user.id == artwork.artist_Name.id %}
-    <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.Artwork.url }}" width="25%" style="width: 200px; height: 200px; object-fit: cover;"></a>
-          <a class="btn btn-secondary" href="{%  url 'artwork_edit' artwork.pk %}" role="button">Edit</a>
-          <a class="btn btn-danger" href="#" role="button">Delete</a>
-  {% endif %}
-        
-{% endfor %}
+<div>
+  Your Artwork&emsp;&emsp;&emsp;&emsp;<a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button">Post new artwork</a>
+  <br><br>
+  <div id="CarouselWithControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+    {% for artwork in object_list %}
+      {% if user.id == artwork.artist_Name.id %}
+        {% if forloop.first %}
+          <div class="carousel-item {% if forloop.first %} active {% endif %}">
+            <a href="{%  url 'artwork_detail' artwork.pk %}">
+              <img src="{{ artwork.Artwork.url }}"  width="30%" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{ artwork.Title }}</h5>
+                <a class="btn btn-secondary" href="{%  url 'artwork_edit' artwork.pk %}" role="button">Edit</a>
+                <a class="btn btn-danger" href="#" role="button">Delete</a>
+              </div>
+            </a>
+          </div>
+        {% else %}
+          <div class="carousel-item {% if  forloop.first %} active {% endif %}">
+            <a href="{%  url 'artwork_detail' artwork.pk %}">
+              <img src="{{ artwork.Artwork.url }}"  width="30%" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{ artwork.Title }}</h5>
+                <a class="btn btn-secondary" href="{%  url 'artwork_edit' artwork.pk %}" role="button">Edit</a>
+                <a class="btn btn-danger" href="#" role="button">Delete</a>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endif %}
+    <a class="carousel-control-prev" href="#CarouselWithControls" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#CarouselWithControls" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+    {% endfor %}
+  
+    </div>
+  </div>
+  
+</div>
+
 <br>
 
 {% endblock %}

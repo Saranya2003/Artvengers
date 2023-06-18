@@ -4,8 +4,6 @@ from django.urls import reverse
 from datetime import datetime,date
 
 # Create your models here.
-class Carousel(models.Model):
-    image = models.ImageField()
 
 class Tag(models.Model):
     tag = models.CharField(max_length=100, unique=True)
@@ -18,9 +16,10 @@ class ArtworkPost(models.Model):
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     Description = models.TextField()
+    Sensitive_content = models.BooleanField(default=False)
     Tags = models.ManyToManyField(to=Tag, related_name="artworkpost", blank=True)
     Artwork = models.ImageField(null=True,blank=True,upload_to="media/img/")
-
+    likes = models.ManyToManyField(User, related_name='artwork_post')
     def get_absolute_url(self):
         return reverse('dashboard')
 
@@ -29,8 +28,7 @@ class Album(models.Model):
     Album_Title = models.CharField(max_length=255)
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
-    Description = models.TextField()
-    Cover_Photo = models.ImageField(null=True,blank=True,upload_to="media/img/album_cover")
+    Private_Album = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse('dashboard')

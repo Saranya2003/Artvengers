@@ -15,10 +15,14 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap"
     />
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap');
+      
       body{
+        font-family: 'Chakra Petch', sans-serif;
         background-color: #3F7CAC;
       }
       .btn-custom{
+        font-family: 'Chakra Petch', sans-serif;
         background-color: #C0E0DE;
       }
     </style>
@@ -26,18 +30,20 @@
   <body class="web-app">
 <div class="firstPage" style="padding: 50px;margin: 20px;">
     <h1>Artvenger</h1>
-    <div style="padding: 50px;margin: 20px;">
+    <div style="padding: 50px;margin: 20px;font-size: 36px;color:white;">
       Discover more passion of your art. Empower your imagination. Get to know
     your art today.
+    </div>
     <br>
     <br>
     <br>
-
-    <a href="{%  url 'login' %}" class="btn btn-custom rounded-pill" role="button">Login</a>
+    <div>
+      <a href="{%  url 'login' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Login</a>
     <br>
     <br>
-
-    <a href="{%  url 'register' %}" class="btn btn-custom rounded-pill" role="button">Sign up</a>
-  </div>
+    <a href="{%  url 'register' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Sign up</a>
+    </div>
+    
+  
 </div>
 </body>

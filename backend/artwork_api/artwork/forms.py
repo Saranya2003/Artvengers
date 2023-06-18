@@ -4,8 +4,8 @@ from .models import ArtworkPost,Album,Comment
 class ArtworkForm(forms.ModelForm):
     class Meta:
         model = ArtworkPost
-        fields = {'Title','artist_Name','Description','Tags','Artwork'}
-        fields_order = ['Title','artist_Name','Description','Tags','Artwork']
+        fields = {'Title','artist_Name','Description','Sensitive_content','Tags','Artwork'}
+        fields_order = ['Title','artist_Name','Description','Sensitive_content','Tags','Artwork']
         widgets = {
             'Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
@@ -17,12 +17,11 @@ class ArtworkForm(forms.ModelForm):
 class AlbumForm(forms.ModelForm):
     class Meta:
         model = Album
-        fields = {'Album_Title','artist_Name','Description','Cover_Photo'}
-        fields_order = ['Album_Title','artist_Name','Description','Cover_Photo']
+        fields = {'Album_Title','artist_Name','Private_Album'}
+        fields_order = ['Album_Title','artist_Name','Private_Album']
         widgets = {
             'Album_Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
-            'Description': forms.Textarea(attrs={'class':'form-control'}),
         }
         
 

@@ -1,0 +1,29 @@
+<div class="carousel slide">
+    {% for artwork in object_list %}
+      { % if forloop.first % }
+        <div class="carousel-item">
+          <img src="{{ artwork.Artwork.url }}"  width="30%">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ artwork.Title }}</h5>
+            <p>{{ artwork.Description }}</p>
+          </div>
+        </div>
+      { % else % }
+        <div class="carousel-item">
+          <img src="{{ artwork.Artwork.url }}"  width="30%">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ artwork.Title }}</h5>
+            <p>{{ artwork.Description }}</p>
+          </div>
+        </div>
+      {% endif %} 
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    {% endfor %}
+  </div>

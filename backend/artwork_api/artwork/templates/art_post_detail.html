@@ -6,19 +6,28 @@
     <div class="row align-items-start">
       <div class="col-sm">
         <br><br>
-        <h1>{{ artwork.Title }}</h1>
+        {% for artdetail in artwork %}
+        {% if forloop.first %}
+        <h5>{{ artdetail.Title }}</h5>
+        {{ artdetail.artist_Name }}
+        <img src="{{ artdetail.Artwork.url }}"  width="30%">
+        {{ artdetail.Description }}
+        {% endif %}
+        {% endfor %}
+
+        <h1>{{ artdetail.Title }}</h1>
         Title<br>
-        <img src="{{ artwork.Artwork.url }}"  width="30%">
+        <img src="{{ artdetail.Artwork.url }}"  width="30%">
         Image<br>
       </div>
       <div class="col-sm">
         <br><br>
         <h3>Description</h3>
-        <small>{{ artwork.artist_Name }}<br>Description{{ artwork.Description }}
+        <small>{{ artdetail.artist_Name }}<br>Description{{ artdetail.Description }}
         </small>
         Tags
         {% for tag in object_list %}
-          <a class="btn btn-primary rounded-pill" href="#" role="button">{{ artwork.Tags }}</a>
+          <a class="btn btn-custom rounded-pill" href="#" role="button">{{ artwork.Tags }}</a>
           {% endfor %}
         <br>
         <h3>Comments</h3>
@@ -26,7 +35,7 @@
         <form method="POST">
           {% csrf_token %}
               {{ form.as_p }}
-            <button class="btn btn-primary rounded-pill">Post</button>
+            <button class="btn btn-custom rounded-pill">Post</button>
         </form>
           
         <br>
