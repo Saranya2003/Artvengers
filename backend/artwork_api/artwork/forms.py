@@ -4,13 +4,12 @@ from .models import ArtworkPost,Album,Comment
 class ArtworkForm(forms.ModelForm):
     class Meta:
         model = ArtworkPost
-        fields = {'Title','artist_Name','Description','Sensitive_content','Tags','Artwork'}
-        fields_order = ['Title','artist_Name','Description','Sensitive_content','Tags','Artwork']
+        fields = {'Title','artist_Name','Description','Sensitive_content','Artwork'}
+        fields_order = ['Title','artist_Name','Description','Sensitive_content','Artwork']
         widgets = {
             'Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Description': forms.Textarea(attrs={'class':'form-control'}),
-            'Tags': forms.TextInput(attrs={'class':'form-control'}),
         }
         
 

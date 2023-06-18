@@ -4,12 +4,6 @@ from django.urls import reverse
 from datetime import datetime,date
 
 # Create your models here.
-
-class Tag(models.Model):
-    tag = models.CharField(max_length=100, unique=True)
-
-    def __str__(self):
-        return self.tag
     
 class ArtworkPost(models.Model):
     Title = models.CharField(max_length=255)
@@ -17,7 +11,6 @@ class ArtworkPost(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     Description = models.TextField()
     Sensitive_content = models.BooleanField(default=False)
-    Tags = models.ManyToManyField(to=Tag, related_name="artworkpost", blank=True)
     Artwork = models.ImageField(null=True,blank=True,upload_to="media/img/")
     likes = models.ManyToManyField(User, related_name='artwork_post')
     def get_absolute_url(self):
