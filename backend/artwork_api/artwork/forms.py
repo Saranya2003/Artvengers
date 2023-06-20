@@ -1,15 +1,20 @@
 from django import forms
 from .models import ArtworkPost,Album,Comment
+from taggit.forms import *
 
 class ArtworkForm(forms.ModelForm):
+    Title = forms.CharField(max_length=100,widget=forms.TextInput())
+    Description = forms.Textarea()
+    Tags = TagField()
     class Meta:
         model = ArtworkPost
-        fields = {'Title','artist_Name','Description','Sensitive_content','Artwork'}
-        fields_order = ['Title','artist_Name','Description','Sensitive_content','Artwork']
+        fields = {'Title','artist_Name','Description','Sensitive_content','Tags','Artwork'}
+        fields_order = ['Title','artist_Name','Description','Sensitive_content','Tags','Artwork']
         widgets = {
             'Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Description': forms.Textarea(attrs={'class':'form-control'}),
+           
         }
         
 

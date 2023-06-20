@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'artwork',
     'artist',
+    'taggit',
     #'pwa',
     #'import_export',
 ]

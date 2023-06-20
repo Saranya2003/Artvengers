@@ -12,18 +12,25 @@
       </div>
       <div class="col-sm">
         <br><br>
+        <div>
         <h3>Description</h3>
-        <small>{{ object.artist_Name }}<br>Description{{ object.Description }}
-        </small>
+        <small>{{ object.artist_Name }}
+        </small><br>
+        <p>
+          {{ object.Description }}
+        </p>
+        <br><a href="#" class="badge badge-custom2 rounded-pill">{{ object.Tags }}</a><br><br>
+      </div>
+        <div>
+          <h3>Comments</h3>
         <br>
-        <h3>Comments</h3>
-        <br>
+        
         <form method="POST">
           {% csrf_token %}
               {{ form.as_p }}
             <button class="btn btn-custom rounded-pill">Post</button>
         </form>
-          
+        </div>
         <br>
         <div>
           {% if not post.comments.all %}

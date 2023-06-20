@@ -35,27 +35,23 @@ class ArtworkPostDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['artwork'] = ArtworkPost.objects.all()
+        #(context['artwork'] = ArtworkPost.objects.all()
         context['comment'] = Comment.objects.all()
         return context
 
 class ExploreView(ListView):
     model = ArtworkPost
     template_name = 'explore.html'
-    ordering =['-id']
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['album'] = Album.objects.all()
-        context['artwork'] = ArtworkPost.objects.all()
+        #print("explorecontext: ",context)
+        context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
+        #print(context['artwork'])
+       # print(context['artwork'].order_by('-pk'))
         return context
-    
-def explore(request):
-    album_display = Album.objects.all()
-    artwork_display = ArtworkPost.objects.all()
-    ordering =['-id']
-    
-    return render(request,'explore.html',{"Album":album_display,"ArtworkPost":artwork_display,"ordering":ordering})
 
 class DashboardView(ListView):
     model = ArtworkPost
@@ -65,7 +61,7 @@ class DashboardView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['album'] = Album.objects.all()
-        context['artwork'] = ArtworkPost.objects.all()
+        context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
         return context
 
 class AddArtwork(CreateView):

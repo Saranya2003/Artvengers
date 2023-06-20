@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime,date
+from taggit.managers import TaggableManager
 
 # Create your models here.
     
@@ -11,8 +12,11 @@ class ArtworkPost(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     Description = models.TextField()
     Sensitive_content = models.BooleanField(default=False)
+    Tags = TaggableManager()
     Artwork = models.ImageField(null=True,blank=True,upload_to="media/img/")
     likes = models.ManyToManyField(User, related_name='artwork_post')
+    album = models.TextField()
+
     def get_absolute_url(self):
         return reverse('dashboard')
 

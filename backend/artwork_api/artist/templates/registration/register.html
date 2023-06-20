@@ -23,16 +23,17 @@
 
 <br><br><br>
 
-<div style="text-align:center;padding: 50px;
+<div style="padding: 50px;
 margin: 20px;" class="text-light">
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <div class="text-light">
-            Already have account? <a href="{% url 'login' %}" class="link-light">Login</a>.
-        </div>
+            
         <br>
+        <div style="text-align: center;">
+          Already have account? <a href="{% url 'login' %}" class="link-light">Login</a>.<br><br>
         <button class="btn btn-custom btn-lg">Create an account</button>
+        </div>
         <br>
         <br>
         
