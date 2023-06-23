@@ -9,20 +9,22 @@ class ArtworkForm(forms.ModelForm):
     class Meta:
         model = ArtworkPost
         fields = {'Title','artist_Name','Description','Sensitive_content','Tags','Artwork'}
-        fields_order = ['Title','artist_Name','Description','Sensitive_content','Tags','Artwork']
+        field_order = ['Title','artist_Name','Description','Sensitive_content','Tags','Artwork']
         widgets = {
             'Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Description': forms.Textarea(attrs={'class':'form-control'}),
+            'Sensitive_content': forms.CheckboxInput(attrs={'class':'form-check-input'})
            
         }
         
 
 class AlbumForm(forms.ModelForm):
+    
     class Meta:
         model = Album
         fields = {'Album_Title','artist_Name','Private_Album'}
-        fields_order = ['Album_Title','artist_Name','Private_Album']
+        field_order = ['Album_Title','artist_Name','Private_Album']
         widgets = {
             'Album_Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),

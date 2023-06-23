@@ -10,10 +10,28 @@
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+
+    Select Picture for the Album<br>
+    <table>
+        <tr>
+    {% for artdetail in artwork %}
+        {% if forloop.counter == 5 or forloop.counter == 10 %}
+        </tr><tr>{% else %}
+    <td><img src="{{ artdetail.Artwork.url }}" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; "></td>
+       {% endif %}
+            
+    {% endfor %}
     
+        
+    
+        
+    </tr>
+    </table>
 </form>
 </table>
-<button type="submit" class="btn btn-primary">Create album/collection</button>
+<div style="text-align: center;">
+    <button type="submit" class="btn btn-primary">Create album/collection</button>
+</div>
 
 <script>
     var name = "{{user.id}}";

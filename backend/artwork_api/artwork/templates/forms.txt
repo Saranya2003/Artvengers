@@ -1,0 +1,6 @@
+Title: {{ form.Title }}<br><br>
+    Description:{{ form.Description }}<br><br>
+    Flag as sensitive content?{{ form.Sensitive_content }}<br><br>
+    Tags
+    (Separate with comma):{{ form.Tags }}<br><br>
+    Artwork:{{ form.Artwork }}<br><br>

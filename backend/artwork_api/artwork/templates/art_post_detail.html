@@ -19,8 +19,11 @@
         <p>
           {{ object.Description }}
         </p>
-        <br><a href="#" class="badge badge-custom2 rounded-pill">{{ object.Tags }}</a><br><br>
-      </div>
+        <br>
+        {% for tag in object.Tags.names %}
+          <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>
+        {% endfor %}
+      </div><br>
         <div>
           <h3>Comments</h3>
         <br>
@@ -49,6 +52,10 @@
       {% endif %}
       <br>
         </div>
+        <script>
+          var name = "{{user.id}}";
+          document.getElementById("user").value = name;
+      </script>
       </div>
     </div>
   </div>

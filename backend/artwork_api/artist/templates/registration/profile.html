@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
+<br>
 <h1>Profile</h1>
 <br>
-{{ user.profile.bio }}<br>
-<div class="form-group">
-    {{ user.profile.Instagram }}
-    {{ user.profile.Twitter }}
-    {{ user.profile.Facebook }}
+
+<div class="form-group" style="text-align:center;">
+    <form method="POST" >
+        {% csrf_token %}
+        {{ user.profile.profile_picture }}<br><!--Need to fix-->
+        {{ form.as_p }}<br>
+        {{ user.profile.bio }}<br>
+
+
+        <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change Password here</a><br><br>
+        <br>
+        Social Media
+        <br><br>
+        Instagram: {{ user.profile.Instagram }}<br>
+        Twitter: {{ user.profile.Twitter }}<br>
+        Facebook: {{ user.profile.Facebook }}<br>
+        <br><br>
+        <button class="btn btn-custom">Update your profile</button>
+    </form>
 </div>
 
 {% endblock %}

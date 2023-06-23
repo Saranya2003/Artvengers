@@ -2,27 +2,39 @@
 {% extends 'webBase.html' %}
 {% block content %}
 <br>
-<h1>Edit your profile</h1>
-<br>
-
-<div class="form-group" style="text-align:center;">
+<br><br>
+<div class="container">
     <form method="POST" >
         {% csrf_token %}
-        {{ user.profile.profile_picture }}<br><!--Need to fix-->
-        {{ form.as_p }}<br>
-        {{ user.profile.bio }}<br>
+    <div class="row align-items-start">
+      <div class="col-sm">
+        <br><br>
+        <img src="../media/images/static_profile.png">
+        {{ user.profile.profile_picture }}<!--Need to fix-->
+      </div>
+      <div class="col-sm">
+        Username: {{ form.username }}<br><br>
+        Email: {{ form.email }}<br><br>
+        Bio: {{ form.bio }}<br><br>
 
 
-        <a href="{% url 'changePassword' %}" class="btn btn-primary" role="button">Change Password here</a><br><br>
-        <br>
+        <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
+        <br><br>
         Social Media
         <br><br>
-        Instagram: {{ user.profile.Instagram }}<br>
-        Twitter: {{ user.profile.Twitter }}<br>
-        Facebook: {{ user.profile.Facebook }}<br>
-        <br><br>
-        <button class="btn btn-primary">Update your profile</button>
+        Instagram: {{ form.Instagram }}<br><br>
+        Twitter: {{ form.Twitter }}<br><br>
+        Facebook: {{ form.Facebook }}<br><br>
+      </div>
+    </div>
     </form>
+</div>
+<div class="form-group" style="text-align:center;">
+    
+        
+        
+        <br><br>
+        <button class="btn btn-custom">Update your profile</button>
 </div>
 
 {% endblock %}

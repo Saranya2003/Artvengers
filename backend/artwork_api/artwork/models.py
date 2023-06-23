@@ -13,7 +13,7 @@ class ArtworkPost(models.Model):
     Description = models.TextField()
     Sensitive_content = models.BooleanField(default=False)
     Tags = TaggableManager()
-    Artwork = models.ImageField(null=True,blank=True,upload_to="media/img/")
+    Artwork = models.FileField(blank=True,upload_to="media/img/")
     likes = models.ManyToManyField(User, related_name='artwork_post')
     album = models.TextField()
 
@@ -32,11 +32,11 @@ class Album(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(ArtworkPost,related_name="comments", on_delete=models.CASCADE)
-    artist_Name = models.CharField(max_length=255)
+    artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return '%s - %s'%(self.post.title,self.name)
+        return '%s - %s'%(self.post.Title,self.name)
     
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
@@ -48,3 +48,4 @@ class Profile(models.Model):
     Facebook = models.CharField(max_length=255)
     def __str__(self):
         return str(self.user)
+    

@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-<h1>Update album</h1>
-<br>
-<br>
-<table>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    
-</form>
-</table>
-<div class="mx-auto">
-<button type="submit" class="btn btn-primary">Update the album/collection</button></div>
+
+<div>
+    <br>
+    <h1>Update album</h1>
+    <br>
+    <br>
+    <table>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+    </form>
+    </table>
+    <div class="mx-auto">
+    <button type="submit" class="btn btn-primary">Update the album/collection</button></div>
+</div>
 {% endblock %}

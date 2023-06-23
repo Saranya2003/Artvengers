@@ -11,7 +11,8 @@
 
   }
   .navbar-custom2 {  
-    background-color: #EB5160;  
+    background-color: #EB5160;
+    font-size: 20px;  
   }
   .active-custom{
     background-color: #330C2F;
@@ -28,14 +29,15 @@
 img {
   max-width: 100%;
   object-fit: cover;
+
 }
 .carousel-container {
-  width: 1100px;
+  width: 1386px;
   margin: 50px auto;
   position: relative;
   border-left-width: 4px;
   border-left-style: solid;
-  border-left-color: #aaa;
+  border-left-color: #EB5160;
 }
 @media (max-width: 768px) {
   .carousel-container {
@@ -67,10 +69,10 @@ img {
 .card {
   width: 100%;
   height: 100%;
-  /*display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;*/
+  align-items: center;
   background-position: center bottom;
   background-size: center;
   background-repeat: no-repeat;
@@ -91,20 +93,29 @@ img {
   border-radius: 50%;
   outline: none;
   border: 1px solid #000;
+  background-color: #EB5160;
   cursor: pointer;
 }
 .nav .prev {
   left: -30px;
   display: none;
+  content: "<";
+  color: white;
 }
 .nav .prev.show {
   display: block;
+  content: "<";
+  color: white;
 }
 .nav .next {
   right: -30px;
+  content: ">";
+  color: white;
 }
 .nav .next.hide {
   display: none;
+  content: ">";
+  color: white;
 }
 .carousel-caption{
   background-color: rgba(0, 0, 0, 0.75);
@@ -115,8 +126,6 @@ img {
   bottom:0px;
   position:absolute;
   left: -15px;
-  
-  
 }
 h5{
   font-weight: 900;
@@ -140,37 +149,55 @@ h5{
         </div>
       </nav>
       <br>
-      {% for tag in object_list %}
-        <a href="#" class="badge badge-custom rounded-pill">{{ tag.Tags }}</a>
-      {% endfor %}
+      <div>
+        {% for tag in Tags %}
+          <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag }}</a>
+        {% endfor %}
+      </div>
       <br><br>
 <div>
   <h2>Album</h2>
   <br>
-  <div id="carouselExample" class="carousel slide">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="../media/images/Doll.png" class="d-block w-25" alt="...">
+  <div class="carousel-container">
+    <div class="inner-carousel">
+      <div class="track">
+  
+        {% for albumObject in album %}
+        {% if not albumObject.Private_Album %}
+          {% if forloop.last %}
+          <div class="card-container">
+            <div class="card cardartwork">
+              <a href="#">
+                <img src="../media/images/Frame 16.png">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{{ albumObject.Album_Title }}</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% else %}
+          <div class="card-container">
+            <div class="card cardartwork">
+              <a href="#">
+                <img src="../media/images/Frame 18.png">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{{ albumObject.Album_Title }}</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
       </div>
-      <div class="carousel-item">
-        <img src="../media/images/Akane_Sakakibara.png" class="d-block w-25" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../media/images/Doll.png" class="d-block w-25" alt="...">
+      <div class="nav">
+        <button class="prev"><i class="fas fa-arrow-left fa-2x"></i></button>
+        <button class="next"><i class="fas fa-arrow-right fa-2x"></i></button>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-</div> 
-
-<br>
+</div>
+<br> 
 <div>
   <h2>Artwork</h2><br>
 <br>
@@ -183,7 +210,10 @@ h5{
         <div class="card-container">
           <div class="card cardartwork">
             <a href="{%  url 'artwork_detail' artdetail.pk %}">
-              <img src="{{ artdetail.Artwork.url }}">
+              {% if artdetail.Sensitive_content %}
+                <span class="badge bg-danger">NSFW</span>
+              {% endif %}
+              <img src="{{ artdetail.Artwork.url }}" style="width:100%;">
               <div class="carousel-caption d-none d-md-block">
                 <h5>{{ artdetail.Title }}</h5>
               </div>
@@ -194,7 +224,10 @@ h5{
         <div class="card-container">
           <div class="card cardartwork">
             <a href="{%  url 'artwork_detail' artdetail.pk %}">
-              <img src="{{ artdetail.Artwork.url }}">
+              {% if artdetail.Sensitive_content %}
+                <span class="badge bg-danger">NSFW</span>
+              {% endif %}
+              <img src="{{ artdetail.Artwork.url }}" style="width:100%;">
               <div class="carousel-caption d-none d-md-block">
                 <h5>{{ artdetail.Title }}</h5>
               </div>
