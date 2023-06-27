@@ -3,7 +3,7 @@
 {% block content %}
 <style>         
 
-  .navbar {
+.navbar {
     padding-top: 0px;
     padding-bottom: 0px;
   
@@ -88,8 +88,7 @@ img {
   top: 50%;
   transform: translatey(-50%);
   width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  height: 306px;
   outline: none;
   border: 1px solid #000;
   background-color: #EB5160;
@@ -125,8 +124,6 @@ img {
   bottom:0px;
   position:absolute;
   left: -15px;
-  
-  
 }
 h5{
   font-weight: 900;
@@ -151,7 +148,7 @@ h5{
 
 <br>
 <div>
-<h2>My albums&emsp;&emsp;&emsp;&emsp;<a class="btn btn-custom" href="{%  url 'add_album' %}" role="button">Create new album</a></h2>
+<h2>My albums&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a class="btn btn-custom" href="{%  url 'add_album' %}" role="button">Create new album</a></h2>
 <br>
   <div>
     <div class="carousel-container">
@@ -167,8 +164,10 @@ h5{
                   <img src="../media/images/Frame 16.png">
                   <div class="carousel-caption d-none d-md-block">
                     <h5>{{ albumObject.Album_Title }}</h5>
-                    <a class="btn btn-light" href="#" role="button">Edit</a>
-                    <a class="btn btn-danger" href="#" role="button">Delete</a>
+                    <div style="float:right;">
+                      <a class="btn btn-light" href="#" role="button">Edit</a>
+                      <a class="btn btn-danger" href="#" role="button">Delete</a>
+                    </div>
                   </div>
                 </a>
               </div>
@@ -180,8 +179,10 @@ h5{
                   <img src="../media/images/Frame 18.png">
                   <div class="carousel-caption d-none d-md-block">
                     <h5>{{ albumObject.Album_Title }}</h5>
-                    <a class="btn btn-light" href="#" role="button">Edit</a>
-                    <a class="btn btn-danger" href="#" role="button">Delete</a>
+                    <div style="float:right;">
+                      <a class="btn btn-light" href="#" role="button">Edit</a>
+                      <a class="btn btn-danger" href="#" role="button">Delete</a>
+                    </div>
                   </div>
                 </a>
               </div>
@@ -191,8 +192,8 @@ h5{
         {% endfor %}
         </div>
         <div class="nav">
-          <button class="prev"><i class="fas fa-arrow-left fa-2x"></i></button>
-          <button class="next"><i class="fas fa-arrow-right fa-2x"></i></button>
+          <button class="prev"><i class="fas fa-arrow-left fa-2x"><</i></button>
+          <button class="next"><i class="fas fa-arrow-right fa-2x">></i></button>
         </div>
       </div>
     </div>
@@ -202,12 +203,16 @@ h5{
 <br>
 <br>
 <div>
-<h2>  My artworks&emsp;&emsp;&emsp;&emsp;<a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button">Post new artwork</a></h2>
+<table style="width:100%">
+  <tr>
+    <td style="width:50%"><h2>  My artworks </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button">Post new artwork</a></h2></td>
+  </tr>
+</table>
   <br><br>
   
-  <div class="carousel-container">
-    <div class="inner-carousel">
-      <div class="track">
+  <div class="carousel-container" id="Artcarousel-container">
+    <div class="inner-carousel" id="ArtinnerCarousel">
+      <div class="track" id="Arttrack">
   
         {% for artdetail in artwork %}
           {% if user.id == artdetail.artist_Name.id %}
@@ -222,8 +227,10 @@ h5{
                   <div class="carousel-caption d-none d-md-block">
                     
                     <h5>{{ artdetail.Title }}</h5>
-                    <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                    <a class="btn btn-danger" href="#" role="button">Delete</a>
+                    <div style="float:right;">
+                      <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                      <a class="btn btn-danger" href="#" role="button">Delete</a>
+                    </div>
                   </div>
                 </a>
               </div>
@@ -239,8 +246,10 @@ h5{
                   <div class="carousel-caption d-none d-md-block">
                     
                     <h5>{{ artdetail.Title }}</h5>
-                    <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                    <a class="btn btn-danger" href="#" role="button">Delete</a>
+                    <div style="float:right;">
+                      <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                      <a class="btn btn-danger" href="#" role="button">Delete</a>
+                    </div>
                   </div>
                 </a>
               </div>
@@ -250,8 +259,8 @@ h5{
       {% endfor %}
       </div>
       <div class="nav">
-        <button class="prev"><i class="fas fa-arrow-left fa-2x"></i></button>
-        <button class="next"><i class="fas fa-arrow-right fa-2x"></i></button>
+        <button class="prev" id="Artprev"><i class="fas fa-arrow-left fa-2x"><</i></button>
+      <button class="next" id="Artnext"><i class="fas fa-arrow-right fa-2x">></i></button>
       </div>
     </div>
   </div>
@@ -285,6 +294,35 @@ h5{
       prev.classList.remove("show");
     }
     track.style.transform = "translateX(" + index * -width + "px)";
+  });
+  
+  //Artwork Carousel
+  
+  const Artprev = document.getElementById("Artprev");
+  const Artnext = document.getElementById("Artnext");
+  const Artcarousel = document.getElementById("Artcarousel-container");
+  const Arttrack = document.getElementById("Arttrack");
+  let Artwidth = Artcarousel.offsetWidth;
+  let Artindex = 0;
+  window.addEventListener("resize", function () {
+    Artwidth = Artcarousel.offsetWidth;
+  });
+  Artnext.addEventListener("click", function (e) {
+    e.preventDefault();
+    Artindex = Artindex + 1;
+    Artprev.classList.add("show");
+    Arttrack.style.transform = "translateX(" + Artindex * -Artwidth + "px)";
+    if (Arttrack.offsetWidth - Artindex * Artwidth < Artindex * Artwidth) {
+      Artnext.classList.add("hide");
+    }
+  });
+  Artprev.addEventListener("click", function () {
+    Artindex = Artindex - 1;
+    Artnext.classList.remove("hide");
+    if (Artindex === 0) {
+      Artprev.classList.remove("show");
+    }
+    Arttrack.style.transform = "translateX(" + Artindex * -Artwidth + "px)";
   });
   
   </script>

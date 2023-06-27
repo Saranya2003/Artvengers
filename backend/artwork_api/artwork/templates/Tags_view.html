@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-{% for artdetail in artwork %}
 <h2>Tag:</h2>
+{% for artdetail in artwork %}
+
     {% if artdetail.Tags.names %}
-        {% for tag in artdetail.Tags.names %}
-           <h2>{{ tag }}</h2>
-        {% endfor %}
+           <h2>{{ artdetail.Tags.names }}</h2>
         <img src="{{ artdetail.Artwork.url }}"  width="30%">
     {% else %}
         <h2>No artworks available</h2>

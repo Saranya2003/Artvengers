@@ -2,8 +2,13 @@
 {% extends 'webBase.html' %}
 {% block content %}
 
+<style>
 
-<h1>Create a new album</h1>
+.selected {
+    border: 30px solid seashell;
+}
+
+</style>
 <br>
 <br>
 <table>
@@ -15,9 +20,9 @@
     <table>
         <tr>
     {% for artdetail in artwork %}
-        {% if forloop.counter == 5 or forloop.counter == 10 %}
+        {% if forloop.counter|divisibleby:6 %}
         </tr><tr>{% else %}
-    <td><img src="{{ artdetail.Artwork.url }}" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; "></td>
+    <td><img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; "></td>
        {% endif %}
             
     {% endfor %}
@@ -30,11 +35,27 @@
 </form>
 </table>
 <div style="text-align: center;">
-    <button type="submit" class="btn btn-primary">Create album/collection</button>
+    <button type="submit" class="btn btn-custom">Create album/collection</button>
 </div>
 
 <script>
     var name = "{{user.id}}";
     document.getElementById("user").value = name;
+    var selectedpic = [];
+    const checksel = document.getElementsByClassName('PicList');
+    function PicClick(){
+        if (selectedpic.includes(event.srcElement.id)){
+            selectedpic = selectedpic.filter(function(e) {return e!==event.srcElement.id});
+            event.srcElement.classList.remove('selected');
+            
+        }
+        else{
+            selectedpic.push(event.srcElement.id);
+            event.srcElement.classList.add('selected');
+        }
+        console.log(selectedpic);    
+    };
+
+
 </script>
 {% endblock %}

@@ -115,10 +115,12 @@ class TagsView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
+        print(self.kwargs['Tag'])
         context['album'] = Album.objects.all()
-        print("explorecontext: ",context)
-        context['artwork'] = ArtworkPost.objects.filter(Title='Agent Sovon').order_by('-pk')
+
+        context['artwork'] = ArtworkPost.objects.filter(Tags__name__in=[self.kwargs['Tag']]).order_by('-pk')
+        
+       # print(context['artwork'][0].Tags.names())
         context['Tags'] = Tag.objects.all()
         #print(context['Tags'][0])
         #print(context['artwork'])

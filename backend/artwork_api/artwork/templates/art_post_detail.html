@@ -36,16 +36,20 @@
         </div>
         <br>
         <div>
+          <hr class="solid">
           {% if not post.comments.all %}
-          No comments yet.
-      {% else %}
+            No comments yet.
+          {% else %}
       <br>
+      
           {% for comment in post.comments.all %}
+          <hr class="solid">
               <strong>
                   {{ comment.artist_Name }} - {{ comment.date_added}}
               </strong>
               <br>
               {{ comment.comment }}
+
               <br>
               <br>
           {% endfor %}

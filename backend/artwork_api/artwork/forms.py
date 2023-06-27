@@ -3,8 +3,6 @@ from .models import ArtworkPost,Album,Comment
 from taggit.forms import *
 
 class ArtworkForm(forms.ModelForm):
-    Title = forms.CharField(max_length=100,widget=forms.TextInput())
-    Description = forms.Textarea()
     Tags = TagField()
     class Meta:
         model = ArtworkPost
