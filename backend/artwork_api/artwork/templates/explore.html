@@ -4,6 +4,11 @@
 {% block content %}
 <style>         
 
+  #tagdiv{
+    display:block;
+  }
+
+
   .navbar {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -40,10 +45,14 @@ img {
   border-left-color: #EB5160;
 }
 @media (max-width: 768px) {
+  #tagdiv{
+    display:none;
+  }
   .carousel-container {
     width: 95%;
   }
 }
+
 .inner-carousel {
   width: 100%;
   height: 280px;
@@ -76,7 +85,7 @@ img {
   background-position: center bottom;
   background-size: center;
   background-repeat: no-repeat;
-  border-radius: 10px;
+  border-radius: 0px;
   object-fit: cover;
 }
 .cardartwork {
@@ -148,7 +157,7 @@ h5{
         </div>
       </nav>
       <br>
-      <div>
+      <div id="tagdiv">
         {% for tag in Tags %}
           <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag }}</a>
         {% endfor %}
@@ -166,8 +175,8 @@ h5{
           {% if forloop.last %}
           <div class="card-container">
             <div class="card cardartwork">
-              <a href="#">
-                <img src="../media/images/Frame 16.png">
+              <a href="{% url 'album' albumObject.pk %}">
+                <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>{{ albumObject.Album_Title }}</h5>
                 </div>
@@ -177,8 +186,9 @@ h5{
           {% else %}
           <div class="card-container">
             <div class="card cardartwork">
-              <a href="#">
-                <img src="../media/images/Frame 18.png">
+              <!--<h2>Albumobject is {{ albumObject.memberpic.first.Artwork.url }}</h2>-->
+              <a href="{% url 'album' albumObject.pk %}">
+                <img src="{{ albumObject.memberpic.first.Artwork.url }}">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>{{ albumObject.Album_Title }}</h5>
                 </div>

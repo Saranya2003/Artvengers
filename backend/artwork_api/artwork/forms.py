@@ -32,8 +32,8 @@ class AlbumForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('artist_Name','comment')
+        fields = ('artist_Name','artwork_comment')
         widgets = {
             'artist_Name' : forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
-            'comment' : forms.Textarea(attrs={'class':'form-control'}),
+            'artwork_comment' : forms.Textarea(attrs={'class':'form-control'}),
         }

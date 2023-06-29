@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework import generics,viewsets, permissions
 from django.views.generic import ListView,DetailView,CreateView, UpdateView, TemplateView,DeleteView
 from django.urls import reverse_lazy
+from django.db.models import Q
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -49,6 +50,16 @@ class ArtworkPostDetail(DetailView):
 class AlbumView(ListView):
     model = Album
     template_name = 'album_view.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        #print(self.kwargs['pk'])
+        context['album'] = Album.objects.filter(pk=self.kwargs['pk']).order_by('-pk')
+        print(context['album'][0].Album_Title)
+        #print(context['album'][0].memberpic.all())
+        context['artwork'] = context['album'][0].memberpic.all().order_by('-pk')
+        
+        context['Tags'] = Tag.objects.all()
+        return context
 
 class ExploreView(ListView):
     model = ArtworkPost
@@ -86,7 +97,7 @@ class AddArtwork(CreateView):
 class AddAlbum(CreateView):
     model = Album
     form_class = AlbumForm
-    template_name = 'add_album.html'
+    template_name = 'add_album.html'  
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -97,16 +108,29 @@ class AddAlbum(CreateView):
 class UpdateAlbum(UpdateView):
     model = Album
     template_name = 'update_album.html'
-    fields = ['Title','Cover_Photo']
+    fields = ['Album_Title']
 
 class UpdateArtworks(UpdateView):
     model = ArtworkPost
     template_name = 'update_artwork.html'
     fields = ['Title','Description','Tags','Artwork']
 
-def SearchView(request):
+class SearchView(ListView):
+    model = ArtworkPost
+    template_name = 'search_page.html'
     
-    return render(request,'search_page.html',{})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(self.request.GET['keyword'])
+
+        context['album'] = Album.objects.all()
+        context['artwork'] = ArtworkPost.objects.filter(Q(Title__icontains=self.request.GET['keyword'])| Q(Tags__name__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
+        print(context['artwork'])
+        context['Tags'] = Tag.objects.all()
+       
+        return context
+
 
 class TagsView(ListView):
     model = ArtworkPost

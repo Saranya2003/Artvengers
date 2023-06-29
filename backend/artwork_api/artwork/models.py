@@ -15,7 +15,7 @@ class ArtworkPost(models.Model):
     Tags = TaggableManager()
     Artwork = models.FileField(blank=True,upload_to="media/img/")
     likes = models.ManyToManyField(User, related_name='artwork_post')
-    album = models.TextField()
+    #album = models.TextField()
 
     def get_absolute_url(self):
         return reverse('dashboard')
@@ -26,17 +26,16 @@ class Album(models.Model):
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     Private_Album = models.BooleanField(default=False)
+    memberpic = models.ManyToManyField(ArtworkPost, related_name='artwork_post')
 
     def get_absolute_url(self):
         return reverse('dashboard')
 
 class Comment(models.Model):
-    post = models.ForeignKey(ArtworkPost,related_name="comments", on_delete=models.CASCADE)
+    post = models.ForeignKey(ArtworkPost,related_name="comment", on_delete=models.CASCADE)
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
-    comment = models.TextField()
+    artwork_comment = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return '%s - %s'%(self.post.Title,self.name)
     
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)

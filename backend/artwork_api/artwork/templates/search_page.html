@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-<center>
-<br>    
-<h2>Search results</h2>
-No results
-<ul>
-    {% for artwork in object_list %}
 
-        <a href="{%  url 'artwork_detail' artwork.pk %}"><img src="{{ artwork.imageUploader.url }}"width="25%" style="width: 150px; height: 150px; object-fit: cover;"></a>
+<center>
+{% if artwork.count > 0 %}
+  
+<h2>Search results</h2>
+<br>  
+<ul>
+    {% for arts in artwork %}
+
+        <a href="{%  url 'artwork_detail' arts.pk %}"><img src="{{ arts.Artwork.url }}" width="25%" style="width: 150px; height: 150px; object-fit: cover;"></a>
 
 
     {% endfor %}
 </ul>
+{% else %}
+<div style="text-align: center;padding-top: 400px;">
+    <h1>
+        No results
+    </h1>
+</div>
+
+{% endif %}
 </center>
 {% endblock %}

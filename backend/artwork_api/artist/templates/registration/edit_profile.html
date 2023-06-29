@@ -3,37 +3,49 @@
 {% block content %}
 <br>
 <br><br>
-<div class="container">
+<div class="container" style="width:100%">
     <form method="POST" >
         {% csrf_token %}
+       
+    <table>
     <div class="row align-items-start">
+      <tr>
+        <td rowspan="9">
       <div class="col-sm" style="text-align: center;">
-        <br><br>
-        <img src="../../media/{{ user.profile.profile_picture }}" width="40%" style="border-radius: 50%;"><br><br>
-        <button class="btn btn-custom">Upload profile picture</button>
+        
+        <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;"><br><br>
+        <label for="newprofilepic">Upload Profile Picture</label><br>
+        <input type="file" name="newprofilepic" accept=".jpg, .png, .gif" class="btn btn-custom" style="width:100%">
+        <!--<button class="btn btn-custom">Upload profile picture</button>-->
       </div>
+        </td>
+        <td></td>
+     </tr>
       <div class="col-sm">
         {% csrf_token %}
-        Username: {{ form.username }}<br><br>
-        Email: {{ form.email }}<br><br>
-        Bio: {{ form.bio }}<br><br>
+       
+          <tr ><td style="padding-bottom:10px">Username:</td><td style="padding-bottom:10px"> {{ form.username }}</td></tr>
+          <tr><td style="padding-bottom:10px">Email: </td><td style="padding-bottom:10px">{{ form.email }}</td></tr>
+            <tr><td style="padding-bottom:10px">Bio: </td><td style="padding-bottom:10px"><input type="text" value={{ user.profile.bio }}></td></tr>
 
 
-        <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
-        <br><br>
-        Social Media
-        <br><br>
-        Instagram: {{ form.Instagram }}<br><br>
-        Twitter: {{ form.Twitter }}<br><br>
-        Facebook: {{ form.Facebook }}<br><br>
+              <tr><td colspan="2" style="padding-bottom:10px"><a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a></td></tr>
+          
+          <tr><td style="padding-bottom:10px" colspan="2">Social Media</td></tr>
+          
+          <tr><td style="padding-bottom:10px">Instagram:</td><td style="padding-bottom:10px"><input type="text" value={{ user.profile.Instagram }}></td></tr>
+          <tr><td style="padding-bottom:10px">Twitter:</td><td style="padding-bottom:10px"><input type="text" value={{ user.profile.Twitter }}></td></tr>
+          <tr><td style="padding-bottom:10px">Facebook:</td><td style="padding-bottom:10px"><input type="text" value={{ user.profile.Facebook }}></td></tr>
+        
       </div>
     </div>
+    </table>
     <div class="form-group" style="text-align:center;">
         
             
             
             <br><br>
-            <button class="btn btn-custom">Update your profile</button>
+            <input type="submit" class="btn btn-custom" value="Update your profile">
     </div>
 
     </form>

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'artwork',
     'artist',
     'taggit',
+    'django_bootstrap5',
     #'pwa',
     #'import_export',
 ]
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'artwork_api.urls'
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -85,7 +87,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'artwork_api.wsgi.application'
+#WSGI_APPLICATION = 'artwork_api.wsgi.application'
 
 
 # Database
