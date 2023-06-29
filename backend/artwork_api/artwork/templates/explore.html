@@ -176,6 +176,7 @@ h5{
           <div class="card-container">
             <div class="card cardartwork">
               <a href="{% url 'album' albumObject.pk %}">
+                
                 <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>{{ albumObject.Album_Title }}</h5>

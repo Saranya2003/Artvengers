@@ -35,8 +35,8 @@ class EditProfileForm(UserChangeForm):
 
 
 class ChangePasswordForm(PasswordChangeForm):
-    new_password1 = forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}))
-    new_password2 = forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}))
+    new_password1 = forms.CharField(label="",help_text="",max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}))
+    new_password2 = forms.CharField(label="",help_text="",max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}))
 
 
     class Meta:

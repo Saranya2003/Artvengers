@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-<h2>{{ album.0.Album_Title }}</h2>
+<br>
+<h1>{{ album.0.Album_Title }}</h1>
+<br>
 <ul>
 
     {% for artdetail in artwork %}
 
-        <a href="{%  url 'artwork_detail' artdetail.pk %}"><img src="{{ artdetail.Artwork.url }}"width="25%" style="width: 150px; height: 150px; object-fit: cover;"></a>
+    <a href="{%  url 'artwork_detail' artdetail.pk %}"><img src="{{ artdetail.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;"></a> 
 
 
     {% endfor %}

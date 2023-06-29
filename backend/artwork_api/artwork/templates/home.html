@@ -25,19 +25,37 @@
         font-family: 'Chakra Petch', sans-serif;
         background-color: #C0E0DE;
       }
+      #desktophome{
+        display:none;
+      }
+      #mobhome{
+        display:block;
+      }
+      #desktoplogo{
+        display:none;
+      }
+      #moblogo{
+        display:block;
+      }
     </style>
   </head>
   <body class="web-app">
 <div class="firstPage" style="padding: 50px;margin: 20px;">
-    <h1>Artvenger</h1>
-    <div style="padding: 50px;margin: 20px;font-size: 36px;color:white;">
+  <img src="../media/logo/artvengers-logo white.png" width="30%" id="desktoplogo">
+  <img src="../media/logo/artvengers-logo white.png" width="20%" id="moblogo"><br>
+    <p style="padding: 50px;margin: 20px;font-size: 36px;color:white;"id="desktophome">
       Discover more passion of your art. Empower your imagination. Get to know
     your art today.
-    </div>
+    </p>
+    <p style="padding: 50px;margin: 20px;font-size: 20px;color:white;"id="mobhome">
+      Discover more passion of your art. Empower your imagination. Get to know
+    your art today.
+    </p>
     <br>
     <br>
     <br>
     <div>
+    
       <a href="{%  url 'login' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Login</a>
     <br>
     <br>

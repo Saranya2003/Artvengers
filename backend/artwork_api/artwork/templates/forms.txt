@@ -4,3 +4,6 @@ Title: {{ form.Title }}<br><br>
     Tags
     (Separate with comma):{{ form.Tags }}<br><br>
     Artwork:{{ form.Artwork }}<br><br>
+
+    Title: {{ form.Album_Title }}<br><br>
+    Setting as private album?{{ form.Private_Album }}<br><br>

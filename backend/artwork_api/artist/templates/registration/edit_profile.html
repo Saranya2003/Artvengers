@@ -9,33 +9,27 @@
        
     <table>
     <div class="row align-items-start">
-      <tr>
-        <td rowspan="9">
       <div class="col-sm" style="text-align: center;">
         
         <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;"><br><br>
-        <label for="newprofilepic">Upload Profile Picture</label><br>
+        <label for="newprofilepic">Upload Profile Picture</label><br><br>
         <input type="file" name="newprofilepic" accept=".jpg, .png, .gif" class="btn btn-custom" style="width:100%">
         <!--<button class="btn btn-custom">Upload profile picture</button>-->
       </div>
-        </td>
-        <td></td>
-     </tr>
       <div class="col-sm">
         {% csrf_token %}
-       
-          <tr ><td style="padding-bottom:10px">Username:</td><td style="padding-bottom:10px"> {{ form.username }}</td></tr>
-          <tr><td style="padding-bottom:10px">Email: </td><td style="padding-bottom:10px">{{ form.email }}</td></tr>
-            <tr><td style="padding-bottom:10px">Bio: </td><td style="padding-bottom:10px"><input type="text" value={{ user.profile.bio }}></td></tr>
+          Username: {{ form.username }}<br><br>
+          Email:{{ form.email }}<br><br>
+          Bio:<input type="text" value={{ user.profile.bio }}><br><br>
 
 
-              <tr><td colspan="2" style="padding-bottom:10px"><a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a></td></tr>
+          <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
           
-          <tr><td style="padding-bottom:10px" colspan="2">Social Media</td></tr>
+          Social Media<br><br>
           
-          <tr><td style="padding-bottom:10px">Instagram:</td><td style="padding-bottom:10px"><input type="text" value={{ user.profile.Instagram }}></td></tr>
-          <tr><td style="padding-bottom:10px">Twitter:</td><td style="padding-bottom:10px"><input type="text" value={{ user.profile.Twitter }}></td></tr>
-          <tr><td style="padding-bottom:10px">Facebook:</td><td style="padding-bottom:10px"><input type="text" value={{ user.profile.Facebook }}></td></tr>
+        Instagram:<input type="text" value={{ user.profile.Instagram }}><br><br>
+        Twitter:<input type="text" value={{ user.profile.Twitter }}><br><br>
+        Facebook:<input type="text" value={{ user.profile.Facebook }}><br><br>
         
       </div>
     </div>
@@ -45,7 +39,7 @@
             
             
             <br><br>
-            <input type="submit" class="btn btn-custom" value="Update your profile">
+            <input type="submit" class="btn btn-custom" value="Update your profile"><br><br>
     </div>
 
     </form>

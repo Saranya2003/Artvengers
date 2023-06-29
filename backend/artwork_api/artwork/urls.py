@@ -11,7 +11,6 @@ urlpatterns = [
     path('artwork/<int:pk>', views.ArtworkPostDetail.as_view(), name="artwork_detail"),
     path('artwork/edit/<int:pk>', views.UpdateArtworks.as_view(), name="artwork_edit"),
     path('explore/', views.ExploreView.as_view(), name="explore"),
-    #path('explore/', views.explore, name="explore"),
     path('dashboard/', views.DashboardView.as_view(), name="dashboard"),
     path('add_artwork/', views.AddArtwork.as_view(), name="add_artwork"),
     path('add_album/', views.AddAlbum.as_view(), name="add_album"),
