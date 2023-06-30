@@ -7,6 +7,9 @@
   #tagdiv{
     display:block;
   }
+  #selectdiv{
+    display: none;
+  }
 
 
   .navbar {
@@ -50,6 +53,9 @@ img {
   }
   .carousel-container {
     width: 95%;
+  }
+  #selectdiv{
+    display: block;
   }
 }
 
@@ -163,6 +169,13 @@ h5{
         {% for tag in Tags %}
           <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag }}</a>
         {% endfor %}
+      </div>
+      <br>
+      <div id="selectdiv">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Albums</option>
+          <option value="1">Artworks</option>
+        </select>
       </div>
       <br><br>
 <div>
