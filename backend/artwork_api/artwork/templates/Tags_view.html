@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-<h2>Tag: {{ Tags.names }}</h2>
+<h2>Tag: {{ artwork.0.Tags.names }}</h2>
 {% for artdetail in artwork %}
 
     {% if artdetail.Tags.names %}

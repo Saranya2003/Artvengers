@@ -17,6 +17,9 @@ class ArtworkPost(models.Model):
     likes = models.ManyToManyField(User, related_name='artwork_post')
     #album = models.TextField()
 
+    def total_likes(self):
+        return self.likes.count()
+
     def get_absolute_url(self):
         return reverse('dashboard')
 

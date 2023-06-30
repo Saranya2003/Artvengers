@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,HttpResponse
 from rest_framework import generics,viewsets, permissions
-from django.views.generic import ListView,DetailView,CreateView, UpdateView, TemplateView,DeleteView
-from django.urls import reverse_lazy
+from django.views.generic import ListView,DetailView,CreateView, UpdateView,DeleteView
+from django.urls import reverse_lazy,reverse
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponseRedirect
 
 from .models import ArtworkPost,Album, Comment
 from .serializers import AlbumSerializer, ArtworkSerializer
@@ -12,6 +13,24 @@ from .forms import AlbumForm, ArtworkForm, CommentForm
 from taggit.models import Tag
 
 # Create your views here.
+def sensitive_toggle(request):
+    sensitive = ArtworkPost.objects.get(id=request.POST['id'])
+    sensitive.Sensitive_content = request.POST['sensitive']=='true'
+    sensitive.save()
+    return HttpResponse('success')
+
+def private_toggle(request):
+    private = Album.objects.get(id=request.POST['id'])
+    private.Private_Album = request.POST['private']=='true'
+    private.save()
+    return HttpResponse('success')
+
+def LikeView(request,pk):
+    artwork_post = get_object_or_404(ArtworkPost, id = request.POST.get('artwork_id'))
+    artwork_post.likes.add(request.user)
+    return HttpResponseRedirect(reverse('artwork_detail',args=[str(pk)]))
+
+
 class ListArtwork(generics.ListCreateAPIView):
     queryset = ArtworkPost.objects.all()
     serializer_class = ArtworkSerializer
@@ -33,6 +52,9 @@ class DetailArtwork(generics.RetrieveUpdateDestroyAPIView):
 def home(request):
     return render(request,'home.html',{})
 
+def uploadPage(request):
+    return render(request,'upload.html',{})
+
 class ArtworkPostDetail(DetailView):
     model = ArtworkPost
     template_name = 'art_post_detail.html' 
@@ -44,6 +66,9 @@ class ArtworkPostDetail(DetailView):
         #(context['artwork'] = ArtworkPost.objects.all()
        # print(context)
         #print(context['artworkpost'].Tags.names())
+        stuff = get_object_or_404(ArtworkPost, id=self.kwargs['pk'])
+        total_likes = stuff.total_likes()
+        context['likes'] = total_likes
         context['comment'] = Comment.objects.all()
         
         return context
@@ -77,7 +102,19 @@ class ExploreView(ListView):
         #print(context['artwork'][0].Tags.names())
         #print(context['artwork'].order_by('-pk'))
         return context
+class Taglist(ListView):
+    model = ArtworkPost
+    template_name = 'Tags_mobile.html'
+    
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['Tags'] = Tag.objects.all()
+        #print(context['Tags'][0])
+        #print(context['artwork'])
+        #print(context['artwork'][0].Tags.names())
+        #print(context['artwork'].order_by('-pk'))
+        return context
 class DashboardView(ListView):
     model = ArtworkPost
     template_name = 'dashboard.html'
@@ -130,7 +167,21 @@ class SearchView(ListView):
         context['Tags'] = Tag.objects.all()
        
         return context
+class SearchMobileView(ListView):
+    model = ArtworkPost
+    template_name = 'search_mobile.html'
+    
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(self.request.GET['keyword'])
+
+        context['album'] = Album.objects.all()
+        context['artwork'] = ArtworkPost.objects.filter(Q(Title__icontains=self.request.GET['keyword'])| Q(Tags__name__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
+        print(context['artwork'])
+        context['Tags'] = Tag.objects.all()
+       
+        return context
 
 class TagsView(ListView):
     model = ArtworkPost
@@ -151,10 +202,26 @@ class TagsView(ListView):
        # print(context['artwork'].order_by('-pk'))
         return context
 
-class DeleteArtwork(SuccessMessageMixin,DeleteView):
+class DeleteArtwork(DeleteView):
     model = ArtworkPost
+    template_name = 'delete_artwork.html'
     success_url = reverse_lazy('dashboard')
-    success_message = "Your artwork has been deleted successfully."
-    def delete(self, request, *args, **kwargs):
-        messages.warning(self.request, self.success_message)
-        return super(DeleteArtwork, self).delete(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['album'] = Album.objects.all()
+        context['artwork'] = ArtworkPost.objects.all()
+        context['comment'] = Comment.objects.all()
+        return context
+    
+class DeleteAlbum(DeleteView):
+    model = Album
+    template_name = 'delete_album.html'
+    success_url = reverse_lazy('dashboard')
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['album'] = Album.objects.all()
+        
+        return context
+    

@@ -260,7 +260,7 @@
           </button></td>
             <td> <img src="../media/logo/artvengers-logo white.png" width="105px"></td>
             <td>
-              <a href="#"><img src="../media/logo/search.png"></a>
+              <a href="{% url 'search_mobile' %}"><img src="../media/logo/search.png"></a>
             </td>
           </tr>
           
@@ -290,11 +290,9 @@
             <div class="col-1 d-flex justify-content-center">
                 <div id="mySidenav" class="sidenav">
                     <a href="{% url 'edit_profile'%}">Profile</a>
-                    <hr class="dropdown-divider">
-                    <a href="{% url 'dashboard'%}">Dashboard</a>
-                    <hr class="dropdown-divider">
-                    <a href="{% url 'explore'%}">Explore</a>
-                    <hr class="dropdown-divider">
+                    <hr>
+                    <a href="{% url 'Tags' %}">Tags</a>
+                    <hr>
                     <a href="{% url 'logout' %}">Logout</a>
                 </div>
             </div>
@@ -312,7 +310,7 @@
         <tr>
               <td> <a class="navbar-brand" href="{% url 'explore'%}"><img src="../media/logo/explore.png"><br>Explore</a></td>
               <td><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../media/logo/dashboard.png"><br>Dashboard</a></td>
-              <td><a class="navbar-brand"href="#"><img src="../media/logo/upload.png"><br>Upload</a></td>
+              <td><a class="navbar-brand"href="{% url 'upload'%}"><img src="../media/logo/upload.png"><br>Upload</a></td>
               <td> <a class="navbar-brand" href="{% url 'edit_profile'%}"><img src="../media/logo/profile.png"><br>Profile</a></td>
         </tr>
       </table>
