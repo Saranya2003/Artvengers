@@ -21,8 +21,8 @@ class AlbumForm(forms.ModelForm):
     
     class Meta:
         model = Album
-        fields = {'Album_Title','artist_Name','Private_Album'}
-        field_order = ['Album_Title','artist_Name','Private_Album']
+        fields = {'Album_Title','artist_Name','Private_Album', 'memberpic'}
+        field_order = ['Album_Title','artist_Name','Private_Album','memberpic']
         widgets = {
             'Album_Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),

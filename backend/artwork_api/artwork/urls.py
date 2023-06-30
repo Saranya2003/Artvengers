@@ -23,5 +23,5 @@ urlpatterns = [
     path('album/<int:pk>/delete',views.DeleteAlbum.as_view(), name="delete_album"),
     path('tags/',views.Taglist.as_view(),name="Tags"),
     path('search_mobile/',views.SearchMobileView.as_view(),name="search_mobile"),
-    path('Like/<int:pk>',views.LikeView,name="like_artwork"),
+    path('artwork/<int:pk>/like/',views.LikeView,name="like_artwork"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

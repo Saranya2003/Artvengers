@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404,HttpResponse
+from django.shortcuts import redirect, render, get_object_or_404,HttpResponse
 from rest_framework import generics,viewsets, permissions
 from django.views.generic import ListView,DetailView,CreateView, UpdateView,DeleteView
 from django.urls import reverse_lazy,reverse
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic.edit import FormMixin
 from django.http import HttpResponseRedirect
 
 from .models import ArtworkPost,Album, Comment
@@ -26,9 +27,11 @@ def private_toggle(request):
     return HttpResponse('success')
 
 def LikeView(request,pk):
-    artwork_post = get_object_or_404(ArtworkPost, id = request.POST.get('artwork_id'))
+    print("Request post is", request.POST)
+    artwork_post = get_object_or_404(ArtworkPost, pk = request.POST.get('artworkpost_id'))
     artwork_post.likes.add(request.user)
     return HttpResponseRedirect(reverse('artwork_detail',args=[str(pk)]))
+
 
 
 class ListArtwork(generics.ListCreateAPIView):
@@ -55,22 +58,39 @@ def home(request):
 def uploadPage(request):
     return render(request,'upload.html',{})
 
+def post_detail(request):
+    post = get_object_or_404(ArtworkPost)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+           comment = form.save(commit=False)
+           comment.post = post
+           comment.save()
+
+           return redirect('artwork_detail')
+
 class ArtworkPostDetail(DetailView):
     model = ArtworkPost
-    template_name = 'art_post_detail.html' 
-
     form_class = CommentForm
-
+    template_name = 'art_post_detail.html' 
+    
+   
+        
     def get_context_data(self, **kwargs):
+       
         context = super().get_context_data(**kwargs)
+        #print(context['form'])
         #(context['artwork'] = ArtworkPost.objects.all()
        # print(context)
         #print(context['artworkpost'].Tags.names())
         stuff = get_object_or_404(ArtworkPost, id=self.kwargs['pk'])
         total_likes = stuff.total_likes()
         context['likes'] = total_likes
-        context['comment'] = Comment.objects.all()
+        context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'])
+        context['form'] = CommentForm()
         
+        #print(context['comments'])
         return context
 class AlbumView(ListView):
     model = Album

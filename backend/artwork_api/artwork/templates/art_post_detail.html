@@ -25,10 +25,10 @@
           <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>
         {% endfor %}
         <br><br>
-        <form action="#" method="POST">
+        <form action ="{% url 'like_artwork' object.pk %}" method="POST">
           {% csrf_token %}
-          <button type="submit", name="artwork_id",value="{{ artwork.id }}"><img src="../media/logo/Like.png" style="border-radius: 50%;"></button>
-          {{ total_likes }} 
+          <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like.png" style="border-radius: 50%;"></button>
+          {{ object.total_likes }} 
         </form>
       </div><br>
         <div>
@@ -37,25 +37,25 @@
         
         <form method="POST">
           {% csrf_token %}
-              {{ form.artwork_comment }}
-            <button class="btn btn-custom rounded-pill">Post</button>
+              {{ form.as_p }}
+            <button type="submit" class="btn btn-custom rounded-pill">Post</button>
         </form>
         </div>
         <br>
         <div>
           <hr class="solid">
-          {% if not post.comments.all %}
+          {% if not comments %}
             No comments yet.
           {% else %}
       <br>
       
-          {% for comment in post.comments.all %}
+          {% for comment in comments %}
           <hr class="solid">
               <strong>
                   {{ comment.artist_Name }} - {{ comment.date_added}}
               </strong>
               <br>
-              {{ comment.comment }}
+              {{ comment.artwork_comment }}
 
               <br>
               <br>
