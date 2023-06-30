@@ -6,8 +6,34 @@
 <div class="container" style="width:100%">
     <form method="POST" >
         {% csrf_token %}
-        {{ form.as_p }}
+       
+    <table>
+    <div class="row align-items-start">
+      <div class="col-sm" style="text-align: center;">
+        
+        <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;"><br><br>
+        <label for="newprofilepic">Upload Profile Picture</label><br><br>
+        <input type="file" name="newprofilepic" accept=".jpg, .png, .gif" class="btn btn-custom" style="width:100%">
+        <!--<button class="btn btn-custom">Upload profile picture</button>-->
+      </div>
+      <div class="col-sm">
+        {% csrf_token %}
+          Username: {{ form.username }}<br><br>
+          Email:{{ form.email }}<br><br>
+          Bio:<input type="text" value={{ user.profile.bio }}><br><br>
+
+
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
+          
+          Social Media<br><br>
+          
+        Instagram:<input type="text" value={{ user.profile.Instagram }}><br><br>
+        Twitter:<input type="text" value={{ user.profile.Twitter }}><br><br>
+        Facebook:<input type="text" value={{ user.profile.Facebook }}><br><br>
+        
+      </div>
+    </div>
+    </table>
     <div class="form-group" style="text-align:center;">
         
             

@@ -8,11 +8,46 @@
     <table>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        Title: {{ form.Album_Title }}<br><br>
+        Setting as private album?&emsp;{{ form.Private_Album }}<br><br>
+
+        Select Picture for the Album<br><br>
+        {{ form.memberpic }}
+        <table>
+            <tr>
+        {% for artdetail in artwork %}
+        <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
+                
+        {% endfor %}
         
+            
+        
+
+        </table>
+        <br>
     </form>
     </table>
-    <div class="mx-auto">
-    <button type="submit" class="btn btn-primary">Update the album/collection</button></div>
+    <div style="text-align: center;">
+    <button type="submit" class="btn btn-custom">Update the album/collection</button></div>
 </div>
+<script>
+    var name = "{{user.id}}";
+    document.getElementById("user").value = name;
+    var selectedpic = [];
+    const checksel = document.getElementsByClassName('PicList');
+    function PicClick(){
+        if (selectedpic.includes(event.srcElement.id)){
+            selectedpic = selectedpic.filter(function(e) {return e!==event.srcElement.id});
+            event.srcElement.classList.remove('selected');
+            
+        }
+        else{
+            selectedpic.push(event.srcElement.id);
+            event.srcElement.classList.add('selected');
+        }
+        console.log(selectedpic);    
+    };
+
+
+</script>
 {% endblock %}

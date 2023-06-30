@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 
 from .models import ArtworkPost,Album, Comment
 from .serializers import AlbumSerializer, ArtworkSerializer
-from .forms import AlbumForm, ArtworkForm, CommentForm
+from .forms import AlbumForm, ArtworkForm, CommentForm,UpdateArtworkForm,UpdateAlbumForm
 from taggit.models import Tag
 
 # Create your views here.
@@ -166,13 +166,13 @@ class AddAlbum(CreateView):
 
 class UpdateAlbum(UpdateView):
     model = Album
+    form_class = UpdateAlbumForm
     template_name = 'update_album.html'
-    fields = ['Album_Title']
 
 class UpdateArtworks(UpdateView):
     model = ArtworkPost
+    form_class = UpdateArtworkForm
     template_name = 'update_artwork.html'
-    fields = ['Title','Description','Tags','Artwork']
 
 class SearchView(ListView):
     model = ArtworkPost

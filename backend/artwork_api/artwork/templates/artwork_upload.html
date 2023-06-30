@@ -6,8 +6,12 @@
 <div class="form-group" style="padding: 50px;margin: 20px;">
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    
+    Title: {{ form.Title }}<br><br>
+    Description:{{ form.Description }}<br><br>
+    Flag as sensitive content?{{ form.Sensitive_content }}<br><br>
+    Tags
+    (Separate with comma):{{ form.Tags }}<br><br>
+    Artwork:{{ form.Artwork }}<br><br>
     <div style="text-align: center;">
       <input type="submit" class="btn btn-custom mx-auto" value="Publish">
     </div>

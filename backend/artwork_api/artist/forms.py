@@ -23,10 +23,15 @@ class SignupForm(UserCreationForm):
 class EditProfileForm(UserChangeForm):
     username = forms.CharField(max_length=100,widget=forms.TextInput())
     email = forms.EmailField(max_length=100,widget=forms.TextInput())
+    #bio = forms.Textarea()
+    bio = forms.CharField(widget=forms.Textarea)
+    Instagram = forms.CharField(max_length=100,widget=forms.TextInput())
+    Twitter = forms.CharField(max_length=100,widget=forms.TextInput())
+    Facebook = forms.CharField(max_length=100,widget=forms.TextInput())
 
     class Meta:
         model = User
-        fields = ('username','email','password')
+        fields = ('username','email','password','bio','Instagram','Twitter','Facebook')
 
 
 class ChangePasswordForm(PasswordChangeForm):

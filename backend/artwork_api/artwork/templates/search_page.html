@@ -10,7 +10,10 @@
 <ul>
     {% for arts in artwork %}
 
-        <a href="{%  url 'artwork_detail' arts.pk %}"><img src="{{ arts.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;"></a> 
+        <a href="{%  url 'artwork_detail' arts.pk %}">
+            <img src="{{ arts.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
+            <h5>{{ arts.Title }}</h5>
+        </a> 
 
 
     {% endfor %}

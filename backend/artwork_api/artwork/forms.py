@@ -1,6 +1,7 @@
 from django import forms
 from .models import ArtworkPost,Album,Comment
 from taggit.forms import *
+from django_toggle_switch_widget.widgets import DjangoToggleSwitchWidget
 
 class ArtworkForm(forms.ModelForm):
     Tags = TagField()
@@ -12,7 +13,7 @@ class ArtworkForm(forms.ModelForm):
             'Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Description': forms.Textarea(attrs={'class':'form-control'}),
-            'Sensitive_content': forms.CheckboxInput(attrs={'class':'form-check-input'})
+            'Sensitive_content': DjangoToggleSwitchWidget(round=True,klass="django-toggle-switch-dark-primary"),
            
         }
         
@@ -26,6 +27,7 @@ class AlbumForm(forms.ModelForm):
         widgets = {
             'Album_Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
+            'Private_Album': DjangoToggleSwitchWidget(round=True,klass="django-toggle-switch-dark-primary"),
         }
 
 class UpdateArtworkForm(forms.ModelForm):
@@ -38,7 +40,7 @@ class UpdateArtworkForm(forms.ModelForm):
             'Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Description': forms.Textarea(attrs={'class':'form-control'}),
-            'Sensitive_content': forms.CheckboxInput(attrs={'class':'form-check-input'})
+            'Sensitive_content': DjangoToggleSwitchWidget(round=True,klass="django-toggle-switch-dark-primary"),
            
         }
         
@@ -52,6 +54,7 @@ class UpdateAlbumForm(forms.ModelForm):
         widgets = {
             'Album_Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
+            'Private_Album': DjangoToggleSwitchWidget(round=True,klass="django-toggle-switch-dark-primary"),
         }       
 
 class CommentForm(forms.ModelForm):

@@ -14,9 +14,11 @@
 <table>
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    Title: {{ form.Album_Title }}<br><br>
+    Setting as private album?&emsp;{{ form.Private_Album }}<br><br>
 
-    Select Picture for the Album<br>
+    Select Picture for the Album<br><br>
+    {{ form.memberpic }}
     <table>
         <tr>
     {% for artdetail in artwork %}
@@ -27,7 +29,7 @@
         
     
 
-</table>
+    </table>
 <div style="text-align: center;">
     <button type="submit" class="btn btn-custom">Create album/collection</button>
 </div>
