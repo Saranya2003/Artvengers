@@ -13,7 +13,9 @@
       <div class="col-sm">
         <br><br>
         <div>
-        <small>By: {{ object.artist_Name }}<br><br>
+        <small>
+          Create date:{{ object.created_date }}<br><br>
+          By: {{ object.artist_Name }}<br><br>
         </small><br>
         <p>
           {{ object.Description }}
@@ -22,11 +24,11 @@
         {% for tag in object.Tags.names %}
           <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>
         {% endfor %}
-        <br>
-        <form action="{% url 'like_artwork' artwork.pk %}" method="POST">
+        <br><br>
+        <form action="#" method="POST">
           {% csrf_token %}
-          <button type="submit", name="artwork_id",value="{{ artwork.id }}"><img src="../media/logo/Like.png"></button>
-          - {{ total_likes }} 
+          <button type="submit", name="artwork_id",value="{{ artwork.id }}"><img src="../media/logo/Like.png" style="border-radius: 50%;"></button>
+          {{ total_likes }} 
         </form>
       </div><br>
         <div>
