@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-<h2>Tag: {{ artwork.0.Tags.names }}</h2>
-{% for artdetail in artwork %}
+<div>
+    <br><br>
+    <h2>Tag: {{ SelectTag }}</h2>
+    <br><br>
+    {% for artdetail in artwork %}
 
-    {% if artdetail.Tags.names %}
-           
-        <a href="{%  url 'artwork_detail' artdetail.pk %}"><img src="{{ artdetail.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;"></a> 
-    {% else %}
-        <h2>No artworks available</h2>
-    {% endif %}
-{% endfor %}
+        {% if artdetail.Tags.names %}
+            
+            <a href="{%  url 'artwork_detail' artdetail.pk %}"><img src="{{ artdetail.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;"></a> 
+        {% else %}
+            <h2>No artworks available</h2>
+        {% endif %}
+    {% endfor %}
+</div>
 {% endblock %}

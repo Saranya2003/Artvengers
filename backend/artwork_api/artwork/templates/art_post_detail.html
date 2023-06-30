@@ -35,10 +35,10 @@
           <h3>Comments</h3>
         <br>
         
-        <form method="POST">
+        <form action ="{% url 'add_comment' object.pk %}" method="POST">
           {% csrf_token %}
               {{ form.as_p }}
-            <button type="submit" class="btn btn-custom rounded-pill">Post</button>
+            <button type="submit" name="addcommentbutton" value="{{ object.pk }}" class="btn btn-custom rounded-pill">Post</button>
         </form>
         </div>
         <br>

@@ -27,7 +27,7 @@ def private_toggle(request):
     return HttpResponse('success')
 
 def LikeView(request,pk):
-    print("Request post is", request.POST)
+    #print("Like Request post is", request.POST)
     artwork_post = get_object_or_404(ArtworkPost, pk = request.POST.get('artworkpost_id'))
     artwork_post.likes.add(request.user)
     return HttpResponseRedirect(reverse('artwork_detail',args=[str(pk)]))
@@ -58,9 +58,10 @@ def home(request):
 def uploadPage(request):
     return render(request,'upload.html',{})
 
-def post_detail(request):
-    post = get_object_or_404(ArtworkPost)
-
+def post_comment(request, pk):
+    print(request.POST)
+    post = get_object_or_404(ArtworkPost, pk = request.POST.get('addcommentbutton'))
+    
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -68,14 +69,14 @@ def post_detail(request):
            comment.post = post
            comment.save()
 
-           return redirect('artwork_detail')
+           return HttpResponseRedirect(reverse('artwork_detail',args=[str(pk)]))
 
 class ArtworkPostDetail(DetailView):
     model = ArtworkPost
     form_class = CommentForm
     template_name = 'art_post_detail.html' 
     
-   
+    
         
     def get_context_data(self, **kwargs):
        
@@ -89,7 +90,8 @@ class ArtworkPostDetail(DetailView):
         context['likes'] = total_likes
         context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'])
         context['form'] = CommentForm()
-        
+        #print("POST is", self.request.GET)
+       # print("POSTED")
         #print(context['comments'])
         return context
 class AlbumView(ListView):
@@ -217,6 +219,7 @@ class TagsView(ListView):
         
        # print(context['artwork'][0].Tags.names())
         context['Tags'] = Tag.objects.all()
+        context['SelectTag'] = self.kwargs['Tag']
         #print(context['Tags'][0])
         #print(context['artwork'])
        # print(context['artwork'].order_by('-pk'))

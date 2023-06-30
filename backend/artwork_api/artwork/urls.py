@@ -24,4 +24,5 @@ urlpatterns = [
     path('tags/',views.Taglist.as_view(),name="Tags"),
     path('search_mobile/',views.SearchMobileView.as_view(),name="search_mobile"),
     path('artwork/<int:pk>/like/',views.LikeView,name="like_artwork"),
+    path('artwork/<int:pk>/comment/',views.post_comment,name="add_comment"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
