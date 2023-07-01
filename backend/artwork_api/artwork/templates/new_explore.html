@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+{% extends 'webBase.html' %}
+{% block content %}
+<style>         
+  .navbar-custom2 {  
+    background-color: #EB5160;
+    font-size: 20px;  
+  }
+  .active-custom{
+    background-color: #330C2F;
+  }
+  @media (min-width: 390px) {
+    .carousel-inner {
+        display: flex;
+    }
+    .carousel-item {
+        margin-right: 0;
+        flex: 0 0 33.333333%;
+        display: block;
+    }
+    
+    }
+    .card{
+        margin: 0 .5em;
+        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+        border: none;
+    }
+    .carousel-control-prev, .carousel-control-next{
+        background-color: #e1e1e1;
+        width: 6vh;
+        height: 6vh;
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .carousel{
+        width: 1704px;
+        height: 280px;
+        flex-shrink: 0;
+    }
+    .carousel-caption{
+        background-color: rgba(0, 0, 0, 0.75);
+        color: white;
+    }
+    .cardimg {
+        object-fit: cover;
+        width: 306px;
+        height: 280px;
+    }
+    .card{
+        width: 306px;
+        height: 280px;
+        flex-shrink: 0;
+    }
+    .carousel-control{
+        display: flex;
+        width: 63px;
+        height: 308px;
+        padding: 117px 27px 160px 21px;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        background: #EB5160;
+    }
+</style> 
+
+<nav class="navbar navbar-expand-lg navbar-custom2">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active-custom">
+              <a class="nav-link active-custom text-white" href="#">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'dashboard'%}">My artworks</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div id="tagdiv">
+    {% for tag in Tags %}
+        <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag }}</a>
+    {% endfor %}
+</div>
+<br>
+<div id="selectdiv">
+    <select class="form-select" aria-label="Default select example">
+        <option value="Albums">Albums</option>
+        <option value="Artworks">Artworks</option>
+    </select>
+</div>
+<br><br>
+<div id="Artcarousel" class="carousel" data-bs-ride="carousel">
+    <div class="carousel-inner">
+    {% for artdetail in artwork %}
+        {% if forloop.last %}
+        <div class="carousel-item active">
+            <div class="card">
+                {% if artdetail.Sensitive_content %}
+                <span class="badge bg-danger">NSFW</span>
+                {% endif %}
+                <img src="{{ artdetail.Artwork.url }}" style="width:100%;" class="cardimg">
+                <div class="carousel-caption">
+                <h5>{{ artdetail.Title }}</h5>
+            </div>
+            </div>
+            
+        </div>
+        {% else %}
+        <div class="carousel-item">
+            <div class="card">
+                {% if artdetail.Sensitive_content %}
+                    <span class="badge bg-danger">NSFW</span>
+                {% endif %}
+                <img src="{{ artdetail.Artwork.url }}" style="width:100%;" class="cardimg">
+                <div class="carousel-caption">
+                    <h5>{{ artdetail.Title }}</h5>
+                </div>
+            </div>
+        </div>
+        </div>
+        {% endif %}
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    {% endfor %}
+  </div>
+
+<!--<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>-->
+<script>
+    var Artcarousel = document.querySelector('#Artcarousel')
+    
+    if (window.matchMedia("(min-width: 390px)").matches) {
+    //rest of the code
+    var carousel = new bootstrap.Carousel(Artcarousel, {
+        interval: 2000,
+        wrap: false
+    })
+    var carouselWidth = $(".carousel-inner")[0].scrollWidth;
+    var cardWidth = $(".carousel-item").width();
+
+    var scrollPosition = 0;
+
+    $(".carousel-control-next").on("click", function () {
+    if (scrollPosition < (carouselWidth - cardWidth * 4)) { //check if you can go any further
+        scrollPosition += cardWidth;  //update scroll position
+        $(".carousel-inner").animate({ scrollLeft: scrollPosition },600); //scroll left
+    }
+    });
+    $(".carousel-control-prev").on("click", function () {
+    if (scrollPosition > 0) {
+        scrollPosition -= cardWidth;
+        $(".carousel-inner").animate(
+        { scrollLeft: scrollPosition },
+        600
+        );
+    }
+    });
+    } else {
+    $(Artcarousel).addClass("slide");
+    }
+    
+</script>
+{% endblock %}

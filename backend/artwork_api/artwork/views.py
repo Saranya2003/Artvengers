@@ -110,7 +110,7 @@ class AlbumView(ListView):
 
 class ExploreView(ListView):
     model = ArtworkPost
-    template_name = 'explore.html'
+    template_name = 'new_explore.html'
     
 
     def get_context_data(self, **kwargs):
