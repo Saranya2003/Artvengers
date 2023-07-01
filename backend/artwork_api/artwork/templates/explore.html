@@ -448,26 +448,26 @@ Artprev.addEventListener("click", function () {
   Arttrack.style.transform = "translateX(" + Artindex * -Artwidth + "px)";
 });
 
-//Select in mobile
-var albummob = document.getElementById("albummob");
-var artmob = document.getElementById("artmob");
-var selectdiv = document.getElementById("selectdiv");
-
-selectdiv.addEventListener("change", function(){
-    if(selectdiv.value == 'Albums'){
-        if(albummob.style.display !== 'block'){
-            albummob.style.display = 'block';
-            artmob.style.display = 'none';
-        }
-    }
-    if(selectdiv.value == 'Artworks'){
-        if(artmob.style.display !== 'block'){
-            artmob.style.display = 'block';
-            albummob.style.display = 'none';
-        }
-    }
-});
-
 </script>
+<script>
+  //Select in mobile
+  var albummob = document.getElementById("albummob");
+  var artmob = document.getElementById("artmob");
+  var selectdiv = document.getElementById("selectdiv");
 
+  selectdiv.addEventListener("change", function(){
+      if(selectdiv.value == 'Albums'){
+          if(albummob.style.display !== 'block'){
+              albummob.style.display = 'block';
+              artmob.style.display = 'none';
+          }
+      }
+      if(selectdiv.value == 'Artworks'){
+          if(artmob.style.display !== 'block'){
+              artmob.style.display = 'block';
+              albummob.style.display = 'none';
+          }
+      }
+  });
+</script>
 {% endblock %}

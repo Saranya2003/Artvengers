@@ -15,6 +15,14 @@
         font-family: 'Chakra Petch', sans-serif;
         background-color: #EB5160;
         color: white;
+        display: flex;
+        width: 426px;
+        padding: 19px 175px 18px 161px;
+        align-items: center;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
       }
       .form-signin {
         width: 100%;
@@ -38,21 +46,37 @@
         border-top-right-radius: 0;
       }
 
-     
-
+      .form-control{
+        background-color: #C0E0DE;
+        color: black;
+        display: flex;
+        width: 433px;
+        padding: 28px 293px 25px 28px;
+        align-items: center;
+        border-radius: 40px;
+      }
+      
       .myForm {
-        min-width: 200px;
+        min-width: 300px;
         position: absolute;
         text-align: center;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
+        
       }
       #desktoplogo{
         display:none;
       }
       #moblogo{
         display:block;
+      }
+      label{
+        color: #FFF;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
       }
       
     </style>
@@ -88,14 +112,15 @@ margin: 20px;" class="form-group text-light ">
             {% endif %}
         {% endfor %}
         <br>
-        <div class="text-light">
-          <label>
-            Don't have an account? <a href="{% url 'register' %}" class="link-light">Sign up</a>
-          </label>
-          </div><br>
+        <label>
+          Don't have an account? <a href="{% url 'register' %}" class="link-light">Sign up</a>
+        </label>
           <br>
-        <input type="submit" class="btn btn-custom btn-lg" value="login" />
-        <input type="hidden" name="next" value="{{ next }}" />
+          <br>
+        <div style="align-items: center;">
+          <input type="submit" class="btn btn-custom" value="login" />
+          <input type="hidden" name="next" value="{{ next }}" />
+        </div>
     </div>
       <br>
       <br>

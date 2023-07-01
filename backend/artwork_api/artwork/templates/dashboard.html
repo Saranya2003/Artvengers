@@ -2,8 +2,28 @@
 {% extends 'webBase.html' %}
 {% block content %}
 <style>         
-#selectdiv{
+  #dashmob{
     display: none;
+  }
+  #dashdesk{
+    display: block;
+  }
+  #selectdiv{
+    display: none;
+  }
+  #albummob{
+    display: none;
+  }
+
+  #artmob{
+    display: none;
+  }
+  #albumdesktop{
+    display: block;
+  }
+
+  #artdesktop{
+    display: block;
   }
   #uploadbtn{
     display:block;
@@ -49,6 +69,26 @@ img {
   }
   #selectdiv{
     display: block;
+  }
+  #albummob{
+    display: block;
+  }
+
+  #artmob{
+    display: block;
+  }
+  #albumdesktop{
+    display: none;
+  }
+
+  #artdesktop{
+    display: none;
+  }
+  #dashmob{
+    display: block;
+  }
+  #dashdesk{
+    display: none;
   }
   #uploadbtn{
     display:none;
@@ -163,137 +203,245 @@ h5{
 
       <br>
       <div id="selectdiv">
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select">
           <option selected>My albums</option>
           <option value="1">My artworks</option>
         </select>
       </div>
       <br><br>
-<div>
+<div id="dashdesk">
+  <div>
+    <table style="width:100%">
+      <tr>
+        <td style="width:50%"><h2>My albums </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button" id="uploadbtn">Create new album</a></h2></td>
+      </tr>
+    </table>
+
+  <br>
+    <div>
+      <div class="carousel-container">
+        <div class="inner-carousel">
+          <div class="track">
+      
+            {% for albumObject in album %}
+            {% if user.id == albumObject.artist_Name.id %}
+              {% if forloop.last %}
+              <div class="card-container">
+                <div class="card cardartwork">
+                  <a href="{% url 'album' albumObject.pk %}">
+                    <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>{{ albumObject.Album_Title }}</h5>
+                      <div style="float:right;padding-bottom: 1px;">
+                        <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {% else %}
+              <div class="card-container">
+                <div class="card cardartwork">
+                  <a href="{% url 'album' albumObject.pk %}">
+                    <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>{{ albumObject.Album_Title }}</h5>
+                      <div style="float:right;padding-bottom: 1px;">
+                        <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          </div>
+          <div class="nav">
+            <button class="prev"><i class="fas fa-arrow-left fa-2x"><</i></button>
+            <button class="next"><i class="fas fa-arrow-right fa-2x">></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div>
   <table style="width:100%">
     <tr>
-      <td style="width:50%"><h2>My albums </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button" id="uploadbtn">Create new album</a></h2></td>
+      <td style="width:50%"><h2>  My artworks </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button" id="uploadbtn">Post new artwork</a></h2></td>
     </tr>
   </table>
-
-<br>
-  <div>
-    <div class="carousel-container">
-      <div class="inner-carousel">
-        <div class="track">
+    <br><br>
     
-          {% for albumObject in album %}
-          {% if user.id == albumObject.artist_Name.id %}
-            {% if forloop.last %}
-            <div class="card-container">
-              <div class="card cardartwork">
-                <a href="{% url 'album' albumObject.pk %}">
-                  <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>{{ albumObject.Album_Title }}</h5>
-                    <div style="float:right;padding-bottom: 1px;">
-                      <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
-                      <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
+    <div class="carousel-container" id="Artcarousel-container">
+      <div class="inner-carousel" id="ArtinnerCarousel">
+        <div class="track" id="Arttrack">
+    
+          {% for artdetail in artwork %}
+            {% if user.id == artdetail.artist_Name.id %}
+              {% if forloop.last %}
+              <div class="card-container">
+                <div class="card cardartwork">
+                  <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                    {% if artdetail.Sensitive_content %}
+                      <span class="badge bg-danger">NSFW</span>
+                    {% endif %}
+                    <img src="{{ artdetail.Artwork.url }}">
+                    <div class="carousel-caption d-none d-md-block">
+                      
+                      <h5>{{ artdetail.Title }}</h5>
+                      <div style="float:right;padding-bottom: 1px;">
+                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                      </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </div>
               </div>
-            </div>
-            {% else %}
-            <div class="card-container">
-              <div class="card cardartwork">
-                <a href="{% url 'album' albumObject.pk %}">
-                  <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>{{ albumObject.Album_Title }}</h5>
-                    <div style="float:right;padding-bottom: 1px;">
-                      <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
-                      <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
+              {% else %}
+              <div class="card-container">
+                <div class="card cardartwork">
+                  <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                    {% if artdetail.Sensitive_content %}
+                      <span class="badge bg-danger">NSFW</span>
+                    {% endif %}
+                    <img src="{{ artdetail.Artwork.url }}">
+                    <div class="carousel-caption d-none d-md-block">
+                      
+                      <h5>{{ artdetail.Title }}</h5>
+                      <div style="float:right;padding-bottom: 1px;">
+                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                      </div>
                     </div>
-                  </div>
-                </a>
+                  </a>
+                </div>
               </div>
-            </div>
+              {% endif %}
             {% endif %}
-          {% endif %}
         {% endfor %}
         </div>
         <div class="nav">
-          <button class="prev"><i class="fas fa-arrow-left fa-2x"><</i></button>
-          <button class="next"><i class="fas fa-arrow-right fa-2x">></i></button>
+          <button class="prev" id="Artprev"><i class="fas fa-arrow-left fa-2x"><</i></button>
+        <button class="next" id="Artnext"><i class="fas fa-arrow-right fa-2x">></i></button>
         </div>
       </div>
     </div>
+    
   </div>
-</div>
-<br>
-<br>
-<br>
-<div>
-<table style="width:100%">
-  <tr>
-    <td style="width:50%"><h2>  My artworks </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button" id="uploadbtn">Post new artwork</a></h2></td>
-  </tr>
-</table>
-  <br><br>
-  
-  <div class="carousel-container" id="Artcarousel-container">
-    <div class="inner-carousel" id="ArtinnerCarousel">
-      <div class="track" id="Arttrack">
-  
-        {% for artdetail in artwork %}
-          {% if user.id == artdetail.artist_Name.id %}
-            {% if forloop.last %}
-            <div class="card-container">
-              <div class="card cardartwork">
-                <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                  {% if artdetail.Sensitive_content %}
-                    <span class="badge bg-danger">NSFW</span>
-                  {% endif %}
-                  <img src="{{ artdetail.Artwork.url }}">
-                  <div class="carousel-caption d-none d-md-block">
-                    
-                    <h5>{{ artdetail.Title }}</h5>
-                    <div style="float:right;padding-bottom: 1px;">
-                      <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                      <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            {% else %}
-            <div class="card-container">
-              <div class="card cardartwork">
-                <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                  {% if artdetail.Sensitive_content %}
-                    <span class="badge bg-danger">NSFW</span>
-                  {% endif %}
-                  <img src="{{ artdetail.Artwork.url }}">
-                  <div class="carousel-caption d-none d-md-block">
-                    
-                    <h5>{{ artdetail.Title }}</h5>
-                    <div style="float:right;padding-bottom: 1px;">
-                      <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                      <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            {% endif %}
-          {% endif %}
-      {% endfor %}
-      </div>
-      <div class="nav">
-        <button class="prev" id="Artprev"><i class="fas fa-arrow-left fa-2x"><</i></button>
-      <button class="next" id="Artnext"><i class="fas fa-arrow-right fa-2x">></i></button>
-      </div>
-    </div>
-  </div>
-  
 </div>
 
+<div id="dashmob">
+  <div id="albummob">
+    <table style="width:100%">
+      <tr>
+        <td style="width:50%"><h2>My albums </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button" id="uploadbtn">Create new album</a></h2></td>
+      </tr>
+    </table>
+
+  <br>
+    <div>
+      {% for albumObject in album %}
+            {% if user.id == albumObject.artist_Name.id %}
+              {% if forloop.last %}
+              <div>
+                <div>
+                  <a href="{% url 'album' albumObject.pk %}">
+                    <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
+                    <div>
+                      <h5>{{ albumObject.Album_Title }}</h5>
+                      <div style="float:right;padding-bottom: 1px;">
+                        <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {% else %}
+              <div>
+                <div>
+                  <a href="{% url 'album' albumObject.pk %}">
+                    <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
+                    <div>
+                      <h5>{{ albumObject.Album_Title }}</h5>
+                      <div style="float:right;padding-bottom: 1px;">
+                        <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div id="artmob">
+  <table style="width:100%">
+    <tr>
+      <td style="width:50%"><h2>  My artworks </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button" id="uploadbtn">Post new artwork</a></h2></td>
+    </tr>
+  </table>
+    <br><br>
+    
+    <div>
+      {% for artdetail in artwork %}
+            {% if user.id == artdetail.artist_Name.id %}
+              {% if forloop.last %}
+              <div>
+                <div>
+                  <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                    {% if artdetail.Sensitive_content %}
+                      <span class="badge bg-danger">NSFW</span>
+                    {% endif %}
+                    <img src="{{ artdetail.Artwork.url }}">
+                    <div>
+                      
+                      <h5>{{ artdetail.Title }}</h5>
+                      <div style="float:right;padding-bottom: 1px;">
+                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {% else %}
+              <div>
+                <div>
+                  <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                    {% if artdetail.Sensitive_content %}
+                      <span class="badge bg-danger">NSFW</span>
+                    {% endif %}
+                    <img src="{{ artdetail.Artwork.url }}">
+                    <div>
+                      
+                      <h5>{{ artdetail.Title }}</h5>
+                      <div style="float:right;padding-bottom: 1px;">
+                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+  </div>
+</div>
 <br>
 <script>
   const prev = document.querySelector(".prev");
@@ -352,5 +500,26 @@ h5{
     Arttrack.style.transform = "translateX(" + Artindex * -Artwidth + "px)";
   });
   
+  </script>
+  <script>
+    //Select in mobile
+  var albummob = document.getElementById("albummob");
+  var artmob = document.getElementById("artmob");
+  var selectdiv = document.getElementById("selectdiv");
+
+  selectdiv.addEventListener("change", function(){
+      if(selectdiv.value == 'Albums'){
+          if(albummob.style.display !== 'block'){
+              albummob.style.display = 'block';
+              artmob.style.display = 'none';
+          }
+      }
+      if(selectdiv.value == 'Artworks'){
+          if(artmob.style.display !== 'block'){
+              artmob.style.display = 'block';
+              albummob.style.display = 'none';
+          }
+      }
+  });
   </script>
 {% endblock %}
