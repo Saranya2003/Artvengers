@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-
+<style>
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+</style>
 <br><br>
 <div class="form-group" style="padding: 50px;margin: 20px;">
   <form method="POST" enctype="multipart/form-data">
@@ -11,7 +28,13 @@
     Flag as sensitive content?{{ form.Sensitive_content }}<br><br>
     Tags
     (Separate with comma):{{ form.Tags }}<br><br>
-    Artwork:{{ form.Artwork }}<br><br>
+    Artwork:
+    <div class="fileUpload btn btn-custom">
+      <span>Upload artwork file</span>
+      <input type="file" class="upload" />
+    </div>
+    <br><br>
+
     <div style="text-align: center;">
       <input type="submit" class="btn btn-custom mx-auto" value="Publish">
     </div>

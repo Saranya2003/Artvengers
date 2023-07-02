@@ -28,7 +28,7 @@
   #uploadbtn{
     display:block;
   }
-.navbar {
+  .navbar {
     padding-top: 0px;
     padding-bottom: 0px;
   
@@ -41,29 +41,10 @@
   .active-custom{
     background-color: #330C2F;
   }
-  .carousel-button{
-    background-color: #EB5160;
-  }   
-  
-  * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-img {
-  max-width: 100%;
-  object-fit: cover;
-
-}
-.carousel-container {
-  width: 1386px;
-  margin: 50px auto;
-  position: relative;
-  border-left-width: 4px;
-  border-left-style: solid;
-  border-left-color: #EB5160;
-}
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
+  #tagdiv{
+    display:none;
+  }
   .carousel-container {
     width: 95%;
   }
@@ -84,106 +65,84 @@ img {
   #artdesktop{
     display: none;
   }
-  #dashmob{
+  #exploremob{
     display: block;
   }
-  #dashdesk{
+  #exploredesk{
     display: none;
   }
-  #uploadbtn{
-    display:none;
-  }
 }
-.inner-carousel {
-  width: 100%;
-  height: 280px;
-  overflow: hidden;
-}
-.track {
-  display: inline-flex;
-  height: 100%;
-  transition: transform 0.2s ease-in-out;
-}
-.card-container {
-  width: 306px;
-  height: 280px;
-  flex-shrink: 0;
-  padding-right: 10px;
-}
-@media (max-width: 768px) {
-  .card-container {
-    width: 184px;
-    object-fit: cover;
-  }
-}
-.card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-position: center bottom;
-  background-size: center;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-  object-fit: cover;
-  overflow: hidden;
-}
-.cardartwork {
-  background-image: url("{{ artwork.Artwork.url }}");
-  object-fit: cover;
-  overflow: hidden;
-}
+  @media (min-width: 390px) {
+    
+    .carousel-inner {
+        display: flex;
+    }
+    .carousel-item {
+        margin-right: 0;
+        flex: 0 0 33.333333%;
+        display: block;
+    }
+    
+    }
+    .card{
+        margin: 0 .5em;
+        border: none;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: center bottom;
+        background-size: center;
+        background-repeat: no-repeat;
+        border-radius: 0px;
+        object-fit: cover;
+        overflow: hidden;
+    }
+    .carousel-control-prev, .carousel-control-next{
+        background-color: #EB5160;
+        width: 60px;
+        height: 306px;
+        top: 50%;
+        padding: 117px 27px 132px 21px;
+        transform: translateY(-50%);
+    }
+    .carousel{
+        width: 1704px;
+        height: 280px;
+        flex-shrink: 0;
+    }
+    .carousel-caption{
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
 
-.nav button {
-  position: absolute;
-  top: 50%;
-  transform: translatey(-50%);
-  width: 60px;
-  height: 306px;
-  outline: none;
-  border: 1px solid #000;
-  background-color: #EB5160;
-  cursor: pointer;
-}
-.nav .prev {
-  left: -30px;
-  display: none;
-  content: "<";
-  color: white;
-}
-.nav .prev.show {
-  display: block;
-  content: "<";
-  color: white;
-}
-.nav .next {
-  right: -30px;
-  content: ">";
-  color: white;
-}
-.nav .next.hide {
-  display: none;
-  content: ">";
-  color: white;
-}
-.carousel-caption{
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-
-  max-width: 100%;
-  width:100%;
-  bottom:0px;
-  position:absolute;
-  left: -15px;
-}
-h5{
-  font-weight: 900;
-  width: 306px;
-  text-align: left;
-  padding-left: 10px;
-}
+    max-width: 100%;
+    width:100%;
+    bottom:0px;
+    position:absolute;
+    left: -15px;
+    }
+    .cardimg {
+        object-fit: cover;
+        width: 306px;
+        height: 280px;
+    }
+    .card{
+        width: 306px;
+        height: 280px;
+        flex-shrink: 0;
+    }
+    h5{
+    font-weight: 900;
+    width: 306px;
+    text-align: left;
+    padding-left: 10px;
+    }
+    #carousel{
+      margin: auto;
+      padding: 10px;
+    }
 
 
 
@@ -216,57 +175,62 @@ h5{
         <td style="width:50%"><h2>My albums </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button" id="uploadbtn">Create new album</a></h2></td>
       </tr>
     </table>
+  </div>
 
   <br>
     <div>
-      <div class="carousel-container">
-        <div class="inner-carousel">
-          <div class="track">
-      
-            {% for albumObject in album %}
-            {% if user.id == albumObject.artist_Name.id %}
-              {% if forloop.last %}
-              <div class="card-container">
-                <div class="card cardartwork">
-                  <a href="{% url 'album' albumObject.pk %}">
-                    <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ albumObject.Album_Title }}</h5>
-                      <div style="float:right;padding-bottom: 1px;">
-                        <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
-                      </div>
-                    </div>
-                  </a>
+      <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+        {% for artdetail in artwork %} 
+        {% if user.id == artdetail.artist_Name.id %}
+            {% if forloop.last %}
+          <div class="carousel-item active">
+            <div class="card">
+              <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                {% if artdetail.Sensitive_content %}
+                    <span class="badge bg-danger">NSFW</span>
+                {% endif %}
+                <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+                <div class="carousel-caption">
+                    <h5>{{ artdetail.Title }}</h5>
+                    <a class="btn btn-light float-right" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                    <a class="btn btn-danger float-right" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
                 </div>
-              </div>
-              {% else %}
-              <div class="card-container">
-                <div class="card cardartwork">
-                  <a href="{% url 'album' albumObject.pk %}">
-                    <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
-                    <div class="carousel-caption d-none d-md-block">
-                      <h5>{{ albumObject.Album_Title }}</h5>
-                      <div style="float:right;padding-bottom: 1px;">
-                        <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
-                      </div>
-                    </div>
-                  </a>
+              </a>
+            </div>
+          </div>
+            {% else %}
+          <div class="carousel-item">
+            <div class="card">
+              <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                {% if artdetail.Sensitive_content %}
+                    <span class="badge bg-danger">NSFW</span>
+                {% endif %}
+                <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+                <div class="carousel-caption">
+                    <h5>{{ artdetail.Title }}</h5>
+                    <a class="btn btn-light float-right" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                    <a class="btn btn-danger float-right" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
                 </div>
-              </div>
-              {% endif %}
-            {% endif %}
-          {% endfor %}
+              </a>
+            </div>
           </div>
-          <div class="nav">
-            <button class="prev"><i class="fas fa-arrow-left fa-2x"><</i></button>
-            <button class="next"><i class="fas fa-arrow-right fa-2x">></i></button>
-          </div>
+          {% endif %}
+          {% endif %}
+        {% endfor %}
         </div>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
-  </div>
+  
   <br>
   <br>
   <br>
@@ -276,64 +240,61 @@ h5{
       <td style="width:50%"><h2>  My artworks </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button" id="uploadbtn">Post new artwork</a></h2></td>
     </tr>
   </table>
+</div>
     <br><br>
     
-    <div class="carousel-container" id="Artcarousel-container">
-      <div class="inner-carousel" id="ArtinnerCarousel">
-        <div class="track" id="Arttrack">
-    
-          {% for artdetail in artwork %}
-            {% if user.id == artdetail.artist_Name.id %}
-              {% if forloop.last %}
-              <div class="card-container">
-                <div class="card cardartwork">
-                  <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                    {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger">NSFW</span>
-                    {% endif %}
-                    <img src="{{ artdetail.Artwork.url }}">
-                    <div class="carousel-caption d-none d-md-block">
-                      
-                      <h5>{{ artdetail.Title }}</h5>
-                      <div style="float:right;padding-bottom: 1px;">
-                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              {% else %}
-              <div class="card-container">
-                <div class="card cardartwork">
-                  <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                    {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger">NSFW</span>
-                    {% endif %}
-                    <img src="{{ artdetail.Artwork.url }}">
-                    <div class="carousel-caption d-none d-md-block">
-                      
-                      <h5>{{ artdetail.Title }}</h5>
-                      <div style="float:right;padding-bottom: 1px;">
-                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
+    <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
+      <div class="carousel-inner">
+      {% for artdetail in artwork %} 
+      {% if user.id == artdetail.artist_Name.id %}
+          {% if forloop.last %}
+        <div class="carousel-item active">
+          <div class="card">
+            <a href="{%  url 'artwork_detail' artdetail.pk %}">
+              {% if artdetail.Sensitive_content %}
+                  <span class="badge bg-danger">NSFW</span>
               {% endif %}
-            {% endif %}
-        {% endfor %}
+              <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+              <div class="carousel-caption">
+                  <h5>{{ artdetail.Title }}</h5>
+                  <a class="btn btn-light float-right" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                  <a class="btn btn-danger float-right" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+              </div>
+            </a>
+          </div>
         </div>
-        <div class="nav">
-          <button class="prev" id="Artprev"><i class="fas fa-arrow-left fa-2x"><</i></button>
-        <button class="next" id="Artnext"><i class="fas fa-arrow-right fa-2x">></i></button>
+          {% else %}
+        <div class="carousel-item">
+          <div class="card">
+            <a href="{%  url 'artwork_detail' artdetail.pk %}">
+              {% if artdetail.Sensitive_content %}
+                  <span class="badge bg-danger">NSFW</span>
+              {% endif %}
+              <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+              <div class="carousel-caption">
+                  <h5>{{ artdetail.Title }}</h5>
+                  <a class="btn btn-light float-right" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                  <a class="btn btn-danger float-right" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+              </div>
+            </a>
+          </div>
         </div>
+        {% endif %}
+        {% endif %}
+      {% endfor %}
       </div>
+      
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
     
-  </div>
+  
 </div>
 
 <div id="dashmob">
@@ -443,64 +404,41 @@ h5{
   </div>
 </div>
 <br>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
-  const prev = document.querySelector(".prev");
-  const next = document.querySelector(".next");
-  const carousel = document.querySelector(".carousel-container");
-  const track = document.querySelector(".track");
-  let width = carousel.offsetWidth;
-  let index = 0;
-  window.addEventListener("resize", function () {
-    width = carousel.offsetWidth;
-  });
-  next.addEventListener("click", function (e) {
-    e.preventDefault();
-    index = index + 1;
-    prev.classList.add("show");
-    track.style.transform = "translateX(" + index * -width + "px)";
-    if (track.offsetWidth - index * width < index * width) {
-      next.classList.add("hide");
-    }
-  });
-  prev.addEventListener("click", function () {
-    index = index - 1;
-    next.classList.remove("hide");
-    if (index === 0) {
-      prev.classList.remove("show");
-    }
-    track.style.transform = "translateX(" + index * -width + "px)";
-  });
+  var Artcarousel = document.querySelector('#Artcarousel')
   
-  //Artwork Carousel
+  if (window.matchMedia("(min-width: 390px)").matches) {
+  //rest of the code
+  var carousel = new bootstrap.Carousel(Artcarousel, {
+      interval: 2000,
+      wrap: false
+  })
+  var carouselWidth = $(".carousel-inner")[0].scrollWidth;
+  var cardWidth = $(".carousel-item").width();
+
+  var scrollPosition = 0;
+
+  $(".carousel-control-next").on("click", function () {
+  if (scrollPosition < (carouselWidth - cardWidth * 4)) { //check if you can go any further
+      scrollPosition += cardWidth;  //update scroll position
+      $(".carousel-inner").animate({ scrollLeft: scrollPosition },600); //scroll left
+  }
+  });
+  $(".carousel-control-prev").on("click", function () {
+  if (scrollPosition > 0) {
+      scrollPosition -= cardWidth;
+      $(".carousel-inner").animate(
+      { scrollLeft: scrollPosition },
+      600
+      );
+  }
+  });
+  } else {
+  $(Artcarousel).addClass("slide");
+  }
   
-  const Artprev = document.getElementById("Artprev");
-  const Artnext = document.getElementById("Artnext");
-  const Artcarousel = document.getElementById("Artcarousel-container");
-  const Arttrack = document.getElementById("Arttrack");
-  let Artwidth = Artcarousel.offsetWidth;
-  let Artindex = 0;
-  window.addEventListener("resize", function () {
-    Artwidth = Artcarousel.offsetWidth;
-  });
-  Artnext.addEventListener("click", function (e) {
-    e.preventDefault();
-    Artindex = Artindex + 1;
-    Artprev.classList.add("show");
-    Arttrack.style.transform = "translateX(" + Artindex * -Artwidth + "px)";
-    if (Arttrack.offsetWidth - Artindex * Artwidth < Artindex * Artwidth) {
-      Artnext.classList.add("hide");
-    }
-  });
-  Artprev.addEventListener("click", function () {
-    Artindex = Artindex - 1;
-    Artnext.classList.remove("hide");
-    if (Artindex === 0) {
-      Artprev.classList.remove("show");
-    }
-    Arttrack.style.transform = "translateX(" + Artindex * -Artwidth + "px)";
-  });
-  
-  </script>
+</script>
   <script>
     //Select in mobile
   var albummob = document.getElementById("albummob");

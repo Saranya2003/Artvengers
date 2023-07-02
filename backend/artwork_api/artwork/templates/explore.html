@@ -46,79 +46,7 @@
   .active-custom{
     background-color: #330C2F;
   }
-  .carousel-button{
-    background-color: #EB5160;
-  }
-  @media (min-width: 390px) {
-    .carousel-inner {
-        display: flex;
-    }
-    .carousel-item {
-        margin-right: 0;
-        flex: 0 0 33.333333%;
-        display: block;
-    }
-    
-    }
-  .card{
-      margin: 0 .5em;
-      box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-      border: none;
-  }
-  .carousel-control-prev, .carousel-control-next{
-      background-color: #EB5160;
-      width: 60px;
-      height: 306px;
-      top: 50%;
-      padding: 117px 27px 132px 21px;
-      transform: translateY(-50%);
-  }
-  .carousel{
-      width: 1704px;
-      height: 280px;
-      flex-shrink: 0;
-  }
-  .carousel-caption{
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-
-    max-width: 100%;
-    width:100%;
-    bottom:0px;
-    position:absolute;
-    left: -15px;
-  }
-  .cardimg {
-        object-fit: cover;
-        width: 306px;
-        height: 280px;
-    }
-    .card{
-        width: 306px;
-        height: 280px;
-        flex-shrink: 0;
-    }
-    /* old carousel styling here*/   
-  
-  * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-img {
-  max-width: 100%;
-  object-fit: cover;
-
-}
-.carousel-container {
-  width: 1386px;
-  margin: 50px auto;
-  position: relative;
-  border-left-width: 4px;
-  border-left-style: solid;
-  border-left-color: #EB5160;
-}
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
   #tagdiv{
     display:none;
   }
@@ -149,88 +77,77 @@ img {
     display: none;
   }
 }
+  @media (min-width: 390px) {
+    
+    .carousel-inner {
+        display: flex;
+    }
+    .carousel-item {
+        margin-right: 0;
+        flex: 0 0 33.333333%;
+        display: block;
+    }
+    
+    }
+    .card{
+        margin: 0 .5em;
+        border: none;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: center bottom;
+        background-size: center;
+        background-repeat: no-repeat;
+        border-radius: 0px;
+        object-fit: cover;
+        overflow: hidden;
+    }
+    .carousel-control-prev, .carousel-control-next{
+        background-color: #EB5160;
+        width: 60px;
+        height: 306px;
+        top: 50%;
+        padding: 117px 27px 132px 21px;
+        transform: translateY(-50%);
+    }
+    .carousel{
+        width: 1704px;
+        height: 280px;
+        flex-shrink: 0;
+    }
+    .carousel-caption{
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
 
-.inner-carousel {
-  width: 100%;
-  height: 280px;
-  overflow: hidden;
-}
-.track {
-  display: inline-flex;
-  height: 100%;
-  transition: transform 0.2s ease-in-out;
-}
-.card-container {
-  width: 306px;
-  height: 280px;
-  flex-shrink: 0;
-  padding-right: 10px;
-}
-@media (min-width: 390px) {
-  .card-container {
-    width: 184px;
-    object-fit: cover;
-  }
-}
-.card {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-position: center bottom;
-  background-size: center;
-  background-repeat: no-repeat;
-  border-radius: 0px;
-  object-fit: cover;
-  overflow: hidden;
-}
-.cardartwork {
-  background-image: url("{{ artwork.Artwork.url }}");
-  object-fit: cover;
-  overflow: hidden;
-}
-
-.nav button {
-  position: absolute;
-  top: 50%;
-  transform: translatey(-50%);
-  width: 60px;
-  height: 306px;
-  outline: none;
-  border: 1px solid #000;
-  background-color: #EB5160;
-  cursor: pointer;
-}
-.nav .prev {
-  left: -30px;
-  display: none;
-  content: "<";
-  color: white;
-}
-.nav .prev.show {
-  display: block;
-  content: "<";
-  color: white;
-}
-.nav .next {
-  right: -30px;
-  content: ">";
-  color: white;
-}
-.nav .next.hide {
-  display: none;
-  content: ">";
-  color: white;
-}
-
-h5{
-  font-weight: 900;
-  width: 306px;
-  text-align: left;
-  padding-left: 10px;
-}
+    max-width: 100%;
+    width:100%;
+    bottom:0px;
+    position:absolute;
+    left: -15px;
+    }
+    .cardimg {
+        object-fit: cover;
+        width: 306px;
+        height: 280px;
+    }
+    .card{
+        width: 306px;
+        height: 280px;
+        flex-shrink: 0;
+    }
+    h5{
+    font-weight: 900;
+    width: 306px;
+    text-align: left;
+    padding-left: 10px;
+    }
+    #carousel{
+      margin: auto;
+      padding: 10px;
+    }
 
 </style> 
 
@@ -259,13 +176,13 @@ h5{
           <option value="Artworks">Artworks</option>
         </select>
       </div>
-      <br><br>
+      <br>
 
 <div id="exploredesk">
 <div id="albumdesktop">
   <h2>Album</h2>
   <br>
-  <center>
+  
     <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
         {% for artdetail in artwork %} 
@@ -310,14 +227,14 @@ h5{
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-    </center>
+    
   
 </div>
 <br> 
 <div id="artdesktop">
   <h2>Artwork</h2><br>
 <br>
-<center>
+
   <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
       {% for artdetail in artwork %} 
@@ -362,7 +279,7 @@ h5{
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-  </center>
+  
 </div>
 </div>
 <div id="exploremob">
@@ -474,64 +391,6 @@ h5{
   $(Artcarousel).addClass("slide");
   }
   
-</script>
-<script>
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
-const carousel = document.querySelector(".carousel-container");
-const track = document.querySelector(".track");
-let width = carousel.offsetWidth;
-let index = 0;
-window.addEventListener("resize", function () {
-  width = carousel.offsetWidth;
-});
-next.addEventListener("click", function (e) {
-  e.preventDefault();
-  index = index + 1;
-  prev.classList.add("show");
-  track.style.transform = "translateX(" + index * -width + "px)";
-  if (track.offsetWidth - index * width < index * width) {
-    next.classList.add("hide");
-  }
-});
-prev.addEventListener("click", function () {
-  index = index - 1;
-  next.classList.remove("hide");
-  if (index === 0) {
-    prev.classList.remove("show");
-  }
-  track.style.transform = "translateX(" + index * -width + "px)";
-});
-
-//Artwork Carousel
-
-const Artprev = document.getElementById("Artprev");
-const Artnext = document.getElementById("Artnext");
-const Artcarousel = document.getElementById("Artcarousel-container");
-const Arttrack = document.getElementById("Arttrack");
-let Artwidth = Artcarousel.offsetWidth;
-let Artindex = 0;
-window.addEventListener("resize", function () {
-  Artwidth = Artcarousel.offsetWidth;
-});
-Artnext.addEventListener("click", function (e) {
-  e.preventDefault();
-  Artindex = Artindex + 1;
-  Artprev.classList.add("show");
-  Arttrack.style.transform = "translateX(" + Artindex * -Artwidth + "px)";
-  if (Arttrack.offsetWidth - Artindex * Artwidth < Artindex * Artwidth) {
-    Artnext.classList.add("hide");
-  }
-});
-Artprev.addEventListener("click", function () {
-  Artindex = Artindex - 1;
-  Artnext.classList.remove("hide");
-  if (Artindex === 0) {
-    Artprev.classList.remove("show");
-  }
-  Arttrack.style.transform = "translateX(" + Artindex * -Artwidth + "px)";
-});
-
 </script>
 <script>
   //Select in mobile

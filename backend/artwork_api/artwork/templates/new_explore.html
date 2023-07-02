@@ -9,7 +9,39 @@
   .active-custom{
     background-color: #330C2F;
   }
+  @media (max-width: 768px) {
+  #tagdiv{
+    display:none;
+  }
+  .carousel-container {
+    width: 95%;
+  }
+  #selectdiv{
+    display: block;
+  }
+  #albummob{
+    display: block;
+  }
+
+  #artmob{
+    display: block;
+  }
+  #albumdesktop{
+    display: none;
+  }
+
+  #artdesktop{
+    display: none;
+  }
+  #exploremob{
+    display: block;
+  }
+  #exploredesk{
+    display: none;
+  }
+}
   @media (min-width: 390px) {
+    
     .carousel-inner {
         display: flex;
     }
@@ -23,6 +55,18 @@
     .card{
         margin: 0 .5em;
         border: none;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: center bottom;
+        background-size: center;
+        background-repeat: no-repeat;
+        border-radius: 0px;
+        object-fit: cover;
+        overflow: hidden;
     }
     .carousel-control-prev, .carousel-control-next{
         background-color: #EB5160;

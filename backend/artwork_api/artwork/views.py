@@ -183,7 +183,7 @@ class SearchView(ListView):
         context = super().get_context_data(**kwargs)
         print(self.request.GET['keyword'])
 
-        context['album'] = Album.objects.all()
+        context['album'] = Album.objects.filter(Q(Album_Title__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
         context['artwork'] = ArtworkPost.objects.filter(Q(Title__icontains=self.request.GET['keyword'])| Q(Tags__name__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
         print(context['artwork'])
         context['Tags'] = Tag.objects.all()
