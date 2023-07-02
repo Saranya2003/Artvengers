@@ -84,12 +84,15 @@
 <body class="web-app">
 
   <h1 style="text-align:center;padding-top: 1em;" class="text-light">Artvengers</h1>
+  
 
 <br><br><br>
 
 <div style="text-align:center;padding: 50px;
 margin: 20px;" class="form-group text-light ">
-  
+  <div>
+    <img src="../media/logo/artvengers-logo white.png" width="30%" style="text-align:center;padding-top: 1em;">
+  </div>
   <form method="POST" class="myForm">
       {% csrf_token %}
       <div class="form-group">
@@ -117,7 +120,7 @@ margin: 20px;" class="form-group text-light ">
         </label>
           <br>
           <br>
-        <div style="align-items: center;">
+        <div style="align-items: center;text-align:center;">
           <input type="submit" class="btn btn-custom" value="login" />
           <input type="hidden" name="next" value="{{ next }}" />
         </div>

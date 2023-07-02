@@ -22,15 +22,14 @@
     }
     .card{
         margin: 0 .5em;
-        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
         border: none;
     }
     .carousel-control-prev, .carousel-control-next{
         background-color: #EB5160;
-        width: 6vh;
-        height: 6vh;
-        border-radius: 50%;
+        width: 60px;
+        height: 306px;
         top: 50%;
+        padding: 117px 27px 132px 21px;
         transform: translateY(-50%);
     }
     .carousel{
@@ -39,8 +38,14 @@
         flex-shrink: 0;
     }
     .carousel-caption{
-        background-color: rgba(0, 0, 0, 0.75);
-        color: white;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+
+    max-width: 100%;
+    width:100%;
+    bottom:0px;
+    position:absolute;
+    left: -15px;
     }
     .cardimg {
         object-fit: cover;
@@ -51,6 +56,12 @@
         width: 306px;
         height: 280px;
         flex-shrink: 0;
+    }
+    h5{
+    font-weight: 900;
+    width: 306px;
+    text-align: left;
+    padding-left: 10px;
     }
 </style> 
 
@@ -80,73 +91,36 @@
     </select>
 </div>
 <br><br>
+<center>
 <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
     <div class="carousel-inner">
+    {% for artdetail in artwork %} 
+        {% if forloop.last %}
       <div class="carousel-item active">
         <div class="card">
-            <img src="../media/images/Doll.png" class="cardimg">
+            {% if artdetail.Sensitive_content %}
+                <span class="badge bg-danger">NSFW</span>
+            {% endif %}
+            <img src="{{ artdetail.Artwork.url }}" class="cardimg">
             <div class="carousel-caption">
-                <h5>Card title</h5>
+                <h5>{{ artdetail.Title }}</h5>
             </div>
             </div>
         </div>
+        {% else %}
       <div class="carousel-item">
         <div class="card">
-            <img src="../media/images/Akane_Sakakibara.png" class="cardimg">
+            {% if artdetail.Sensitive_content %}
+                <span class="badge bg-danger">NSFW</span>
+            {% endif %}
+            <img src="{{ artdetail.Artwork.url }}" class="cardimg">
             <div class="carousel-caption">
-                <h5>Card title</h5>
+                <h5>{{ artdetail.Title }}</h5>
             </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <div class="card">
-            <img src="../media/images/Doll.png" class="cardimg">
-            <div class="carousel-caption">
-                <h5>Card title</h5>
-            </div>
-            </div>
-        </div>
-      <div class="carousel-item">
-        <div class="card">
-            <img src="../media/images/Akane_Sakakibara.png" class="cardimg">
-            <div class="carousel-caption">
-                <h5>Card title</h5>
-            </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="card">
-            <img src="../media/images/Doll.png" class="cardimg">
-            <div class="carousel-caption">
-                <h5>Card title</h5>
-            </div>
-            </div>
-        </div>
-      <div class="carousel-item">
-        <div class="card">
-            <img src="../media/images/Akane_Sakakibara.png" class="cardimg">
-            <div class="carousel-caption">
-                <h5>Card title</h5>
-            </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="card">
-            <img src="../media/images/Doll.png" class="cardimg">
-            <div class="carousel-caption">
-                <h5>Card title</h5>
-            </div>
-            </div>
-        </div>
-      <div class="carousel-item">
-        <div class="card">
-            <img src="../media/images/Akane_Sakakibara.png" class="cardimg">
-            <div class="carousel-caption">
-                <h5>Card title</h5>
-            </div>
-        </div>
-      </div>
-      
+      {% endif %}
+    {% endfor %}
     </div>
     
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -158,7 +132,7 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
+</center>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
     var Artcarousel = document.querySelector('#Artcarousel')

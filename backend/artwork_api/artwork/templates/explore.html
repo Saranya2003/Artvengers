@@ -48,7 +48,57 @@
   }
   .carousel-button{
     background-color: #EB5160;
-  }   
+  }
+  @media (min-width: 390px) {
+    .carousel-inner {
+        display: flex;
+    }
+    .carousel-item {
+        margin-right: 0;
+        flex: 0 0 33.333333%;
+        display: block;
+    }
+    
+    }
+  .card{
+      margin: 0 .5em;
+      box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+      border: none;
+  }
+  .carousel-control-prev, .carousel-control-next{
+      background-color: #EB5160;
+      width: 60px;
+      height: 306px;
+      top: 50%;
+      padding: 117px 27px 132px 21px;
+      transform: translateY(-50%);
+  }
+  .carousel{
+      width: 1704px;
+      height: 280px;
+      flex-shrink: 0;
+  }
+  .carousel-caption{
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+
+    max-width: 100%;
+    width:100%;
+    bottom:0px;
+    position:absolute;
+    left: -15px;
+  }
+  .cardimg {
+      object-fit: cover;
+      width: 306px;
+      height: 280px;
+  }
+  .card{
+      width: 306px;
+      height: 280px;
+      flex-shrink: 0;
+  }
+    /* old carousel styling here*/   
   
   * {
   box-sizing: border-box;
@@ -116,7 +166,7 @@ img {
   flex-shrink: 0;
   padding-right: 10px;
 }
-@media (max-width: 768px) {
+@media (min-width: 390px) {
   .card-container {
     width: 184px;
     object-fit: cover;
@@ -174,16 +224,7 @@ img {
   content: ">";
   color: white;
 }
-.carousel-caption{
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
 
-  max-width: 100%;
-  width:100%;
-  bottom:0px;
-  position:absolute;
-  left: -15px;
-}
 h5{
   font-weight: 900;
   width: 306px;
@@ -271,49 +312,52 @@ h5{
 <div id="artdesktop">
   <h2>Artwork</h2><br>
 <br>
-<div class="carousel-container" id="Artcarousel-container">
-  <div class="inner-carousel" id="ArtinnerCarousel">
-    <div class="track" id="Arttrack">
-
-      {% for artdetail in artwork %}
-        {% if forloop.last %}
-        <div class="card-container">
-          <div class="card cardartwork">
+<center>
+  <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
+      <div class="carousel-inner">
+      {% for artdetail in artwork %} 
+          {% if forloop.last %}
+        <div class="carousel-item active">
+          <div class="card">
             <a href="{%  url 'artwork_detail' artdetail.pk %}">
               {% if artdetail.Sensitive_content %}
-                <span class="badge bg-danger">NSFW</span>
+                  <span class="badge bg-danger">NSFW</span>
               {% endif %}
-              <img src="{{ artdetail.Artwork.url }}" style="width:100%;">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>{{ artdetail.Title }}</h5>
+              <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+              <div class="carousel-caption">
+                  <h5>{{ artdetail.Title }}</h5>
               </div>
             </a>
           </div>
         </div>
-        {% else %}
-        <div class="card-container">
-          <div class="card cardartwork">
+          {% else %}
+        <div class="carousel-item">
+          <div class="card">
             <a href="{%  url 'artwork_detail' artdetail.pk %}">
               {% if artdetail.Sensitive_content %}
-                <span class="badge bg-danger">NSFW</span>
+                  <span class="badge bg-danger">NSFW</span>
               {% endif %}
-              <img src="{{ artdetail.Artwork.url }}" style="width:100%;">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>{{ artdetail.Title }}</h5>
+              <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+              <div class="carousel-caption">
+                  <h5>{{ artdetail.Title }}</h5>
               </div>
             </a>
           </div>
         </div>
         {% endif %}
+      {% endfor %}
+      </div>
       
-    {% endfor %}
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <div class="nav">
-      <button class="prev" id="Artprev"><i class="fas fa-arrow-left fa-2x"><</i></button>
-      <button class="next" id="Artnext"><i class="fas fa-arrow-right fa-2x">></i></button>
-    </div>
-  </div>
-</div>
+  </center>
 </div>
 </div>
 <div id="exploremob">
@@ -356,42 +400,76 @@ h5{
   <h2>Artwork</h2><br>
 <br>
 {% for artdetail in artwork %}
-        {% if forloop.last %}
-        <div>
-          <div>
-            <a href="{%  url 'artwork_detail' artdetail.pk %}">
-              {% if artdetail.Sensitive_content %}
-                <span class="badge bg-danger">NSFW</span>
-              {% endif %}
-              <img src="{{ artdetail.Artwork.url }}" style="width:100%;">
-              <div>
-                <h5>{{ artdetail.Title }}</h5>
-              </div>
-            </a>
-          </div>
+  {% if forloop.last %}
+    <div>
+      <div class="card">
+        <a href="{%  url 'artwork_detail' artdetail.pk %}">
+          {% if artdetail.Sensitive_content %}
+            <span class="badge bg-danger">NSFW</span>
+          {% endif %}
+            <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+            <div class="carousel-caption">
+              <h5>{{ artdetail.Title }}</h5>
+            </div>
+          </a>
         </div>
-        {% else %}
-        <div>
-          <div>
-            <a href="{%  url 'artwork_detail' artdetail.pk %}">
-              {% if artdetail.Sensitive_content %}
-                <span class="badge bg-danger">NSFW</span>
-              {% endif %}
-              <img src="{{ artdetail.Artwork.url }}" style="width:100%;">
-              <div>
-                <h5>{{ artdetail.Title }}</h5>
-              </div>
-            </a>
-          </div>
-        </div>
-        {% endif %}
+      </div><br>
+  {% else %}
+    <div>
+      <div class="card">
+        <a href="{%  url 'artwork_detail' artdetail.pk %}">
+          {% if artdetail.Sensitive_content %}
+            <span class="badge bg-danger">NSFW</span>
+          {% endif %}
+            <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+            <div class="carousel-caption">
+              <h5>{{ artdetail.Title }}</h5>
+            </div>
+        </a>
+      </div>
+    </div><br>
+  {% endif %}
       
-    {% endfor %}
+{% endfor %}
 </div>
 </div>
 
 
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script>
+  var Artcarousel = document.querySelector('#Artcarousel')
+  
+  if (window.matchMedia("(min-width: 390px)").matches) {
+  //rest of the code
+  var carousel = new bootstrap.Carousel(Artcarousel, {
+      interval: 2000,
+      wrap: false
+  })
+  var carouselWidth = $(".carousel-inner")[0].scrollWidth;
+  var cardWidth = $(".carousel-item").width();
 
+  var scrollPosition = 0;
+
+  $(".carousel-control-next").on("click", function () {
+  if (scrollPosition < (carouselWidth - cardWidth * 4)) { //check if you can go any further
+      scrollPosition += cardWidth;  //update scroll position
+      $(".carousel-inner").animate({ scrollLeft: scrollPosition },600); //scroll left
+  }
+  });
+  $(".carousel-control-prev").on("click", function () {
+  if (scrollPosition > 0) {
+      scrollPosition -= cardWidth;
+      $(".carousel-inner").animate(
+      { scrollLeft: scrollPosition },
+      600
+      );
+  }
+  });
+  } else {
+  $(Artcarousel).addClass("slide");
+  }
+  
+</script>
 <script>
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
