@@ -27,7 +27,7 @@
         <br><br>
         <form action ="{% url 'like_artwork' object.pk %}" method="POST">
           {% csrf_token %}
-          <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like.png" style="border-radius: 50%;"></button>
+          <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like.png" style="border-radius: 50%;background-color: black;"></button>
           {{ object.total_likes }} 
         </form>
       </div><br>
@@ -42,16 +42,16 @@
         </form>
         </div>
         <br>
+        <hr class="solid" style="background-color: white;">
         <div>
           
           {% if not comments %}
-          <hr class="solid">
+          
             No comments yet.
           {% else %}
       <br>
       
           {% for comment in comments %}
-          <hr class="solid">
               <strong>
                   {{ comment.artist_Name }} - {{ comment.date_added}}
               </strong>

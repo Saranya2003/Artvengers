@@ -15,14 +15,6 @@
         font-family: 'Chakra Petch', sans-serif;
         background-color: #EB5160;
         color: white;
-        display: flex;
-        width: 426px;
-        padding: 19px 175px 18px 161px;
-        align-items: center;
-        font-size: 36px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
       }
       .form-signin {
         width: 100%;
@@ -49,18 +41,13 @@
       .form-control{
         background-color: #C0E0DE;
         color: black;
-        display: flex;
-        width: 433px;
-        padding: 28px 293px 25px 28px;
-        align-items: center;
-        border-radius: 40px;
       }
       
       .myForm {
         min-width: 300px;
         position: absolute;
         text-align: center;
-        top: 50%;
+        top:70%;
         left: 50%;
         transform: translate(-50%,-50%);
         
@@ -73,26 +60,20 @@
       }
       label{
         color: #FFF;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
       }
       
     </style>
   </head>
 <body class="web-app">
+ <div style="text-align:center;padding-top: 1em;">
+    <img src="../media/logo/artvengers-logo white.png" width="20%">
+  </div> 
 
-  <h1 style="text-align:center;padding-top: 1em;" class="text-light">Artvengers</h1>
-  
 
-<br><br><br>
 
 <div style="text-align:center;padding: 50px;
 margin: 20px;" class="form-group text-light ">
-  <div>
-    <img src="../media/logo/artvengers-logo white.png" width="30%" style="text-align:center;padding-top: 1em;">
-  </div>
+  
   <form method="POST" class="myForm">
       {% csrf_token %}
       <div class="form-group">

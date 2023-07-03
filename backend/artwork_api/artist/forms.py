@@ -21,13 +21,13 @@ class SignupForm(UserCreationForm):
 
 
 class EditProfileForm(UserChangeForm):
-    username = forms.CharField(max_length=100,widget=forms.TextInput())
-    email = forms.EmailField(max_length=100,widget=forms.TextInput())
+    username = forms.CharField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
     #bio = forms.Textarea()
-    bio = forms.CharField(widget=forms.Textarea)
-    Instagram = forms.CharField(max_length=100,widget=forms.TextInput())
-    Twitter = forms.CharField(max_length=100,widget=forms.TextInput())
-    Facebook = forms.CharField(max_length=100,widget=forms.TextInput())
+    bio = forms.CharField(label="",widget=forms.Textarea(attrs={'class': 'form-control'}))
+    Instagram = forms.CharField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control',}))
+    Twitter = forms.CharField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
+    Facebook = forms.CharField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User

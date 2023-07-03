@@ -66,5 +66,5 @@ class CommentForm(forms.ModelForm):
         fields = ('artist_Name','artwork_comment')
         widgets = {
             'artist_Name' : forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
-            'artwork_comment' : forms.Textarea(attrs={'class':'form-control'}),
+            'artwork_comment' : forms.Textarea(attrs={'class':'form-control input-sm','style':'width: 592px;'}),
         }

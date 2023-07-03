@@ -7,3 +7,14 @@ Title: {{ form.Title }}<br><br>
 
     Title: {{ form.Album_Title }}<br><br>
     Setting as private album?{{ form.Private_Album }}<br><br>
+
+
+    Username: {{ form.username }}<br><br>
+          Email:{{ form.email }}<br><br>
+          Bio:{{ form.bio }}<br><br>
+          
+    Social Media<br><br>
+          
+        Instagram:{{ form.Instagram }}<br><br>
+        Twitter:{{ form.Twitter }}<br><br>
+        Facebook:{{ form.Facebook }}<br><br>

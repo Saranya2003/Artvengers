@@ -81,19 +81,32 @@
     
     .carousel-inner {
         display: flex;
+        width:1578px;
+        height: 320px;
     }
     .carousel-item {
+        width: 306px;
+        height: 280px;
         margin-right: 0;
-        flex: 0 0 33.333333%;
         display: block;
+    }
+    .carousel-item-album {
+        width: 330px;
+        height: 308px;
+        margin-right: 0;
+        display: block;
+    }
+    .carousel-inner-album {
+        display: flex;
+        height: 320px;
     }
     
     }
     .card{
         margin: 0 .5em;
         border: none;
-        width: 100%;
-        height: 100%;
+        width: 306px;
+        height: 280px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -108,15 +121,17 @@
     .carousel-control-prev, .carousel-control-next{
         background-color: #EB5160;
         width: 60px;
-        height: 306px;
+        height: 308px;
         top: 50%;
         padding: 117px 27px 132px 21px;
         transform: translateY(-50%);
     }
     .carousel{
         width: 1704px;
-        height: 280px;
+        height: 320px;
         flex-shrink: 0;
+        margin: auto;
+        padding: 10px;
     }
     .carousel-caption{
     background-color: rgba(0, 0, 0, 0.75);
@@ -128,15 +143,35 @@
     position:absolute;
     left: -15px;
     }
+    .carousel-caption-album{
+    background-color: black;
+    color: white;
+    width: 335px;
+    bottom:0px;
+    position:absolute;
+    left: -15px;
+    
+    }
+    .carousel-control-prev-album , .carousel-control-next-album {
+        background-color: #EB5160;
+        width: 60px;
+        height: 308px;
+        top: 50%;
+        padding: 117px 27px 132px 21px;
+        transform: translateY(-50%);
+    }
+    .carousel-album{
+        width: 1704px;
+        height: 320px;
+        flex-shrink: 0;
+        margin: auto;
+        padding: 10px;
+        
+    }
     .cardimg {
         object-fit: cover;
         width: 306px;
         height: 280px;
-    }
-    .card{
-        width: 306px;
-        height: 280px;
-        flex-shrink: 0;
     }
     h5{
     font-weight: 900;
@@ -144,9 +179,8 @@
     text-align: left;
     padding-left: 10px;
     }
-    #carousel{
-      margin: auto;
-      padding: 10px;
+    .card-body{
+      background-color: black;
     }
 
 </style> 
@@ -183,57 +217,86 @@
   <h2>Album</h2>
   <br>
   
-    <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
-        <div class="carousel-inner">
-        {% for artdetail in artwork %} 
-            {% if forloop.last %}
-          <div class="carousel-item active">
-            <div class="card">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                {% if artdetail.Sensitive_content %}
-                    <span class="badge bg-danger">NSFW</span>
-                {% endif %}
-                <img src="{{ artdetail.Artwork.url }}" class="cardimg">
-                <div class="carousel-caption">
-                    <h5>{{ artdetail.Title }}</h5>
-                </div>
-              </a>
-            </div>
-          </div>
-            {% else %}
-          <div class="carousel-item">
-            <div class="card">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                {% if artdetail.Sensitive_content %}
-                    <span class="badge bg-danger">NSFW</span>
-                {% endif %}
-                <img src="{{ artdetail.Artwork.url }}" class="cardimg">
-                <div class="carousel-caption">
-                    <h5>{{ artdetail.Title }}</h5>
-                </div>
-              </a>
-            </div>
-          </div>
-          {% endif %}
-        {% endfor %}
-        </div>
+  <div id="Albumcarousel" class="carousel" data-bs-ride="carousel">
+    <div class="carousel-inner-album">
+      {% for albumObject in album %}
+      {% if not albumObject.Private_Album %}
+        {% if forloop.last %}
         
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+      <div class="carousel-item-album active">
+       
+          <div class="card" style="position: relative; bottom: -30px;opacity: 0.2;">        
+              <img src="{{ albumObject.memberpic.last.Artwork.url }}" class="cardimg">          
+          </div>
+          <div class="card" style="position: relative; right: 10px;bottom: 260px;opacity: 0.3;">        
+              <img src="{{ albumObject.memberpic.last.Artwork.url }}" class="cardimg">          
+          </div>
+          <div class="card" style="position: relative; right: 20px;bottom: 550px;opacity: 0.5;">        
+            <img src="{{ albumObject.memberpic.last.Artwork.url }}" class="cardimg">          
+          </div>
+          <div class="card" style="position: relative; right: 30px;bottom: 840px;">
+              <img src="{{ albumObject.memberpic.last.Artwork.url }}" class="cardimg">
+              
+          </div>
+        <a href="{% url 'album' albumObject.pk %}">
+          <div class="card" style="position: relative; right: 30px;bottom: 1060px; background-color: rgba(255, 255, 255, 0);width: 335px;">
+            <div class="carousel-caption-album">
+              <h5>{{ albumObject.Album_Title }}</h5>
+            </div>
+          </div>
+        </a>
       </div>
+        
+      
+        {% else %}
+      
+      <div class="carousel-item-album">
+          
+            <div class="card" style="position: relative; bottom: -30px;opacity: 0.2;">        
+              <img src="{{ albumObject.memberpic.last.Artwork.url }}" class="cardimg">          
+          </div>
+          <div class="card" style="position: relative; right: 10px;bottom: 260px;opacity: 0.3;">        
+            <img src="{{ albumObject.memberpic.last.Artwork.url }}" class="cardimg">          
+          </div>
+          <div class="card" style="position: relative; right: 20px;bottom: 550px;opacity: 0.5;">        
+            <img src="{{ albumObject.memberpic.last.Artwork.url }}" class="cardimg">          
+          </div>
+          <div class="card" style="position: relative; right: 30px;bottom: 840px;">
+                <img src="{{ albumObject.memberpic.last.Artwork.url }}" class="cardimg">  
+            </div>
+            <a href="{% url 'album' albumObject.pk %}">
+          <div class="card" style="position: relative; right: 30px;bottom: 1060px; background-color: rgba(255, 255, 255, 0);width: 335px;">
+            <div class="carousel-caption-album">
+              <h5>{{ albumObject.Album_Title }}</h5>
+            </div>
+          </div>
+        </a>
+            
+        
+      </div>
+      
+     
+    
+      {% endif %}
+      {% endif %}
+    {% endfor %}
+    </div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
     
   
 </div>
-<br> 
+<br><br>  
 <div id="artdesktop">
   <h2>Artwork</h2><br>
-<br>
 
   <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -293,8 +356,8 @@
             <div>
               <a href="{% url 'album' albumObject.pk %}">
                 
-                <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
-                <img src= "{{  albumObject.memberpic.second.Artwork.url }}">
+                <img src= "{{  albumObject.memberpic.first.Artwork.url }}"class="cardimg">
+                <img src= "{{  albumObject.memberpic.last.Artwork.url }}"class="cardimg">
                 <div>
                   <h5>{{ albumObject.Album_Title }}</h5>
                 </div>
@@ -305,8 +368,8 @@
           <div>
             <div >
               <a href="{% url 'album' albumObject.pk %}">
-                <img src="{{ albumObject.memberpic.first.Artwork.url }}">
-                <img src= "{{  albumObject.memberpic.second.Artwork.url }}">
+                <img src="{{ albumObject.memberpic.first.Artwork.url }}" class="cardimg">
+                <img src= "{{  albumObject.memberpic.last.Artwork.url }}"class="cardimg">
                 <div>
                   <h5>{{ albumObject.Album_Title }}</h5>
                 </div>
@@ -360,37 +423,36 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
   var Artcarousel = document.querySelector('#Artcarousel')
-  
-  if (window.matchMedia("(min-width: 390px)").matches) {
-  //rest of the code
-  var carousel = new bootstrap.Carousel(Artcarousel, {
-      interval: 2000,
-      wrap: false
-  })
-  var carouselWidth = $(".carousel-inner")[0].scrollWidth;
-  var cardWidth = $(".carousel-item").width();
+    
+    if (window.matchMedia("(min-width: 390px)").matches) {
+    //rest of the code
+    var carousel = new bootstrap.Carousel(Artcarousel, {
+        interval: 2000,
+        wrap: false
+    })
+    var carouselWidth = $(".carousel-inner")[0].scrollWidth;
+    var cardWidth = $(".carousel-item").width();
 
-  var scrollPosition = 0;
+    var scrollPosition = 0;
 
-  $(".carousel-control-next").on("click", function () {
-  if (scrollPosition < (carouselWidth - cardWidth * 4)) { //check if you can go any further
-      scrollPosition += cardWidth;  //update scroll position
-      $(".carousel-inner").animate({ scrollLeft: scrollPosition },600); //scroll left
-  }
-  });
-  $(".carousel-control-prev").on("click", function () {
-  if (scrollPosition > 0) {
-      scrollPosition -= cardWidth;
-      $(".carousel-inner").animate(
-      { scrollLeft: scrollPosition },
-      600
-      );
-  }
-  });
-  } else {
-  $(Artcarousel).addClass("slide");
-  }
-  
+    $(".carousel-control-next").on("click", function () {
+    if (scrollPosition < (carouselWidth - cardWidth * 4)) { //check if you can go any further
+        scrollPosition += cardWidth;  //update scroll position
+        $(".carousel-inner").animate({ scrollLeft: scrollPosition },600); //scroll left
+    }
+    });
+    $(".carousel-control-prev").on("click", function () {
+    if (scrollPosition > 0) {
+        scrollPosition -= cardWidth;
+        $(".carousel-inner").animate(
+        { scrollLeft: scrollPosition },
+        600
+        );
+    }
+    });
+    } else {
+    $(Artcarousel).addClass("slide");
+    }
 </script>
 <script>
   //Select in mobile

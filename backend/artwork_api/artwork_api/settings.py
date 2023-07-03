@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'artwork',
     'artist',
     'taggit',
+    'easy_thumbnails',
     #'taggit_bootstrap',
     'django_bootstrap5',
     'django_toggle_switch_widget',
@@ -156,3 +157,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'explore'
 LOGOUT_REDIRECT_URL = 'home'
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'Artwork': {'size': (306, 280), 'crop': 'smart'},
+    },
+}

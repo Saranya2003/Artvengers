@@ -118,29 +118,32 @@
   </head>
   <body class="web-app">
 <div class="firstPage" style="padding: 50px;margin: 20px;">
-  <img src="../media/logo/artvengers-logo white.png" id="desktoplogo">
-  <img src="../media/logo/artvengers-logo white.png" id="moblogo">
-</div>
+  <div id="desktophome">
+    <img src="../media/logo/artvengers-logo white.png" id="desktoplogo">
     <p style="padding: 50px;margin: 20px;"id="desktophome">
       Discover more passion of your art. Empower your imagination. Get to know
     your art today.
     </p>
-    <p style="padding: 50px;margin: 20px; font-size: 20px;"id="mobhome">
+    <br>
+    <div  style="display: flex;
+        width: 810px;
+        padding: 36px 539px 54px 59px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;" id="btndesktop">
+        
+        <a href="{%  url 'login' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Login</a>
+      <a href="{%  url 'register' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Sign up</a>
+    </div>
+  </div>
+
+  <div id="mobhome">
+    <img src="../media/logo/artvengers-logo white.png" id="moblogo"><br>
+    <p style="font-size: 20px;"id="mobhome">
       Discover more passion of your art. Empower your imagination. Get to know
     your art today.
     </p>
     <br>
-
-    <div  style="display: flex;
-    width: 810px;
-    padding: 36px 539px 54px 59px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;" id="btndesktop">
-    
-      <a href="{%  url 'login' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Login</a>
-    <a href="{%  url 'register' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Sign up</a>
-    </div>
     <div style="display: flex;
     width: 390px;
     padding: 36px 89px 54px 89px;
@@ -151,6 +154,6 @@
     <a href="{%  url 'login' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Login</a>
     <a href="{%  url 'register' %}" class="btn btn-custom btn-lg rounded-pill" role="button">Sign up</a>
     </div>
-  
-
+  </div>
+</div>
 </body>

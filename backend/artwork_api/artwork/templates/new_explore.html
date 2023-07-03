@@ -177,6 +177,49 @@
     </button>
   </div>
 </center>
+<br><br>
+<center>
+  <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
+      <div class="carousel-inner">
+      {% for artdetail in artwork %} 
+          {% if forloop.last %}
+        <div class="carousel-item active">
+          <div class="card">
+              {% if artdetail.Sensitive_content %}
+                  <span class="badge bg-danger">NSFW</span>
+              {% endif %}
+              <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+              <div class="carousel-caption">
+                  <h5>{{ artdetail.Title }}</h5>
+              </div>
+              </div>
+          </div>
+          {% else %}
+        <div class="carousel-item">
+          <div class="card">
+              {% if artdetail.Sensitive_content %}
+                  <span class="badge bg-danger">NSFW</span>
+              {% endif %}
+              <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+              <div class="carousel-caption">
+                  <h5>{{ artdetail.Title }}</h5>
+              </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      </div>
+      
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </center>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
     var Artcarousel = document.querySelector('#Artcarousel')

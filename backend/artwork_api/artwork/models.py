@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime,date
 from taggit.managers import TaggableManager
+from django_resized import ResizedImageField
+from easy_thumbnails.fields import ThumbnailerImageField
+
 
 # Create your models here.
     
@@ -13,7 +16,7 @@ class ArtworkPost(models.Model):
     Description = models.TextField()
     Sensitive_content = models.BooleanField(default=False)
     Tags = TaggableManager()
-    Artwork = models.FileField(blank=True,upload_to="media/img/")
+    Artwork = ThumbnailerImageField(blank=True,upload_to="media/img/")
     likes = models.ManyToManyField(User, related_name='artwork_post')
     #album = models.TextField()
 
@@ -44,7 +47,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     email = models.EmailField()
     bio = models.TextField()
-    profile_picture = models.ImageField(null=True,blank=True,upload_to="media/img/profile_pic")
+    profile_picture = ResizedImageField(size=[180, 180], crop=['middle', 'center'],upload_to="media/img/profile_pic")
     Instagram = models.CharField(max_length=255)
     Twitter = models.CharField(max_length=255)
     Facebook = models.CharField(max_length=255)

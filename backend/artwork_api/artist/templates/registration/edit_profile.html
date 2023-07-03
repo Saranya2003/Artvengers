@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
+<style>
+  .fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+  }
+  .fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+  </style>
 <br>
 <br><br>
 <div class="container" style="width:100%">
@@ -10,26 +28,31 @@
     <table>
     <div class="row align-items-start">
       <div class="col-sm" style="text-align: center;">
-        
-        <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;"><br><br>
-        <label for="newprofilepic">Upload Profile Picture</label><br><br>
-        <input type="file" name="newprofilepic" accept=".jpg, .png, .gif" class="btn btn-custom" style="width:100%">
-        <!--<button class="btn btn-custom">Upload profile picture</button>-->
+        {% if user.profile.profile_picture %}
+        <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;">
+        {% else %}
+        <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;">
+        {% endif %}
+        <br><br>
+        <div class="fileUpload btn btn-custom">
+          <span>Upload Profile Picture</span>
+          <input type="file" class="upload" />
+        </div>
       </div>
       <div class="col-sm">
         {% csrf_token %}
-          Username: {{ form.username }}<br><br>
-          Email:{{ form.email }}<br><br>
-          Bio:<input type="text" value={{ user.profile.bio }}><br><br>
+          Username {{ form.username }}<br>
+          Email {{ form.email }}<br>
+          Bio {{ form.bio }}<br>
 
 
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
           
-          Social Media<br><br>
+          <strong>Social Media</strong><br><br>
           
-        Instagram:<input type="text" value={{ user.profile.Instagram }}><br><br>
-        Twitter:<input type="text" value={{ user.profile.Twitter }}><br><br>
-        Facebook:<input type="text" value={{ user.profile.Facebook }}><br><br>
+        Instagram {{ form.Instagram }}<br>
+        Twitter {{ form.Twitter }}<br>
+        Facebook {{ form.Facebook }}<br>
         
       </div>
     </div>

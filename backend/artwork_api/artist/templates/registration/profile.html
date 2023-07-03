@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'webBase.html' %}
+{% block content %}
+
+<br>
+<br><br>
+<div class="container" style="width:100%">
+        {% csrf_token %}
+       
+    <table>
+    <div class="row align-items-start">
+      <div class="col-sm" style="text-align: center;">
+        {% if user.profile.profile_picture %}
+        <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;">
+        {% else %}
+        <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;">
+        {% endif %}
+        <br><br>
+      </div>
+      <div class="col-sm">
+        {% csrf_token %}
+        Username: {{ user.profile.user }}<br><br>
+        Email:{{ user.profile.email }}<br><br>
+        Bio:{{ user.profile.bio }}<br><br>
+          
+        <strong>Social Media</strong><br><br>
+          
+        Instagram:{{ user.profile.Instagram }}<br><br>
+        Twitter:{{ user.profile.Twitter }}<br><br>
+        Facebook:{{ user.profile.Facebook }}<br><br>
+
+        <a href="{% url 'edit_profile'%}" class="btn btn-custom" role="button">Edit profile</a>
+          
+        
+      </div>
+    </div>
+    </table>
+</div>
+
+
+{% endblock %}

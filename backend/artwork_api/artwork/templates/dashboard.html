@@ -172,10 +172,10 @@
   <div>
     <table style="width:100%">
       <tr>
-        <td style="width:50%"><h2>My albums </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button" id="uploadbtn">Create new album</a></h2></td>
+        <td style="width:75%"><h2>My albums </td><td style="width: 10%;"><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button" id="uploadbtn">Create new album</a></h2></td><td></td>
       </tr>
     </table>
-  </div>
+  
 
   <br>
     <div>
@@ -230,17 +230,15 @@
         </button>
       </div>
     </div>
-  
-  <br>
-  <br>
+  </div>
   <br>
   <div>
   <table style="width:100%">
     <tr>
-      <td style="width:50%"><h2>  My artworks </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button" id="uploadbtn">Post new artwork</a></h2></td>
+      <td style="width:75%"><h2>  My artworks </td><td style="width: 10%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button" id="uploadbtn">Post new artwork</a></h2></td><td></td>
     </tr>
   </table>
-</div>
+
     <br><br>
     
     <div id="Artcarousel" class="carousel" data-bs-ride="carousel">
@@ -284,11 +282,11 @@
       {% endfor %}
       </div>
       
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -296,7 +294,7 @@
     
   
 </div>
-
+</div>
 <div id="dashmob">
   <div id="albummob">
     <table style="width:100%">
@@ -406,38 +404,37 @@
 <br>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
-  var Artcarousel = document.querySelector('#Artcarousel')
-  
-  if (window.matchMedia("(min-width: 390px)").matches) {
-  //rest of the code
-  var carousel = new bootstrap.Carousel(Artcarousel, {
-      interval: 2000,
-      wrap: false
-  })
-  var carouselWidth = $(".carousel-inner")[0].scrollWidth;
-  var cardWidth = $(".carousel-item").width();
+var Artcarousel = document.querySelector('#Artcarousel')
+    
+    if (window.matchMedia("(min-width: 390px)").matches) {
+    //rest of the code
+    var carousel = new bootstrap.Carousel(Artcarousel, {
+        interval: 2000,
+        wrap: false
+    })
+    var carouselWidth = $(".carousel-inner")[0].scrollWidth;
+    var cardWidth = $(".carousel-item").width();
 
-  var scrollPosition = 0;
+    var scrollPosition = 0;
 
-  $(".carousel-control-next").on("click", function () {
-  if (scrollPosition < (carouselWidth - cardWidth * 4)) { //check if you can go any further
-      scrollPosition += cardWidth;  //update scroll position
-      $(".carousel-inner").animate({ scrollLeft: scrollPosition },600); //scroll left
-  }
-  });
-  $(".carousel-control-prev").on("click", function () {
-  if (scrollPosition > 0) {
-      scrollPosition -= cardWidth;
-      $(".carousel-inner").animate(
-      { scrollLeft: scrollPosition },
-      600
-      );
-  }
-  });
-  } else {
-  $(Artcarousel).addClass("slide");
-  }
-  
+    $(".carousel-control-next").on("click", function () {
+    if (scrollPosition < (carouselWidth - cardWidth * 4)) { //check if you can go any further
+        scrollPosition += cardWidth;  //update scroll position
+        $(".carousel-inner").animate({ scrollLeft: scrollPosition },600); //scroll left
+    }
+    });
+    $(".carousel-control-prev").on("click", function () {
+    if (scrollPosition > 0) {
+        scrollPosition -= cardWidth;
+        $(".carousel-inner").animate(
+        { scrollLeft: scrollPosition },
+        600
+        );
+    }
+    });
+    } else {
+    $(Artcarousel).addClass("slide");
+    }
 </script>
   <script>
     //Select in mobile

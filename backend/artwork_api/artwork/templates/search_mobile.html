@@ -3,10 +3,10 @@
 {% block content %}
 <h2>Tags list</h2>
 <form class="d-flex" action="{% url 'search_result' %}">
-    {% csrf_token %}
-    <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword"></i><span class="fa fa-search form-control-feedback"></span>
-    <button type="submit"></button>
-    
-  </form>
+  {% csrf_token %}
+  <input class="form-control-search mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword">
+  <button type="submit"><span class="fa fa-search form-control-feedback"></span></button>
+  
+</form>
   
 {% endblock %}
