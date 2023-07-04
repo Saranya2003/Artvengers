@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserChangeForm, UserCreationForm,PasswordC
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import fields
-
+from artwork.models import Profile
 
 class SignupForm(UserCreationForm):
     email = forms.EmailField(label="",widget=forms.EmailInput(attrs={'class': 'form-control rounded-pill','placeholder': 'Email'}))
@@ -19,11 +19,15 @@ class SignupForm(UserCreationForm):
         super(SignupForm, self).__init__(*args, **kwargs)
 
 
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = {'user','email','bio','Instagram','Twitter','Facebook'}
+        field_order = ['user','email','bio','Instagram','Twitter','Facebook']
 
-class EditProfileForm(UserChangeForm):
+'''class EditProfileForm(UserChangeForm):
     username = forms.CharField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
-    #bio = forms.Textarea()
     bio = forms.CharField(label="",widget=forms.Textarea(attrs={'class': 'form-control'}))
     Instagram = forms.CharField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control',}))
     Twitter = forms.CharField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -31,7 +35,7 @@ class EditProfileForm(UserChangeForm):
 
     class Meta:
         model = User
-        fields = ('username','email','password','bio','Instagram','Twitter','Facebook')
+        fields = ('username','email','password','bio','Instagram','Twitter','Facebook')'''
 
 
 class ChangePasswordForm(PasswordChangeForm):

@@ -14,6 +14,74 @@ from .forms import AlbumForm, ArtworkForm, CommentForm,UpdateArtworkForm,UpdateA
 from taggit.models import Tag
 
 # Create your views here.
+
+def insertalbum(request):
+    print(request.POST)
+   
+    if request.method == 'POST':
+       # print(request.FILES)
+        form = AlbumForm(request.POST)
+        if form.is_valid():
+            NewAlbum = form.save(commit=False)
+            #print(NewArtwork)
+            NewAlbum.artist_Name = request.user
+            #NewAlbum.memberpic = request.selectedpic
+            memlistid = request.POST['memberpiclist'].split(",")
+
+
+            
+            print(NewAlbum)
+            NewAlbum.save()
+            for i in memlistid:
+                #print(i)          
+                NewAlbum.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
+            form.save_m2m()
+            return HttpResponseRedirect(reverse('explore'))
+        else:
+            print(form.errors.as_data())
+            print("can't upload")
+
+
+def insertartwork(request):
+    print(request.POST)
+   
+    if request.method == 'POST':
+        #print(request.FILES)
+        form = ArtworkForm(request.POST)
+        if form.is_valid():
+            NewArtwork = form.save(commit=False)
+            #print(NewArtwork)
+            NewArtwork.artist_Name = request.user
+            NewArtwork.Artwork = request.FILES['Artwork']
+            print(NewArtwork)
+            NewArtwork.save()
+            form.save_m2m()
+            return HttpResponseRedirect(reverse('explore'))
+        else:
+            print(form.errors.as_data())
+            print("can't upload")
+
+def updateartworkpost(request, pkreq):
+    print(request.POST)
+    artcontent = ArtworkPost.objects.get(pk=pkreq)
+    if request.method == 'POST':
+        
+        
+        form = ArtworkForm(request.POST, instance=artcontent)
+        if form.is_valid():
+            UpdateArtwork = form.save(commit=False)
+            UpdateArtwork.artist_Name = request.user
+            
+            #print(NewArtwork)
+           
+           # print(UpdateArtwork)
+            UpdateArtwork.save()
+            form.save_m2m()
+            return HttpResponseRedirect(reverse('explore'))
+        else:
+            print(form.errors.as_data())
+            print("can't edit")       
+
 def sensitive_toggle(request):
     sensitive = ArtworkPost.objects.get(id=request.POST['id'])
     sensitive.Sensitive_content = request.POST['sensitive']=='true'
@@ -59,7 +127,7 @@ def uploadPage(request):
     return render(request,'upload.html',{})
 
 def post_comment(request, pk):
-    print(request.POST)
+   # print(request.POST)
     post = get_object_or_404(ArtworkPost, pk = request.POST.get('addcommentbutton'))
     
     if request.method == 'POST':

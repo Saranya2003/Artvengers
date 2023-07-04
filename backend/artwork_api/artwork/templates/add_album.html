@@ -12,13 +12,15 @@
 <br>
 <br>
 <table>
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" action="{% url 'add_album_action' %}" onsubmit="submem()" enctype="multipart/form-data">
     {% csrf_token %}
+    <input type="hidden" value="{{ user.id }}" name="artist_Name">
+    <!--<input type="hidden" name="memberpic"> -->
+    <input type="hidden" name="memberpiclist" id="memberpic">
     Title: {{ form.Album_Title }}<br><br>
     Setting as private album?&emsp;{{ form.Private_Album }}<br><br>
 
     Select Picture for the Album<br><br>
-    {{ form.memberpic }}
     <table>
         <tr>
     {% for artdetail in artwork %}
@@ -37,8 +39,14 @@
 <script>
     var name = "{{user.id}}";
     document.getElementById("user").value = name;
+</script>
+<script>
+   
     var selectedpic = [];
     const checksel = document.getElementsByClassName('PicList');
+    function submem(){
+        document.getElementById("memberpic").value=selectedpic;
+    }
     function PicClick(){
         if (selectedpic.includes(event.srcElement.id)){
             selectedpic = selectedpic.filter(function(e) {return e!==event.srcElement.id});

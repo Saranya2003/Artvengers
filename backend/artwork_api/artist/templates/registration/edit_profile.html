@@ -22,7 +22,7 @@
 <br>
 <br><br>
 <div class="container" style="width:100%">
-    <form method="POST" >
+  <form method="POST" action="{% url 'edit_profile_action' object.pk %}" enctype="multipart/form-data" id="profileform">
         {% csrf_token %}
        
     <table>
@@ -40,23 +40,23 @@
         </div>
       </div>
       <div class="col-sm">
+        
         {% csrf_token %}
-          Username {{ form.username }}<br>
-          Email {{ form.email }}<br>
-          Bio {{ form.bio }}<br>
+          Username <input type="text" value={{ user.profile.user }} name="username"> <br>
+          <input type="hidden" value={{ user.profile.pk }} name="user">
+          Email <input type="text" value={{ user.profile.email }} name="email"><br>
+          Bio <textarea name="bio" form="profileform">{{ user.profile.bio }}</textarea><br><br><br>
 
 
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
           
           <strong>Social Media</strong><br><br>
           
-        Instagram {{ form.Instagram }}<br>
-        Twitter {{ form.Twitter }}<br>
-        Facebook {{ form.Facebook }}<br>
-        
+        Instagram <input type="text" value={{ user.profile.Instagram }} name="Instagram"><br>
+        Twitter <input type="text" value={{ user.profile.Twitter }} name="Twitter"><br>
+        Facebook <input type="text" value={{ user.profile.Facebook }} name="Facebook"><br>
       </div>
     </div>
-    </table>
     <div class="form-group" style="text-align:center;">
         
             

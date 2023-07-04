@@ -248,7 +248,11 @@
                 {% endif %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if user.profile.id %}
                 <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Profile</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                {% endif %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
               </ul>
@@ -290,7 +294,11 @@
                 <img src="../../media/images/static_profile.png" width="10%" style="border-radius: 50%;">
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% if user.profile.id %}
                 <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Profile</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                {% endif %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
               </ul>
@@ -304,7 +312,12 @@
         <div class="row" style="width: 351px;">
             <div class="col-1 d-flex justify-content-center">
                 <div id="mySidenav" class="sidenav">
+                    {% if user.profile.id %}
                     <a href="{% url 'profile' user.profile.id %}">Profile</a>
+                    {% else %}
+                    <a href="#">Profile</a>
+                    {% endif %}
+                    
                     <hr class="solid-sidebar">
                     <a href="{% url 'Tags' %}">Tags</a>
                     <hr class="solid-sidebar">
@@ -327,7 +340,11 @@
               <td> <a class="navbar-brand" href="{% url 'explore'%}"><img src="../media/logo/explore.png"><br>Explore</a></td>
               <td><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../media/logo/dashboard.png"><br>Dashboard</a></td>
               <td><a class="navbar-brand"href="{% url 'upload'%}"><img src="../media/logo/upload.png"><br>Upload</a></td>
-              <td> <a class="navbar-brand" href="{% url 'profile' user.profile.id %}"><img src="../media/logo/profile.png"><br>Profile</a></td>
+              <td>{% if user.profile.id %}
+                <a class="navbar-brand" href="{% url 'profile' user.profile.id %}"><img src="../media/logo/profile.png"><br>Profile</a>
+                {% else %}
+                <a class="navbar-brand" href="#"><img src="../media/logo/profile.png"><br>Profile</a>
+                {% endif %}</td>
         </tr>
       </table>
      

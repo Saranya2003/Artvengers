@@ -21,8 +21,9 @@
 </style>
 <br><br>
 <div class="form-group" style="padding: 50px;margin: 20px;">
-  <form method="POST" enctype="multipart/form-data">
+  <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data">
     {% csrf_token %}
+    {{ form.artist_Name }}
     Title: {{ form.Title }}<br><br>
     Description:{{ form.Description }}<br><br>
     Flag as sensitive content?{{ form.Sensitive_content }}<br><br>
@@ -31,7 +32,7 @@
     Artwork:
     <div class="fileUpload btn btn-custom">
       <span>Upload artwork file</span>
-      <input type="file" class="upload" />
+      <input type="file" class="upload" name="Artwork">
     </div>
     <br><br>
 

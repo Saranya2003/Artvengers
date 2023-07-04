@@ -32,7 +32,7 @@ class Album(models.Model):
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     Private_Album = models.BooleanField(default=False)
-    memberpic = models.ManyToManyField(ArtworkPost, related_name='artwork_post')
+    memberpic = models.ManyToManyField(ArtworkPost, related_name='artwork_post',blank=True)
 
     def get_absolute_url(self):
         return reverse('dashboard')
