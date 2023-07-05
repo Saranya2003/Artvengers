@@ -22,20 +22,22 @@ def insertalbum(request):
        # print(request.FILES)
         form = AlbumForm(request.POST)
         if form.is_valid():
-            NewAlbum = form.save(commit=False)
-            #print(NewArtwork)
-            NewAlbum.artist_Name = request.user
-            #NewAlbum.memberpic = request.selectedpic
+            
+            form.instance.artist_Name = request.user
             memlistid = request.POST['memberpiclist'].split(",")
 
 
             
-            print(NewAlbum)
-            NewAlbum.save()
+            
+            form.save()
             for i in memlistid:
                 #print(i)          
-                NewAlbum.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
-            form.save_m2m()
+                form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
+           # NewAlbum.memberpic.all()
+           # print(NewAlbum.memberpic.all())
+            
+            
+            #form.save_m2m()
             return HttpResponseRedirect(reverse('explore'))
         else:
             print(form.errors.as_data())
@@ -43,7 +45,7 @@ def insertalbum(request):
 
 
 def insertartwork(request):
-    print(request.POST)
+   # print(request.POST)
    
     if request.method == 'POST':
         #print(request.FILES)
@@ -53,7 +55,7 @@ def insertartwork(request):
             #print(NewArtwork)
             NewArtwork.artist_Name = request.user
             NewArtwork.Artwork = request.FILES['Artwork']
-            print(NewArtwork)
+           # print(NewArtwork)
             NewArtwork.save()
             form.save_m2m()
             return HttpResponseRedirect(reverse('explore'))
@@ -81,6 +83,33 @@ def updateartworkpost(request, pkreq):
         else:
             print(form.errors.as_data())
             print("can't edit")       
+
+def updatealbum(request, pkreq):
+    print(request.POST)
+    albumcontent = Album.objects.get(pk=pkreq)
+    if request.method == 'POST':
+        
+        
+        form = AlbumForm(request.POST, instance=albumcontent)
+        if form.is_valid():
+
+            form.instance.artist_Name = request.user
+            memlistid = request.POST['memberpiclist'].split(",")
+           
+            #print(NewAlbum)
+            
+            for i in memlistid:
+                #print(i)          
+                form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
+            print("memberpic", form.instance.memberpic.all())
+        
+            form.instance.save()
+            #form.instance.save_m2m()
+            return HttpResponseRedirect(reverse('explore'))
+        else:
+            print(form.errors.as_data())
+            print("can't edit")       
+
 
 def sensitive_toggle(request):
     sensitive = ArtworkPost.objects.get(id=request.POST['id'])
@@ -236,6 +265,22 @@ class UpdateAlbum(UpdateView):
     model = Album
     form_class = UpdateAlbumForm
     template_name = 'update_album.html'
+
+    def get_context_data(self, **kwargs):
+        piclist=[]
+        context = super().get_context_data(**kwargs)
+        context['album'] = Album.objects.filter(pk=self.kwargs['pk']).order_by('-pk')
+        print("albumcontext", context['album'])
+        context['artwork'] = context['album'][0].memberpic.all().order_by('-pk')
+        print("contextartwork", context['artwork'])
+        #context['artwork'] = ArtworkPost.objects.filter(pk__in__).order_by('-pk')
+        
+        print("context", context['artwork'])
+        for i in context['artwork']:
+            print(i.pk)
+            piclist.append(i.pk)
+        context['piclist'] = piclist
+        return context
 
 class UpdateArtworks(UpdateView):
     model = ArtworkPost

@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
+<style>
 
-<div>
+    .selected {
+        border: 30px solid seashell;
+    }
+    
+    </style>
     <br>
     <br>
     <table>
-    <form method="POST">
+    <form method="POST" action="{% url 'update_album_action' object.pk %}" onsubmit="submem()" enctype="multipart/form-data">
         {% csrf_token %}
+        <input type="hidden" value="{{ user.id }}" name="artist_Name">
+        <!--<input type="hidden" name="memberpic"> -->
+        <input type="hidden" name="memberpiclist" id="memberpic">
         Title: {{ form.Album_Title }}<br><br>
         Setting as private album?&emsp;{{ form.Private_Album }}<br><br>
-
+    
         Select Picture for the Album<br><br>
-        {{ form.memberpic }}
         <table>
             <tr>
         {% for artdetail in artwork %}
@@ -22,32 +29,44 @@
         
             
         
-
+    
         </table>
-        <br>
-    </form>
-    </table>
     <div style="text-align: center;">
-    <button type="submit" class="btn btn-custom">Update the album/collection</button></div>
-</div>
-<script>
-    var name = "{{user.id}}";
-    document.getElementById("user").value = name;
-    var selectedpic = [];
-    const checksel = document.getElementsByClassName('PicList');
-    function PicClick(){
-        if (selectedpic.includes(event.srcElement.id)){
-            selectedpic = selectedpic.filter(function(e) {return e!==event.srcElement.id});
-            event.srcElement.classList.remove('selected');
-            
-        }
-        else{
-            selectedpic.push(event.srcElement.id);
-            event.srcElement.classList.add('selected');
-        }
-        console.log(selectedpic);    
-    };
+        <button type="submit" class="btn btn-custom">Create album/collection</button>
+    </div>
+    </form>
+    <script>
+        var name = "{{user.id}}";
+        document.getElementById("user").value = name;
+    </script>
+    <script>
+       
+        var selectedpic = {{ piclist }};
+        document.getElementById("memberpic").value=selectedpic;
 
-
-</script>
+        for (let i=0; i<selectedpic.length;i++){
+            console.log(selectedpic[i]);
+            let si = selectedpic[i]
+            document.getElementById(si).classList.add('selected');
+        }
+        
+        const checksel = document.getElementsByClassName('PicList');
+        function submem(){
+            document.getElementById("memberpic").value=selectedpic;
+        }
+        function PicClick(){
+            if (selectedpic.includes(event.srcElement.id)){
+                selectedpic = selectedpic.filter(function(e) {return e!==event.srcElement.id});
+                event.srcElement.classList.remove('selected');
+                
+            }
+            else{
+                selectedpic.push(event.srcElement.id);
+                event.srcElement.classList.add('selected');
+            }
+            console.log(selectedpic);    
+        };
+    
+    
+    </script>
 {% endblock %}
