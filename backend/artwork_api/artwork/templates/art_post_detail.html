@@ -25,22 +25,41 @@
           <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>
         {% endfor %}
         <br><br>
-        <form action ="{% url 'like_artwork' object.pk %}" method="POST" style="background-color: black;">
-          {% csrf_token %}
-          {% if liked_post  %}
-            <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like.png" style="border-radius: 50%;background-color: black;"></button>
-            {{ object.total_likes }} 
-          {% else %}
-          <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like(not press).png" style="border-radius: 50%;background-color: black;" onmouseout="unhover(this);" onmouseover="hover(this);"></button>
-            {{ object.total_likes }} 
-          {% endif %}
-        </form>
-        <select name="album" id="alvum">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
+        <table>
+          <tr>
+            <td>
+              <form action ="{% url 'like_artwork' object.pk %}" method="POST" style="background-color: black;">
+                {% csrf_token %}
+                {% if liked_post  %}
+                  <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like.png" style="border-radius: 50%;background-color: black;"></button>
+                  {{ object.total_likes }} 
+                {% else %}
+                <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like(not press).png" style="border-radius: 50%;background-color: black;" onmouseout="unhover(this);" onmouseover="hover(this);"></button>
+                  {{ object.total_likes }} 
+                {% endif %}
+              </form>
+            </td>
+            <td>
+              <form action="{% url 'add_to_album_action' %}" method="POST" enctype="multipart/form-data" id="collectionform">
+                {% csrf_token %}
+                <select class="form-select" multiple data-mdb-placeholder="Save to collection" name="albumlist" form='collectionform'>
+                {% for albumName in album %}
+                  {% if user.id == albumName.artist_Name.id %}
+                    {% if albumName %}
+                      <option>{{ albumName.Album_Title }}</option>
+                    {% else %}
+                      <option>No album to save.</option>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </select>
+              <button type="submit">Save to your collections</button>
+              </form>
+            </td>
+          </tr>
+        </table>
+        
+        
       </div><br>
         <div>
           <h3>Comments</h3>
@@ -92,8 +111,26 @@
             img.src = "../media/logo/Like.png";
           }
           function unhover(img){
-            img.src="../media/logo/Like.png"
+            img.src="../media/logo/Like(not press).png"
           }
+
+          var selectedalbum = [];
+          const checkselalbum = document.getElementsByClassName('AlbumList');
+          function submem(){
+              document.getElementById("memberpic").value=selectedalbum;
+          }
+          function AlbumClick(){
+              if (selectedalbum.includes(event.srcElement.id)){
+                  selectedalbum = selectedalbum.filter(function(e) {return e!==event.srcElement.id});
+                  event.srcElement.classList.remove('selected');
+                  
+              }
+              else{
+                  selectedalbum.push(event.srcElement.id);
+                  event.srcElement.classList.add('selected');
+              }
+              console.log(selectedalbum);    
+          };
       </script>
       </div>
     </div>

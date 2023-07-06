@@ -1,5 +1,5 @@
 from django.contrib.auth import forms
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm,PasswordChangeForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm,PasswordChangeForm, SetPasswordForm
 from django.contrib.auth.models import User
 from django import forms
 from django.forms import fields
@@ -43,8 +43,8 @@ class CreateProfileForm(forms.ModelForm):
         fields = ('username','email','password','bio','Instagram','Twitter','Facebook')'''
 
 
-class ChangePasswordForm(PasswordChangeForm):
-    old_password = forms.CharField(label="",help_text="",max_length=100,widget=forms.PasswordInput(attrs={'type':'hidden','value':'user.old_password','class':'form-control','is_hidden':'true'}))
+class ChangePasswordForm(SetPasswordForm):
+    #old_password = forms.CharField(label="",help_text="",max_length=100,widget=forms.PasswordInput(attrs={'type':'hidden','value':'user.old_password','class':'form-control','is_hidden':'true'}))
     new_password1 = forms.CharField(label="",help_text="",max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}))
     new_password2 = forms.CharField(label="",help_text="",max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}))
 

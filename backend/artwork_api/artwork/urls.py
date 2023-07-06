@@ -8,6 +8,7 @@ urlpatterns = [
     path('list/<int:pk>/', views.DetailArtwork.as_view(),name="artwork_detail"),
     path('albumlist/', views.ListAlbum.as_view(),name="album_list"),
     path('', views.home, name="home"),
+    path('artwork/addcollection/', views.addtoalbum,name="add_to_album_action"),
     path('artwork/<int:pk>', views.ArtworkPostDetail.as_view(), name="artwork_detail"),
     path('artwork/edit/<int:pk>', views.UpdateArtworks.as_view(), name="artwork_edit"),
     path('artwork/edit/<int:pkreq>/update', views.updateartworkpost, name="artwork_edit_action"),

@@ -8,12 +8,38 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import FormMixin
 from django.http import HttpResponseRedirect
 
-from .models import ArtworkPost,Album, Comment
+from .models import ArtworkPost,Album, Comment, Collection
 from .serializers import AlbumSerializer, ArtworkSerializer
-from .forms import AlbumForm, ArtworkForm, CommentForm,UpdateArtworkForm,UpdateAlbumForm
+from .forms import AlbumForm, ArtworkForm, CommentForm,UpdateArtworkForm,UpdateAlbumForm,CollectionForm
 from taggit.models import Tag
 
 # Create your views here.
+
+def addtoalbum(request):
+    if request.method == 'POST':
+        form = CollectionForm(request.POST)
+        print(request.POST.getlist('albumlist'))
+        if form.is_valid():
+            
+            form.instance.coluser = request.user
+            memlistid = request.POST.getlist('albumlist').split(",")
+
+
+            
+            
+            form.save()
+            for i in memlistid:
+                #print(i)          
+                form.instance.albumlist.add(Collection.objects.get(pk=int(i)))
+           # NewAlbum.memberpic.all()
+           # print(NewAlbum.memberpic.all())
+            
+            
+            #form.save_m2m()
+            return HttpResponseRedirect(reverse('explore'))
+        else:
+            print(form.errors.as_data())
+            print("can't upload")
 
 def insertalbum(request):
     print(request.POST)
@@ -196,6 +222,7 @@ class ArtworkPostDetail(DetailView):
         
         context['likes'] = total_likes
         context['liked_post'] = liked
+        context['album'] = Album.objects.all()
         context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'])
         context['form'] = CommentForm()
         

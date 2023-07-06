@@ -266,13 +266,18 @@
               </ul>
             </li>
           </ul>
-              <form class="navbar-form d-flex" action="{% url 'search_result' %}">
-                {% csrf_token %}
-                <div class="input-group">
-                  <input class="form-control-search mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword">
-                  <span class="input-group-append"><button type="submit"><span class="fa fa-search form-control-feedback"></span></button></span>
-                </div>
-              </form>
+          <form class="navbar-form d-flex rounded-pill" action="{% url 'search_result' %}">
+            {% csrf_token %}
+            
+            <div class="input-group rounded-pill" style="background-color: rgba(0, 0, 0, 0.75);">
+              
+              <input class="form-control rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary rounded-pill"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+            
+          </form>
         </div>
       </div>
     </nav>
