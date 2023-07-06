@@ -8,16 +8,16 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic.edit import FormMixin
 from django.http import HttpResponseRedirect
 
-from .models import ArtworkPost,Album, Comment, Collection
+from .models import ArtworkPost,Album, Comment
 from .serializers import AlbumSerializer, ArtworkSerializer
-from .forms import AlbumForm, ArtworkForm, CommentForm,UpdateArtworkForm,UpdateAlbumForm,CollectionForm
+from .forms import AlbumForm, ArtworkForm, CommentForm,UpdateArtworkForm,UpdateAlbumForm
 from taggit.models import Tag
 
 # Create your views here.
 
 def addtoalbum(request):
     if request.method == 'POST':
-        form = CollectionForm(request.POST)
+        form = UpdateAlbumForm(request.POST)
         print(request.POST.getlist('albumlist'))
         if form.is_valid():
             
@@ -30,7 +30,7 @@ def addtoalbum(request):
             form.save()
             for i in memlistid:
                 #print(i)          
-                form.instance.albumlist.add(Collection.objects.get(pk=int(i)))
+                form.instance.albumlist.add(ArtworkPost.objects.get(pk=int(i)))
            # NewAlbum.memberpic.all()
            # print(NewAlbum.memberpic.all())
             
