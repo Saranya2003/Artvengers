@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.views import generic
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
@@ -73,6 +74,24 @@ class ChangePasswordsView(PasswordChangeView):
     form_class = ChangePasswordForm
     template_name='registration/password.html'
     success_url = reverse_lazy('explore')
+
+def change_password(request):
+    if request.method == 'POST':
+        form = ChangePasswordForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('explore')
+        else:
+            print(user.id.old_password)
+            print(form.errors.as_data())
+            print("can't edit")   
+    else:
+        form = ChangePasswordForm(request.user)
+    return render(request, 'registration/password.html', {
+        'form': form
+    })
 
 def updateprofile(request, pkreq):
         userprofile = Profile.objects.get(pk=pkreq)

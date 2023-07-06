@@ -65,6 +65,9 @@
           {% for artdetail in artwork %}
           <div class="column">
               <div class="card">
+                {% if artdetail.Sensitive_content %}
+                      <span class="badge bg-danger topleft">NSFW</span>
+                    {% endif %}
                   <img class="card-img-top" src="{{ artdetail.Artwork.url }}" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
                   <div class="card-body">
                       <h5>{{ artdetail.Title }}</h5>

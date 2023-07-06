@@ -154,6 +154,12 @@
     text-align: left;
     padding-left: 10px;
     }
+    .topleft {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      font-size: 18px;
+    }
 </style>   
 <nav class="navbar navbar-expand-lg navbar-custom2">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -277,7 +283,7 @@
               <div class="card">
                 <a href="{%  url 'artwork_detail' artdetail.pk %}">
                   {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger">NSFW</span>
+                      <span class="badge bg-danger topleft">NSFW</span>
                   {% endif %}
                   <img src="{{ artdetail.Artwork.url }}" class="cardimg">
                   <div class="carousel-caption">
@@ -293,7 +299,7 @@
               <div class="card">
                 <a href="{%  url 'artwork_detail' artdetail.pk %}">
                   {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger">NSFW</span>
+                      <span class="badge bg-danger topleft">NSFW</span>
                   {% endif %}
                   <img src="{{ artdetail.Artwork.url }}" class="cardimg">
                   <div class="carousel-caption">
@@ -390,7 +396,7 @@
                 <div>
                   <a href="{%  url 'artwork_detail' artdetail.pk %}">
                     {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger">NSFW</span>
+                      <span class="badge bg-danger topleft">NSFW</span>
                     {% endif %}
                     <img src="{{ artdetail.Artwork.url }}">
                     <div>
@@ -409,7 +415,7 @@
                 <div>
                   <a href="{%  url 'artwork_detail' artdetail.pk %}">
                     {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger">NSFW</span>
+                      <span class="badge bg-danger topleft">NSFW</span>
                     {% endif %}
                     <img src="{{ artdetail.Artwork.url }}">
                     <div>
