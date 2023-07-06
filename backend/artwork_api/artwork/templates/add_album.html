@@ -1,53 +1,86 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-
-<style>
-
-.selected {
-    border: 30px solid seashell;
-}
-
-</style>
 <br>
 <br>
-<table>
-<form method="POST" action="{% url 'add_album_action' %}" onsubmit="submem()" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="hidden" value="{{ user.id }}" name="artist_Name">
-    <!--<input type="hidden" name="memberpic"> -->
-    <input type="hidden" name="memberpiclist" id="memberpic">
-    Title: {{ form.Album_Title }}<br><br>
-    <table>
-      <tr>
-        <td>Setting as private album?</td>
-        <td>
-          <div class="form-check form-switch">
-            {{ form.Private_Album }}
-          </div>
-        </td>
-      </tr>
-      
-      
-    </table><br>
 
-    Select Picture for the Album<br><br>
-    <table>
+<div class="form-group" style="padding: 50px;margin: 20px;" id="desktopcontent">
+    <form method="POST" action="{% url 'add_album_action' %}" onsubmit="submem()" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" value="{{ user.id }}" name="artist_Name">
+        <!--<input type="hidden" name="memberpic"> -->
+        <input type="hidden" name="memberpiclist" id="memberpic">
+        <center>
+        <table>
         <tr>
-    {% for artdetail in artwork %}
-        {% if user.id == artdetail.artist_Name.id %} 
-        <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
-        {% endif %}     
-    {% endfor %}
-    
-        
-    
-
-    </table>
-<div style="text-align: center;">
-    <button type="submit" class="btn btn-custom">Create album/collection</button>
+            <td>Title:<br><br></td><td>{{ form.Album_Title }}<br><br></td>
+        </tr>
+        <tr>
+            <td>Setting as private album?<br><br></td>
+            <td>
+              <div class="form-check form-switch">
+                {{ form.Private_Album }}
+              </div><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>Select Picture for the Album<br><br></td>
+            <td>
+                <div class="scrollmenu">
+                    {% for artdetail in artwork %}
+                        {% if user.id == artdetail.artist_Name.id %} 
+                        <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
+                        {% endif %}     
+                    {% endfor %}
+                </div><br><br>
+            </td>
+        </tr>
+        </table>
+        </center><br><br>
+    <div style="text-align: center;">
+        <button type="submit" class="btn btn-custom">Create album/collection</button>
+    </div>
+    </form>
 </div>
-</form>
+
+<div id="mobcontent">
+    <form method="POST" action="{% url 'add_album_action' %}" onsubmit="submem()" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" value="{{ user.id }}" name="artist_Name">
+        <!--<input type="hidden" name="memberpic"> -->
+        <input type="hidden" name="memberpiclist" id="memberpic">
+        Title: {{ form.Album_Title }}<br><br>
+        <table>
+          <tr>
+            <td>Setting as private album?</td>
+            <td>
+              <div class="form-check form-switch">
+                {{ form.Private_Album }}
+              </div>
+            </td>
+          </tr>
+          
+          
+        </table><br>
+    
+        Select Picture for the Album<br><br>
+    
+        <div class="scrollmenu">
+            {% for artdetail in artwork %}
+                {% if user.id == artdetail.artist_Name.id %} 
+                <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
+                {% endif %}     
+            {% endfor %}
+        </div>
+        <br>
+    <div style="text-align: center;">
+        <button type="submit" class="btn btn-custom">Create album/collection</button>
+    </div>
+    </form>
+</div>
+
+
+
 <script>
     var name = "{{user.id}}";
     document.getElementById("user").value = name;
@@ -72,6 +105,16 @@
         console.log(selectedpic);    
     };
 
+    const mouseWheel = document.querySelector('.scrollmenu');
 
-</script>
+    mouseWheel.addEventListener('wheel', function(e) {
+        const race = 15; // How many pixels to scroll
+
+        if (e.deltaY > 0) // Scroll right
+            mouseWheel.scrollLeft += race;
+        else // Scroll left
+            mouseWheel.scrollLeft -= race;
+            e.preventDefault();
+    });
+    </script>
 {% endblock %}

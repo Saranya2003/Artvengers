@@ -17,20 +17,21 @@ from taggit.models import Tag
 
 def addtoalbum(request):
     if request.method == 'POST':
-        form = UpdateAlbumForm(request.POST)
-        print(request.POST.getlist('albumlist'))
+        albumcontent = Album.objects.get(pk=int(request.POST['Album_Title']))
+        form = UpdateAlbumForm(request.POST, instance=albumcontent)
+        oldalbumname = albumcontent.Album_Title
+        print(request.POST)
         if form.is_valid():
             
-            form.instance.coluser = request.user
-            memlistid = request.POST.getlist('albumlist').split(",")
-
+            form.instance.artist_Name = request.user
+            form.instance.Album_Title = oldalbumname
+            memlistid = request.POST['colartworkpost_id']
+            print(memlistid)
 
             
+            form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(memlistid)))
+            form.instance.save() 
             
-            form.save()
-            for i in memlistid:
-                #print(i)          
-                form.instance.albumlist.add(ArtworkPost.objects.get(pk=int(i)))
            # NewAlbum.memberpic.all()
            # print(NewAlbum.memberpic.all())
             

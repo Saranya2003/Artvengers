@@ -324,3 +324,8 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
+
+  <div style="float: right;">
+                  <a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a>
+                  <a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
+                </div>
