@@ -21,7 +21,7 @@
   </style>
 <br>
 <br><br>
-<div class="container" style="width:100%">
+<div class="container" style="width:100%" id="desktopcontent">
   <form method="POST" action="{% url 'create_profile_action' %}" enctype="multipart/form-data" id="profileform">
         {% csrf_token %}
        
@@ -45,7 +45,7 @@
           Username <input type="text" value="{{ user.username }}" name="username" class="form-control"> <br>
           <input type="hidden" value="{{ user.id }}" name="user">
           Email <input type="text" value="{{ user.email }}"  name="email" class="form-control"><br>
-          Bio <textarea name="bio" form="profileform" class="form-control"></textarea><br><br><br>
+          Bio <textarea name="bio" form="profileform" class="form-control"></textarea><br><br>
 
 
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>

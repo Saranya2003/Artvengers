@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from artwork.models import Profile
-from .forms import PasswordChangeForm, SignupForm, EditProfileForm,CreateProfileForm
+from .forms import ChangePasswordForm, SignupForm, EditProfileForm,CreateProfileForm
 
 # Create your views here.
 class CreateProfileView(generic.CreateView):
@@ -70,9 +70,9 @@ class ShowProfileView(generic.DetailView):
      
 
 class ChangePasswordsView(PasswordChangeView):
-    form_class = PasswordChangeForm
+    form_class = ChangePasswordForm
     template_name='registration/password.html'
-    success_url = reverse_lazy('dashboard')
+    success_url = reverse_lazy('explore')
 
 def updateprofile(request, pkreq):
         userprofile = Profile.objects.get(pk=pkreq)

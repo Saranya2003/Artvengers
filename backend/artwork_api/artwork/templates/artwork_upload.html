@@ -20,7 +20,57 @@
 }
 </style>
 <br><br>
-<div class="form-group" style="padding: 50px;margin: 20px;">
+<center>
+<div class="form-group" style="padding: 50px;margin: 20px;" id="desktopcontent">
+  <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.artist_Name }}
+    <table>
+      <tr>
+        <td>Title:<br><br></td><td>{{ form.Title }}<br><br></td>
+      </tr>
+      <tr>
+        <td>Description:<br><br></td><td>{{ form.Description }}<br><br></td>
+      </tr>
+      <tr>
+        <td>Flag as sensitive content?<br><br></td>
+        <td>
+          <div class="form-check form-switch">
+            {{ form.Sensitive_content }}<br><br>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Tags
+          (Separate with comma):<br><br></td>
+        <td>
+          {{ form.Tags }}<br><br>
+        </td>
+      </tr>
+      <tr>
+        <td>Artwork:<br><br></td>
+        <td>
+          <div class="fileUpload btn btn-custom">
+            <span>Upload artwork file</span>
+            <input type="file" class="upload" name="Artwork">
+          </div>
+          <br><br>
+        </td>
+      </tr>
+    </table>
+    
+    
+    
+    
+
+    <div style="text-align: center;">
+      <input type="submit" class="btn btn-custom mx-auto" value="Publish the artwork post">
+    </div>
+</form>  
+</div>
+</center>
+
+<div class="form-group" style="padding: 50px;margin: 20px;" id="mobcontent">
   <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.artist_Name }}
@@ -48,11 +98,10 @@
     <br><br>
 
     <div style="text-align: center;">
-      <input type="submit" class="btn btn-custom mx-auto" value="Publish">
+      <input type="submit" class="btn btn-custom mx-auto" value="Publish the artwork post">
     </div>
 </form>  
 </div>
-
 <script>
     var name = "{{user.id}}";
     document.getElementById("user").value = name;

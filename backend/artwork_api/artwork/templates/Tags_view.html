@@ -1,18 +1,82 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    
+    /* Float four columns side by side */
+    .column {
+      float: left;
+      width: 15%;
+      padding: 0 10px;
+      margin-bottom:10px;
+      width: 350px; 
+      height: 350px;
+      padding-bottom: 1em;
+      padding-right: 1em; 
+    }
+    
+    /* Remove extra left and right margins, due to padding */
+    .row {margin: 0 -5px;}
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    /* Responsive columns */
+    @media screen and (max-width: 390px) {
+      .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+    
+    /* Style the counter cards */
+    .card {
+      padding: 0px;
+      text-align: center;
+      background-color: white;
+      width: 350px; 
+      height: 350px; 
+      object-fit: cover;
+    }
+    .card-body{
+        background-color: rgba(0, 0, 0, 0.75);
+        color: white;
+        width: 335px;
+        bottom:20px;
+        position:absolute;
+        left: -15px;
+    }
+    </style>
 <div>
     <br><br>
     <h2>Tag: {{ SelectTag }}</h2>
     <br><br>
+    <div class="row">
     {% for artdetail in artwork %}
 
         {% if artdetail.Tags.names %}
             
-            <a href="{%  url 'artwork_detail' artdetail.pk %}"><img src="{{ artdetail.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;"></a> 
+        <div class="column">
+            <div class="card">
+                <img class="card-img-top" src="{{ artdetail.Artwork.url }}" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
+                <div class="card-body">
+                    <h5>{{ artdetail.Title }}</h5>
+                </div>
+            </div>
+          </div>
         {% else %}
             <h2>No artworks available</h2>
         {% endif %}
     {% endfor %}
+    </div>
 </div>
 {% endblock %}

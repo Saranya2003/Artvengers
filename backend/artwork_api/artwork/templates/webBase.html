@@ -22,6 +22,10 @@
       #mobnavtop{
         display:none;
       }
+      #mobalbum, #mobartwork, #mobcontent{
+          display:none;
+
+        }
 
       @media screen and (max-width:390px){
         .navbar-custom {
@@ -34,14 +38,14 @@
         #mobnavbar {
             display:block;
         }
-        #desktopnav, #tagdiv, #desktopalbum, #desktopartwork {
+        #desktopnav, #tagdiv, #desktopalbum, #desktopartwork, #desktopcontent {
           display:none;
         }
         #mobnavtop{
           display: block;
         } 
         
-        #mobalbum, #mobartwork{
+        #mobalbum, #mobartwork, #mobcontent{
           display:block;
 
         }
@@ -253,7 +257,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if user.profile.id %}
-                <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'edit_profile' user.profile.id %}">Profile</a></li>
                 {% else %}
                 <li><a class="dropdown-item" href="{% url 'create_profile' %}">Profile</a></li>
                 {% endif %}
@@ -262,14 +266,13 @@
               </ul>
             </li>
           </ul>
-              <form class="d-flex" action="{% url 'search_result' %}">
+              <form class="navbar-form d-flex" action="{% url 'search_result' %}">
                 {% csrf_token %}
-                <input class="form-control-search mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword">
-                <button type="submit"><span class="fa fa-search form-control-feedback"></span></button>
-                
+                <div class="input-group">
+                  <input class="form-control-search mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                  <span class="input-group-append"><button type="submit"><span class="fa fa-search form-control-feedback"></span></button></span>
+                </div>
               </form>
-         
-         
         </div>
       </div>
     </nav>
@@ -303,7 +306,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if user.profile.id %}
-                <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'edit_profile' user.profile.id %}">Profile</a></li>
                 {% else %}
                 <li><a class="dropdown-item" href="{% url 'create_profile' %}">Create Your Profile</a></li>
                 {% endif %}
@@ -321,7 +324,7 @@
             <div class="col-1 d-flex justify-content-center">
                 <div id="mySidenav" class="sidenav">
                     {% if user.profile.id %}
-                    <a href="{% url 'profile' user.profile.id %}">Profile</a>
+                    <a href="{% url 'edit_profile' user.profile.id %}">Profile</a>
                     {% else %}
                     <a href="{% url 'create_profile' %}">Profile</a>
                     {% endif %}
@@ -349,7 +352,7 @@
               <td><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../../media/logo/dashboard.png"><br>Dashboard</a></td>
               <td><a class="navbar-brand"href="{% url 'upload'%}"><img src="../../media/logo/upload.png"><br>Upload</a></td>
               <td>{% if user.profile.id %}
-                <a class="navbar-brand" href="{% url 'profile' user.profile.id %}"><img src="../../media/logo/profile.png"><br>Profile</a>
+                <a class="navbar-brand" href="{% url 'edit_profile' user.profile.id %}"><img src="../../media/logo/profile.png"><br>Profile</a>
                 {% else %}
                 <a class="navbar-brand" href="{% url 'create_profile' %}"><img src="../../media/logo/profile.png"><br>Profile</a>
                 {% endif %}</td>
