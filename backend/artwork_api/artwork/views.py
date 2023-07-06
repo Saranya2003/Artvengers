@@ -274,7 +274,7 @@ class Taglist(ListView):
         return context
 class DashboardView(ListView):
     model = ArtworkPost
-    template_name = 'dashboard.html'
+    template_name = 'new_dashboard.html'
     ordering =['-id']
 
     def get_context_data(self, **kwargs):
