@@ -25,10 +25,15 @@
           <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>
         {% endfor %}
         <br><br>
-        <form action ="{% url 'like_artwork' object.pk %}" method="POST">
+        <form action ="{% url 'like_artwork' object.pk %}" method="POST" style="background-color: black;">
           {% csrf_token %}
-          <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like.png" style="border-radius: 50%;background-color: black;"></button>
-          {{ object.total_likes }} 
+          {% if liked_post  %}
+            <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like.png" style="border-radius: 50%;background-color: black;"></button>
+            {{ object.total_likes }} 
+          {% else %}
+          <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like(not press).png" style="border-radius: 50%;background-color: black;" onmouseout="unhover(this);" onmouseover="hover(this);"></button>
+            {{ object.total_likes }} 
+          {% endif %}
         </form>
       </div><br>
         <div>
@@ -36,9 +41,19 @@
         <br>
         
         <form action ="{% url 'add_comment' object.pk %}" method="POST">
+          <table>
           {% csrf_token %}
-              {{ form.as_p }}
-            <button type="submit" name="addcommentbutton" value="{{ object.pk }}" class="btn btn-custom rounded-pill">Post</button>
+            <tr>
+              <td>
+                
+                {{ form.artist_Name}}
+                {{ form.artwork_comment }}
+              </td>
+              <td>
+                <button type="submit" name="addcommentbutton" value="{{ object.pk }}" class="btn btn-custom rounded-pill">Post</button>
+              </td>
+            </tr>
+          </table>
         </form>
         </div>
         <br>
@@ -67,6 +82,12 @@
         <script>
           var name = "{{user.id}}";
           document.getElementById("user").value = name;
+          function hover(img){
+            img.src = "../media/logo/Like.png";
+          }
+          function unhover(img){
+            img.src="../media/logo/Like.png"
+          }
       </script>
       </div>
     </div>

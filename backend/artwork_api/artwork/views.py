@@ -97,6 +97,7 @@ def updatealbum(request, pkreq):
             memlistid = request.POST['memberpiclist'].split(",")
            
             #print(NewAlbum)
+            form.instance.memberpic.clear()
             
             for i in memlistid:
                 #print(i)          
@@ -126,7 +127,10 @@ def private_toggle(request):
 def LikeView(request,pk):
     #print("Like Request post is", request.POST)
     artwork_post = get_object_or_404(ArtworkPost, pk = request.POST.get('artworkpost_id'))
-    artwork_post.likes.add(request.user)
+    if artwork_post.likes.filter(id=request.user.id).exists():
+        artwork_post.likes.remove(request.user)
+    else:
+        artwork_post.likes.add(request.user)
     return HttpResponseRedirect(reverse('artwork_detail',args=[str(pk)]))
 
 
@@ -161,12 +165,18 @@ def post_comment(request, pk):
     
     if request.method == 'POST':
         form = CommentForm(request.POST)
+        comment = form.save(commit=False)
+        comment.artist_Name = request.user
         if form.is_valid():
-           comment = form.save(commit=False)
+           
            comment.post = post
            comment.save()
-
            return HttpResponseRedirect(reverse('artwork_detail',args=[str(pk)]))
+        else:
+           print(form.errors.as_data())
+           print("can't post comment")  
+
+            
 
 class ArtworkPostDetail(DetailView):
     model = ArtworkPost
@@ -178,18 +188,17 @@ class ArtworkPostDetail(DetailView):
     def get_context_data(self, **kwargs):
        
         context = super().get_context_data(**kwargs)
-        #print(context['form'])
-        #(context['artwork'] = ArtworkPost.objects.all()
-       # print(context)
-        #print(context['artworkpost'].Tags.names())
         stuff = get_object_or_404(ArtworkPost, id=self.kwargs['pk'])
+        liked = False
         total_likes = stuff.total_likes()
+        if stuff.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        
         context['likes'] = total_likes
+        context['liked_post'] = liked
         context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'])
         context['form'] = CommentForm()
-        #print("POST is", self.request.GET)
-       # print("POSTED")
-        #print(context['comments'])
+        
         return context
 class AlbumView(ListView):
     model = Album
@@ -200,6 +209,7 @@ class AlbumView(ListView):
         context['album'] = Album.objects.filter(pk=self.kwargs['pk']).order_by('-pk')
         print(context['album'][0].Album_Title)
         #print(context['album'][0].memberpic.all())
+        
         context['artwork'] = context['album'][0].memberpic.all().order_by('-pk')
         
         context['Tags'] = Tag.objects.all()
@@ -272,14 +282,15 @@ class UpdateAlbum(UpdateView):
         context['album'] = Album.objects.filter(pk=self.kwargs['pk']).order_by('-pk')
         print("albumcontext", context['album'])
         context['artwork'] = context['album'][0].memberpic.all().order_by('-pk')
-        print("contextartwork", context['artwork'])
-        #context['artwork'] = ArtworkPost.objects.filter(pk__in__).order_by('-pk')
+        #print("contextartwork", context['artwork'])
         
-        print("context", context['artwork'])
+        
+        #print("context", context['artwork'])
         for i in context['artwork']:
             print(i.pk)
             piclist.append(i.pk)
         context['piclist'] = piclist
+        context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
         return context
 
 class UpdateArtworks(UpdateView):

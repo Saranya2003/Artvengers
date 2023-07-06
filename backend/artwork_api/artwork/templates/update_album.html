@@ -17,7 +17,18 @@
         <!--<input type="hidden" name="memberpic"> -->
         <input type="hidden" name="memberpiclist" id="memberpic">
         Title: {{ form.Album_Title }}<br><br>
-        Setting as private album?&emsp;{{ form.Private_Album }}<br><br>
+        <table>
+          <tr>
+            <td>Setting as private album?</td>
+            <td>
+              <div class="form-check form-switch">
+                {{ form.Private_Album }}
+              </div>
+            </td>
+          </tr>
+          
+          
+        </table><br>
     
         Select Picture for the Album<br><br>
         <table>
@@ -32,16 +43,17 @@
     
         </table>
     <div style="text-align: center;">
-        <button type="submit" class="btn btn-custom">Create album/collection</button>
+        <button type="submit" class="btn btn-custom">Update album/collection</button>
     </div>
     </form>
+
     <script>
         var name = "{{user.id}}";
         document.getElementById("user").value = name;
     </script>
     <script>
        
-        var selectedpic = {{ piclist }};
+       var selectedpic = {{ piclist }};
         document.getElementById("memberpic").value=selectedpic;
 
         for (let i=0; i<selectedpic.length;i++){
@@ -55,13 +67,14 @@
             document.getElementById("memberpic").value=selectedpic;
         }
         function PicClick(){
-            if (selectedpic.includes(event.srcElement.id)){
-                selectedpic = selectedpic.filter(function(e) {return e!==event.srcElement.id});
+
+            if (selectedpic.includes(parseInt(event.srcElement.id))){
+                selectedpic = selectedpic.filter(function(e) {return e!==parseInt(event.srcElement.id)});
                 event.srcElement.classList.remove('selected');
                 
             }
             else{
-                selectedpic.push(event.srcElement.id);
+                selectedpic.push(parseInt(event.srcElement.id));
                 event.srcElement.classList.add('selected');
             }
             console.log(selectedpic);    

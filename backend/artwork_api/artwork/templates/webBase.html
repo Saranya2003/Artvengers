@@ -33,13 +33,17 @@
       }
         #mobnavbar {
             display:block;
-           
         }
         #desktopnav, #tagdiv, #desktopalbum, #desktopartwork {
           display:none;
         }
-        #mobnavtop, #mobalbum, #mobartwork{
+        #mobnavtop{
+          display: block;
+        } 
+        
+        #mobalbum, #mobartwork{
           display:block;
+
         }
 
 
@@ -233,7 +237,7 @@
    
     <nav class="navbar navbar-expand-lg navbar-custom" id="desktopnav">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'explore'%}"><img src="../media/logo/artvengers-logo white.png" width="105px"></a>
+        <a class="navbar-brand" href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo white.png" width="105px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -251,7 +255,7 @@
                 {% if user.profile.id %}
                 <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Profile</a></li>
                 {% else %}
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'create_profile' %}">Profile</a></li>
                 {% endif %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
@@ -277,9 +281,9 @@
             <button class="navbar-toggler hamburger-button" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" onclick="Nav()" style="z-index: 2">
               <div class="animated-icon"><span></span><span></span><span></span></div>
           </button></td>
-            <td> <img src="../media/logo/artvengers-logo white.png" width="105px"></td>
+            <td> <img src="../../media/logo/artvengers-logo white.png" width="105px"></td>
             <td>
-              <a href="{% url 'search_mobile' %}"><img src="../media/logo/search.png"></a>
+              <a href="{% url 'search_mobile' %}"><img src="../../media/logo/search.png"></a>
             </td>
           </tr>
           
@@ -291,13 +295,17 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if user.profile.profile_picture %}
+                <img src="../../media/{{ user.profile.profile_picture }}" width="10%" style="border-radius: 50%;">
+                {% else %}
                 <img src="../../media/images/static_profile.png" width="10%" style="border-radius: 50%;">
+                {% endif %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 {% if user.profile.id %}
                 <li><a class="dropdown-item" href="{% url 'profile' user.profile.id %}">Profile</a></li>
                 {% else %}
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'create_profile' %}">Create Your Profile</a></li>
                 {% endif %}
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
@@ -315,7 +323,7 @@
                     {% if user.profile.id %}
                     <a href="{% url 'profile' user.profile.id %}">Profile</a>
                     {% else %}
-                    <a href="#">Profile</a>
+                    <a href="{% url 'create_profile' %}">Profile</a>
                     {% endif %}
                     
                     <hr class="solid-sidebar">
@@ -337,20 +345,20 @@
     <nav class="navbar fixed-bottom navbar-light bg-light" id="mobnavbar">
       <table style="width:100%; text-align:center;  background-color:#C0E0DE;">
         <tr>
-              <td> <a class="navbar-brand" href="{% url 'explore'%}"><img src="../media/logo/explore.png"><br>Explore</a></td>
-              <td><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../media/logo/dashboard.png"><br>Dashboard</a></td>
-              <td><a class="navbar-brand"href="{% url 'upload'%}"><img src="../media/logo/upload.png"><br>Upload</a></td>
+              <td> <a class="navbar-brand" href="{% url 'explore'%}"><img src="../../media/logo/explore.png"><br>Explore</a></td>
+              <td><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../../media/logo/dashboard.png"><br>Dashboard</a></td>
+              <td><a class="navbar-brand"href="{% url 'upload'%}"><img src="../../media/logo/upload.png"><br>Upload</a></td>
               <td>{% if user.profile.id %}
-                <a class="navbar-brand" href="{% url 'profile' user.profile.id %}"><img src="../media/logo/profile.png"><br>Profile</a>
+                <a class="navbar-brand" href="{% url 'profile' user.profile.id %}"><img src="../../media/logo/profile.png"><br>Profile</a>
                 {% else %}
-                <a class="navbar-brand" href="#"><img src="../media/logo/profile.png"><br>Profile</a>
+                <a class="navbar-brand" href="{% url 'create_profile' %}"><img src="../../media/logo/profile.png"><br>Profile</a>
                 {% endif %}</td>
         </tr>
       </table>
      
 
     </nav>
-    
+    <script src="bootstrap-switch.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
       function Nav() {
@@ -365,6 +373,7 @@
         }
       }
     </script>
+    
     {% block content %}
     
     {% endblock %}

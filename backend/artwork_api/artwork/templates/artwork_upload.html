@@ -25,8 +25,19 @@
     {% csrf_token %}
     {{ form.artist_Name }}
     Title: {{ form.Title }}<br><br>
-    Description:{{ form.Description }}<br><br>
-    Flag as sensitive content?{{ form.Sensitive_content }}<br><br>
+    Description:{{ form.Description }}<br>
+    <table>
+      <tr>
+        <td>Flag as sensitive content?</td>
+        <td>
+          <div class="form-check form-switch">
+            {{ form.Sensitive_content }}
+          </div>
+        </td>
+      </tr>
+      
+      
+    </table><br>
     Tags
     (Separate with comma):{{ form.Tags }}<br><br>
     Artwork:

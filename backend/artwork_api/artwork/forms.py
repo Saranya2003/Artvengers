@@ -14,7 +14,7 @@ class ArtworkForm(forms.ModelForm):
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Description': forms.Textarea(attrs={'class':'form-control'}),
             'Sensitive_content': forms.CheckboxInput(
-                    attrs={"class": "form-check-input", "id": "flexSwitchCheckChecked"}),
+                    attrs={'class': 'form-check-input', 'id': 'flexSwitchCheckChecked', 'role':'switch','type':'checkbox'}),
         }
         
 
@@ -28,7 +28,7 @@ class AlbumForm(forms.ModelForm):
             'Album_Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Private_Album': forms.CheckboxInput(
-                    attrs={"class": "form-check-input", "id": "flexSwitchCheckChecked"}),
+                    attrs={'class': 'form-check-input', 'id': 'flexSwitchCheckChecked', 'role':'switch','type':'checkbox'}),
         }
 
 class UpdateArtworkForm(forms.ModelForm):
@@ -42,7 +42,7 @@ class UpdateArtworkForm(forms.ModelForm):
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Description': forms.Textarea(attrs={'class':'form-control'}),
             'Sensitive_content': forms.CheckboxInput(
-                    attrs={"class": "form-check-input", "id": "flexSwitchCheckChecked"}),
+                    attrs={'class': 'form-check-input', 'id': 'flexSwitchCheckChecked', 'role':'switch','type':'checkbox'}),
            
         }
         
@@ -57,7 +57,7 @@ class UpdateAlbumForm(forms.ModelForm):
             'Album_Title': forms.TextInput(attrs={'class':'form-control'}),
             'artist_Name': forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
             'Private_Album': forms.CheckboxInput(
-                    attrs={"class": "form-check-input", "id": "flexSwitchCheckChecked"}),
+                    attrs={'class': 'form-check-input', 'id': 'flexSwitchCheckChecked', 'role':'switch','type':'checkbox'}),
         }       
 
 class CommentForm(forms.ModelForm):
@@ -66,5 +66,5 @@ class CommentForm(forms.ModelForm):
         fields = ('artist_Name','artwork_comment')
         widgets = {
             'artist_Name' : forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
-            'artwork_comment' : forms.Textarea(attrs={'class':'form-control input-sm','style':'width: 592px;'}),
+            'artwork_comment' : forms.Textarea(attrs={'class':'form-control input-sm','style':'width: 592px;height: 43px;'}),
         }

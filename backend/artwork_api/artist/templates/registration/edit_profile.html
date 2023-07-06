@@ -36,15 +36,15 @@
         <br><br>
         <div class="fileUpload btn btn-custom">
           <span>Upload Profile Picture</span>
-          <input type="file" class="upload" />
+          <input type="file" class="upload" name="newprofilepic" />
         </div>
       </div>
       <div class="col-sm">
         
         {% csrf_token %}
-          Username <input type="text" value={{ user.profile.user }} name="username"> <br>
-          <input type="hidden" value={{ user.profile.pk }} name="user">
-          Email <input type="text" value={{ user.profile.email }} name="email"><br>
+          Username <input type="text" value={{ user.profile.user }} name="username" class="form-control"> <br>
+          <input type="hidden" value={{ user.profile.pk }} name="user" class="form-control">
+          Email <input type="text" value={{ user.profile.email }} name="email" class="form-control"><br>
           Bio <textarea name="bio" form="profileform">{{ user.profile.bio }}</textarea><br><br><br>
 
 
@@ -52,9 +52,9 @@
           
           <strong>Social Media</strong><br><br>
           
-        Instagram <input type="text" value={{ user.profile.Instagram }} name="Instagram"><br>
-        Twitter <input type="text" value={{ user.profile.Twitter }} name="Twitter"><br>
-        Facebook <input type="text" value={{ user.profile.Facebook }} name="Facebook"><br>
+        Instagram <input type="text" value={{ user.profile.Instagram }} name="Instagram" class="form-control"><br>
+        Twitter <input type="text" value={{ user.profile.Twitter }} name="Twitter" class="form-control"><br>
+        Facebook <input type="text" value={{ user.profile.Facebook }} name="Facebook" class="form-control"><br>
       </div>
     </div>
     <div class="form-group" style="text-align:center;">
