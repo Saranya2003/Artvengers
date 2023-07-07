@@ -28,9 +28,10 @@
         Instagram:{{ user.profile.Instagram }}<br><br>
         Twitter:{{ user.profile.Twitter }}<br><br>
         Facebook:{{ user.profile.Facebook }}<br><br>
-
+        
+        {% if user.profile.id %}
         <a href="{% url 'edit_profile' object.pk %}" class="btn btn-custom" role="button">Edit profile</a>
-          
+        {% endif %}
         
       </div>
     </div>

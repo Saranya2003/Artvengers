@@ -15,7 +15,7 @@ from taggit.models import Tag
 
 # Create your views here.
 
-def addtoalbum(request):
+def addtoalbum(request,pk):
     if request.method == 'POST':
         albumcontent = Album.objects.get(pk=int(request.POST['Album_Title']))
         form = UpdateAlbumForm(request.POST, instance=albumcontent)
@@ -37,7 +37,7 @@ def addtoalbum(request):
             
             
             #form.save_m2m()
-            return HttpResponseRedirect(reverse('explore'))
+            return HttpResponseRedirect(reverse('artwork_detail',args=[str(pk)]))
         else:
             print(form.errors.as_data())
             print("can't upload")
@@ -137,19 +137,6 @@ def updatealbum(request, pkreq):
         else:
             print(form.errors.as_data())
             print("can't edit")       
-
-
-def sensitive_toggle(request):
-    sensitive = ArtworkPost.objects.get(id=request.POST['id'])
-    sensitive.Sensitive_content = request.POST['sensitive']=='true'
-    sensitive.save()
-    return HttpResponse('success')
-
-def private_toggle(request):
-    private = Album.objects.get(id=request.POST['id'])
-    private.Private_Album = request.POST['private']=='true'
-    private.save()
-    return HttpResponse('success')
 
 def LikeView(request,pk):
     #print("Like Request post is", request.POST)
@@ -274,7 +261,7 @@ class Taglist(ListView):
         return context
 class DashboardView(ListView):
     model = ArtworkPost
-    template_name = 'new_dashboard.html'
+    template_name = 'dashboard.html'
     ordering =['-id']
 
     def get_context_data(self, **kwargs):

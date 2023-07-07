@@ -2,7 +2,13 @@
 {% extends 'webBase.html' %}
 {% block content %}
 
-<div class="container">
+<style>
+  .form-select{
+    border-radius: 40px !important;
+  }
+</style>
+
+<div id="desktopcontent">
     <div class="row align-items-start">
       <div class="col-sm">
         <br><br>
@@ -27,7 +33,7 @@
         <br><br>
         <table>
           <tr>
-            <td>
+            <td style="width:30%">
               <form action ="{% url 'like_artwork' object.pk %}" method="POST" style="background-color: black;">
                 {% csrf_token %}
                 {% if liked_post  %}
@@ -39,26 +45,28 @@
                 {% endif %}
               </form>
             </td>
-            <td>
-              <form action="{% url 'add_to_album_action' %}" method="POST" enctype="multipart/form-data" id="collectionform">
+            
+              <form action="{% url 'add_to_album_action' object.pk %}" method="POST" enctype="multipart/form-data" id="collectionform">
                 {% csrf_token %}
                   
                 <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
-                <select class="form-select" data-mdb-placeholder="Save to collection" name="Album_Title" form='collectionform'>
+                <td><select class="form-select" data-mdb-placeholder="Save to collection" name="Album_Title" form='collectionform'>
+                  <option selected>------Select album------</option>
                 {% for albumName in album %}
                   {% if user.id == albumName.artist_Name.id %}
-                    {% if albumName %}
+                    {% if not memberpic in albumName %}
                       <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
                     {% else %}
                       <option>No album to save.</option>
                     {% endif %}
                   {% endif %}
                 {% endfor %}
-              </select>
-              <button type="submit">Save to collections</button>
+              </select></td>
+              <td>
+              <button type="submit" class="btn btn-custom rounded-pill">Save to album/collections</button></td>
               </form>
-            </td>
+            
           </tr>
         </table>
         
@@ -107,7 +115,124 @@
       {% endif %}
       <br>
         </div>
-        <script>
+
+        
+      </div>
+    </div>
+  </div>
+  <div id="mobcontent">
+    <div class="row align-items-start">
+      <div class="col-sm">
+        <br><br>
+
+        <h1>{{ object.Title }}</h1><br>
+        <img src="{{ object.Artwork.url }}" width="100%"><br>
+      </div>
+      <div class="col-sm">
+        <br><br>
+        <div>
+        <small>
+          Create date:{{ object.created_date }}<br><br>
+          By: {{ object.artist_Name }}<br><br>
+        </small><br>
+        <p>
+          {{ object.Description }}
+        </p>
+        <br>
+        {% for tag in object.Tags.names %}
+          <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>
+        {% endfor %}
+        <br><br>
+        <table>
+          <tr>
+            <td style="width:30%">
+              <form action ="{% url 'like_artwork' object.pk %}" method="POST" style="background-color: black;">
+                {% csrf_token %}
+                {% if liked_post  %}
+                  <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like.png" style="border-radius: 50%;background-color: black;"></button>
+                  {{ object.total_likes }} 
+                {% else %}
+                <button type="submit" name="artworkpost_id" value="{{ object.pk }}"><img src="../media/logo/Like(not press).png" style="border-radius: 50%;background-color: black;" onmouseout="unhover(this);" onmouseover="hover(this);"></button>
+                  {{ object.total_likes }} 
+                {% endif %}
+              </form>
+            </td>
+            
+              <form action="{% url 'add_to_album_action' object.pk %}" method="POST" enctype="multipart/form-data" id="collectionform">
+                {% csrf_token %}
+                  
+                <input type="hidden" value="{{ user.id }}" name="artist_Name">
+                <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
+                <td><select class="form-select" data-mdb-placeholder="Save to collection" name="Album_Title" form='collectionform'>
+                  <option selected>------Select album------</option>
+                {% for albumName in album %}
+                  {% if user.id == albumName.artist_Name.id %}
+                    {% if not memberpic in albumName %}
+                      <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
+                    {% else %}
+                      <option>No album to save.</option>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </select></td>
+              <td>
+              <button type="submit" class="btn btn-custom rounded-pill">Save to album/collections</button></td>
+              </form>
+            
+          </tr>
+        </table>
+        
+        
+      </div><br>
+        <div>
+          <h3>Comments</h3>
+        <br>
+        
+        <form action ="{% url 'add_comment' object.pk %}" method="POST">
+          <table>
+          {% csrf_token %}
+            <tr>
+              <td>
+                
+                {{ form.artist_Name}}
+                {{ form.artwork_comment }}
+              </td>
+              <td>
+                <button type="submit" name="addcommentbutton" value="{{ object.pk }}" class="btn btn-custom rounded-pill">Post</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+        </div>
+        <br>
+        <hr class="solid" style="background-color: white;">
+        <div>
+          
+          {% if not comments %}
+          
+            No comments yet.
+          {% else %}
+      <br>
+      
+          {% for comment in comments %}
+              <strong>
+                  {{ comment.artist_Name }} - {{ comment.date_added}}
+              </strong>
+              <br>
+              {{ comment.artwork_comment }}
+
+              <br>
+              <br>
+          {% endfor %}
+      {% endif %}
+      <br>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+  <script>
           var name = "{{user.id}}";
           document.getElementById("user").value = name;
           function hover(img){
@@ -134,11 +259,7 @@
               }
               console.log(selectedalbum);    
           };
-      </script>
-      </div>
-    </div>
-  </div>
-     
+      </script>   
 
 
 
