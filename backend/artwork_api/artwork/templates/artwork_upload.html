@@ -19,9 +19,10 @@
 	filter: alpha(opacity=0);
 }
 </style>
-<br><br>
+
 <center>
 <div class="form-group" style="padding: 50px;margin: 20px;" id="desktopcontent">
+  <br><br>
   <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.artist_Name }}
@@ -35,7 +36,7 @@
       <tr>
         <td>Flag as sensitive content?<br><br></td>
         <td>
-          <div class="form-check form-switch">
+          <div class="form-check form-switch form-switch-md">
             {{ form.Sensitive_content }}<br><br>
           </div>
         </td>
@@ -52,24 +53,18 @@
         <td>
           <div class="fileUpload btn btn-custom">
             <span>Upload artwork file</span>
-            <input type="file" class="upload" name="Artwork">
+            <input type="file" class="upload" name="Artwork" >
           </div>
           <br><br>
         </td>
       </tr>
     </table>
-    
-    
-    
-    
-
     <div style="text-align: center;">
       <input type="submit" class="btn btn-custom mx-auto" value="Publish the artwork post">
     </div>
 </form>  
 </div>
 </center>
-
 <div class="form-group" style="padding: 50px;margin: 20px;" id="mobcontent">
   <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data">
     {% csrf_token %}
@@ -80,7 +75,7 @@
       <tr>
         <td>Flag as sensitive content?</td>
         <td>
-          <div class="form-check form-switch">
+          <div class="form-check form-switch form-switch-md">
             {{ form.Sensitive_content }}
           </div>
         </td>

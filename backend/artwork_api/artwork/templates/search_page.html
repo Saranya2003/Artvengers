@@ -1,46 +1,129 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-
-<div>
+<style>
+    .caption{
+        background-color: rgba(0, 0, 0, 0.75);
+        color: white;
+    }
+</style>
+<div id="desktopcontent">
     <br>
-<div style="padding-right: 2em;">
-    <form class="d-flex" action="{% url 'search_result' %}">
-        {% csrf_token %}
-        <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword"value="{{ keyword }}">
-        <button type="submit"><span class="fa fa-search form-control-feedback"></span></button>
-        
-      </form>
-</div>  
-{% if artwork.count > 0 and album.count > 0 %}
-<br>
+    <center>
+        <div style="padding-right: 2em;border-radius: 20px;border: 1px solid #FFF;background: rgba(255, 255, 255, 0.36);">
+            Search results
+        </div>
+    </center>  
+    {% if artwork.count > 0 and album.count > 0 %}
+    <br>
 
-<br>  
-    {% for arts in artwork %}
+    <br>  
+    <h2>Album</h2>
+    <center>
+        <div class="scrollmenu" style="width: 1578px;">
+            {% for alb in album %}
+                {% if not alb.Private_Album %}
 
-        <a href="{%  url 'artwork_detail' arts.pk %}">
-            <img src="{{ arts.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
-            <h5>{{ arts.Title }}</h5>
-        </a> 
+                <a href="{% url 'album' alb.pk %}">
+                    <img src="{{ alb.memberpic.first.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
+                    <h5 style="background-color: black;">{{ alb.Album_Title }}</h5>
+                </a> 
+                {% endif %}
+            {% endfor %}
+        </div>
+    </center>
+    <h2>Artwork</h2>
+    <center>
+        <div class="scrollmenu" style="width: 1578px;">
+            {% for arts in artwork %}
+
+                <a href="{%  url 'artwork_detail' arts.pk %}">
+                    <img src="{{ arts.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
+                    <div class="caption">
+                        <h5>{{ arts.Title }}</h5>
+                    </div>
+                    
+                </a> 
 
 
-    {% endfor %}
-    {% for alb in album %}
-        {% if not alb.Private_Album %}
-
-        <a href="{% url 'album' alb.pk %}">
-            <img src="{{ alb.memberpic.first.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
-            <h5>{{ alb.Album_Title }}</h5>
-        </a> 
-        {% endif %}
-    {% endfor %}
-{% else %}
-<div style="text-align: center;padding-top: 400px;">
-    <h1>
-        No results
-    </h1>
+            {% endfor %}
+        </div>
+    </center>    
+    {% else %}
+    <div style="text-align: center;padding-top: 400px;">
+        <h1>
+            No results
+        </h1>
+    </div>
+    {% endif %}<br><br>
 </div>
 
-{% endif %}
+<div style="padding: 50px;margin: 20px;" id="mobcontent">
+    <center>
+        <div style="padding-right: 2em;border-radius: 20px;border: 1px solid #FFF;background: rgba(255, 255, 255, 0.36);">
+        <form class="d-flex" action="{% url 'search_result' %}">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword"value="{{ keyword }}" style="background-color: transparent;border: none;">
+            <button type="submit" class="btn btn-outline-secondary rounded-pill" style="margin-left: -40px;"><i class="fa fa-search"></i></button>
+            
+        </form>
+        </div>
+    </center>  
+    {% if artwork.count > 0 and album.count > 0 %}
+    <br>
+
+    <br>  
+    <h2>Album</h2>
+    <center>
+        <div class="scrollmenu" style="padding-right: 1em;width: auto;">
+            {% for alb in album %}
+                {% if not alb.Private_Album %}
+
+                <a href="{% url 'album' alb.pk %}">
+                    <img src="{{ alb.memberpic.first.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
+                    <h5 style="background-color: black;">{{ alb.Album_Title }}</h5>
+                </a> 
+                {% endif %}
+            {% endfor %}
+        </div>
+    </center>
+    <h2>Artwork</h2>
+    <center>
+        <div class="scrollmenu" style="padding-right: 1em;width: auto;height: 350px;">
+            {% for arts in artwork %}
+
+            <a href="{%  url 'artwork_detail' arts.pk %}">
+                <img src="{{ arts.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
+                <div class="caption">
+                    <h5>{{ arts.Title }}</h5>
+                </div>
+                
+            </a> 
+                
+
+
+            {% endfor %}
+        </div>
+    </center>    
+    {% else %}
+    <div style="text-align: center;padding-top: 400px;">
+        <h1>
+            No results
+        </h1>
+    </div>
+    {% endif %}<br><br>
 </div>
+<script>
+    const mouseWheel = document.querySelector('.scrollmenu');
+
+    mouseWheel.addEventListener('wheel', function(e) {
+        const race = 50; // How many pixels to scroll
+
+        if (e.deltaY > 0) // Scroll right
+            mouseWheel.scrollLeft += race;
+        else // Scroll left
+            mouseWheel.scrollLeft -= race;
+            e.preventDefault();
+    });
+</script>
 {% endblock %}

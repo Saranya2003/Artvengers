@@ -61,23 +61,32 @@
       left: 16px;
       font-size: 18px;
     }
+    .cardimg {
+        object-fit: cover;
+        width: 350px;
+        height: 350px;
+        padding-right: 1em;
+    }
     </style>
     <body>
     <br>
     <div>
       <h1>{{ album.0.Album_Title }}</h1>
-      <br>
+      <small>Created date: {{ album.0.created_date }}</small>
+      <br><br>
       <div class="row">
           {% for artdetail in artwork %}
           <div class="column">
-              <div class="card">
+            <div class="card">
+              <a href="{%  url 'artwork_detail' artdetail.pk %}">
                 {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger topleft">NSFW</span>
-                    {% endif %}
-                  <img class="card-img-top" src="{{ artdetail.Artwork.url }}" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
-                  <div class="card-body">
-                      <h5>{{ artdetail.Title }}</h5>
+                  <span class="badge bg-danger topleft">NSFW</span>
+                {% endif %}
+                  <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+                  <div class="carousel-caption">
+                    <h5>{{ artdetail.Title }}</h5>
                   </div>
+                </a>
               </div>
             </div>
           {% endfor %}

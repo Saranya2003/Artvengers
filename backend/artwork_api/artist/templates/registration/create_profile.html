@@ -21,7 +21,7 @@
   </style>
 <br>
 <br><br>
-<div class="container" style="width:100%" id="desktopcontent">
+<div style="width:100%" id="desktopcontent">
   <form method="POST" action="{% url 'create_profile_action' %}" enctype="multipart/form-data" id="profileform">
         {% csrf_token %}
        
@@ -67,6 +67,51 @@
 
     </form>
 </div>
+<div style="width:100%" id="mobcontent">
+  <form method="POST" action="{% url 'create_profile_action' %}" enctype="multipart/form-data" id="profileform">
+        {% csrf_token %}
+       
+    <table>
+    <div class="row align-items-start">
+      <div class="col-sm" style="text-align: center;">
+        {% if user.profile.profile_picture %}
+        <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;">
+        {% else %}
+        <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;">
+        {% endif %}
+        <br><br>
+        <div class="fileUpload btn btn-custom">
+          <span>Upload Profile Picture</span>
+          <input type="file" class="upload" name="newprofilepic" />
+        </div>
+      </div>
+      <div class="col-sm">
+        
+        {% csrf_token %}
+          Username <input type="text" value="{{ user.username }}" name="username" class="form-control"> <br>
+          <input type="hidden" value="{{ user.id }}" name="user">
+          Email <input type="text" value="{{ user.email }}"  name="email" class="form-control"><br>
+          Bio <textarea name="bio" form="profileform" class="form-control"></textarea><br><br>
 
+
+          <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
+          
+          <strong>Social Media</strong><br><br>
+          
+        Instagram <input type="text"  name="Instagram" class="form-control"><br>
+        Twitter <input type="text"  name="Twitter" class="form-control"><br>
+        Facebook <input type="text"  name="Facebook" class="form-control"><br>
+      </div>
+    </div>
+    <div class="form-group" style="text-align:center;">
+        
+            
+            
+            <br><br>
+            <input type="submit" class="btn btn-custom" value="Update your profile"><br><br>
+    </div>
+
+    </form>
+</div>
 
 {% endblock %}

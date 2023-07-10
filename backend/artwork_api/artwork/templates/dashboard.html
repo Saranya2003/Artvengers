@@ -19,9 +19,9 @@
   #artdesktop{
     display: block;
   }
-  #uploadbtn{
-    display:block;
-  }
+
+
+
   .navbar {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -40,7 +40,7 @@
     display:none;
   }
   .carousel-container {
-    width: 95%;
+    width: 90%;
   }
   #selectdiv{
     display: block;
@@ -59,18 +59,13 @@
   #artdesktop{
     display: none;
   }
-  #exploremob{
-    display: block;
-  }
-  #exploredesk{
-    display: none;
-  }
 }
-@media (min-width: 390px) {
+  @media (min-width: 390px) {
     
     .multiple-card-slider .carousel-inner {
         display: flex;
-        height: 320px;
+        
+        height: 400px;
     }
     .multiple-card-slider .carousel-item {
         width: 306px;
@@ -110,6 +105,13 @@
         padding: 117px 27px 132px 21px;
         transform: translateY(-50%);
     }
+    .carousel-control-prev {
+      margin-left: -40px;
+    }
+
+    .carousel-control-next {
+      margin-right: -70px;
+    }
     .carousel{
         width: 1704px;
         height: 320px;
@@ -140,7 +142,15 @@
         object-fit: cover;
         width: 306px;
         height: 280px;
+        padding-right: 1em;
     }
+    .cardimgmob {
+        object-fit: cover;
+        width: 306px;
+        height: 280px;
+        padding-right: 2.5em;
+    }
+    
     h5{
     font-weight: 900;
     width: 306px;
@@ -153,9 +163,18 @@
       left: 16px;
       font-size: 18px;
     }
-    a.right {
-        float: right;
-      }
+    .form-select{
+      border-radius: 34px;
+      width: 138px;
+      border-radius: 34px;
+      border: 1px solid #FFF;
+      background-color: black;
+      color: white;
+    }
+    .multiple-card-slider{
+      margin-left: 0;
+      
+    }
 </style>   
 <nav class="navbar navbar-expand-lg navbar-custom2">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -169,10 +188,11 @@
           </ul>
         </div>
       </nav>
+      <br>
       <div id="selectdiv">
-        <select class="form-select">
-          <option selected>My albums</option>
-          <option value="1">My artworks</option>
+        <select class="form-select" id="selectContent">
+          <option value="albummob" selected>My albums</option>
+          <option value="artmob">My artworks</option>
         </select>
       </div>
       <br>
@@ -191,55 +211,58 @@
             {% if user.id == albumObject.artist_Name.id %}
               {% if forloop.last %}
             <div class="carousel-item active">
-              <div class="card" style="position: relative; bottom: -30px;opacity: 0.2;">        
-                <img src="{{ albumObject.memberpic.1.Artwork.url }}" class="cardimg">          
+              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
               </div>
-              <div class="card" style="position: relative; right: 10px;bottom: 260px;opacity: 0.3;">        
-                  <img src="{{ albumObject.memberpic.2.Artwork.url }}" class="cardimg">          
+              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimg" id="image3">          
               </div>
-              <div class="card" style="position: relative; right: 20px;bottom: 550px;opacity: 0.5;">        
-                <img src="{{ albumObject.memberpic.3.Artwork.url }}" class="cardimg">          
+              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimg" id="image2">          
               </div>
-              <div class="card" style="position: relative; right: 30px;bottom: 840px;">
-                  <img src="{{ albumObject.memberpic.first.Artwork.url }}" class="cardimg">
-                  
+              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimg" id="image">
               </div>
           <a href="{% url 'album' albumObject.pk %}">
             <div class="card" style="position: relative; right: 30px;bottom: 1060px; background-color: rgba(255, 255, 255, 0);width: 335px;">
               <div class="carousel-caption-album">
-                <h5>{{ albumObject.Album_Title }}</h5>
-                <div style="float: right;">
-                  <a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a>
-                  <a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
-                </div>
-                
+                <h5>
+                  <table style="width:100%">
+                    <tr>
+                      <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                        <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
+                    </tr>
+                  </table>
+                </h5>
               </div>
             </div>
           </a>
             </div>
               {% else %}
             <div class="carousel-item-album">
-              <div class="card" style="position: relative; bottom: -30px;opacity: 0.2;">        
-          <img src="{{ albumObject.memberpic.1.Artwork.url }}" class="cardimg">          
-        </div>
-        <div class="card" style="position: relative; right: 10px;bottom: 260px;opacity: 0.3;">        
-            <img src="{{ albumObject.memberpic.2.Artwork.url }}" class="cardimg">          
-        </div>
-        <div class="card" style="position: relative; right: 20px;bottom: 550px;opacity: 0.5;">        
-          <img src="{{ albumObject.memberpic.3.Artwork.url }}" class="cardimg">          
-        </div>
-        <div class="card" style="position: relative; right: 30px;bottom: 840px;">
-            <img src="{{ albumObject.memberpic.first.Artwork.url }}" class="cardimg">
-            
-        </div>
+              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
+              </div>
+              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimg" id="image3">          
+              </div>
+              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimg" id="image2">          
+              </div>
+              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimg" id="image">
+              </div>
           <a href="{% url 'album' albumObject.pk %}">
             <div class="card" style="position: relative; right: 30px;bottom: 1060px; background-color: rgba(255, 255, 255, 0);width: 335px;">
               <div class="carousel-caption-album">
-                <h5>{{ albumObject.Album_Title }}</h5>
-                <div style="float: right;">
-                  <a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a>
-                  <a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
-                </div>
+                <h5>
+                  <table style="width:100%">
+                    <tr>
+                      <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                        <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
+                    </tr>
+                  </table>
+                </h5>
               </div>
             </div>
           </a>
@@ -332,109 +355,122 @@
 </div>
 </div>
 <div id="mobcontent">
-  <div id="albummob">
-    <table style="width:100%">
-      <tr>
-        <td style="width:50%"><h2>My albums </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button" id="uploadbtn">Create new album</a></h2></td>
-      </tr>
-    </table>
-
-  <br>
-    <div>
-      {% for albumObject in album %}
-            {% if user.id == albumObject.artist_Name.id %}
-              {% if forloop.last %}
-              <div>
-                <div>
-                  <a href="{% url 'album' albumObject.pk %}">
-                    <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
-                    <div>
-                      <h5>{{ albumObject.Album_Title }}</h5>
-                      <div style="float:right;padding-bottom: 1px;">
-                        <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
-                      </div>
-                    </div>
-                  </a>
-                </div>
+  <div id="albummob" class="content" style="padding-right: 1em;width: auto;">
+    {% for albumObject in album %}
+        {% if user.id == albumObject.artist_Name.id %}
+          {% if forloop.last %}
+            <div class="carousel-item active" style="height: 298px;">
+              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimgmob" id="image4">          
               </div>
-              {% else %}
-              <div>
-                <div>
-                  <a href="{% url 'album' albumObject.pk %}">
-                    <img src= "{{  albumObject.memberpic.first.Artwork.url }}">
-                    <div>
-                      <h5>{{ albumObject.Album_Title }}</h5>
-                      <div style="float:right;padding-bottom: 1px;">
-                        <a class="btn btn-light" href="{% url 'album_edit' albumObject.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a>
-                      </div>
-                    </div>
-                  </a>
-                </div>
+              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimgmob" id="image3">          
               </div>
-              {% endif %}
-            {% endif %}
-          {% endfor %}
-    </div>
+              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimgmob" id="image2">          
+              </div>
+              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimgmob" id="image">
+              </div>
+          <a href="{% url 'album' albumObject.pk %}">
+            <div style="position: relative; right: 30px;bottom: 1060px; background-color: transparent;width: 335px;">
+              <div class="carousel-caption-album" style="bottom: -260px;">
+                <h5>
+                  <table style="width:100%">
+                    <tr>
+                      <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                        <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
+                    </tr>
+                  </table>
+                </h5>
+              </div>
+            </div>
+          </a>
+            </div>
+          {% else %}
+            <div class="carousel-item-album" style="height: 298px;">
+              
+                        <span class="badge bg-danger topleft">{{ memberpic.count }}</span>
+              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimgmob" id="image4">          
+              </div>
+              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimgmob" id="image3">          
+              </div>
+              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimgmob" id="image2">          
+              </div>
+              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimgmob" id="image">
+              </div>
+              <a href="{% url 'album' albumObject.pk %}">
+                <div style="position: relative; right: 30px;bottom: 1050px; background-color: rgba(255, 255, 255, 0);width: 335px;">
+                  <div class="carousel-caption-album" style="bottom: -260px;">
+                    <h5>
+                      <table style="width:100%">
+                        <tr>
+                          <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                            <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
+                        </tr>
+                      </table>
+                    </h5>
+                  </div>
+                </div>
+              </a>
+            </div><br><br>
+        {% endif %}
+        {% endif %}
+      {% endfor %}
+  
   </div>
-  <br>
-  <br>
-  <br>
-  <div id="artmob">
-  <table style="width:100%">
-    <tr>
-      <td style="width:50%"><h2>  My artworks </td><td style="width: 50%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button" id="uploadbtn">Post new artwork</a></h2></td>
-    </tr>
-  </table>
-    <br><br>
+  <div id="artmob" class="content" style="padding-right: 1em;width: auto;">
+    <h2>  My artworks</h2>
     
-    <div>
-      {% for artdetail in artwork %}
-            {% if user.id == artdetail.artist_Name.id %}
-              {% if forloop.last %}
-              <div>
-                <div>
-                  <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                    {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger topleft">NSFW</span>
-                    {% endif %}
-                    <img src="{{ artdetail.Artwork.url }}">
-                    <div>
-                      
+    <div style="width: auto;">
+      <center>
+        {% for artdetail in artwork %}
+        {% if user.id == artdetail.artist_Name.id %} 
+          {% if forloop.last %}
+            <div>
+              <div class="card">
+                <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                  {% if artdetail.Sensitive_content %}
+                    <span class="badge bg-danger topleft">NSFW</span>
+                  {% endif %}
+                    <img src="{{ artdetail.Artwork.url }}" class="cardimgmob">
+                    <div class="carousel-caption">
                       <h5>{{ artdetail.Title }}</h5>
-                      <div style="float:right;padding-bottom: 1px;">
-                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                      <div style="float: right;">
+                        <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
                       </div>
                     </div>
                   </a>
                 </div>
-              </div>
-              {% else %}
-              <div>
-                <div>
-                  <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                    {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger topleft">NSFW</span>
-                    {% endif %}
-                    <img src="{{ artdetail.Artwork.url }}">
-                    <div>
-                      
+              </div><br>
+          {% else %}
+            <div>
+              <div class="card">
+                <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                  {% if artdetail.Sensitive_content %}
+                    <span class="badge bg-danger topleft">NSFW</span>
+                  {% endif %}
+                    <img src="{{ artdetail.Artwork.url }}" class="cardimgmob">
+                    <div class="carousel-caption">
                       <h5>{{ artdetail.Title }}</h5>
-                      <div style="float:right;padding-bottom: 1px;">
-                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{% url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                      <div style="float: right;">
+                        <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                        <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
                       </div>
                     </div>
-                  </a>
-                </div>
+                </a>
               </div>
-              {% endif %}
-            {% endif %}
+            </div><br>
+          {% endif %}
+          {% endif %}  
         {% endfor %}
+      </center>
     </div>
-    
   </div>
 </div>
 <br>
@@ -473,23 +509,12 @@ $('.multiple-card-slider .carousel').each(function(){
 </script>
   <script>
     //Select in mobile
-  var albummob = document.getElementById("albummob");
-  var artmob = document.getElementById("artmob");
-  var selectdiv = document.getElementById("selectdiv");
-
-  selectdiv.addEventListener("change", function(){
-      if(selectdiv.value == 'Albums'){
-          if(albummob.style.display !== 'block'){
-              albummob.style.display = 'block';
-              artmob.style.display = 'none';
-          }
-      }
-      if(selectdiv.value == 'Artworks'){
-          if(artmob.style.display !== 'block'){
-              artmob.style.display = 'block';
-              albummob.style.display = 'none';
-          }
-      }
-  });
+    $(function() {
+   $('.content').hide();
+   $('#selectContent').change(function() {
+      $('.content').hide();
+      $('#' + $(this).val()).show();
+   });
+});
   </script>
 {% endblock %}

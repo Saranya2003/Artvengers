@@ -211,7 +211,7 @@ class ArtworkPostDetail(DetailView):
         context['likes'] = total_likes
         context['liked_post'] = liked
         context['album'] = Album.objects.all()
-        context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'])
+        context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk']).order_by('-pk')
         context['form'] = CommentForm()
         
         return context
@@ -238,35 +238,29 @@ class ExploreView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
-        context['album'] = Album.objects.all()
+        context['album'] = Album.objects.all().order_by('-pk')
         context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
         context['Tags'] = Tag.objects.all()
-        #print(context['Tags'][0])
-        #print(context['artwork'])
-        #print(context['artwork'][0].Tags.names())
-        #print(context['artwork'].order_by('-pk'))
+
         return context
+    
 class Taglist(ListView):
     model = ArtworkPost
     template_name = 'Tags_mobile.html'
-    
+    ordering = ['-id']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['Tags'] = Tag.objects.all()
-        #print(context['Tags'][0])
-        #print(context['artwork'])
-        #print(context['artwork'][0].Tags.names())
-        #print(context['artwork'].order_by('-pk'))
         return context
+    
 class DashboardView(ListView):
     model = ArtworkPost
     template_name = 'dashboard.html'
-    ordering =['-id']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['album'] = Album.objects.all()
+        context['album'] = Album.objects.all().order_by('-pk')
         context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
         return context
 
@@ -295,12 +289,8 @@ class UpdateAlbum(UpdateView):
         piclist=[]
         context = super().get_context_data(**kwargs)
         context['album'] = Album.objects.filter(pk=self.kwargs['pk']).order_by('-pk')
-        print("albumcontext", context['album'])
         context['artwork'] = context['album'][0].memberpic.all().order_by('-pk')
-        #print("contextartwork", context['artwork'])
-        
-        
-        #print("context", context['artwork'])
+
         for i in context['artwork']:
             print(i.pk)
             piclist.append(i.pk)
@@ -320,29 +310,16 @@ class SearchView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(self.request.GET['keyword'])
 
         context['album'] = Album.objects.filter(Q(Album_Title__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
         context['artwork'] = ArtworkPost.objects.filter(Q(Title__icontains=self.request.GET['keyword'])| Q(Tags__name__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
-        print(context['artwork'])
         context['Tags'] = Tag.objects.all()
        
         return context
+    
 class SearchMobileView(ListView):
     model = ArtworkPost
     template_name = 'search_mobile.html'
-    
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(self.request.GET['keyword'])
-
-        context['album'] = Album.objects.all()
-        context['artwork'] = ArtworkPost.objects.filter(Q(Title__icontains=self.request.GET['keyword'])| Q(Tags__name__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
-        print(context['artwork'])
-        context['Tags'] = Tag.objects.all()
-       
-        return context
 
 class TagsView(ListView):
     model = ArtworkPost

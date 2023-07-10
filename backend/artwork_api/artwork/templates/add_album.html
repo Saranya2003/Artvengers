@@ -18,7 +18,7 @@
         <tr>
             <td>Setting as private album?<br><br></td>
             <td>
-              <div class="form-check form-switch">
+              <div class="form-check form-switch form-switch-md">
                 {{ form.Private_Album }}
               </div><br><br>
             </td>
@@ -43,7 +43,7 @@
     </form>
 </div>
 
-<div id="mobcontent">
+<div id="mobcontent" style="padding-right: 1em;width: auto;">
     <form method="POST" action="{% url 'add_album_action' %}" onsubmit="submem()" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" value="{{ user.id }}" name="artist_Name">
@@ -54,7 +54,7 @@
           <tr>
             <td>Setting as private album?</td>
             <td>
-              <div class="form-check form-switch">
+              <div class="form-check form-switch form-switch-md">
                 {{ form.Private_Album }}
               </div>
             </td>
@@ -65,7 +65,7 @@
     
         Select Picture for the Album<br><br>
     
-        <div class="scrollmenu">
+        <div class="scrollmenu" style="padding-right: 1em;width: auto;">
             {% for artdetail in artwork %}
                 {% if user.id == artdetail.artist_Name.id %} 
                 <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
@@ -108,7 +108,7 @@
     const mouseWheel = document.querySelector('.scrollmenu');
 
     mouseWheel.addEventListener('wheel', function(e) {
-        const race = 15; // How many pixels to scroll
+        const race = 50; // How many pixels to scroll
 
         if (e.deltaY > 0) // Scroll right
             mouseWheel.scrollLeft += race;
