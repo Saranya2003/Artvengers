@@ -3,184 +3,6 @@
 {% extends 'webBase.html' %}
 
 {% block content %}
-<style>         
-
-  #tagdiv{
-    display:block;
-  }
-  #selectdiv{
-    display: none;
-  }
-  #albummob{
-    display: none;
-  }
-
-  #artmob{
-    display: none;
-  }
-  #albumdesktop{
-    display: block;
-  }
-
-  #artdesktop{
-    display: block;
-  }
-
-
-
-  .navbar {
-    padding-top: 0px;
-    padding-bottom: 0px;
-  
-
-  }
-  .navbar-custom2 {  
-    background-color: #EB5160;
-    font-size: 20px;  
-  }
-  .active-custom{
-    background-color: #330C2F;
-  }
-  @media (max-width: 390px) {
-  #tagdiv{
-    display:none;
-  }
-  .carousel-container {
-    width: 90%;
-  }
-  #selectdiv{
-    display: block;
-  }
-  #albummob{
-    display: block;
-  }
-
-  #artmob{
-    display: block;
-  }
-  #albumdesktop{
-    display: none;
-  }
-
-  #artdesktop{
-    display: none;
-  }
-}
-  @media (min-width: 390px) {
-    
-    .multiple-card-slider .carousel-inner {
-        display: flex;
-        
-        height: 400px;
-    }
-    .multiple-card-slider .carousel-item {
-        width: 306px;
-        height: 280px;
-        margin-right: 0;
-        display: block;
-    }
-    .carousel-item-album {
-        width: 330px;
-        height: 308px;
-        margin-right: 0;
-        display: block;
-    }
-    
-    }
-    .multiple-card-slider .card{
-        margin: 0 .5em;
-        border: none;
-        width: 306px;
-        height: 280px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-position: center bottom;
-        background-size: center;
-        background-repeat: no-repeat;
-        border-radius: 0px;
-        object-fit: cover;
-        overflow: hidden;
-    }
-    .multiple-card-slider .carousel-control-prev, .multiple-card-slider .carousel-control-next{
-        background-color: #EB5160;
-        width: 60px;
-        height: 308px;
-        top: 50%;
-        padding: 117px 27px 132px 21px;
-        transform: translateY(-50%);
-    }
-    .carousel-control-prev {
-      margin-left: -40px;
-    }
-
-    .carousel-control-next {
-      margin-right: -70px;
-    }
-    .carousel{
-        width: 1704px;
-        height: 320px;
-        flex-shrink: 0;
-        margin: auto;
-        padding: 10px;
-    }
-    .carousel-caption{
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-
-    max-width: 100%;
-    width:100%;
-    bottom:0px;
-    position:absolute;
-    left: -15px;
-    }
-    .carousel-caption-album{
-    background-color: black;
-    color: white;
-    width: 335px;
-    bottom:20px;
-    position:absolute;
-    left: -15px;
-    
-    }
-    .cardimg {
-        object-fit: cover;
-        width: 306px;
-        height: 280px;
-        padding-right: 1em;
-    }
-    .cardimgmob {
-        object-fit: cover;
-        width: 306px;
-        height: 280px;
-        padding-right: 2.5em;
-    }
-    h5{
-    font-weight: 900;
-    width: 306px;
-    text-align: left;
-    padding-left: 10px;
-    }
-    .topleft {
-      position: absolute;
-      top: 8px;
-      left: 16px;
-      font-size: 18px;
-    }
-    .form-select{
-      border-radius: 34px;
-      width: 138px;
-      border-radius: 34px;
-      border: 1px solid #FFF;
-      background-color: black;
-      color: white;
-    }
-    .multiple-card-slider{
-      margin-left: 0;
-
-    }
-</style> 
 
 <nav class="navbar navbar-expand-lg navbar-custom2">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -189,17 +11,19 @@
               <a class="nav-link active-custom text-white" href="#">Explore</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'dashboard'%}">My artworks</a>
+              <a class="nav-link text-white" href="{% url 'dashboard'%}">My Artworks</a>
             </li>
           </ul>
         </div>
       </nav>
       <br>
       <div id="tagdiv">
-        {% for tag in Tags %}
-          <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag }}</a>
+        {% for tag in tags %}
+          <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag.name }} ({{ tag.artwork_count }})</a>
         {% endfor %}
       </div>
+      
+      
       <br>
       <div id="selectdiv">
         <select class="form-select" id="selectContent">
@@ -218,7 +42,7 @@
     <div class="carousel-inner">
       {% for albumObject in album %}
       {% if not albumObject.Private_Album %}
-        {% if forloop.last %}
+        {% if forloop.first %}
       <div class="carousel-item active" style="height: 298px;">
         <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
           <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
@@ -278,13 +102,15 @@
   </div>
 </div>
 <br><br> 
-<div id="artdesktop">
+  
+  </div>
+  <div id="artdesktop">
   <h2>Artworks</h2><br>
   <div class="multiple-card-slider">
   <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
       {% for artdetail in artwork %} 
-          {% if forloop.last %}
+      {% if forloop.first %}
         <div class="carousel-item active">
           <div class="card">
             <a href="{%  url 'artwork_detail' artdetail.pk %}">
@@ -327,9 +153,9 @@
     </div>
   
     </div>
-</div>
   </div>
 </div>
+
 <div id="mobcontent" style="padding-right: 10px;margin: 20px;">
 <div id="albummob" class="content" style="padding-right: 1em;width: auto;">
   {% for albumObject in album %}
@@ -421,7 +247,6 @@
 {% endfor %}
 </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>

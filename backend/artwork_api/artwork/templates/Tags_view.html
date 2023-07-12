@@ -55,8 +55,24 @@
         position:absolute;
         left: -15px;
     }
+    .cardimg{
+      width: 350px;
+      height: 350px;
+    }
     </style>
-<div>
+    <nav class="navbar navbar-expand-lg navbar-custom2">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active-custom">
+            <a class="nav-link active-custom text-white" href="{% url 'explore'%}">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'dashboard'%}">My artworks</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+<div id="desktopcontent">
     <br><br>
     <h2>Tag: {{ SelectTag }}</h2>
     <br><br>
@@ -67,10 +83,15 @@
             
         <div class="column">
             <div class="card">
-                <img class="card-img-top" src="{{ artdetail.Artwork.url }}" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
-                <div class="card-body">
+              <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                {% if artdetail.Sensitive_content %}
+                    <span class="badge bg-danger topleft">NSFW</span>
+                {% endif %}
+                <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+                <div class="carousel-caption">
                     <h5>{{ artdetail.Title }}</h5>
                 </div>
+              </a>
             </div>
           </div>
         {% else %}
@@ -78,5 +99,33 @@
         {% endif %}
     {% endfor %}
     </div>
+</div>
+<div id="mobcontent">
+  <br><br>
+  <h2>Tag: {{ SelectTag }}</h2>
+  <br><br>
+  <div class="row">
+  {% for artdetail in artwork %}
+
+      {% if artdetail.Tags.names %}
+          
+      <div class="column">
+        <div class="card">
+          <a href="{%  url 'artwork_detail' artdetail.pk %}">
+            {% if artdetail.Sensitive_content %}
+                <span class="badge bg-danger topleft">NSFW</span>
+            {% endif %}
+            <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+            <div class="carousel-caption">
+                <h5>{{ artdetail.Title }}</h5>
+            </div>
+          </a>
+        </div>
+        </div>
+      {% else %}
+          <h2>No artworks available</h2>
+      {% endif %}
+  {% endfor %}
+  </div>
 </div>
 {% endblock %}

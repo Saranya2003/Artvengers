@@ -1,181 +1,6 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
-<style>         
-  #selectdiv{
-    display: none;
-  }
-  #albummob{
-    display: none;
-  }
-
-  #artmob{
-    display: none;
-  }
-  #albumdesktop{
-    display: block;
-  }
-
-  #artdesktop{
-    display: block;
-  }
-
-
-
-  .navbar {
-    padding-top: 0px;
-    padding-bottom: 0px;
-  
-
-  }
-  .navbar-custom2 {  
-    background-color: #EB5160;
-    font-size: 20px;  
-  }
-  .active-custom{
-    background-color: #330C2F;
-  }
-  @media (max-width: 390px) {
-  #tagdiv{
-    display:none;
-  }
-  .carousel-container {
-    width: 90%;
-  }
-  #selectdiv{
-    display: block;
-  }
-  #albummob{
-    display: block;
-  }
-
-  #artmob{
-    display: block;
-  }
-  #albumdesktop{
-    display: none;
-  }
-
-  #artdesktop{
-    display: none;
-  }
-}
-  @media (min-width: 390px) {
-    
-    .multiple-card-slider .carousel-inner {
-        display: flex;
-        
-        height: 400px;
-    }
-    .multiple-card-slider .carousel-item {
-        width: 306px;
-        height: 280px;
-        margin-right: 0;
-        display: block;
-    }
-    .carousel-item-album {
-        width: 330px;
-        height: 308px;
-        margin-right: 0;
-        display: block;
-    }
-    
-    }
-    .multiple-card-slider .card{
-        margin: 0 .5em;
-        border: none;
-        width: 306px;
-        height: 280px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-position: center bottom;
-        background-size: center;
-        background-repeat: no-repeat;
-        border-radius: 0px;
-        object-fit: cover;
-        overflow: hidden;
-    }
-    .multiple-card-slider .carousel-control-prev, .multiple-card-slider .carousel-control-next{
-        background-color: #EB5160;
-        width: 60px;
-        height: 308px;
-        top: 50%;
-        padding: 117px 27px 132px 21px;
-        transform: translateY(-50%);
-    }
-    .carousel-control-prev {
-      margin-left: -40px;
-    }
-
-    .carousel-control-next {
-      margin-right: -70px;
-    }
-    .carousel{
-        width: 1704px;
-        height: 320px;
-        flex-shrink: 0;
-        margin: auto;
-        padding: 10px;
-    }
-    .carousel-caption{
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-
-    max-width: 100%;
-    width:100%;
-    bottom:0px;
-    position:absolute;
-    left: -15px;
-    }
-    .carousel-caption-album{
-    background-color: black;
-    color: white;
-    width: 335px;
-    bottom:20px;
-    position:absolute;
-    left: -15px;
-    
-    }
-    .cardimg {
-        object-fit: cover;
-        width: 306px;
-        height: 280px;
-        padding-right: 1em;
-    }
-    .cardimgmob {
-        object-fit: cover;
-        width: 306px;
-        height: 280px;
-        padding-right: 2.5em;
-    }
-    
-    h5{
-    font-weight: 900;
-    width: 306px;
-    text-align: left;
-    padding-left: 10px;
-    }
-    .topleft {
-      position: absolute;
-      top: 8px;
-      left: 16px;
-      font-size: 18px;
-    }
-    .form-select{
-      border-radius: 34px;
-      width: 138px;
-      border-radius: 34px;
-      border: 1px solid #FFF;
-      background-color: black;
-      color: white;
-    }
-    .multiple-card-slider{
-      margin-left: 0;
-      
-    }
-</style>   
 <nav class="navbar navbar-expand-lg navbar-custom2">
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
@@ -183,7 +8,7 @@
               <a class="nav-link text-white" href="{% url 'explore'%}">Explore</a>
             </li>
             <li class="nav-item active-custom">
-              <a class="nav-link active-custom text-white" href="#">My artworks</a>
+              <a class="nav-link active-custom text-white" href="#">My Artworks</a>
             </li>
           </ul>
         </div>
@@ -191,169 +16,163 @@
       <br>
       <div id="selectdiv">
         <select class="form-select" id="selectContent">
-          <option value="albummob" selected>My albums</option>
-          <option value="artmob">My artworks</option>
+          <option value="albummob" selected>My Albums</option>
+          <option value="artmob">My Artworks</option>
         </select>
       </div>
       <br>
-<div id="desktopcontent">
-  <div id="albumdesktop">
-    <table style="width:100%">
-      <tr>
-        <td style="width:75%"><h2>My albums </td><td style="width: 10%;"><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button" id="uploadbtn">Create new album</a></h2></td><td></td>
-      </tr>
-    </table>
-  <br>
-      <div class="multiple-card-slider">
-        <div id="Artvengerscarousel" class="carousel" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            {% for albumObject in album %}
-            {% if user.id == albumObject.artist_Name.id %}
-              {% if forloop.last %}
-            <div class="carousel-item active">
-              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
-                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
+      <div id="desktopcontent">
+        <div id="albumdesktop">
+          <h2>My Albums <a class="btn btn-custom" href="{%  url 'add_album' %}" role="button">Create new album</a></h2>
+          <br>
+          <div class="multiple-card-slider">
+          <div id="Artvengerscarousel" class="carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              {% for albumObject in album %}
+              {% if user.id == albumObject.artist_Name.id or not albumObject.artist_Name %}
+                {% if forloop.first %}
+              <div class="carousel-item active" style="height: 298px;">
+                <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+                  <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
+                </div>
+                <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+                    <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimg" id="image3">          
+                </div>
+                <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+                  <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimg" id="image2">          
+                </div>
+                <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+                    <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimg" id="image">
+                </div>
+            <a href="{% url 'album' albumObject.pk %}">
+              <div class="card" style="position: relative; right: 30px;bottom: 1060px; background-color: transparent;width: 335px;">
+                <div class="carousel-caption-album">
+                  <h5>
+                    <table style="width:100%">
+                      <tr>
+                        <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                          <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
+                      </tr>
+                    </table>
+                  </h5>
+                </div>
               </div>
-              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
-                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimg" id="image3">          
+            </a>
               </div>
-              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
-                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimg" id="image2">          
-              </div>
-              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
-                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimg" id="image">
-              </div>
-          <a href="{% url 'album' albumObject.pk %}">
-            <div class="card" style="position: relative; right: 30px;bottom: 1060px; background-color: rgba(255, 255, 255, 0);width: 335px;">
-              <div class="carousel-caption-album">
-                <h5>
-                  <table style="width:100%">
-                    <tr>
-                      <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
-                        <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
-                    </tr>
-                  </table>
-                </h5>
-              </div>
-            </div>
-          </a>
-            </div>
-              {% else %}
-            <div class="carousel-item-album">
-              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
-                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
-              </div>
-              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
-                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimg" id="image3">          
-              </div>
-              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
-                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimg" id="image2">          
-              </div>
-              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
-                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimg" id="image">
-              </div>
-          <a href="{% url 'album' albumObject.pk %}">
-            <div class="card" style="position: relative; right: 30px;bottom: 1060px; background-color: rgba(255, 255, 255, 0);width: 335px;">
-              <div class="carousel-caption-album">
-                <h5>
-                  <table style="width:100%">
-                    <tr>
-                      <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
-                        <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
-                    </tr>
-                  </table>
-                </h5>
-              </div>
-            </div>
-          </a>
-            </div>
-            {% endif %}
-            {% endif %}
-          {% endfor %}
-          </div>
-          
-          <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-  </div>
-  <br>
-  <div id="artdesktop">
-  <table style="width:100%">
-    <tr>
-      <td style="width:75%"><h2>  My artworks </td><td style="width: 10%;"><a class="btn btn-custom" href="{%  url 'add_artwork' %}" role="button" id="uploadbtn">Post new artwork</a></h2></td><td></td>
-    </tr>
-  </table>
-
-    <br><br>
-    
-    <div class="multiple-card-slider">
-      <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
-          <div class="carousel-inner">
-          {% for artdetail in artwork %}
-          {% if user.id == artdetail.artist_Name.id %} 
-              {% if forloop.last %}
-            <div class="carousel-item active">
-              <div class="card">
-                <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                  {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger topleft">NSFW</span>
-                  {% endif %}
-                  <img src="{{ artdetail.Artwork.url }}" class="cardimg">
-                  <div class="carousel-caption">
-                      <h5>{{ artdetail.Title }}</h5>
-                      <div style="float: right;">
-                        <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                      </div>
+                {% else %}
+              <div class="carousel-item-album" style="height: 298px;">
+                <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+                  <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
+                </div>
+                <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+                    <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimg" id="image3">          
+                </div>
+                <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+                  <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimg" id="image2">          
+                </div>
+                <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+                    <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimg" id="image">
+                </div>
+                <a href="{% url 'album' albumObject.pk %}">
+                  <div class="card" style="position: relative; right: 30px;bottom: 1050px; background-color: transparent;width: 335px;">
+                    <div class="carousel-caption-album">
+                      <h5>
+                        <table style="width:100%">
+                          <tr>
+                            <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                              <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
+                          </tr>
+                        </table>
+                      </h5>
+                    </div>
                   </div>
                 </a>
               </div>
+              {% endif %}
+              {% endif %}
+            {% endfor %}
             </div>
-              {% else %}
-            <div class="carousel-item">
-              <div class="card">
-                <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                  {% if artdetail.Sensitive_content %}
-                      <span class="badge bg-danger topleft">NSFW</span>
-                  {% endif %}
-                  <img src="{{ artdetail.Artwork.url }}" class="cardimg">
-                  <div class="carousel-caption">
-                      <h5>{{ artdetail.Title }}</h5>
-                      <div style="float: right;">
-                        <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                      </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            {% endif %}
-            {% endif %}
-          {% endfor %}
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
-          
-          <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
-      
-    </div>
-    
-  
-</div>
-</div>
+        <br><br> 
+        
+          </div>
+          <div id="artdesktop">
+          <h2>
+            <table>
+              <tr>
+                <td>My Artworks</td>
+                <td><a class="btn btn-custom" href="{% url 'add_artwork' %}" role="button">Post new artwork</a></td>
+              </tr>
+            </table></h2><br>
+          <div class="multiple-card-slider">
+          <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
+              <div class="carousel-inner">
+              {% for artdetail in artwork %} 
+              {% if user.id == artdetail.artist_Name.id %}
+              {% if forloop.first %}
+                <div class="carousel-item active">
+                  <div class="card">
+                    <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                      {% if artdetail.Sensitive_content %}
+                          <span class="badge bg-danger topleft">NSFW</span>
+                      {% endif %}
+                      <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+                      <div class="carousel-caption">
+                          <h5>{{ artdetail.Title }}</h5>
+                          <div style="float: right;">
+                            <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                            <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                  {% else %}
+                <div class="carousel-item">
+                  <div class="card">
+                    <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                      {% if artdetail.Sensitive_content %}
+                          <span class="badge bg-danger topleft">NSFW</span>
+                      {% endif %}
+                      <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+                      <div class="carousel-caption">
+                          <h5>{{ artdetail.Title }}</h5>
+                          <div style="float: right;">
+                            <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                            <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                {% endif %}
+                {% endif %}
+              {% endfor %}
+              </div>
+              
+              <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          
+            </div>
+        </div>
+        </div>
 <div id="mobcontent">
   <div id="albummob" class="content" style="padding-right: 1em;width: auto;">
     {% for albumObject in album %}

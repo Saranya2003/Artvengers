@@ -12,7 +12,7 @@ from .models import ArtworkPost,Album, Comment
 from .serializers import AlbumSerializer, ArtworkSerializer
 from .forms import AlbumForm, ArtworkForm, CommentForm,UpdateArtworkForm,UpdateAlbumForm
 from taggit.models import Tag
-
+from django.db.models import Count, Q
 # Create your views here.
 
 def addtoalbum(request,pk):
@@ -211,7 +211,7 @@ class ArtworkPostDetail(DetailView):
         context['likes'] = total_likes
         context['liked_post'] = liked
         context['album'] = Album.objects.all()
-        context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk']).order_by('-pk')
+        context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'])
         context['form'] = CommentForm()
         
         return context
@@ -230,19 +230,21 @@ class AlbumView(ListView):
         context['Tags'] = Tag.objects.all()
         return context
 
+
+
 class ExploreView(ListView):
     model = ArtworkPost
     template_name = 'explore.html'
     
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
         context['album'] = Album.objects.all().order_by('-pk')
         context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
-        context['Tags'] = Tag.objects.all()
-
+        context['tags'] = Tag.objects.annotate(artwork_count=Count('artworkpost')).filter(artwork_count__gt=0).order_by('-artwork_count')
+        
         return context
+
     
 class Taglist(ListView):
     model = ArtworkPost
@@ -252,8 +254,11 @@ class Taglist(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['Tags'] = Tag.objects.all()
+        #print(context['Tags'][0])
+        #print(context['artwork'])
+        #print(context['artwork'][0].Tags.names())
+        #print(context['artwork'].order_by('-pk'))
         return context
-    
 class DashboardView(ListView):
     model = ArtworkPost
     template_name = 'dashboard.html'
@@ -289,8 +294,12 @@ class UpdateAlbum(UpdateView):
         piclist=[]
         context = super().get_context_data(**kwargs)
         context['album'] = Album.objects.filter(pk=self.kwargs['pk']).order_by('-pk')
+        print("albumcontext", context['album'])
         context['artwork'] = context['album'][0].memberpic.all().order_by('-pk')
-
+        #print("contextartwork", context['artwork'])
+        
+        
+        #print("context", context['artwork'])
         for i in context['artwork']:
             print(i.pk)
             piclist.append(i.pk)

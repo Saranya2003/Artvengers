@@ -295,9 +295,192 @@
         border-radius: 3rem;
       }
       ::placeholder {
-        color: grey;
+        color: white;
         opacity: 1; /* Firefox */
       }
+      #tagdiv{
+    display:block;
+  }
+  #selectdiv{
+    display: none;
+  }
+  #albummob{
+    display: none;
+  }
+
+  #artmob{
+    display: none;
+  }
+  #albumdesktop{
+    display: block;
+  }
+
+  #artdesktop{
+    display: block;
+  }
+
+
+
+  .navbar {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  
+
+  }
+  .navbar-custom2 {  
+    background-color: #EB5160;
+    font-size: 20px;  
+  }
+  .active-custom{
+    background-color: #330C2F;
+  }
+  @media (max-width: 390px) {
+  #tagdiv{
+    display:none;
+  }
+  .carousel-container {
+    width: 90%;
+  }
+  #selectdiv{
+    display: block;
+  }
+  #albummob{
+    display: block;
+  }
+
+  #artmob{
+    display: block;
+  }
+  #albumdesktop{
+    display: none;
+  }
+
+  #artdesktop{
+    display: none;
+  }
+}
+  @media (min-width: 390px) {
+    
+    .multiple-card-slider .carousel-inner {
+        display: flex;
+        
+        height: 400px;
+    }
+    .multiple-card-slider .carousel-item {
+        width: 306px;
+        height: 280px;
+        margin-right: 0;
+        display: block;
+    }
+    .carousel-item-album {
+        width: 330px;
+        height: 308px;
+        margin-right: 0;
+        display: block;
+    }
+    
+    }
+    .multiple-card-slider .card{
+        margin: 0 .5em;
+        border: none;
+        width: 306px;
+        height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: center bottom;
+        background-size: center;
+        background-repeat: no-repeat;
+        border-radius: 0px;
+        object-fit: cover;
+        overflow: hidden;
+    }
+    .multiple-card-slider .carousel-control-prev, .multiple-card-slider .carousel-control-next{
+        background-color: #EB5160;
+        width: 60px;
+        height: 308px;
+        top: 50%;
+        padding: 117px 27px 132px 21px;
+        transform: translateY(-50%);
+    }
+    .carousel-control-prev {
+      margin-left: -40px;
+    }
+
+    .carousel-control-next {
+      margin-right: -70px;
+    }
+    .carousel{
+        width: 1704px;
+        height: 320px;
+        flex-shrink: 0;
+        margin: auto;
+        padding: 10px;
+    }
+    .carousel-caption{
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+
+    max-width: 100%;
+    width:100%;
+    bottom:0px;
+    position:absolute;
+    left: -15px;
+    }
+    .carousel-caption-album{
+    background-color: black;
+    color: white;
+    width: 335px;
+    bottom:20px;
+    position:absolute;
+    left: -15px;
+    
+    }
+    .cardimg {
+        object-fit: cover;
+        width: 306px;
+        height: 280px;
+    }
+    .cardimgmob {
+        object-fit: cover;
+        width: 315px;
+        height: 280px;
+        padding-right: 2.5em;
+    }
+    h5{
+    font-weight: 900;
+    width: 306px;
+    text-align: left;
+    padding-left: 10px;
+    }
+    .topleft {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      font-size: 18px;
+    }
+    .form-select{
+      border-radius: 34px;
+      width: 138px;
+      border-radius: 34px;
+      border: 1px solid #FFF;
+      background-color: black;
+      color: white;
+    }
+    .multiple-card-slider{
+      margin-left: 0;
+
+    }
+    /* clears the 'X' from Internet Explorer */
+    input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+    input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+    /* clears the 'X' from Chrome */
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration { display: none; }
     </style>
   </head>
   {% load thumbnail %}
@@ -428,6 +611,7 @@
         </tr>
       </table>
     </nav>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
       function Nav() {
@@ -447,6 +631,11 @@
     
     {% endblock %}
 
-
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: white;">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
+        <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+      </div>
+    </footer>
   </body>
 </html>

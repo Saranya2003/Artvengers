@@ -7,47 +7,146 @@
         color: white;
     }
 </style>
-<div id="desktopcontent">
-    <br>
+<nav class="navbar navbar-expand-lg navbar-custom2">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active-custom">
+        <a class="nav-link active-custom text-white" href="{% url 'explore'%}">Explore</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'dashboard'%}">My artworks</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+  <br>
     <center>
-        <div style="padding-right: 2em;border-radius: 20px;border: 1px solid #FFF;background: rgba(255, 255, 255, 0.36);">
+        <div style="padding-right: 1em;border-radius: 20px;border: 1px solid #FFF;background: rgba(255, 255, 255, 0.36);font-size: 36px;margin-right: 1em;">
             Search results
         </div>
-    </center>  
-    {% if artwork.count > 0 and album.count > 0 %}
+    </center>
     <br>
+{% if artwork.count > 0 and album.count > 0 %}
+<div id="desktopcontent">
+    
 
     <br>  
     <h2>Album</h2>
     <center>
-        <div class="scrollmenu" style="width: 1578px;">
-            {% for alb in album %}
-                {% if not alb.Private_Album %}
-
-                <a href="{% url 'album' alb.pk %}">
-                    <img src="{{ alb.memberpic.first.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
-                    <h5 style="background-color: black;">{{ alb.Album_Title }}</h5>
-                </a> 
-                {% endif %}
-            {% endfor %}
+        <div class="multiple-card-slider">
+  <div id="Artvengerscarousel" class="carousel" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for albumObject in album %}
+      {% if not albumObject.Private_Album %}
+        {% if forloop.first %}
+      <div class="carousel-item active" style="height: 298px;">
+        <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+          <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
         </div>
+        <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+            <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimg" id="image3">          
+        </div>
+        <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+          <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimg" id="image2">          
+        </div>
+        <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+            <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimg" id="image">
+        </div>
+    <a href="{% url 'album' albumObject.pk %}">
+      <div class="card" style="position: relative; right: 30px;bottom: 1060px; background-color: transparent;width: 335px;">
+        <div class="carousel-caption-album">
+          <h5>{{ albumObject.Album_Title }}</h5>
+        </div>
+      </div>
+    </a>
+      </div>
+        {% else %}
+      <div class="carousel-item-album" style="height: 298px;">
+        <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+          <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimg" id="image4">          
+        </div>
+        <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+            <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimg" id="image3">          
+        </div>
+        <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+          <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimg" id="image2">          
+        </div>
+        <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+            <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimg" id="image">
+        </div>
+        <a href="{% url 'album' albumObject.pk %}">
+          <div class="card" style="position: relative; right: 30px;bottom: 1050px; background-color: transparent;width: 335px;">
+            <div class="carousel-caption-album">
+              <h5>{{ albumObject.Album_Title }}</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+      {% endif %}
+    {% endfor %}
+    </div>
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
     </center>
     <h2>Artwork</h2>
     <center>
-        <div class="scrollmenu" style="width: 1578px;">
-            {% for arts in artwork %}
-
-                <a href="{%  url 'artwork_detail' arts.pk %}">
-                    <img src="{{ arts.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
-                    <div class="caption">
-                        <h5>{{ arts.Title }}</h5>
-                    </div>
-                    
-                </a> 
-
-
-            {% endfor %}
+        <div class="multiple-card-slider">
+  <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
+      <div class="carousel-inner">
+      {% for artdetail in artwork %} 
+      {% if forloop.first %}
+        <div class="carousel-item active">
+          <div class="card">
+            <a href="{%  url 'artwork_detail' artdetail.pk %}">
+              {% if artdetail.Sensitive_content %}
+                  <span class="badge bg-danger topleft">NSFW</span>
+              {% endif %}
+              <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+              <div class="carousel-caption">
+                  <h5>{{ artdetail.Title }}</h5>
+              </div>
+            </a>
+          </div>
         </div>
+          {% else %}
+        <div class="carousel-item">
+          <div class="card">
+            <a href="{%  url 'artwork_detail' artdetail.pk %}">
+              {% if artdetail.Sensitive_content %}
+                  <span class="badge bg-danger topleft">NSFW</span>
+              {% endif %}
+              <img src="{{ artdetail.Artwork.url }}" class="cardimg">
+              <div class="carousel-caption">
+                  <h5>{{ artdetail.Title }}</h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      </div>
+      
+      <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  
+    </div>
     </center>    
     {% else %}
     <div style="text-align: center;padding-top: 400px;">
@@ -113,17 +212,78 @@
     </div>
     {% endif %}<br><br>
 </div>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
-    const mouseWheel = document.querySelector('.scrollmenu');
+$('.multiple-card-slider .carousel').each(function(){
+    var currentCarouselId = '#' + $(this).attr('id');
+    const multipleItemCarousel = document.querySelector(currentCarouselId);
 
-    mouseWheel.addEventListener('wheel', function(e) {
-        const race = 50; // How many pixels to scroll
+    if(window.matchMedia("(min-width:390px)").matches){
+        const carousel = new bootstrap.Carousel(multipleItemCarousel, {
+            interval: false,
+            wrap: false
+        })
+        var carouselWidth = $(currentCarouselId + ' .carousel-inner')[0].scrollWidth;
+        var cardWidth = $(currentCarouselId + ' .carousel-item').width();
+        var scrollPosition = 0;    
+        $(currentCarouselId + ' .carousel-control-next').on('click', function(){
+            if(scrollPosition < (carouselWidth - (cardWidth * 4))){
+                console.log('next');
+                scrollPosition = scrollPosition + cardWidth;
+                $(currentCarouselId + ' .carousel-inner').animate({scrollLeft: scrollPosition},600);
+            }
+        });
+        $(currentCarouselId + ' .carousel-control-prev').on('click', function(){
+            if(scrollPosition > 0){
+                console.log('prev');
+                scrollPosition = scrollPosition - cardWidth;
+                $(currentCarouselId + ' .carousel-inner').animate({scrollLeft: scrollPosition},600);
+            }
+        });
+    }else{
+        $(multipleItemCarousel).addClass('slide');
+    }
+});
+</script>
+<script>
+  //Select in mobile
+  $(function() {
+   $('.content').hide();
+   $('#selectContent').change(function() {
+      $('.content').hide();
+      $('#' + $(this).val()).show();
+   });
+});
+</script>
+<script>
+  window.addEventListener("DOMContentLoaded", function() {
+  var album = document.getElementById("albummob");
+  var cards = album.getElementsByClassName("card");
 
-        if (e.deltaY > 0) // Scroll right
-            mouseWheel.scrollLeft += race;
-        else // Scroll left
-            mouseWheel.scrollLeft -= race;
+  for (var i = 0; i < Math.min(cards.length, 4); i++) {
+    cards[i].style.display = "block";
+  }
+});
+
+</script>
+
+<script>
+    // Get all scrollmenu elements
+    const scrollMenus = document.querySelectorAll('.scrollmenu');
+
+    scrollMenus.forEach(scrollMenu => {
+        scrollMenu.addEventListener('wheel', function(e) {
+            const race = 50; // How many pixels to scroll
+
+            if (e.deltaY > 0) // Scroll right
+                scrollMenu.scrollLeft += race;
+            else // Scroll left
+                scrollMenu.scrollLeft -= race;
+                
             e.preventDefault();
+        });
     });
 </script>
+
+
 {% endblock %}
