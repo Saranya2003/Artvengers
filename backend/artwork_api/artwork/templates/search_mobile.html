@@ -15,7 +15,14 @@
     </div>
     
   </form>
+  <br>
   <h2>Tags list</h2>
+  <br>
+  <div>
+    {% for tag in tags %}
+      <a href="{% url 'tag' tag %}">{{ tag.name }} ({{ tag.artwork_count }})</a><br>
+    {% endfor %}
+  </div>
   
 </div>  
 {% endblock %}

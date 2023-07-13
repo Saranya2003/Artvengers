@@ -5,7 +5,7 @@
 <br>
 
 <div class="form-group" style="padding: 50px;margin: 20px;" id="desktopcontent">
-    <form method="POST" action="{% url 'add_album_action' %}" onsubmit="submem()" enctype="multipart/form-data">
+    <form method="POST" action="" onsubmit="submem()" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" value="{{ user.id }}" name="artist_Name">
         <!--<input type="hidden" name="memberpic"> -->
@@ -43,8 +43,8 @@
     </form>
 </div>
 
-<div id="mobcontent" style="padding-right: 1em;width: auto;">
-    <form method="POST" action="{% url 'add_album_action' %}" onsubmit="submem()" enctype="multipart/form-data">
+<div id="mobcontent" style="padding: 50px;margin: 20px;">
+    <form method="POST" action="" onsubmit="submem()" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" value="{{ user.id }}" name="artist_Name">
         <!--<input type="hidden" name="memberpic"> -->
@@ -117,4 +117,14 @@
             e.preventDefault();
     });
     </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+          const form = document.getElementById('artworkForm');
+          if (window.innerWidth < 390) {
+            form.action = "{% url 'add_album_mobile' %}";
+          } else {
+            form.action = "{% url 'add_album_action' %}";
+          }
+        });
+      </script>
 {% endblock %}

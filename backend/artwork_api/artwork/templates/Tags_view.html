@@ -100,16 +100,14 @@
     {% endfor %}
     </div>
 </div>
-<div id="mobcontent">
-  <br><br>
+<div id="mobcontent" style="padding-right: 10px;margin: 20px;">
   <h2>Tag: {{ SelectTag }}</h2>
   <br><br>
-  <div class="row">
   {% for artdetail in artwork %}
 
       {% if artdetail.Tags.names %}
           
-      <div class="column">
+      <div class="column"style="padding-right: 1em;width: auto;margin-left:0em">
         <div class="card">
           <a href="{%  url 'artwork_detail' artdetail.pk %}">
             {% if artdetail.Sensitive_content %}
@@ -126,6 +124,5 @@
           <h2>No artworks available</h2>
       {% endif %}
   {% endfor %}
-  </div>
 </div>
 {% endblock %}

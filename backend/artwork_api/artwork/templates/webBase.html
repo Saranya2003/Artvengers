@@ -630,12 +630,13 @@
     {% block content %}
     
     {% endblock %}
-
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: white;">
-      <div class="col-md-4 d-flex align-items-center">
-        <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
-        <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
-      </div>
-    </footer>
+    <div class="hidden-xs" id="desktopcontent">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: white;">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
+          <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

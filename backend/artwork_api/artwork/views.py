@@ -330,6 +330,12 @@ class SearchMobileView(ListView):
     model = ArtworkPost
     template_name = 'search_mobile.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tags'] = Tag.objects.annotate(artwork_count=Count('artworkpost')).filter(artwork_count__gt=0).order_by('-artwork_count')
+       
+        return context
+
 class TagsView(ListView):
     model = ArtworkPost
     template_name = 'Tags_view.html'

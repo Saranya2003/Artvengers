@@ -69,4 +69,14 @@
     var name = "{{user.id}}";
     document.getElementById("user").value = name;
 </script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('artworkForm');
+    if (window.innerWidth < 390) {
+      form.action = "{% url 'update_artwork_mobile' object.pk %}";
+    } else {
+      form.action = "{% url 'artwork_edit_action' object.pk %}";
+    }
+  });
+</script>
 {% endblock %}

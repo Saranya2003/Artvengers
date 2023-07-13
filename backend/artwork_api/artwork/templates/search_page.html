@@ -19,7 +19,7 @@
     </ul>
   </div>
 </nav>
-  <br>
+<br>
     <center>
         <div style="padding-right: 1em;border-radius: 20px;border: 1px solid #FFF;background: rgba(255, 255, 255, 0.36);font-size: 36px;margin-right: 1em;">
             Search results
@@ -157,53 +157,104 @@
     {% endif %}<br><br>
 </div>
 
-<div style="padding: 50px;margin: 20px;" id="mobcontent">
-    <center>
-        <div style="padding-right: 2em;border-radius: 20px;border: 1px solid #FFF;background: rgba(255, 255, 255, 0.36);">
-        <form class="d-flex" action="{% url 'search_result' %}">
-            {% csrf_token %}
-            <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword"value="{{ keyword }}" style="background-color: transparent;border: none;">
-            <button type="submit" class="btn btn-outline-secondary rounded-pill" style="margin-left: -40px;"><i class="fa fa-search"></i></button>
-            
-        </form>
-        </div>
-    </center>  
+<div style="padding-right: 10px;margin: 20px;" id="mobcontent">
+    <div id="selectdiv">
+      <select class="form-select" id="selectContent">
+        <option value="albummob" selected>Albums</option>
+        <option value="artmob">Artworks</option>
+      </select>
+    </div>
+  <br>
     {% if artwork.count > 0 and album.count > 0 %}
     <br>
-
-    <br>  
-    <h2>Album</h2>
-    <center>
-        <div class="scrollmenu" style="padding-right: 1em;width: auto;">
-            {% for alb in album %}
-                {% if not alb.Private_Album %}
-
-                <a href="{% url 'album' alb.pk %}">
-                    <img src="{{ alb.memberpic.first.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
-                    <h5 style="background-color: black;">{{ alb.Album_Title }}</h5>
-                </a> 
-                {% endif %}
-            {% endfor %}
-        </div>
-    </center>
-    <h2>Artwork</h2>
-    <center>
-        <div class="scrollmenu" style="padding-right: 1em;width: auto;height: 350px;">
-            {% for arts in artwork %}
-
-            <a href="{%  url 'artwork_detail' arts.pk %}">
-                <img src="{{ arts.Artwork.url }}" width="40%" style="width: 350px; height: 350px; object-fit: cover;padding-bottom: 1em;padding-right: 1em;">
-                <div class="caption">
-                    <h5>{{ arts.Title }}</h5>
+      <div id="albummob" class="content" style="padding-right: 1em;width: auto;">
+        {% for albumObject in album %}
+            {% if not albumObject.Private_Album %}
+              {% if forloop.last %}
+            <div class="carousel-item active" style="height: 298px;">
+              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimgmob" id="image4">          
+              </div>
+              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimgmob" id="image3">          
+              </div>
+              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimgmob" id="image2">          
+              </div>
+              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimgmob" id="image">
+              </div>
+          <a href="{% url 'album' albumObject.pk %}">
+            <div style="position: relative; right: 30px;bottom: 1060px; background-color: transparent;width: 335px;">
+              <div class="carousel-caption-album" style="bottom: -260px;">
+                <h5>{{ albumObject.Album_Title }}</h5>
+              </div>
+            </div>
+          </a>
+            </div>
+              {% else %}
+            <div class="carousel-item-album" style="height: 298px;">
+              
+                        <span class="badge bg-danger topleft">{{ memberpic.count }}</span>
+              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
+                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimgmob" id="image4">          
+              </div>
+              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
+                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimgmob" id="image3">          
+              </div>
+              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
+                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimgmob" id="image2">          
+              </div>
+              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
+                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimgmob" id="image">
+              </div>
+              <a href="{% url 'album' albumObject.pk %}">
+                <div style="position: relative; right: 30px;bottom: 1050px; background-color: transparent;width: 335px;">
+                  <div class="carousel-caption-album" style="bottom: -260px;">
+                    <h5>{{ albumObject.Album_Title }}</h5>
+                  </div>
                 </div>
-                
-            </a> 
-                
-
-
-            {% endfor %}
+              </a>
+            </div><br><br>
+            {% endif %}
+            {% endif %}
+          {% endfor %}
+      
+      </div>
+      <div id="artmob" class="content" style="padding-right: 1em;width: auto;">
+        {% for artdetail in artwork %}
+          {% if forloop.last %}
+            <div>
+              <div class="card">
+                <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                  {% if artdetail.Sensitive_content %}
+                    <span class="badge bg-danger topleft">NSFW</span>
+                  {% endif %}
+                    <img src="{{ artdetail.Artwork.url }}" class="cardimgmob">
+                    <div class="carousel-caption">
+                      <h5>{{ artdetail.Title }}</h5>
+                    </div>
+                  </a>
+                </div>
+              </div><br>
+          {% else %}
+            <div>
+              <div class="card">
+                <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                  {% if artdetail.Sensitive_content %}
+                    <span class="badge bg-danger topleft">NSFW</span>
+                  {% endif %}
+                    <img src="{{ artdetail.Artwork.url }}" class="cardimgmob">
+                    <div class="carousel-caption">
+                      <h5>{{ artdetail.Title }}</h5>
+                    </div>
+                </a>
+              </div>
+            </div><br>
+          {% endif %}
+              
+        {% endfor %}
         </div>
-    </center>    
     {% else %}
     <div style="text-align: center;padding-top: 400px;">
         <h1>
