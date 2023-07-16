@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 {% extends 'webBase.html' %}
 {% block content %}
+<br>
 <h2>Tags list</h2>
 {% for tag in Tags %}
-          <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag }}</a><br><br>
+          <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag.name }} ({{ tag.artwork_count }})</a><br>
+          <hr>
         {% endfor %}
 {% endblock %}

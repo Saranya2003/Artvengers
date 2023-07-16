@@ -4,7 +4,7 @@
 <br>
 <br>
 
-<div class="form-group" style="padding: 50px;margin: 20px;" id="desktopcontent">
+<div id="desktopcontent">
     <form method="POST" action="" onsubmit="submem()" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" value="{{ user.id }}" name="artist_Name">

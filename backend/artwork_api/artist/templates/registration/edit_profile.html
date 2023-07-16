@@ -21,8 +21,7 @@
     filter: alpha(opacity=0);
   }
   </style>
-<br>
-<br><br>
+
 <nav class="navbar navbar-expand-lg navbar-custom2">
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
@@ -35,98 +34,55 @@
     </ul>
   </div>
 </nav>
-<div>
-  <div class="container" style="padding: 50px;margin: 20px;" id="desktopcontent">
-    <form method="POST" action="{% url 'edit_profile_action' object.pk %}" enctype="multipart/form-data" id="profileform">
-          {% csrf_token %}
-         
-      <table>
-      <div class="row align-items-start">
-        <div class="col-sm" style="text-align: center;">
-          {% if user.profile.profile_picture %}
-          <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;" id="profilePic">
-          {% else %}
-          <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;" id="profilePic">
-          {% endif %}
-          <br><br>
-          <div class="fileUpload btn btn-custom">
-            <span>Upload Profile Picture</span>
-            <input type="file" class="upload" name="newprofilepic" id="imgInp"/>
+<div id="desktopcontent"><br>
+  <br><br>
+      <form method="POST" action="{% url 'edit_profile_action' object.pk %}" enctype="multipart/form-data" id="profileform">
+            {% csrf_token %}
+           
+        <table>
+        <div class="row align-items-start">
+          <div class="col-sm" style="text-align: center;">
+            {% if user.profile.profile_picture %}
+            <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;" id="profilePic">
+            {% else %}
+            <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;" id="profilePic">
+            {% endif %}
+            <br><br>
+            <div class="fileUpload btn btn-custom">
+              <span>Upload Profile Picture</span>
+              <input type="file" class="upload" name="newprofilepic" id="imgInp"/>
+            </div>
+          </div>
+          <div class="col-sm">
+            
+            {% csrf_token %}
+              Username <input type="text" value={{ user.profile.user }} name="username" class="form-control" style="width: 371px;"> <br>
+              <input type="hidden" value={{ user.profile.pk }} name="user">
+              Email <input type="text" value={{ user.profile.email }} name="email" class="form-control" style="width: 371px;"><br>
+              Bio <textarea name="bio" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
+    
+              <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
+              
+              <strong>Social Media</strong><br><br>
+              
+            Instagram <input type="text" value={{ user.profile.Instagram }} name="Instagram" class="form-control" style="width: 371px;"><br>
+            Twitter <input type="text" value={{ user.profile.Twitter }} name="Twitter" class="form-control" style="width: 371px;"><br>
+            Facebook <input type="text" value={{ user.profile.Facebook }} name="Facebook" class="form-control" style="width: 371px;"><br>
           </div>
         </div>
-        <div class="col-sm">
-          
-          {% csrf_token %}
-            Username <input type="text" value={{ user.profile.user }} name="username" class="form-control" style="width: 371px;"> <br>
-            <input type="hidden" value={{ user.profile.pk }} name="user">
-            Email <input type="text" value={{ user.profile.email }} name="email" class="form-control" style="width: 371px;"><br>
-            Bio <textarea name="bio" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
-  
-            <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
+        <div class="form-group" style="text-align:center;">
             
-            <strong>Social Media</strong><br><br>
-            
-          Instagram <input type="text" value={{ user.profile.Instagram }} name="Instagram" class="form-control" style="width: 371px;"><br>
-          Twitter <input type="text" value={{ user.profile.Twitter }} name="Twitter" class="form-control" style="width: 371px;"><br>
-          Facebook <input type="text" value={{ user.profile.Facebook }} name="Facebook" class="form-control" style="width: 371px;"><br>
+                
+                
+                <br><br>
+                <input type="submit" class="btn btn-custom" value="Update your profile"><br><br>
         </div>
-      </div>
-      <div class="form-group" style="text-align:center;">
-          
-              
-              
-              <br><br>
-              <input type="submit" class="btn btn-custom" value="Update your profile"><br><br>
-      </div>
-  
-      </form>
-  </div>
-</div>
+    
+        </form>
+    </div>
 <div>
-  <div class="container" style="padding: 50px;margin: 20px;" id="mobcontent">
-    <form method="POST" action="{% url 'edit_profile_action' object.pk %}" enctype="multipart/form-data" id="profileform">
-          {% csrf_token %}
-         
-      <table>
-      <div class="row align-items-start">
-        <div class="col-sm" style="text-align: center;">
-          {% if user.profile.profile_picture %}
-          <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;" id="profilePic">
-          {% else %}
-          <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;" id="profilePic">
-          {% endif %}
-          <br><br>
-          <div class="fileUpload btn btn-custom">
-            <span>Upload Profile Picture</span>
-            <input type="file" class="upload" name="newprofilepic" id="imgInp"/>
-          </div>
-        </div>
-        <div class="col-sm">
-          
-          {% csrf_token %}
-            Username <input type="text" value={{ user.profile.user }} name="username" class="form-control" style="width: 371px;"> <br>
-            <input type="hidden" value={{ user.profile.pk }} name="user">
-            Email <input type="text" value={{ user.profile.email }} name="email" class="form-control" style="width: 371px;"><br>
-            Bio <textarea name="bio" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
-  
-            <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
-            
-            <strong>Social Media</strong><br><br>
-            
-          Instagram <input type="text" value={{ user.profile.Instagram }} name="Instagram" class="form-control" style="width: 371px;"><br>
-          Twitter <input type="text" value={{ user.profile.Twitter }} name="Twitter" class="form-control" style="width: 371px;"><br>
-          Facebook <input type="text" value={{ user.profile.Facebook }} name="Facebook" class="form-control" style="width: 371px;"><br>
-        </div>
-      </div>
-      <div class="form-group" style="text-align:center;">
-          
-              
-              
-              <br><br>
-              <input type="submit" class="btn btn-custom" value="Update your profile"><br><br>
-      </div>
-  
-      </form>
+  <div style="padding: 50px;margin: 20px;" id="mobcontent">
+    
   </div>
 </div>
 <script>

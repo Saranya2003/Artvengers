@@ -10,6 +10,7 @@ from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from artwork.models import Profile
 from .forms import ChangePasswordForm, SignupForm, EditProfileForm,CreateProfileForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 class CreateProfileView(generic.CreateView):
@@ -93,25 +94,28 @@ def change_password(request):
         'form': form
     })
 
+
 def updateprofile(request, pkreq):
-        userprofile = Profile.objects.get(pk=pkreq)
+    userprofile = Profile.objects.get(pk=pkreq)
+    
+    if request.method == 'POST':
+        profile_form = EditProfileForm(request.POST, request.FILES, instance=userprofile)
         
-        if request.method == 'POST':
-         
-            profile_form = EditProfileForm(request.POST, instance=userprofile)
+        if profile_form.is_valid():
             updatecom = profile_form.save(commit=False)
-            updatecom.user.pk = userprofile.pk
             
-            if profile_form.is_valid():
-                
-                updatecom.profile_picture = request.FILES['newprofilepic']
-                
-                updatecom.save()
-           
-                messages.success(request, 'Your profile is updated successfully')
-                return redirect(to='explore')
-            else:
-                print(profile_form.errors.as_data())
-                print("can't edit")       
+            # Update username if it has changed
+            if updatecom.user.username != request.POST['username']:
+                updatecom.user.username = request.POST['username']
+                updatecom.user.save()
+            
+            updatecom.save()
+            
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='explore')
         else:
-            profile_form = EditProfileForm(instance=userprofile)
+            print(profile_form.errors.as_data())
+            print("can't edit")       
+    else:
+        profile_form = EditProfileForm(instance=userprofile)
+

@@ -42,10 +42,17 @@
     .card {
       padding: 0px;
       text-align: center;
-      background-color: white;
-      width: 350px; 
-      height: 350px; 
+      width: 350px;
+      height: 350px;
       object-fit: cover;
+    }
+
+    .carousel-caption{
+      max-width: 110%;
+      bottom: -1px;
+      left: -19px;
+      position: absolute;
+      width: 110%;
     }
     .card-body{
         background-color: rgba(0, 0, 0, 0.75);
@@ -82,12 +89,11 @@
         {% if artdetail.Tags.names %}
             
         <div class="column">
-            <div class="card">
+            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
               <a href="{%  url 'artwork_detail' artdetail.pk %}">
                 {% if artdetail.Sensitive_content %}
-                    <span class="badge bg-danger topleft">NSFW</span>
+                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                 {% endif %}
-                <img src="{{ artdetail.Artwork.url }}" class="cardimg">
                 <div class="carousel-caption">
                     <h5>{{ artdetail.Title }}</h5>
                 </div>
@@ -107,13 +113,12 @@
 
       {% if artdetail.Tags.names %}
           
-      <div class="column"style="padding-right: 1em;width: auto;margin-left:0em">
-        <div class="card">
+      <div class="column"style="padding-right: 1em;width: auto;margin-left:-1.5em">
+        <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
           <a href="{%  url 'artwork_detail' artdetail.pk %}">
             {% if artdetail.Sensitive_content %}
-                <span class="badge bg-danger topleft">NSFW</span>
+                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
             {% endif %}
-            <img src="{{ artdetail.Artwork.url }}" class="cardimg">
             <div class="carousel-caption">
                 <h5>{{ artdetail.Title }}</h5>
             </div>

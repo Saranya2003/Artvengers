@@ -426,15 +426,16 @@
     width:100%;
     bottom:0px;
     position:absolute;
-    left: -15px;
+    left: -16px;
     }
+
     .carousel-caption-album{
     background-color: black;
     color: white;
     width: 335px;
-    bottom:20px;
+    bottom:-1px;
     position:absolute;
-    left: -15px;
+    left: -3px;
     
     }
     .cardimg {
@@ -446,7 +447,6 @@
         object-fit: cover;
         width: 315px;
         height: 280px;
-        padding-right: 2.5em;
     }
     h5{
     font-weight: 900;
@@ -481,6 +481,13 @@
     input[type="search"]::-webkit-search-cancel-button,
     input[type="search"]::-webkit-search-results-button,
     input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+    a{
+
+    text-decoration:none;
+    color: #FFF;
+    }
+    
     </style>
   </head>
   {% load thumbnail %}
@@ -584,14 +591,14 @@
       </div>
       <div class="offcanvas-body">
         {% if user.profile.id %}
-          <a href="{% url 'edit_profile' user.profile.id %}" style="font-size: 36px;">Profile</a>
+          <a href="{% url 'edit_profile' user.profile.id %}" style="font-size: 36px;color: black;">Profile</a>
         {% else %}
-          <a href="{% url 'create_profile' %}" style="font-size: 36px;">Profile</a>
+          <a href="{% url 'create_profile' %}" style="font-size: 36px;color: black;">Profile</a>
         {% endif %}
         <hr>
-        <a href="{% url 'Tags' %}" style="font-size: 36px;">Tags</a>
+        <a href="{% url 'Tags' %}" style="font-size: 36px;color: black;">Tags</a>
         <hr>
-        <a href="{% url 'logout' %}" style="font-size: 36px;">Logout</a>
+        <a href="{% url 'logout' %}" style="font-size: 36px;color: black;">Logout</a>
         <hr>
         
       </div>
@@ -630,13 +637,14 @@
     {% block content %}
     
     {% endblock %}
-    <div class="hidden-xs" id="desktopcontent">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: white;">
+    <div class="container" id="desktopcontent" style="background-color: #C0E0DE;margin-left: -1.5em;padding-right: 120em;box-sizing: none;bottom: 0em;">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top " style="background-color: #C0E0DE;">
         <div class="col-md-4 d-flex align-items-center">
           <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
-          <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+          <span class="mb-3 mb-md-0 text-muted">© 2022 Artvengers, Inc</span>
         </div>
       </footer>
+      
     </div>
   </body>
 </html>

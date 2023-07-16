@@ -253,7 +253,7 @@ class Taglist(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['Tags'] = Tag.objects.all()
+        context['Tags'] = Tag.objects.annotate(artwork_count=Count('artworkpost')).filter(artwork_count__gt=0).order_by('-artwork_count')
         #print(context['Tags'][0])
         #print(context['artwork'])
         #print(context['artwork'][0].Tags.names())

@@ -27,7 +27,9 @@
     <div class="row align-items-start">
       <div class="col-sm">
         <br><br>
-
+        {% if object.Sensitive_content %}
+            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+          {% endif %}
         <h1>{{ object.Title }}</h1><br>
         <center>
           <img src="{{ object.Artwork.url }}" width="50%"><br>
@@ -141,6 +143,9 @@
     <div class="row align-items-start">
       <div class="col-sm">
         <br><br>
+        {% if object.Sensitive_content %}
+            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+          {% endif %}
 
         <h1>{{ object.Title }}</h1><br>
         <img src="{{ object.Artwork.url }}" style="width: 90%;margin-left: 0;"><br>
