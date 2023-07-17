@@ -23,7 +23,7 @@
 <center>
 <div id="desktopcontent">
   <br><br>
-  <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data" id="artworkForm">
+  <form method="POST" action="" enctype="multipart/form-data" id="artworkForm">
     {% csrf_token %}
     {{ form.artist_Name }}
     <table>
@@ -66,7 +66,7 @@
 </div>
 </center>
 <div class="form-group" style="padding: 50px;margin: 20px;" id="mobcontent">
-  <form method="POST" action="{% url 'add_artwork_mobile' %}" enctype="multipart/form-data" id="artworkForm">
+  <form method="POST" action="" enctype="multipart/form-data" id="artworkForm">
     {% csrf_token %}
     {{ form.artist_Name }}
     Title: {{ form.Title }}<br><br>
@@ -105,7 +105,7 @@
   window.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('artworkForm');
     if (window.innerWidth < 390) {
-      form.action = "{% url 'add_artwork_mobile' %}";
+      form.action = "{% url 'add_artwork' %}";
     } else {
       form.action = "{% url 'add_artwork_action' %}";
     }
