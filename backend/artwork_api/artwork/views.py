@@ -49,7 +49,6 @@ def insertalbum(request):
        # print(request.FILES)
         form = AlbumForm(request.POST)
         if form.is_valid():
-            
             form.instance.artist_Name = request.user
             memlistid = request.POST['memberpiclist'].split(",")
 
@@ -293,13 +292,14 @@ class UpdateAlbum(UpdateView):
     def get_context_data(self, **kwargs):
         piclist=[]
         context = super().get_context_data(**kwargs)
-        context['album'] = Album.objects.filter(pk=self.kwargs['pk']).order_by('-pk')
-        print("albumcontext", context['album'])
-        context['artwork'] = context['album'][0].memberpic.all().order_by('-pk')
-        #print("contextartwork", context['artwork'])
+        album = self.get_object()  # Get the current album being updated
+        context['album'] = album
+        context['artwork'] = album.memberpic.all().order_by('-pk')
         
+        # Get the other user's artwork
+        other_user_artwork = ArtworkPost.objects.exclude(artist_Name=album.artist_Name)
+        context['other_user_artwork'] = other_user_artwork
         
-        #print("context", context['artwork'])
         for i in context['artwork']:
             print(i.pk)
             piclist.append(i.pk)

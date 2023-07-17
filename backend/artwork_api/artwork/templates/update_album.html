@@ -4,7 +4,7 @@
     <br>
     <br>
     <div id="desktopcontent">
-    <form method="POST" action="" onsubmit="submem()" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'update_album_action' object.pk %}" onsubmit="submem()" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" value="{{ user.id }}" name="artist_Name">
         <!--<input type="hidden" name="memberpic"> -->
@@ -25,13 +25,22 @@
           <tr>
             <td>Select Picture for the Album<br><br></td>
             <td>
-                <div class="scrollmenu">
-                    {% for artdetail in artwork %}
-                        {% if user.id == artdetail.artist_Name.id %} 
-                        <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
-                        {% endif %}     
-                    {% endfor %}
-                </div><br><br>
+              <div class="scrollmenu">
+                {% for artdetail in artwork %}
+                    {% if user.id == artdetail.artist_Name.id %} 
+                    <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
+                    {% endif %}     
+                {% endfor %}
+                
+                <!-- Display other user's artwork already saved to the album -->
+                {% for other_artwork in other_user_artwork %}
+                    {% if other_artwork in album.memberpic.all %}
+                    <img src="{{ other_artwork.Artwork.url }}" class="PicList" id='{{ other_artwork.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
+                    {% endif %}
+                {% endfor %}
+            </div>
+                        
+                <br><br>
             </td>
           </tr>
         </table><br>
@@ -43,7 +52,7 @@
     </div>
 
     <div id="mobcontent" style="padding: 50px;margin: 20px;">
-        <form method="POST" action="" onsubmit="submem()" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'update_album_mobile' object.pk %}" onsubmit="submem()" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" value="{{ user.id }}" name="artist_Name">
             <!--<input type="hidden" name="memberpic"> -->
@@ -120,6 +129,7 @@
         });
     
     </script>
+    <!--
     <script>
         window.addEventListener('DOMContentLoaded', () => {
           const form = document.getElementById('artworkForm');
@@ -129,5 +139,5 @@
             form.action = "{% url 'update_album_action' object.pk %}";
           }
         });
-      </script>
+      </script>-->
 {% endblock %}

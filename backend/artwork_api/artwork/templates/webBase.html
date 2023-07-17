@@ -528,7 +528,7 @@
             
             <div class="input-group rounded-pill" style="background-color: rgba(0, 0, 0, 0.36);border: 1px solid #FFF;">
               
-              <input class="form-control rounded-pill" type="search" placeholder="Search" aria-label="Search" name="keyword" style="background-color: transparent;border: none;">
+              <input class="form-control rounded-pill shadow-none" type="search" placeholder="Search" aria-label="Search" name="keyword" style="background-color: transparent;border: none;">
               <div class="input-group-append">
                 <button type="submit" class="btn btn-outline-secondary rounded-pill" style="margin-left: -40px;"><i class="fa fa-search"></i></button>
               </div>
@@ -637,14 +637,14 @@
     {% block content %}
     
     {% endblock %}
-    <div class="container" id="desktopcontent" style="background-color: #C0E0DE;margin-left: -1.5em;padding-right: 120em;box-sizing: none;bottom: 0em;">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top " style="background-color: #C0E0DE;">
+    
+  </body>
+  <div class="container" id="desktopcontent" style="background-color: #C0E0DE;margin-left: -1.5em;padding-right: 120em;box-sizing: none;bottom: 0em;">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #C0E0DE;">
         <div class="col-md-4 d-flex align-items-center">
           <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
           <span class="mb-3 mb-md-0 text-muted">© 2022 Artvengers, Inc</span>
         </div>
       </footer>
-      
     </div>
-  </body>
 </html>

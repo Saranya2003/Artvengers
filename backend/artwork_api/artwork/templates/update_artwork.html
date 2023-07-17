@@ -39,7 +39,7 @@
 </center>
 
 <div class="form-group" style="padding: 50px;margin: 20px;" id="mobcontent">
-  <form method="POST" action="{% url 'artwork_edit_action' object.pk %}" enctype="multipart/form-data">
+  <form method="POST" action="{% url 'update_artwork_mobile' object.pk %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.artist_Name }}
     Title: {{ form.Title }}<br><br>
@@ -68,15 +68,5 @@
 <script>
     var name = "{{user.id}}";
     document.getElementById("user").value = name;
-</script>
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('artworkForm');
-    if (window.innerWidth < 390) {
-      form.action = "{% url 'update_artwork_mobile' object.pk %}";
-    } else {
-      form.action = "{% url 'artwork_edit_action' object.pk %}";
-    }
-  });
 </script>
 {% endblock %}
