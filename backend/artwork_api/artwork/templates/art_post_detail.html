@@ -28,7 +28,7 @@
       <div class="col-sm">
         <br><br>
         {% if object.Sensitive_content %}
-            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+            <span class="badge rounded-pill bg-danger">NSFW</span>
           {% endif %}
         <h1>{{ object.Title }}</h1><br>
         <center>
@@ -99,7 +99,7 @@
           <table>
           {% csrf_token %}
             <tr>
-              <td>
+              <td style="width: 592px;">
                 
                 {{ form.artist_Name}}
                 {{ form.artwork_comment }}
@@ -144,7 +144,7 @@
       <div class="col-sm">
         <br><br>
         {% if object.Sensitive_content %}
-            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+            <span class="badge rounded-pill bg-danger">NSFW</span>
           {% endif %}
 
         <h1>{{ object.Title }}</h1><br>
@@ -197,7 +197,7 @@
               </select>
               </td>
               <td style="width: 50%;">
-                <button type="submit" class="btn btn-custom rounded-pill" style="font-size: 11px;">Save to album</button>
+                <button type="submit" class="btn btn-custom rounded-pill" >Save to album</button>
               </td>
               </form>
             </tr>
@@ -216,7 +216,8 @@
               <br><br>
         </div>
         <div class="content-section" id="section2">
-          <form action ="{% url 'add_comment' object.pk %}" method="POST">
+          <br>
+          <form action ="{% url 'add_comment' object.pk %}" method="POST" style="width: 390px;">
             {% csrf_token %}
             <table>
               <tr>
@@ -293,16 +294,36 @@
 
 <script>
   $(function() {
+    function adjustCommentTextareaWidth() {
+      var windowWidth = $(window).width();
+      var textareaWidth = windowWidth < 768 ? '275px' : '100%';
+      $('#id_artwork_comment').css('width', textareaWidth);
+    }
 
-$(".btn").on("click", function() {
-  //hide all sections
-  $(".content-section").hide();
-  //show the section depending on which button was clicked
-  $("#" + $(this).attr("data-section")).show();
-});
+    // Adjust the textarea width on page load
+    adjustCommentTextareaWidth();
 
-});
+    // Adjust the textarea width on window resize
+    $(window).resize(function() {
+      adjustCommentTextareaWidth();
+    });
 
+    $(".btn").on("click", function() {
+      // Remove active class from all buttons
+      $(".btn").removeClass("active");
+      // Add active class to the clicked button
+      $(this).addClass("active");
+      
+      // Hide all sections
+      $(".content-section").hide();
+      // Show the section depending on which button was clicked
+      $("#" + $(this).attr("data-section")).show();
+    });
+
+    // Set the default button to active and show its corresponding section
+    $("button[data-section='section1']").addClass("active");
+    $("#" + $("button[data-section='section1']").attr("data-section")).show();
+  });
 </script>
 
 

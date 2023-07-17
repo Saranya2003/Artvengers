@@ -1,7 +1,6 @@
 from django import forms
 from .models import ArtworkPost,Album,Comment
 from taggit.forms import *
-from django_toggle_switch_widget.widgets import DjangoToggleSwitchWidget
 
 class ArtworkForm(forms.ModelForm):
     Tags = TagField()
@@ -15,6 +14,7 @@ class ArtworkForm(forms.ModelForm):
             'Description': forms.Textarea(attrs={'class':'form-control'}),
             'Sensitive_content': forms.CheckboxInput(
                     attrs={'class': 'form-check-input', 'id': 'flexSwitchCheckChecked', 'role':'switch','type':'checkbox'}),
+            'Tags':TagWidget(),
         }
         
 
@@ -43,6 +43,7 @@ class UpdateArtworkForm(forms.ModelForm):
             'Description': forms.Textarea(attrs={'class':'form-control'}),
             'Sensitive_content': forms.CheckboxInput(
                     attrs={'class': 'form-check-input', 'id': 'flexSwitchCheckChecked', 'role':'switch','type':'checkbox'}),
+            'Tags':TagWidget(),
            
         }
         
@@ -65,6 +66,6 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('artist_Name','artwork_comment')
         widgets = {
-            'artist_Name' : forms.TextInput(attrs={'class':'form-control','value':'','id':'user','type':'hidden'}),
-            'artwork_comment' : forms.Textarea(attrs={'class':'form-control input-sm','style':'width: 592px;height: 43px;'}),
+            'artist_Name': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'user', 'type': 'hidden'}),
+            'artwork_comment': forms.Textarea(attrs={'class': 'form-control input-sm', 'style': 'width: 275px; max-width: 100%; height: 43px;'}),
         }

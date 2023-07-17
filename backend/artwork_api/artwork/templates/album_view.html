@@ -76,6 +76,18 @@
     }
     </style>
     <body>
+      <nav class="navbar navbar-expand-lg navbar-custom2">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active-custom">
+              <a class="nav-link active-custom text-white" href="{% url 'explore'%}">Explore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'dashboard'%}">My artworks</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     <br>
     <div id="desktopcontent">
       <h1>{{ album.0.Album_Title }}</h1>

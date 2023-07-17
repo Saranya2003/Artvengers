@@ -23,7 +23,7 @@
       <br>
       <div id="desktopcontent">
         <div id="albumdesktop">
-          <h2>My Albums <a class="btn btn-custom" href="{%  url 'add_album' %}" role="button">Create new album</a></h2>
+          <h2><span>My Albums</span></h2><a class="btn btn-custom" href="{%  url 'add_album' %}" role="button">Create new album</a>
           <br>
           <div class="multiple-card-slider">
           <div id="Artvengerscarousel" class="carousel" data-bs-ride="carousel">
@@ -99,7 +99,9 @@
         
           </div>
           <div id="artdesktop">
-            <h2>My Artworks <a class="btn btn-custom" href="{% url 'add_artwork' %}" role="button">Post new artwork</a></h2><br>
+          <div class="container" style="display: inline;">
+            <h2><span>My Artworks</span></h2><a class="btn btn-custom" href="{% url 'add_artwork' %}" role="button">Post new artwork</a>
+          </div><br>
           <div class="multiple-card-slider">
           <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
               <div class="carousel-inner">
@@ -308,14 +310,18 @@ $('.multiple-card-slider .carousel').each(function(){
     }
 });
 </script>
-  <script>
-    //Select in mobile
-    $(function() {
+<script>
+  // Select in mobile
+  $(function() {
    $('.content').hide();
+   $('#selectContent').val('albummob'); // Set the default option to "albummob"
+   $('#' + $('#selectContent').val()).show(); // Show the selected content
+
    $('#selectContent').change(function() {
       $('.content').hide();
       $('#' + $(this).val()).show();
    });
 });
-  </script>
+</script>
+
 {% endblock %}

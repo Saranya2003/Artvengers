@@ -268,15 +268,19 @@ $('.multiple-card-slider .carousel').each(function(){
 });
 </script>
 <script>
-  //Select in mobile
+  // Select in mobile
   $(function() {
    $('.content').hide();
+   $('#selectContent').val('albummob'); // Set the default option to "albummob"
+   $('#' + $('#selectContent').val()).show(); // Show the selected content
+
    $('#selectContent').change(function() {
       $('.content').hide();
       $('#' + $(this).val()).show();
    });
 });
 </script>
+
 <script>
   window.addEventListener("DOMContentLoaded", function() {
   var album = document.getElementById("albummob");
