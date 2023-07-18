@@ -71,7 +71,7 @@
                 <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
                 <td>
-                  <select class="form-select" data-mdb-placeholder="------Select album------" name="Album_Title" form='collectionform'>
+                  <select class="form-select AlbumList" data-mdb-placeholder="" name="Album_Title" form='collectionform'>
                   {% for albumName in album %}
                     {% if user.id == albumName.artist_Name.id %}
                       {% if not memberpic in albumName %}
@@ -138,7 +138,7 @@
         
       </div>
     </div>
-  </div>
+  </div><br><br> 
   <div id="mobcontent" style="padding-right: 10px;margin: 20px;">
     <div class="row align-items-start">
       <div class="col-sm">
@@ -261,7 +261,7 @@
         
       </div>
     </div>
-  </div>
+  </div><br><br> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>
           var name = "{{user.id}}";

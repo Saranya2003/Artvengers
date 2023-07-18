@@ -18,21 +18,19 @@
         </div>
       </nav>
       <br>
-      <div id="tagdiv">
-        {% for tag in tags %}
-          <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill">{{ tag.name }} ({{ tag.artwork_count }})</a>
-        {% endfor %}
-      </div>
-      <br>
-      <div id="selectdiv">
-        <select class="form-select" id="selectContent">
-          <option value="albummob" selected>Albums</option>
-          <option value="artmob">Artworks</option>
-        </select>
-      </div>
-      <br>
+      
+      
 
 <div id="desktopcontent">
+  <div id="tagdiv" style="display: flex; overflow-x: auto;">
+    {% for tag in tags %}
+      <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill" style="white-space: nowrap;">{{ tag.name }} ({{ tag.artwork_count }})</a>
+    {% endfor %}
+  </div>
+  
+  
+  
+  <br>
 <div id="albumdesktop">
   <h2>Albums</h2>
   <br>
@@ -145,6 +143,13 @@
 </div>
 
 <div id="mobcontent" style="padding-right: 10px;margin: 20px;margin-left: -1em;">
+  <div id="selectdiv">
+    <select class="form-select" id="selectContent">
+      <option value="albummob" selected>Albums</option>
+      <option value="artmob">Artworks</option>
+    </select>
+  </div>
+  <br>
   <div id="albummob" class="content" style="padding-right: 1em;width: auto;">
     {% for albumObject in album %}
     {% if not albumObject.Private_Album %}
@@ -291,5 +296,15 @@ $('.multiple-card-slider .carousel').each(function(){
   }
 });
 
+</script>
+<script>
+  const tagdiv = document.getElementById("tagdiv");
+
+  tagdiv.addEventListener("wheel", (event) => {
+    event.preventDefault();
+
+    const scrollDistance = event.deltaY || event.deltaX;
+    tagdiv.scrollLeft += scrollDistance;
+  });
 </script>
 {% endblock %}

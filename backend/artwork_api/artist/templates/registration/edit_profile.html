@@ -37,7 +37,6 @@
 <div style="padding: 50px;margin: 20px;">
   <form method="POST" action="{% url 'edit_profile_action' object.pk %}" enctype="multipart/form-data" id="profileform">
     {% csrf_token %}
-    <table>
       <div class="row align-items-start">
         <div class="col-sm" style="text-align: center;">
           {% if user.profile.profile_picture %}
@@ -68,7 +67,6 @@
         <br><br>
         <input type="submit" class="btn btn-custom" value="Update your profile"><br><br>
       </div>
-    </table>
   </form>
 </div>
 

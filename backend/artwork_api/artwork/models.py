@@ -10,7 +10,7 @@ from easy_thumbnails.fields import ThumbnailerImageField
 # Create your models here.
     
 class ArtworkPost(models.Model):
-    Title = models.CharField(max_length=255)
+    Title = models.CharField(max_length=100)
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     Description = models.TextField()
@@ -28,7 +28,7 @@ class ArtworkPost(models.Model):
 
     
 class Album(models.Model):
-    Album_Title = models.CharField(max_length=255)
+    Album_Title = models.CharField(max_length=100)
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     Private_Album = models.BooleanField(default=False)

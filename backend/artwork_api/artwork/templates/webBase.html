@@ -29,7 +29,7 @@
           padding-right: 1em;
           width: auto;
         }
-        @media (max-width: 390px) {
+        @media (max-width: 414px) {
       #tagdiv{
         display:none;
       }
@@ -60,7 +60,7 @@
         display: none;
       }
     }
-      @media (max-width:390px){
+      @media (max-width:414px){
         .navbar-custom {
         font-family: 'Chakra Petch', sans-serif;
         font-size: 20px;
@@ -503,9 +503,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style="float: right;">
-          <ul class="navbar-nav" >
+          <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {% if user.profile.profile_picture %}
                 <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;">
                 {% else %}
@@ -525,17 +525,15 @@
           </ul>
           <form class="navbar-form d-flex rounded-pill" action="{% url 'search_result' %}">
             {% csrf_token %}
-            
             <div class="input-group rounded-pill" style="background-color: rgba(0, 0, 0, 0.36);border: 1px solid #FFF;">
-              
               <input class="form-control rounded-pill shadow-none" type="search" placeholder="Search" aria-label="Search" name="keyword" style="background-color: transparent;border: none;">
               <div class="input-group-append">
                 <button type="submit" class="btn btn-outline-secondary rounded-pill" style="margin-left: -40px;"><i class="fa fa-search"></i></button>
               </div>
             </div>
-            
           </form>
         </div>
+        
       </div>
     </nav>
 
@@ -596,8 +594,6 @@
           <a href="{% url 'create_profile' %}" style="font-size: 36px;color: black;">Profile</a>
         {% endif %}
         <hr>
-        <a href="{% url 'Tags' %}" style="font-size: 36px;color: black;">Tags</a>
-        <hr>
         <a href="{% url 'logout' %}" style="font-size: 36px;color: black;">Logout</a>
         <hr>
         
@@ -608,7 +604,7 @@
       <table style="width:100%; text-align:center;  background-color:#C0E0DE;">
         <tr>
               <td> <a class="navbar-brand" href="{% url 'explore'%}"><img src="../../media/logo/explore.png"><br>Explore</a></td>
-              <td><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../../media/logo/dashboard.png"><br>My artworks</a></td>
+              <td><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../../media/logo/dashboard.png"><br>My Artworks</a></td>
               <td><a class="navbar-brand"href="{% url 'upload'%}"><img src="../../media/logo/upload.png"><br>Upload</a></td>
               <td>{% if user.profile.id %}
                 <a class="navbar-brand" href="{% url 'edit_profile' user.profile.id %}"><img src="../../media/logo/profile.png"><br>Profile</a>
@@ -639,8 +635,8 @@
     {% endblock %}
     
   </body>
-  <div class="container-fluid" id="desktopcontent" style="background-color: #C0E0DE;bottom: 0em;">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #C0E0DE;">
+  <div class="container-fluid" id="desktopcontent" style="background-color: #EB5160;bottom: 0em;">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #EB5160;">
         <div class="col-md-4 d-flex align-items-center">
           <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
           <span class="mb-3 mb-md-0 text-muted">© 2023 Artvengers, Inc</span>

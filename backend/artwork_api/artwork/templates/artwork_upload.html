@@ -2,114 +2,129 @@
 {% extends 'webBase.html' %}
 {% block content %}
 <style>
-.fileUpload {
-	position: relative;
-	overflow: hidden;
-	margin: 10px;
-}
-.fileUpload input.upload {
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 0;
-	padding: 0;
-	font-size: 20px;
-	cursor: pointer;
-	opacity: 0;
-	filter: alpha(opacity=0);
-}
+    .fileUpload {
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+    }
+
+    .fileUpload input.upload {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
 </style>
 
 <center>
-<div id="desktopcontent">
-  <br><br>
-  <form method="POST" action="" enctype="multipart/form-data" id="artworkForm">
-    {% csrf_token %}
-    {{ form.artist_Name }}
-    <table>
-      <tr>
-        <td>Title:<br><br></td><td>{{ form.Title }}<br><br></td>
-      </tr>
-      <tr>
-        <td>Description:<br><br></td><td>{{ form.Description }}<br><br></td>
-      </tr>
-      <tr>
-        <td>Flag as sensitive content?<br><br></td>
-        <td>
-          <div class="form-check form-switch form-switch-md">
-            {{ form.Sensitive_content }}<br><br>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>Tags
-          (Separate with comma):<br><br></td>
-        <td>
-          {{ form.Tags }}<br><br>
-        </td>
-      </tr>
-      <tr>
-        <td>Artwork:<br><br></td>
-        <td>
-          <div class="fileUpload btn btn-custom">
-            <span>Upload artwork file</span>
-            <input type="file" class="upload" name="Artwork" >
-          </div>
-          <br><br>
-        </td>
-      </tr>
-    </table>
-    <div style="text-align: center;">
-      <input type="submit" class="btn btn-custom mx-auto" value="Publish the artwork post">
+    <div id="desktopcontent">
+        <br><br>
+        <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data" id="desktopform">
+            {% csrf_token %}
+            {{ form.artist_Name }}
+            <table>
+                <tr>
+                    <td>Title:<br><br><br></td>
+                    <td>{{ form.Title }}<br><br></td>
+                </tr>
+                <tr>
+                    <td>Description:<br><br><br></td>
+                    <td>{{ form.Description }}<br><br></td>
+                </tr>
+                <tr>
+                    <td>Flag as sensitive content?<br><br></td>
+                    <td>
+                        <div class="form-check form-switch form-switch-md">
+                            {{ form.Sensitive_content }}<br><br>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 40%;">Tags
+                        (Separate with comma):<br><br><br></td>
+                    <td>
+                        {{ form.Tags }}<br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Artwork:<br><br><br></td>
+                    <td>
+                        <div class="fileUpload btn btn-custom">
+                            <span>Upload artwork file</span>
+                            <input type="file" class="upload" name="Artwork">
+                        </div>
+                        <br><br>
+                    </td>
+                </tr>
+            </table>
+            <div style="text-align: center;">
+                <input type="submit" class="btn btn-custom mx-auto" value="Publish the artwork post">
+            </div>
+        </form>
     </div>
-</form>  
-</div>
 </center>
+
 <div class="form-group" style="padding: 50px;margin: 20px;" id="mobcontent">
-  <form method="POST" action="" enctype="multipart/form-data" id="artworkForm">
-    {% csrf_token %}
-    {{ form.artist_Name }}
-    Title: {{ form.Title }}<br><br>
-    Description:{{ form.Description }}<br>
-    <table>
-      <tr>
-        <td>Flag as sensitive content?</td>
-        <td>
-          <div class="form-check form-switch form-switch-md">
-            {{ form.Sensitive_content }}
-          </div>
-        </td>
-      </tr>
-      
-      
-    </table><br>
-    Tags
-    (Separate with comma):{{ form.Tags }}<br><br>
-    Artwork:
-    <div class="fileUpload btn btn-custom">
-      <span>Upload artwork file</span>
-      <input type="file" class="upload" name="Artwork">
-    </div>
-    <br><br>
-
-    <div style="text-align: center;">
-      <input type="submit" class="btn btn-custom mx-auto" value="Publish the artwork post">
-    </div>
-</form>  
+    <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data" id="mobform">
+        {% csrf_token %}
+        {{ form.artist_Name }}
+        Title: {{ form.Title }}<br><br>
+        Description:{{ form.Description }}<br>
+        <table>
+            <tr>
+                <td>Flag as sensitive content?</td>
+                <td>
+                    <div class="form-check form-switch form-switch-md">
+                        {{ form.Sensitive_content }}
+                    </div>
+                </td>
+            </tr>
+        </table><br>
+        Tags (Separate with comma):{{ form.Tags }}<br><br>
+        Artwork:
+        <div class="fileUpload btn btn-custom">
+            <span>Upload artwork file</span>
+            <input type="file" class="upload" name="Artwork">
+        </div>
+        <br><br>
+        <div style="text-align: center;">
+            <input type="submit" class="btn btn-custom mx-auto" value="Publish the artwork post">
+        </div>
+    </form>
 </div>
-<script>
-    var name = "{{user.id}}";
-    document.getElementById("user").value = name;
-</script>
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('artworkForm');
-    if (window.innerWidth < 390) {
-      form.action = "{% url 'add_artwork' %}";
-    } else {
-      form.action = "{% url 'add_artwork_action' %}";
-    }
-  });
-</script>
 
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("user").value = name;
+
+    function updateUI() {
+        var desktopContent = document.getElementById("desktopcontent");
+        var mobContent = document.getElementById("mobcontent");
+        var desktopForm = document.getElementById("desktopform");
+        var mobForm = document.getElementById("mobform");
+
+        if (window.innerWidth <= 414) {
+            desktopContent.style.display = "none";
+            mobContent.style.display = "block";
+            desktopForm.removeAttribute("action");
+            mobForm.action = "{% url 'add_artwork_action' %}";
+        } else {
+            desktopContent.style.display = "block";
+            mobContent.style.display = "none";
+            desktopForm.action = "{% url 'add_artwork_action' %}";
+            mobForm.removeAttribute("action");
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        updateUI();
+
+        window.addEventListener('resize', updateUI);
+    });
+</script>
 {% endblock %}

@@ -3,7 +3,7 @@ from .models import ArtworkPost,Album,Comment
 from taggit.forms import *
 
 class ArtworkForm(forms.ModelForm):
-    Tags = TagField()
+    Tags = TagField(widget=TagWidget(attrs={'class': 'form-control'}))
     class Meta:
         model = ArtworkPost
         fields = {'Title','artist_Name','Description','Sensitive_content','Tags','Artwork'}
@@ -14,7 +14,6 @@ class ArtworkForm(forms.ModelForm):
             'Description': forms.Textarea(attrs={'class':'form-control'}),
             'Sensitive_content': forms.CheckboxInput(
                     attrs={'class': 'form-check-input', 'id': 'flexSwitchCheckChecked', 'role':'switch','type':'checkbox'}),
-            'Tags':TagWidget(),
         }
         
 
@@ -32,7 +31,7 @@ class AlbumForm(forms.ModelForm):
         }
 
 class UpdateArtworkForm(forms.ModelForm):
-    Tags = TagField()
+    Tags = TagField(widget=TagWidget(attrs={'class': 'form-control'}))
     class Meta:
         model = ArtworkPost
         fields = {'Title','artist_Name','Description','Sensitive_content','Tags','Artwork'}
@@ -43,7 +42,6 @@ class UpdateArtworkForm(forms.ModelForm):
             'Description': forms.Textarea(attrs={'class':'form-control'}),
             'Sensitive_content': forms.CheckboxInput(
                     attrs={'class': 'form-check-input', 'id': 'flexSwitchCheckChecked', 'role':'switch','type':'checkbox'}),
-            'Tags':TagWidget(),
            
         }
         

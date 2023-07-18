@@ -16,11 +16,11 @@
     
   </form>
   <br>
-  <h2>Tags list</h2>
+  <h2>Tag list</h2>
   <br>
   <div>
     {% for tag in tags %}
-      <a href="{% url 'tag' tag %}" style="font-size: 24px ;">{{ tag.name }}</a>
+      <a href="{% url 'tag' tag %}" style="font-size: 24px ;">{{ tag.name }} ({{ tag.artwork_count }})</a>
       <hr>
     {% endfor %}
   </div>
