@@ -4,7 +4,7 @@
     <br>
     <br>
     <div id="desktopcontent">
-        <form method="POST" action="" onsubmit="submem()" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'update_album_action' object.pk %}" onsubmit="submem()" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" value="{{ user.id }}" name="artist_Name">
             <!--<input type="hidden" name="memberpic"> -->
@@ -53,7 +53,7 @@
     </div>
 
     <div id="mobcontent" style="padding: 50px;margin: 20px;">
-        <form method="POST" action="" onsubmit="submem()" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'update_album_action' object.pk %}" onsubmit="submem()" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" value="{{ user.id }}" name="artist_Name">
             <!--<input type="hidden" name="memberpic"> -->
@@ -84,70 +84,48 @@
         </form>
     </div>
     <script>
-        var name = "{{ user.id }}";
+        var name = "{{user.id}}";
         document.getElementById("user").value = name;
-
-        // Modify JavaScript for responsive mode
-        function updateUI() {
-            var desktopContent = document.getElementById("desktopcontent");
-            var mobContent = document.getElementById("mobcontent");
-            var desktopForm = document.getElementById("desktopform");
-            var mobForm = document.getElementById("mobform");
-
-            if (window.innerWidth <= 414) {
-                desktopContent.style.display = "none";
-                mobContent.style.display = "block";
-                desktopForm.action = "";
-                mobForm.action = "{% url 'update_album_action' object.pk %}";
-            } else {
-                desktopContent.style.display = "block";
-                mobContent.style.display = "none";
-                desktopForm.action = "{% url 'update_album_action' object.pk %}";
-                mobForm.action = "";
-            }
-        }
-
-        window.addEventListener("resize", updateUI);
-        updateUI();
-
-        // Modify JavaScript for scrollmenu to show only the selected artwork
-        const selectedpic = {{ piclist }};
-        document.getElementById("memberpic").value = selectedpic;
-
-        for (let i = 0; i < selectedpic.length; i++) {
-            console.log(selectedpic[i]);
-            let si = selectedpic[i]
-            document.getElementById(si).classList.add('selected');
-        }
-
-        const checksel = document.getElementsByClassName('PicList');
-
-        function submem() {
-            document.getElementById("memberpic").value = selectedpic;
-        }
-
-        function PicClick() {
-            if (selectedpic.includes(parseInt(event.srcElement.id))) {
-                selectedpic = selectedpic.filter(function (e) { return e !== parseInt(event.srcElement.id) });
-                event.srcElement.classList.remove('selected');
-            } else {
-                selectedpic.push(parseInt(event.srcElement.id));
-                event.srcElement.classList.add('selected');
-            }
-            console.log(selectedpic);
-        };
-
-        const mouseWheel = document.querySelector('.scrollmenu');
-
-        mouseWheel.addEventListener('wheel', function (e) {
-            const race = 50; // How many pixels to scroll
-
-            if (e.deltaY > 0) // Scroll right
-                mouseWheel.scrollLeft += race;
-            else // Scroll left
-                mouseWheel.scrollLeft -= race;
-            e.preventDefault();
-        });
-
     </script>
+    <script>
+       
+        var selectedpic = {{ piclist }};
+         document.getElementById("memberpic").value=selectedpic;
+ 
+         for (let i=0; i<selectedpic.length;i++){
+             console.log(selectedpic[i]);
+             let si = selectedpic[i]
+             document.getElementById(si).classList.add('selected');
+         }
+         
+         const checksel = document.getElementsByClassName('PicList');
+         function submem(){
+             document.getElementById("memberpic").value=selectedpic;
+         }
+         function PicClick(){
+ 
+             if (selectedpic.includes(parseInt(event.srcElement.id))){
+                 selectedpic = selectedpic.filter(function(e) {return e!==parseInt(event.srcElement.id)});
+                 event.srcElement.classList.remove('selected');
+                 
+             }
+             else{
+                 selectedpic.push(parseInt(event.srcElement.id));
+                 event.srcElement.classList.add('selected');
+             }
+             console.log(selectedpic);    
+         };
+         const mouseWheel = document.querySelector('.scrollmenu');
+ 
+         mouseWheel.addEventListener('wheel', function(e) {
+             const race = 50; // How many pixels to scroll
+ 
+             if (e.deltaY > 0) // Scroll right
+                 mouseWheel.scrollLeft += race;
+             else // Scroll left
+                 mouseWheel.scrollLeft -= race;
+                 e.preventDefault();
+         });
+     
+     </script>
 {% endblock %}

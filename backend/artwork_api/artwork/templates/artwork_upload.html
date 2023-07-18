@@ -70,7 +70,7 @@
 </center>
 
 <div class="form-group" style="padding: 50px;margin: 20px;" id="mobcontent">
-    <form method="POST" action="{% url 'add_artwork_action' %}" enctype="multipart/form-data" id="mobform">
+    <form method="POST" action="{% url 'add_artwork_mobile' %}" enctype="multipart/form-data" id="mobform">
         {% csrf_token %}
         {{ form.artist_Name }}
         Title: {{ form.Title }}<br><br>

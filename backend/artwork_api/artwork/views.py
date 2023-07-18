@@ -71,23 +71,21 @@ def insertalbum(request):
 
 
 def insertartwork(request):
-   # print(request.POST)
-   
     if request.method == 'POST':
-        #print(request.FILES)
         form = ArtworkForm(request.POST)
         if form.is_valid():
-            NewArtwork = form.save(commit=False)
-            #print(NewArtwork)
-            NewArtwork.artist_Name = request.user
-            NewArtwork.Artwork = request.FILES['Artwork']
-           # print(NewArtwork)
-            NewArtwork.save()
+            artwork = form.save(commit=False)
+            artwork.Artwork = request.FILES['Artwork']
+            
+            if form.fields.get('artist_Name').required:
+                artwork.artist_Name = request.user
+            
+            artwork.save()
             form.save_m2m()
             return HttpResponseRedirect(reverse('explore'))
         else:
             print(form.errors.as_data())
-            print("can't upload")
+            print("Can't upload")
 
 def updateartworkpost(request, pkreq):
     print(request.POST)
