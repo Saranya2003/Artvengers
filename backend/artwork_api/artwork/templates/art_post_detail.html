@@ -65,6 +65,7 @@
               </form>
             </td>
             
+             
               <form action="{% url 'add_to_album_action' object.pk %}" method="POST" enctype="multipart/form-data" id="collectionform">
                 {% csrf_token %}
                   
@@ -85,6 +86,7 @@
               <td>
               <button type="submit" class="btn btn-custom rounded-pill">Save to album</button></td>
               </form>
+          
             
           </tr>
         </table>

@@ -15,6 +15,9 @@ from taggit.models import Tag
 from django.db.models import Count, Q
 # Create your views here.
 
+
+
+
 def addtoalbum(request,pk):
     if request.method == 'POST':
         albumcontent = Album.objects.get(pk=int(request.POST['Album_Title']))
@@ -27,11 +30,11 @@ def addtoalbum(request,pk):
             form.instance.Album_Title = oldalbumname
             memlistid = request.POST['colartworkpost_id']
             print(memlistid)
-
+            print("Before:",form.instance.memberpic.all())
             
             form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(memlistid)))
             form.instance.save() 
-            
+            print("After:", form.instance.memberpic.all())
            # NewAlbum.memberpic.all()
            # print(NewAlbum.memberpic.all())
             
@@ -209,6 +212,8 @@ class ArtworkPostDetail(DetailView):
         context['likes'] = total_likes
         context['liked_post'] = liked
         context['album'] = Album.objects.all()
+    
+
         context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'])
         context['form'] = CommentForm()
         
@@ -295,12 +300,12 @@ class UpdateAlbum(UpdateView):
         # Get the other user's artwork
         other_user_artwork = ArtworkPost.objects.exclude(artist_Name=album.artist_Name)
         context['other_user_artwork'] = other_user_artwork
-        
-        for i in context['artwork']:
-            print(i.pk)
-            piclist.append(i.pk)
-        context['piclist'] = piclist
-        #context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
+        if context['artwork'] is not None:
+            for i in context['artwork']:
+                print(i.pk)
+                piclist.append(i.pk)
+            context['piclist'] = piclist
+            #context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
         return context
 
 class UpdateArtworks(UpdateView):
