@@ -95,7 +95,7 @@
         Username <input type="text" value="{{ user.profile.user }}" name="username" class="form-control" style="width: 371px;"><br>
         <input type="hidden" value="{{ user.profile.pk }}" name="user">
         Email <input type="text" value="{{ user.profile.email }}" name="email" class="form-control" style="width: 371px;"><br>
-          Bio <textarea name="bio" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
+          Bio <textarea name="biomob" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
 
 
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>

@@ -101,29 +101,49 @@
           {% for artdetail in artwork %}
           {% if forloop.last %}
           <div class="carousel-item">
-            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+            {% if artdetail.Sensitive_content %}
+            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;filter: blur(8px);-webkit-filter: blur(8px);">
               <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                {% if artdetail.Sensitive_content %}
+                
                 <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                {% endif %}
+                
                 <div class="carousel-caption">
                   <h5 class="caption-header">{{ artdetail.Title }}</h5>
                 </div>
               </a>
             </div>
+            {% else %}
+            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+              <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                <div class="carousel-caption">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                </div>
+              </a>
+            </div>
+            {% endif %}
           </div>
           {% else %}
           <div class="carousel-item">
+            {% if artdetail.Sensitive_content %}
             <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
               <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                {% if artdetail.Sensitive_content %}
+                
                 <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                {% endif %}
+                
                 <div class="carousel-caption">
                   <h5 class="caption-header">{{ artdetail.Title }}</h5>
                 </div>
               </a>
             </div>
+            {% else %}
+            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+              <a href="{%  url 'artwork_detail' artdetail.pk %}">
+                <div class="carousel-caption">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                </div>
+              </a>
+            </div>
+            {% endif %}
           </div>
           {% endif %}
           {% endfor %}
@@ -316,6 +336,7 @@ $('.multiple-card-slider .carousel').each(function(){
     tagdiv.scrollLeft += scrollDistance;
   });
 </script>
+<!--
 <script>
   // Function to add blur class to the card if artwork has NSFW tag
   function checkAndBlurNSFWArtwork() {
@@ -330,6 +351,6 @@ $('.multiple-card-slider .carousel').each(function(){
 
   // Call the function on document load
   document.addEventListener('DOMContentLoaded', checkAndBlurNSFWArtwork);
-</script>
+</script>-->
 
 {% endblock %}

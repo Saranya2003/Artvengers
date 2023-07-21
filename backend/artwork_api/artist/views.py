@@ -99,11 +99,17 @@ def updateprofile(request, pkreq):
     userprofile = Profile.objects.get(pk=pkreq)
     
     if request.method == 'POST':
+        print(request.POST)
         profile_form = EditProfileForm(request.POST, request.FILES, instance=userprofile)
         
         if profile_form.is_valid():
             updatecom = profile_form.save(commit=False)
             
+            if request.POST['bio'] is not None:
+                updatecom.bio = request.POST['bio']
+            elif request.POST['biomob'] is not None:
+                updatecom.bio = request.POST['biomob']
+
             # Update username if it has changed
             if updatecom.user.username != request.POST['username']:
                 updatecom.user.username = request.POST['username']

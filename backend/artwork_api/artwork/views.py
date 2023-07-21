@@ -17,8 +17,11 @@ from django.db.models import Count, Q
 
 def addtoalbum(request,pk):
     if request.method == 'POST':
-        albumid = request.POST['Album_Title'][0]
-        print("albumid is", albumid)
+        if request.POST['Album_Title'] is not None:
+            albumid = request.POST['Album_Title']
+        elif request.POST['Album_Titlemob'] is not None:
+            albumid = request.POST['Album_Titlemob']
+       # print("albumid is", albumid)
         albumcontent = Album.objects.get(pk=albumid)
         
         form = UpdateAlbumForm(request.POST, instance=albumcontent)
