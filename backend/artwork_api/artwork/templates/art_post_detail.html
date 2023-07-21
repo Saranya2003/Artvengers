@@ -68,17 +68,25 @@
              
               <form action="{% url 'add_to_album_action' object.pk %}" method="POST" enctype="multipart/form-data" id="collectionform">
                 {% csrf_token %}
-                  
+                <div style="visibility: hidden">
+                  {{ object }}<br>
+                  {% for albumName in album %}
+                    {% if object in albumName.memberpic.all %}
+                      {{ albumName.Album_Title }}<br>
+                      
+                    {% endif %}
+                
+                  {% endfor %}
+                </div>
                 <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
                 <td>
                   <select class="form-select AlbumList" data-mdb-placeholder="" name="Album_Title" form='collectionform'>
                   {% for albumName in album %}
                     {% if user.id == albumName.artist_Name.id %}
-                      {% if not memberpic in albumName %}
+                      {% if object not in albumName.memberpic.all %}
                         <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
-                      {% else %}
-                        <option>No album to save.</option>
+                      
                       {% endif %}
                     {% endif %}
                   {% endfor %}

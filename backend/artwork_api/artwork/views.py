@@ -20,7 +20,10 @@ from django.db.models import Count, Q
 
 def addtoalbum(request,pk):
     if request.method == 'POST':
+        albumid = int(request.POST['Album_Title'])
+        print("albumid is", albumid)
         albumcontent = Album.objects.get(pk=int(request.POST['Album_Title']))
+        
         form = UpdateAlbumForm(request.POST, instance=albumcontent)
         oldalbumname = albumcontent.Album_Title
         print(request.POST)
@@ -29,12 +32,14 @@ def addtoalbum(request,pk):
             form.instance.artist_Name = request.user
             form.instance.Album_Title = oldalbumname
             memlistid = request.POST['colartworkpost_id']
+           
+
             print(memlistid)
             print("Before:",form.instance.memberpic.all())
-            
             form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(memlistid)))
             form.instance.save() 
             print("After:", form.instance.memberpic.all())
+            print("Albumcontent:", albumcontent.memberpic.all())
            # NewAlbum.memberpic.all()
            # print(NewAlbum.memberpic.all())
             
@@ -212,7 +217,8 @@ class ArtworkPostDetail(DetailView):
         context['likes'] = total_likes
         context['liked_post'] = liked
         context['album'] = Album.objects.all()
-    
+     
+
 
         context['comments'] = Comment.objects.filter(post_id=self.kwargs['pk'])
         context['form'] = CommentForm()
