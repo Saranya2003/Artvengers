@@ -5,6 +5,10 @@
 <style>
   .form-select{
     border-radius: 40px !important;
+    width: 205px;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
   }
   .content-section {
     display: none;
@@ -47,7 +51,7 @@
         </p>
         <br>
         {% for tag in object.Tags.names %}
-          <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>
+          <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>&ensp;
         {% endfor %}
         <br><br>
         <table>
@@ -80,8 +84,8 @@
                 </div>
                 <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
-                <td>
-                  <select class="form-select AlbumList" data-mdb-placeholder="" name="Album_Title" form='collectionform'>
+                <td style="width: 205px;">
+                  <select class="form-select AlbumList" name="Album_Title" form='collectionform'>
                   {% for albumName in album %}
                     {% if user.id == albumName.artist_Name.id %}
                       {% if object not in albumName.memberpic.all %}
@@ -220,7 +224,7 @@
               </p>
               <br>
               {% for tag in object.Tags.names %}
-                <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>
+                <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>&ensp;
               {% endfor %}
               <br><br>
         </div>

@@ -24,26 +24,25 @@
             </td>
         </tr>
         <tr>
-            <td>Select Picture for the Album<br><br></td>
-            <td>
-                <div class="scrollmenu">
+            <td>Select Artwork to add in the Album<br><br><br><br></td>
+        </tr>
+        </table>
+        
+        <div class="scrollmenu">
                     {% for artdetail in artwork %}
                         {% if user.id == artdetail.artist_Name.id %} 
                         <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em; ">
                         {% endif %}     
                     {% endfor %}
                 </div><br><br>
-            </td>
-        </tr>
-        </table>
-        </center><br><br>
+        <br><br></center>
     <div style="text-align: center;">
         <button type="submit" class="btn btn-custom">Create album/collection</button>
     </div>
     </form>
 </div>
 
-<div id="mobcontent" style="padding: 50px;margin: 20px;">
+<div id="mobcontent">
     <form method="POST" action="{% url 'add_album_action' %}" onsubmit="submem()" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" value="{{ user.id }}" name="artist_Name">

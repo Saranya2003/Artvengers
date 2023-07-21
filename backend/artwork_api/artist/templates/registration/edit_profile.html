@@ -35,14 +35,15 @@
 </nav>
 
 <div id="desktopcontent" style="padding-right: 10px;margin: 20px;">
+  <br>
   <form method="POST" action="{% url 'edit_profile_action' object.pk %}" enctype="multipart/form-data" id="profileform">
     {% csrf_token %}
       <div class="row align-items-start">
         <div class="col-sm" style="text-align: center;">
           {% if user.profile.profile_picture %}
-          <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;" id="profilePic">
+            <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;" id="profilePic">
           {% else %}
-          <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;" id="profilePic">
+            <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;" id="profilePic">
           {% endif %}
           <br><br>
           <div class="fileUpload btn btn-custom">
@@ -69,7 +70,8 @@
       </div>
   </form>
 </div>
-<div style="width:100%" id="mobcontent">
+<div style="margin-left: -0.5em;" id="mobcontent">
+  <br>
   <form method="POST" action="{% url 'edit_profile_action' object.pk %}" enctype="multipart/form-data" id="profileform">
         {% csrf_token %}
        
@@ -77,32 +79,32 @@
     <div class="row align-items-start">
       <div class="col-sm" style="text-align: center;">
         {% if user.profile.profile_picture %}
-        <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;">
+          <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;" id="profilePic">
         {% else %}
-        <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;">
+          <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;" id="profilePic">
         {% endif %}
         <br><br>
         <div class="fileUpload btn btn-custom">
           <span>Upload Profile Picture</span>
-          <input type="file" class="upload" name="newprofilepic" />
+          <input type="file" class="upload" name="newprofilepic" id="imgInp">
         </div>
       </div>
       <div class="col-sm">
         
         {% csrf_token %}
-          Username <input type="text" value="{{ user.username }}" name="username" class="form-control"> <br>
-          <input type="hidden" value="{{ user.id }}" name="user">
-          Email <input type="text" value="{{ user.email }}"  name="email" class="form-control"><br>
-          Bio <textarea name="bio" form="profileform" class="form-control"></textarea><br><br>
+        Username <input type="text" value="{{ user.profile.user }}" name="username" class="form-control" style="width: 371px;"><br>
+        <input type="hidden" value="{{ user.profile.pk }}" name="user">
+        Email <input type="text" value="{{ user.profile.email }}" name="email" class="form-control" style="width: 371px;"><br>
+          Bio <textarea name="bio" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
 
 
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
           
           <strong>Social Media</strong><br><br>
           
-        Instagram <input type="text"  name="Instagram" class="form-control"><br>
-        Twitter <input type="text"  name="Twitter" class="form-control"><br>
-        Facebook <input type="text"  name="Facebook" class="form-control"><br>
+          Instagram <input type="text" value="{{ user.profile.Instagram }}" name="Instagram" class="form-control" style="width: 371px;"><br>
+          Twitter <input type="text" value="{{ user.profile.Twitter }}" name="Twitter" class="form-control" style="width: 371px;"><br>
+          Facebook <input type="text" value="{{ user.profile.Facebook }}" name="Facebook" class="form-control" style="width: 371px;"><br>
       </div>
     </div>
     <div class="form-group" style="text-align:center;">
@@ -123,6 +125,18 @@
       profilePic.src = URL.createObjectURL(file);
     }
   };
+
+  // Function to update the profile picture on page load
+  function updateProfilePicOnLoad() {
+    const fileInput = document.getElementById("imgInp");
+    if (fileInput && fileInput.files.length > 0) {
+      const [file] = fileInput.files;
+      profilePic.src = URL.createObjectURL(file);
+    }
+  }
+
+  // Run the function on page load
+  updateProfilePicOnLoad();
 </script>
 <script>
   // Function to check the viewport width and show/hide elements accordingly

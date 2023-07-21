@@ -20,13 +20,15 @@
                         <td>
                             <div class="form-check form-switch form-switch-md">
                                 {{ form.Private_Album }}
-                            </div>
+                            </div><br><br>
                         </td>
                     </tr>
                     <tr>
                         <td>Select Artwork to delete in album<br><br></td>
-                        <td>
-                            <div class="scrollmenu">
+                    </tr>
+                </table>
+                
+                <div class="scrollmenu">
                                 {% for artdetail in artwork %}
                                     {% if user.id == artdetail.artist_Name.id %}
                                         <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
@@ -39,12 +41,7 @@
                                         <img src="{{ other_artwork.Artwork.url }}" class="PicList" id='{{ other_artwork.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
                                     {% endif %}
                                 {% endfor %}
-                            </div>
-
-                            <br><br>
-                        </td>
-                    </tr>
-                </table><br>
+                            </div><br>
             </center>
             <div style="text-align: center;">
                 <button type="submit" class="btn btn-custom">Update album/collection</button>
@@ -52,7 +49,7 @@
         </form>
     </div>
 
-    <div id="mobcontent" style="padding: 50px;margin: 20px;">
+    <div id="mobcontent">
         <form method="POST" action="{% url 'update_album_action' object.pk %}" onsubmit="submem()" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" value="{{ user.id }}" name="artist_Name">
@@ -118,7 +115,6 @@
              if (selectedpic.includes(parseInt(event.srcElement.id))){
                  selectedpic = selectedpic.filter(function(e) {return e!==parseInt(event.srcElement.id)});
                  event.srcElement.classList.remove('selected');
-                 event.srcElement.remove();
                  
              }
              else{

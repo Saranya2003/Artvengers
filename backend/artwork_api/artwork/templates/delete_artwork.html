@@ -8,6 +8,7 @@
             {% csrf_token %}
             <strong>Are you sure you want to delete this artwork?</strong><br><br>
             <button style="text-align: center" class="btn btn-danger">Delete</button>
+            <a class="btn btn-secondary" href="{% url 'dashboard'%}">Cancel</a>
         </form>
     </div>
 

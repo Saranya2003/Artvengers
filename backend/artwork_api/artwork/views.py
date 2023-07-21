@@ -15,14 +15,11 @@ from taggit.models import Tag
 from django.db.models import Count, Q
 # Create your views here.
 
-
-
-
 def addtoalbum(request,pk):
     if request.method == 'POST':
-        albumid = int(request.POST['Album_Title'])
+        albumid = request.POST['Album_Title'][0]
         print("albumid is", albumid)
-        albumcontent = Album.objects.get(pk=int(request.POST['Album_Title']))
+        albumcontent = Album.objects.get(pk=albumid)
         
         form = UpdateAlbumForm(request.POST, instance=albumcontent)
         oldalbumname = albumcontent.Album_Title
@@ -31,6 +28,7 @@ def addtoalbum(request,pk):
             
             form.instance.artist_Name = request.user
             form.instance.Album_Title = oldalbumname
+           # form.instance.Album_Title = albumid
             memlistid = request.POST['colartworkpost_id']
            
 

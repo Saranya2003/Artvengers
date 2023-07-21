@@ -490,7 +490,12 @@
     text-decoration:none;
     color: #FFF;
     }
-    
+    .blur-background {
+      background-image: url('{{ artdetail.Artwork.url }}');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px); /* Apply the blur effect */
+    }
     </style>
   </head>
   {% load thumbnail %}
@@ -637,7 +642,7 @@
     
     {% endblock %}
     
-  </body>
+  </body><br><br><br><br>
   <div class="container-fluid" id="desktopcontent" style="background-color: #EB5160;bottom: 0em;">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #EB5160;">
         <div class="col-md-4 d-flex align-items-center">

@@ -38,7 +38,7 @@
 </div>
 </center>
 
-<div class="form-group" style="padding: 50px;margin: 20px;" id="mobcontent">
+<div class="form-group" id="mobcontent">
   <form method="POST" action="{% url 'artwork_edit_action' object.pk %}" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" value="{{ user.id }}" name="artist_Name">
