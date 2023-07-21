@@ -59,6 +59,7 @@ def insertalbum(request):
             for i in memlistid:
                 #print(i)          
                 form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
+
            # NewAlbum.memberpic.all()
            # print(NewAlbum.memberpic.all())
             

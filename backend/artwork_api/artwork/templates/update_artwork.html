@@ -7,7 +7,7 @@
   <div id="desktopcontent">
   <form method="POST" action="{% url 'artwork_edit_action' object.pk %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.artist_Name }}
+    <input type="hidden" value="{{ user.id }}" name="artist_Name">
     <table>
       <tr>
         <td>Title:<br><br><br></td><td>{{ form.Title }}<br><br></td>
@@ -41,7 +41,7 @@
 <div class="form-group" style="padding: 50px;margin: 20px;" id="mobcontent">
   <form method="POST" action="{% url 'artwork_edit_action' object.pk %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.artist_Name }}
+    <input type="hidden" value="{{ user.id }}" name="artist_Name">
     Title: {{ form.Title }}<br><br>
     Description:{{ form.Description }}<br>
     <table>

@@ -24,7 +24,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Select Picture for the Album<br><br></td>
+                        <td>Select Artwork to delete in album<br><br></td>
                         <td>
                             <div class="scrollmenu">
                                 {% for artdetail in artwork %}
@@ -70,11 +70,20 @@
                 </tr>
             </table><br>
 
-            Select Picture for the Album<br><br>
+            Select Artwork to delete in album<br><br>
 
-            <div class="scrollmenu" style="padding-right: 1em; width: auto;">
+            <div class="scrollmenu">
                 {% for artdetail in artwork %}
-                    <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
+                    {% if user.id == artdetail.artist_Name.id %}
+                        <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
+                    {% endif %}
+                {% endfor %}
+
+                <!-- Display other user's artwork already saved to the album -->
+                {% for other_artwork in other_user_artwork %}
+                    {% if other_artwork in album.memberpic.all %}
+                        <img src="{{ other_artwork.Artwork.url }}" class="PicList" id='{{ other_artwork.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
+                    {% endif %}
                 {% endfor %}
             </div>
             <br>

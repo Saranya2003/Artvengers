@@ -24,7 +24,7 @@
 <div id="desktopcontent">
   <div id="tagdiv" style="display: flex; overflow-x: auto;">
     {% for tag in tags %}
-      <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill" style="white-space: nowrap;">{{ tag.name }} ({{ tag.artwork_count }})</a>
+      <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill" style="white-space: nowrap;">{{ tag.name }} ({{ tag.artwork_count }})</a>&ensp;
     {% endfor %}
   </div>
   
@@ -39,8 +39,8 @@
     <div class="carousel-inner">
       {% for albumObject in album %}
       {% if not albumObject.Private_Album %}
-        {% if forloop.last %}
-      <div class="carousel-item-album" style="height: 298px;">
+        {% if forloop.first %}
+      <div class="carousel-item active" style="height: 298px;">
         <div class="card" id="image4" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;background-image: url('{{ albumObject.memberpic.all.3.Artwork.url }}');background-size: cover;background-position: center;">                 
         </div>
         <div class="card" id="image3" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;background-image: url('{{ albumObject.memberpic.all.2.Artwork.url }}');background-size: cover;background-position: center;">        

@@ -48,7 +48,7 @@
         {% csrf_token %}
         <input type="hidden" value="{{ user.id }}" name="artist_Name">
         <!--<input type="hidden" name="memberpic"> -->
-        <input type="hidden" name="memberpiclist" id="memberpic">
+        <input type="hidden" name="memberpiclist" id="memberpicmob">
         Title: {{ form.Album_Title }}<br><br>
         <table>
           <tr>
@@ -91,6 +91,7 @@
     const checksel = document.getElementsByClassName('PicList');
     function submem(){
         document.getElementById("memberpic").value=selectedpic;
+        document.getElementById("memberpicmob").value=selectedpic;
     }
     function PicClick(){
         if (selectedpic.includes(event.srcElement.id)){
