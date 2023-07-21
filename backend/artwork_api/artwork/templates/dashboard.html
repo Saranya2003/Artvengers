@@ -48,7 +48,7 @@
                   <h5>
                     <table style="width:100%">
                       <tr>
-                        <td style="width:75%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                        <td style="width:65%; display: inline-block;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
                           <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
                       </tr>
                     </table>
@@ -118,7 +118,7 @@
                           <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                       {% endif %}
                       <div class="carousel-caption">
-                        <h5>{{ artdetail.Title }}</h5>
+                        <h5 class="caption-header">{{ artdetail.Title }}</h5>
                         <div style="float: right;">
                           <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
                           <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
@@ -135,7 +135,7 @@
                           <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                       {% endif %}
                       <div class="carousel-caption">
-                        <h5>{{ artdetail.Title }}</h5>
+                        <h5 class="caption-header">{{ artdetail.Title }}</h5>
                         <div style="float: right;">
                           <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
                           <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
@@ -179,7 +179,7 @@
               <a href="{% url 'album' albumObject.pk %}">
                 <div class="card" style="position: relative; right: 43px;bottom: 771px; background-color: transparent;width: 335px;">
                   <div class="carousel-caption-album">
-                    <h5>
+                    <h5 class="caption-header">
                       <table style="width:100%">
                         <tr>
                           <td style="width:75%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
@@ -204,7 +204,7 @@
               <a href="{% url 'album' albumObject.pk %}">
                 <div class="card" style="position: relative; right: 43px;bottom: 771px; background-color: transparent;width: 335px;">
                   <div class="carousel-caption-album">
-                    <h5>
+                    <h5 class="caption-header">
                       <table style="width:100%">
                         <tr>
                           <td style="width:75%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
@@ -234,7 +234,7 @@
                     <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                   {% endif %}
                     <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5>{{ artdetail.Title }}</h5>
+                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
                       <div style="float: right;">
                         <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
                         <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
@@ -251,7 +251,7 @@
                     <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                   {% endif %}
                     <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5>{{ artdetail.Title }}</h5>
+                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
                       <div style="float: right;">
                         <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
                         <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>

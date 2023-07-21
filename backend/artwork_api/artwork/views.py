@@ -290,6 +290,7 @@ class UpdateAlbum(UpdateView):
         album = self.get_object()  # Get the current album being updated
         context['album'] = album
         context['artwork'] = album.memberpic.all().order_by('-pk')
+ 
         
         # Get the other user's artwork
         other_user_artwork = ArtworkPost.objects.exclude(artist_Name=album.artist_Name)
@@ -299,7 +300,7 @@ class UpdateAlbum(UpdateView):
             print(i.pk)
             piclist.append(i.pk)
         context['piclist'] = piclist
-        context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
+        #context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
         return context
 
 class UpdateArtworks(UpdateView):

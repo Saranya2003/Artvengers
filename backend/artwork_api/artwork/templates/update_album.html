@@ -57,7 +57,7 @@
             {% csrf_token %}
             <input type="hidden" value="{{ user.id }}" name="artist_Name">
             <!--<input type="hidden" name="memberpic"> -->
-            <input type="hidden" name="memberpiclist" id="memberpic">
+            <input type="hidden" name="memberpiclist" id="memberpicmob">
             Title: {{ form.Album_Title }}<br><br>
             <table>
                 <tr>
@@ -72,7 +72,7 @@
 
             Select Artwork to delete in album<br><br>
 
-            <div class="scrollmenu">
+            <div class="scrollmenu" style="padding-right: 1em;width: auto;">
                 {% for artdetail in artwork %}
                     {% if user.id == artdetail.artist_Name.id %}
                         <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
@@ -100,6 +100,7 @@
        
         var selectedpic = {{ piclist }};
          document.getElementById("memberpic").value=selectedpic;
+         document.getElementById("memberpicmob").value=selectedpic;
  
          for (let i=0; i<selectedpic.length;i++){
              console.log(selectedpic[i]);
@@ -110,12 +111,14 @@
          const checksel = document.getElementsByClassName('PicList');
          function submem(){
              document.getElementById("memberpic").value=selectedpic;
+             document.getElementById("memberpicmob").value=selectedpic;
          }
          function PicClick(){
  
              if (selectedpic.includes(parseInt(event.srcElement.id))){
                  selectedpic = selectedpic.filter(function(e) {return e!==parseInt(event.srcElement.id)});
                  event.srcElement.classList.remove('selected');
+                 event.srcElement.remove();
                  
              }
              else{
