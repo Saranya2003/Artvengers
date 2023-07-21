@@ -101,7 +101,7 @@
             <tr>
               <td style="width: 592px;">
                 
-                {{ form.artist_Name}}
+                <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 {{ form.artwork_comment }}
               </td>
               <td>
@@ -138,11 +138,10 @@
         
       </div>
     </div>
-  </div><br><br> 
+  </div>
   <div id="mobcontent" style="padding-right: 10px;margin: 20px;">
     <div class="row align-items-start">
       <div class="col-sm">
-        <br><br>
         {% if object.Sensitive_content %}
             <span class="badge rounded-pill bg-danger">NSFW</span>
           {% endif %}
@@ -221,7 +220,7 @@
             {% csrf_token %}
             <table>
               <tr>
-                <td style="width: 20%;">{{ form.artist_Name}}
+                <td style="width: 20%;"><input type="hidden" value="{{ user.id }}" name="artist_Name">
             {{ form.artwork_comment }}</td>
                 <td><button type="submit" name="addcommentbutton" value="{{ object.pk }}" class="btn btn-custom rounded-pill">Post</button></td>
               </tr>

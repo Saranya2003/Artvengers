@@ -33,7 +33,7 @@
               {% for albumObject in album %}
               {% if user.id == albumObject.artist_Name.id or not albumObject.artist_Name %}
                 {% if forloop.first %}
-              <div class="carousel-item active" style="height: 298px;">
+              <div class="carousel-item-album" style="height: 298px;">
                 <div class="card" id="image4" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;background-image: url('{{ albumObject.memberpic.all.3.Artwork.url }}');background-size: cover;background-position: center;">                 
                 </div>
                 <div class="card" id="image3" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;background-image: url('{{ albumObject.memberpic.all.2.Artwork.url }}');background-size: cover;background-position: center;">        
@@ -111,7 +111,7 @@
               {% for artdetail in artwork %} 
               {% if user.id == artdetail.artist_Name.id %}
               {% if forloop.first %}
-                <div class="carousel-item active">
+                <div class="carousel-item-album">
                   <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
                     <a href="{%  url 'artwork_detail' artdetail.pk %}">
                       {% if artdetail.Sensitive_content %}
@@ -162,57 +162,47 @@
             </div>
         </div>
         </div>
-<div id="mobcontent" style="padding-right: 10px;margin: 20px;margin-left: -1em;">
-  <div id="albummob" class="content" style="padding-right: 1em;width: auto;">
+<div id="mobcontent" style="padding-right: 10px;margin: 20px;">
+  <div id="albummob" class="content" style="padding-left: 10px;padding-right: 10px;margin: 20px;margin-left: -1em;">
     {% for albumObject in album %}
         {% if user.id == albumObject.artist_Name.id %}
           {% if forloop.last %}
-            <div class="carousel-item active" style="height: 298px;">
-              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
-                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimgmob" id="image4">          
+            <div class="carousel-item-album" style="height: 298px;">
+              <div class="card" id="image4" style="width: 306px;height: 280px;position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;background-image: url('{{ albumObject.memberpic.all.3.Artwork.url }}');background-size: cover;background-position: center;">                 
               </div>
-              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
-                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimgmob" id="image3">          
+              <div class="card" id="image3" style="width: 306px;height: 280px;position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;background-image: url('{{ albumObject.memberpic.all.2.Artwork.url }}');background-size: cover;background-position: center;">        
               </div>
-              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
-                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimgmob" id="image2">          
+              <div class="card" id="image2" style="width: 306px;height: 280px;position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;background-image: url('{{ albumObject.memberpic.all.1.Artwork.url }}');background-size: cover;background-position: center;">     
               </div>
-              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
-                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimgmob" id="image">
+              <div class="card" id="image" style="width: 306px;height: 280px;position: relative; right: 10px;bottom: 840px;width: 80%;background-image: url('{{ albumObject.memberpic.all.0.Artwork.url }}');background-size: cover;background-position: center;">
               </div>
-          <a href="{% url 'album' albumObject.pk %}">
-            <div style="position: relative; right: 30px;bottom: 1060px; background-color: transparent;width: 335px;">
-              <div class="carousel-caption-album" style="bottom: -260px;">
-                <h5>
-                  <table style="width:100%">
-                    <tr>
-                      <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
-                        <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
-                    </tr>
-                  </table>
-                </h5>
-              </div>
-            </div>
-          </a>
+              <a href="{% url 'album' albumObject.pk %}">
+                <div class="card" style="position: relative; right: 43px;bottom: 782px; background-color: transparent;width: 335px;">
+                  <div class="carousel-caption-album" style="bottom: -260px;">
+                    <h5>
+                      <table style="width:100%">
+                        <tr>
+                          <td style="width:75%">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                            <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
+                        </tr>
+                      </table>
+                    </h5>
+                  </div>
+                </div>
+              </a>
             </div>
           {% else %}
             <div class="carousel-item-album" style="height: 298px;">
-              
-                        <span class="badge bg-danger topleft">{{ memberpic.count }}</span>
-              <div class="card" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">        
-                <img src="{{ albumObject.memberpic.all.3.Artwork.url }}" class="cardimgmob" id="image4">          
+              <div class="card" id="image4" style="width: 306px;height: 280px;position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;background-image: url('{{ albumObject.memberpic.all.3.Artwork.url }}');background-size: cover;background-position: center;">                 
               </div>
-              <div class="card" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">        
-                  <img src="{{ albumObject.memberpic.all.2.Artwork.url }}" class="cardimgmob" id="image3">          
+              <div class="card" id="image3" style="width: 306px;height: 280px;position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;background-image: url('{{ albumObject.memberpic.all.2.Artwork.url }}');background-size: cover;background-position: center;">        
               </div>
-              <div class="card" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">        
-                <img src="{{ albumObject.memberpic.all.1.Artwork.url }}" class="cardimgmob" id="image2">          
+              <div class="card" id="image2" style="width: 306px;height: 280px;position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;background-image: url('{{ albumObject.memberpic.all.1.Artwork.url }}');background-size: cover;background-position: center;">     
               </div>
-              <div class="card" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
-                  <img src="{{ albumObject.memberpic.all.0.Artwork.url }}" class="cardimgmob" id="image">
+              <div class="card" id="image" style="width: 306px;height: 280px;position: relative; right: 10px;bottom: 840px;width: 80%;background-image: url('{{ albumObject.memberpic.all.0.Artwork.url }}');background-size: cover;background-position: center;">
               </div>
               <a href="{% url 'album' albumObject.pk %}">
-                <div style="position: relative; right: 30px;bottom: 1050px; background-color: rgba(255, 255, 255, 0);width: 335px;">
+                <div class="card" style="position: relative; right: 43px;bottom: 782px; background-color: transparent;width: 335px;">
                   <div class="carousel-caption-album" style="bottom: -260px;">
                     <h5>
                       <table style="width:100%">
@@ -231,38 +221,36 @@
       {% endfor %}
   
   </div>
-  <div id="artmob" class="content" style="padding-right: 1em;width: auto;">
+  <div id="artmob" class="content" style="padding-left: 10px;padding-right: 10px;margin: 20px;margin-left: -1em;">
     <div style="width: auto;">
       <center>
         {% for artdetail in artwork %}
         {% if user.id == artdetail.artist_Name.id %} 
           {% if forloop.last %}
             <div>
-              <div class="card">
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
                 <a href="{%  url 'artwork_detail' artdetail.pk %}">
                   {% if artdetail.Sensitive_content %}
                     <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                   {% endif %}
-                    <img src="{{ artdetail.Artwork.url }}" class="cardimgmob">
-                    <div class="carousel-caption">
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                       <h5>{{ artdetail.Title }}</h5>
                       <div style="float: right;">
                         <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
                         <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
                       </div>
                     </div>
-                  </a>
-                </div>
+                </a>
+              </div>
               </div><br>
           {% else %}
             <div>
-              <div class="card">
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
                 <a href="{%  url 'artwork_detail' artdetail.pk %}">
                   {% if artdetail.Sensitive_content %}
                     <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                   {% endif %}
-                    <img src="{{ artdetail.Artwork.url }}" class="cardimgmob">
-                    <div class="carousel-caption">
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                       <h5>{{ artdetail.Title }}</h5>
                       <div style="float: right;">
                         <a class="btn btn-secondary" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
@@ -316,15 +304,31 @@ $('.multiple-card-slider .carousel').each(function(){
 <script>
   // Select in mobile
   $(function() {
-   $('.content').hide();
-   $('#selectContent').val('albummob'); // Set the default option to "albummob"
-   $('#' + $('#selectContent').val()).show(); // Show the selected content
+    $('.content').hide();
+    $('#selectContent').val('albummob'); // Set the default option to "albummob"
+    $('#' + $('#selectContent').val()).show(); // Show the selected content
 
-   $('#selectContent').change(function() {
-      $('.content').hide();
-      $('#' + $(this).val()).show();
-   });
-});
+    $('#selectContent').change(function() {
+      var selectedValue = $(this).val();
+      if (selectedValue === 'albummob') {
+        $('#artmob').hide();
+        $('#albummob').show();
+      } else if (selectedValue === 'artmob') {
+        $('#albummob').hide();
+        $('#artmob').show();
+      }
+    });
+  });
+
+  window.addEventListener("DOMContentLoaded", function() {
+    var album = document.getElementById("albummob");
+    var cards = album.getElementsByClassName("cardimgmob");
+
+    for (var i = 0; i < Math.min(cards.length, 4); i++) {
+      cards[i].style.display = "block";
+    }
+  });
 </script>
+
 
 {% endblock %}

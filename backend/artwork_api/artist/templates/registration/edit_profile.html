@@ -34,7 +34,7 @@
   </div>
 </nav>
 
-<div style="padding: 50px;margin: 20px;">
+<div style="padding-right: 10px;margin: 20px;">
   <form method="POST" action="{% url 'edit_profile_action' object.pk %}" enctype="multipart/form-data" id="profileform">
     {% csrf_token %}
       <div class="row align-items-start">
