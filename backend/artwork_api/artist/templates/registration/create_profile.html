@@ -41,14 +41,14 @@
       <div class="row align-items-start">
         <div class="col-sm" style="text-align: center;">
           {% if user.profile.profile_picture %}
-            <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;" id="profilePic">
+            <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;" id="profilePic">
           {% else %}
-            <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;" id="profilePic">
+            <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;" id="profilePic">
           {% endif %}
           <br><br>
           <div class="fileUpload btn btn-custom">
             <span>Upload Profile Picture</span>
-            <input type="file" class="upload" name="newprofilepic" id="imgInp">
+            <input type="file" class="upload" name="newprofilepic" id="desktopImgInp">
           </div>
         </div>
         <div class="col-sm">
@@ -79,14 +79,14 @@
     <div class="row align-items-start">
       <div class="col-sm" style="text-align: center;">
         {% if user.profile.profile_picture %}
-          <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;" id="profilePic">
+          <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;" id="profilePicmob">
         {% else %}
-          <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;" id="profilePic">
+          <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;" id="profilePicmob">
         {% endif %}
         <br><br>
         <div class="fileUpload btn btn-custom">
           <span>Upload Profile Picture</span>
-          <input type="file" class="upload" name="newprofilepic" id="imgInp">
+          <input type="file" class="upload" name="newprofilepicmob" id="mobileImgInp">
         </div>
       </div>
       <div class="col-sm">
@@ -95,7 +95,7 @@
         Username <input type="text" value="{{ user.profile.user }}" name="username" class="form-control" style="width: 371px;"><br>
         <input type="hidden" value="{{ user.profile.pk }}" name="user">
         Email <input type="text" value="{{ user.profile.email }}" name="email" class="form-control" style="width: 371px;"><br>
-          Bio <textarea name="bio" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
+          Bio <textarea name="biomob" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
 
 
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
@@ -119,24 +119,24 @@
 </div>
 
 <script>
-  imgInp.onchange = evt => {
-    const [file] = imgInp.files;
+  const desktopImgInp = document.getElementById("desktopImgInp");
+  const mobileImgInp = document.getElementById("mobileImgInp");
+  const profilePic = document.getElementById("profilePic");
+  const profilePicmob = document.getElementById("profilePicmob");
+
+  desktopImgInp.onchange = evt => {
+    const [file] = desktopImgInp.files;
     if (file) {
       profilePic.src = URL.createObjectURL(file);
     }
   };
 
-  // Function to update the profile picture on page load
-  function updateProfilePicOnLoad() {
-    const fileInput = document.getElementById("imgInp");
-    if (fileInput && fileInput.files.length > 0) {
-      const [file] = fileInput.files;
-      profilePic.src = URL.createObjectURL(file);
+  mobileImgInp.onchange = evt => {
+    const [file] = mobileImgInp.files;
+    if (file) {
+      profilePicmob.src = URL.createObjectURL(file);
     }
-  }
-
-  // Run the function on page load
-  updateProfilePicOnLoad();
+  };
 </script>
 <script>
   // Function to check the viewport width and show/hide elements accordingly

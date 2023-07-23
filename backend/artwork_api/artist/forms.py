@@ -22,8 +22,8 @@ class SignupForm(UserCreationForm):
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = {'user','email','bio','Instagram','Twitter','Facebook'}
-        field_order = ['user','email','bio','Instagram','Twitter','Facebook']
+        fields = {'user','email','Instagram','Twitter','Facebook'}
+        field_order = ['user','email','Instagram','Twitter','Facebook']
 
 class CreateProfileForm(forms.ModelForm):
     class Meta:

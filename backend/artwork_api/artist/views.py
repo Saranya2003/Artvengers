@@ -100,21 +100,31 @@ def updateprofile(request, pkreq):
     
     if request.method == 'POST':
         print(request.POST)
+        print(request.FILES)
         profile_form = EditProfileForm(request.POST, request.FILES, instance=userprofile)
-        
+
         if profile_form.is_valid():
             updatecom = profile_form.save(commit=False)
             
-            if request.POST['bio'] is not None:
-                updatecom.bio = request.POST['bio']
-            elif request.POST['biomob'] is not None:
-                updatecom.bio = request.POST['biomob']
+            if 'newprofilepic' in request.FILES:
+                updatecom.profile_picture = request.FILES['newprofilepic']
+            elif 'newprofilepicmob' in request.FILES:
+                updatecom.profile_picture = request.FILES['newprofilepicmob']
+            else:
+                updatecom.profile_picture = userprofile.profile_picture
+
+            if 'bio' in request.POST:
+                if userprofile.bio != request.POST['bio']:
+                    updatecom.bio = request.POST['bio']
+            elif 'biomob' in request.POST:
+                if userprofile.bio != request.POST['biomob']:
+                    updatecom.bio = request.POST['biomob']
 
             # Update username if it has changed
             if updatecom.user.username != request.POST['username']:
                 updatecom.user.username = request.POST['username']
                 updatecom.user.save()
-            
+            print("profile_picture", updatecom.profile_picture)
             updatecom.save()
             
             messages.success(request, 'Your profile is updated successfully')

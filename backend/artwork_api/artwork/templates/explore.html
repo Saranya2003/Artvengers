@@ -3,7 +3,25 @@
 {% extends 'webBase.html' %}
 
 {% block content %}
-
+<style>
+  /* Hide the scrollbar for webkit-based browsers */
+  #tagdiv::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Optional: You can also hide the scrollbar for Firefox */
+  #tagdiv {
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* Optional: You can add styling to the container for a consistent look */
+  #tagdiv {
+    display: flex;
+    overflow-x: auto;
+    /* Add any other styling you want for the container */
+  }
+  
+</style>
 
 <nav class="navbar navbar-expand-lg navbar-custom2">
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -99,51 +117,47 @@
       <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
           {% for artdetail in artwork %}
-          {% if forloop.last %}
-          <div class="carousel-item">
+          {% if forloop.first %}
+          <div class="carousel-item active">
             {% if artdetail.Sensitive_content %}
-            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;filter: blur(8px);-webkit-filter: blur(8px);">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                
-                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                
-                <div class="carousel-caption">
-                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                <div class="card blur-background" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-            {% else %}
-            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                <div class="carousel-caption">
-                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                {% else %}
+                <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-            {% endif %}
+                {% endif %}
           </div>
           {% else %}
           <div class="carousel-item">
             {% if artdetail.Sensitive_content %}
-            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                
-                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                
-                <div class="carousel-caption">
-                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                <div class="card blur-background" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-            {% else %}
-            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                <div class="carousel-caption">
-                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                {% else %}
+                <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-            {% endif %}
+                {% endif %}
           </div>
           {% endif %}
           {% endfor %}
@@ -218,31 +232,48 @@
     {% for artdetail in artwork %}
     {% if forloop.last %}
     <div>
-      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+      {% if artdetail.Sensitive_content %}
+      <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
         <a href="{%  url 'artwork_detail' artdetail.pk %}">
-          {% if artdetail.Sensitive_content %}
-              <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-          {% endif %}
+          <span class="badge rounded-pill bg-danger topleft">NSFW</span>
           <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            <h5 class="caption-header">{{ artdetail.Title }}</h5>
           </div>
         </a>
       </div>
+      {% else %}
+      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+        <a href="{%  url 'artwork_detail' artdetail.pk %}">
+          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+            <h5 class="caption-header">{{ artdetail.Title }}</h5>
+          </div>
+        </a>
+      </div>
+      {% endif %}
     </div>
     <br>
     {% else %}
     <div>
-      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+      {% if artdetail.Sensitive_content %}
+      <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
         <a href="{%  url 'artwork_detail' artdetail.pk %}">
-          {% if artdetail.Sensitive_content %}
-              <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-          {% endif %}
+          <span class="badge rounded-pill bg-danger topleft">NSFW</span>
           <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            <h5 class="caption-header">{{ artdetail.Title }}</h5>
           </div>
         </a>
       </div>
-    </div><br>
+      {% else %}
+      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+        <a href="{%  url 'artwork_detail' artdetail.pk %}">
+          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+            <h5 class="caption-header">{{ artdetail.Title }}</h5>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+    </div>
+    <br>
 
     {% endif %}
     {% endfor %}
@@ -336,21 +367,5 @@ $('.multiple-card-slider .carousel').each(function(){
     tagdiv.scrollLeft += scrollDistance;
   });
 </script>
-<!--
-<script>
-  // Function to add blur class to the card if artwork has NSFW tag
-  function checkAndBlurNSFWArtwork() {
-    const artworkCards = document.querySelectorAll('.card');
-    artworkCards.forEach((card) => {
-      const nsfwBadge = card.querySelector('.bg-danger');
-      if (nsfwBadge) {
-        card.classList.add('blur-background');
-      }
-    });
-  }
-
-  // Call the function on document load
-  document.addEventListener('DOMContentLoaded', checkAndBlurNSFWArtwork);
-</script>-->
 
 {% endblock %}

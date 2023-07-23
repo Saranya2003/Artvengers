@@ -36,4 +36,5 @@ urlpatterns = [
     path('update_album_mobile/<int:pk>', views.updatealbum, name="update_album_mobile"),
     path('add_comment_mobile/', views.post_comment, name="add_comment_mobile"),
     path('add_to_album_mobile/', views.addtoalbum, name="add_to_album_mobile"),
+    path('delete_comment/<int:comment_pk>/', views.delete_comment, name='delete_comment'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

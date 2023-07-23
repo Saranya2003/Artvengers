@@ -14,6 +14,17 @@ from .forms import AlbumForm, ArtworkForm, CommentForm,UpdateArtworkForm,UpdateA
 from taggit.models import Tag
 from django.db.models import Count, Q
 # Create your views here.
+def delete_comment(request, comment_pk):
+    comment = get_object_or_404(Comment, pk=comment_pk)
+
+    # Check if the user is allowed to delete the comment
+    if comment.artist_Name == request.user:
+        comment.delete()
+        messages.success(request, "Comment deleted successfully.")
+    else:
+        messages.error(request, "You are not allowed to delete this comment.")
+    # Redirect back to the artwork detail page (change 'your_artwork_detail_view_name' to your actual view name)
+    return redirect('artwork_detail', pk=comment.post.pk)
 
 def addtoalbum(request,pk):
     if request.method == 'POST':

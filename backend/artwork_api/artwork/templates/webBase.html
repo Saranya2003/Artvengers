@@ -490,12 +490,31 @@
     text-decoration:none;
     color: #FFF;
     }
+    /* CSS for the blur effect */
     .blur-background {
-      background-image: url('{{ artdetail.Artwork.url }}');
-      background-size: cover;
-      background-position: center;
-      filter: blur(8px); /* Apply the blur effect */
+      position: relative;
+      /* Set the filter property to apply the blur effect */
+      filter: blur(8px); /* You can adjust the blur amount (8px in this case) as needed */
+      -webkit-filter: blur(8px); /* For Safari support */
     }
+
+    /* CSS for the badge on the blurred artwork */
+    .badge-overlay {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      /* Add any additional styling for the badge */
+    }
+
+    /* CSS for the caption on the blurred artwork */
+    .caption-overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      /* Add any additional styling for the caption */
+    }
+
+
     </style>
   </head>
   {% load thumbnail %}
@@ -510,14 +529,14 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style="float: right;">
-          <ul class="navbar-nav">
+        <div class="collapse navbar-collapse justify-content-end float-right" id="navbarSupportedContent" style="float: right;">
+          <ul class="navbar-nav" style="float: right;">
             <li class="nav-item dropdown">
-              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                 {% if user.profile.profile_picture %}
-                <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;">
+                <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
                 {% else %}
-                <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;">
+                <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
                 {% endif %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -567,9 +586,9 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {% if user.profile.profile_picture %}
-                <img src="../../media/{{ user.profile.profile_picture }}" width="10%" style="border-radius: 50%;">
+                <img src="../../media/{{ user.profile.profile_picture }}" width="10%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
                 {% else %}
-                <img src="../../media/images/static_profile.png" width="10%" style="border-radius: 50%;">
+                <img src="../../media/images/static_profile.png" width="10%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
                 {% endif %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
