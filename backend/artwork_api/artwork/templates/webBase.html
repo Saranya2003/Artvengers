@@ -440,13 +440,14 @@
     }
     .cardimg {
         object-fit: cover;
-        width: 306px;
-        height: 280px;
+        height: 120%;
+        width: 120%;
+        object-position: center;
     }
     .cardimgmob {
         object-fit: cover;
-        width: 315px;
-        height: 280px;
+        height: 100%;
+        width: 100%;
     }
     h5{
     font-weight: 900;
@@ -492,29 +493,10 @@
     }
     /* CSS for the blur effect */
     .blur-background {
-      position: relative;
       /* Set the filter property to apply the blur effect */
       filter: blur(8px); /* You can adjust the blur amount (8px in this case) as needed */
       -webkit-filter: blur(8px); /* For Safari support */
     }
-
-    /* CSS for the badge on the blurred artwork */
-    .badge-overlay {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      /* Add any additional styling for the badge */
-    }
-
-    /* CSS for the caption on the blurred artwork */
-    .caption-overlay {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      /* Add any additional styling for the caption */
-    }
-
-
     </style>
   </head>
   {% load thumbnail %}

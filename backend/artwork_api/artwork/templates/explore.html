@@ -120,7 +120,8 @@
           {% if forloop.first %}
           <div class="carousel-item active">
             {% if artdetail.Sensitive_content %}
-                <div class="card blur-background" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+                <div class="card">
+                  <img class="cardimg blur-background" src="{{ artdetail.Artwork.url }}">
                   <a href="{% url 'artwork_detail' artdetail.pk %}">
                     <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                     <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -129,7 +130,8 @@
                   </a>
                 </div>
                 {% else %}
-                <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+                <div class="card">
+                  <img class="cardimg" src="{{ artdetail.Artwork.url }}">
                   <a href="{% url 'artwork_detail' artdetail.pk %}">
                     <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                       <h5 class="caption-header">{{ artdetail.Title }}</h5>
@@ -141,7 +143,8 @@
           {% else %}
           <div class="carousel-item">
             {% if artdetail.Sensitive_content %}
-                <div class="card blur-background" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+                <div class="card">
+                  <img class="cardimg blur-background" src="{{ artdetail.Artwork.url }}">
                   <a href="{% url 'artwork_detail' artdetail.pk %}">
                     <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                     <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -150,7 +153,8 @@
                   </a>
                 </div>
                 {% else %}
-                <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
+                <div class="card">
+                  <img class="cardimg" src="{{ artdetail.Artwork.url }}">
                   <a href="{% url 'artwork_detail' artdetail.pk %}">
                     <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                       <h5 class="caption-header">{{ artdetail.Title }}</h5>
@@ -233,44 +237,48 @@
     {% if forloop.last %}
     <div>
       {% if artdetail.Sensitive_content %}
-      <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-        <a href="{%  url 'artwork_detail' artdetail.pk %}">
-          <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-            <h5 class="caption-header">{{ artdetail.Title }}</h5>
-          </div>
-        </a>
-      </div>
+        <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+          <img class="cardimgmob blur-background" src="{{ artdetail.Artwork.url }}">
+          <a href="{% url 'artwork_detail' artdetail.pk %}">
+            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+             <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            </div>
+          </a>
+        </div>
       {% else %}
-      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-        <a href="{%  url 'artwork_detail' artdetail.pk %}">
-          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-            <h5 class="caption-header">{{ artdetail.Title }}</h5>
-          </div>
-        </a>
-      </div>
+            <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+              <img class="cardimgmob" src="{{ artdetail.Artwork.url }}">
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            </div>
+          </a>
+        </div>
       {% endif %}
     </div>
     <br>
     {% else %}
     <div>
       {% if artdetail.Sensitive_content %}
-      <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-        <a href="{%  url 'artwork_detail' artdetail.pk %}">
-          <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-            <h5 class="caption-header">{{ artdetail.Title }}</h5>
-          </div>
-        </a>
-      </div>
+        <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+          <img class="cardimgmob blur-background" src="{{ artdetail.Artwork.url }}">
+          <a href="{% url 'artwork_detail' artdetail.pk %}">
+            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+             <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            </div>
+          </a>
+        </div>
       {% else %}
-      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-        <a href="{%  url 'artwork_detail' artdetail.pk %}">
-          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-            <h5 class="caption-header">{{ artdetail.Title }}</h5>
-          </div>
-        </a>
-      </div>
+            <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+              <img class="cardimgmob" src="{{ artdetail.Artwork.url }}">
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            </div>
+          </a>
+        </div>
       {% endif %}
     </div>
     <br>

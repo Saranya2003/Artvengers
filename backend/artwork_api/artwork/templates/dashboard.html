@@ -112,11 +112,11 @@
               {% if user.id == artdetail.artist_Name.id %}
               {% if forloop.first %}
                 <div class="carousel-item-album">
-                  <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-                    <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                      {% if artdetail.Sensitive_content %}
-                          <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                      {% endif %}
+                  {% if artdetail.Sensitive_content %}
+                  <div class="card">
+                    <img class="cardimg blur-background" src="{{ artdetail.Artwork.url }}">
+                    <a href="{% url 'artwork_detail' artdetail.pk %}">
+                      <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                       <div class="carousel-caption">
                         <h5 class="caption-header">{{ artdetail.Title }}</h5>
                         <div style="float: right;">
@@ -126,14 +126,28 @@
                       </div>
                     </a>
                   </div>
+                  {% else %}
+                  <div class="card">
+                    <img class="cardimg" src="{{ artdetail.Artwork.url }}">
+                    <a href="{% url 'artwork_detail' artdetail.pk %}">
+                      <div class="carousel-caption">
+                        <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                        <div style="float: right;">
+                          <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                          <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  {% endif %}
                 </div>
                   {% else %}
                 <div class="carousel-item">
-                  <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-                    <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                      {% if artdetail.Sensitive_content %}
-                          <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                      {% endif %}
+                  {% if artdetail.Sensitive_content %}
+                  <div class="card">
+                    <img class="cardimg blur-background" src="{{ artdetail.Artwork.url }}">
+                    <a href="{% url 'artwork_detail' artdetail.pk %}">
+                      <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                       <div class="carousel-caption">
                         <h5 class="caption-header">{{ artdetail.Title }}</h5>
                         <div style="float: right;">
@@ -143,6 +157,20 @@
                       </div>
                     </a>
                   </div>
+                  {% else %}
+                  <div class="card">
+                    <img class="cardimg" src="{{ artdetail.Artwork.url }}">
+                    <a href="{% url 'artwork_detail' artdetail.pk %}">
+                      <div class="carousel-caption">
+                        <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                        <div style="float: right;">
+                          <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                          <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  {% endif %}
                 </div>
                 {% endif %}
                 {% endif %}
@@ -226,39 +254,67 @@
         {% for artdetail in artwork %}
         {% if user.id == artdetail.artist_Name.id %} 
           {% if forloop.last %}
-            <div>
-              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-                <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                  {% if artdetail.Sensitive_content %}
-                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                  {% endif %}
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                      <div style="float: right;">
-                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                      </div>
+          <div>
+            {% if artdetail.Sensitive_content %}
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+                <img class="cardimgmob blur-background" src="{{ artdetail.Artwork.url }}">
+                <a href="{% url 'artwork_detail' artdetail.pk %}">
+                  <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                  <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    <div style="float: right;">
+                      <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                      <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
                     </div>
+                  </div>
                 </a>
               </div>
-              </div><br>
+            {% else %}
+                  <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+                    <img class="cardimgmob" src="{{ artdetail.Artwork.url }}">
+                    <a href="{% url 'artwork_detail' artdetail.pk %}">
+                      <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                        <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                        <div style="float: right;">
+                          <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                          <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                        </div>
+                      </div>
+                </a>
+              </div>
+            {% endif %}
+          </div><br>
           {% else %}
-            <div>
-              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-                <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                  {% if artdetail.Sensitive_content %}
-                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                  {% endif %}
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                      <div style="float: right;">
-                        <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                        <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                      </div>
+          <div>
+            {% if artdetail.Sensitive_content %}
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+                <img class="cardimgmob blur-background" src="{{ artdetail.Artwork.url }}">
+                <a href="{% url 'artwork_detail' artdetail.pk %}">
+                  <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                  <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    <div style="float: right;">
+                      <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                      <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
                     </div>
+                  </div>
                 </a>
               </div>
-            </div><br>
+            {% else %}
+                  <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+                    <img class="cardimgmob" src="{{ artdetail.Artwork.url }}">
+                    <a href="{% url 'artwork_detail' artdetail.pk %}">
+                      <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                        <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                        <div style="float: right;">
+                          <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                          <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                        </div>
+                      </div>
+                </a>
+              </div>
+            {% endif %}
+          </div><br>
           {% endif %}
           {% endif %}  
         {% endfor %}

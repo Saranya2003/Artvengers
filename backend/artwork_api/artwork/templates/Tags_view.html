@@ -14,7 +14,6 @@
       padding: 0 10px;
       margin-bottom:10px;
       width: 350px; 
-      height: 350px;
       padding-bottom: 1em;
       padding-right: 1em; 
     }
@@ -62,10 +61,6 @@
         position:absolute;
         left: -15px;
     }
-    .cardimg{
-      width: 350px;
-      height: 350px;
-    }
     </style>
     <nav class="navbar navbar-expand-lg navbar-custom2">
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -89,16 +84,26 @@
         {% if artdetail.Tags.names %}
             
         <div class="column">
-            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                {% if artdetail.Sensitive_content %}
-                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                {% endif %}
-                <div class="carousel-caption">
-                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+          {% if artdetail.Sensitive_content %}
+            <div class="card">
+              <img class="cardimg blur-background" src="{{ artdetail.Artwork.url }}">
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
                 </div>
               </a>
             </div>
+          {% else %}
+                <div class="card">
+                  <img class="cardimg" src="{{ artdetail.Artwork.url }}">
+                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                </div>
+              </a>
+            </div>
+          {% endif %}
           </div>
         {% else %}
             <h2>No artworks available</h2>
@@ -114,16 +119,26 @@
       {% if artdetail.Tags.names %}
           
       <div class="column"style="padding-right: 1em;width: auto;margin-left:-1.5em">
-        <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-          <a href="{%  url 'artwork_detail' artdetail.pk %}">
-            {% if artdetail.Sensitive_content %}
-                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-            {% endif %}
-            <div class="carousel-caption">
+        {% if artdetail.Sensitive_content %}
+          <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+            <img class="cardimgmob blur-background" src="{{ artdetail.Artwork.url }}">
+            <a href="{% url 'artwork_detail' artdetail.pk %}">
+              <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+              <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                 <h5 class="caption-header">{{ artdetail.Title }}</h5>
-            </div>
-          </a>
-        </div>
+              </div>
+            </a>
+          </div>
+        {% else %}
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+                <img class="cardimgmob" src="{{ artdetail.Artwork.url }}">
+                <a href="{% url 'artwork_detail' artdetail.pk %}">
+                  <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                <h5 class="caption-header">{{ artdetail.Title }}</h5>
+              </div>
+            </a>
+          </div>
+        {% endif %}
       </div>
       {% else %}
           <h2>No artworks available</h2>

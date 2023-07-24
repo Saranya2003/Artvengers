@@ -36,7 +36,7 @@
           {% endif %}
         <h1>{{ object.Title }}</h1><br>
         <center>
-          <img src="{{ object.Artwork.url }}" width="100%"><br>
+          <img src="{{ object.Artwork.url }}" width="50%"><br>
         </center>
       </div>
       <div class="col-sm">
@@ -75,17 +75,18 @@
                 <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
                 <td style="width: 225px;">
-                  <select class="form-select AlbumList" name="Album_Title" form='collectionform'>
-                  {% for albumName in album %}
-                    {% if user.id == albumName.artist_Name.id %}
-                      {% if object not in albumName.memberpic.all %}
-                        <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
-                      
+                  <select class="form-select" data-mdb-placeholder="Save to collection" name="Album_Titlemob" form='collectionform'>
+                    {% for albumName in album %}
+                      {% if user.id == albumName.artist_Name.id %}
+                        {% if albumName %}
+                          <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
+                        {% else %}
+                          <option>No album to save.</option>
+                        {% endif %}
                       {% endif %}
-                    {% endif %}
-                  {% endfor %}
-                </select></td>
-              <td>
+                    {% endfor %}
+                  </select></td>
+              <td style="width: 50%;">
               <button type="submit" class="btn btn-custom rounded-pill">Save to album</button></td>
               </form>
           
@@ -156,7 +157,7 @@
           {% endif %}
 
         <h1>{{ object.Title }}</h1><br>
-        <img src="{{ object.Artwork.url }}" style="width: 100%;margin-left: -0.5em;"><br>
+        <img src="{{ object.Artwork.url }}" style="width: 50%;margin-left: -0.5em;"><br>
       </div>
       <div class="col-sm">
         <br>

@@ -14,7 +14,6 @@
       padding: 0 10px;
       margin-bottom:10px;
       width: 350px; 
-      height: 350px;
       padding-bottom: 1em;
       padding-right: 1em; 
     }
@@ -30,11 +29,11 @@
     }
     
     /* Responsive columns */
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 414px) {
       .column {
         width: 100%;
         display: block;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
       }
     }
     
@@ -68,12 +67,6 @@
       left: 16px;
       font-size: 18px;
     }
-    .cardimg {
-        object-fit: cover;
-        width: 350px;
-        height: 350px;
-        padding-right: 1em;
-    }
     </style>
     <body>
       <nav class="navbar navbar-expand-lg navbar-custom2">
@@ -96,16 +89,26 @@
       <div class="row">
           {% for artdetail in artwork %}
           <div class="column">
-            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                {% if artdetail.Sensitive_content %}
-                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                {% endif %}
-                <div class="carousel-caption">
-                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            {% if artdetail.Sensitive_content %}
+            <div class="card">
+              <img class="cardimg blur-background" src="{{ artdetail.Artwork.url }}">
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
                 </div>
               </a>
             </div>
+          {% else %}
+                <div class="card">
+                  <img class="cardimg" src="{{ artdetail.Artwork.url }}">
+                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                </div>
+              </a>
+            </div>
+          {% endif %}
             </div>
           {% endfor %}
 
@@ -118,16 +121,26 @@
       <div class="row" style="margin: 0 -35px;">
           {% for artdetail in artwork %}
           <div class="column">
-            <div class="card" style="background-image: url('{{ artdetail.Artwork.url }}');background-size: cover;background-position: center;">
-              <a href="{%  url 'artwork_detail' artdetail.pk %}">
-                {% if artdetail.Sensitive_content %}
-                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                {% endif %}
-                <div class="carousel-caption">
-                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            {% if artdetail.Sensitive_content %}
+            <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+              <img class="cardimg blur-background" src="{{ artdetail.Artwork.url }}">
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
                 </div>
               </a>
             </div>
+          {% else %}
+                <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
+                  <img class="cardimg" src="{{ artdetail.Artwork.url }}">
+                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    </div>
+                  </a>
+                </div>
+          {% endif %}
             </div>
           {% endfor %}
 
