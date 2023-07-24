@@ -28,7 +28,7 @@
         <a class="nav-link active-custom text-white" href="{% url 'explore'%}">Explore</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="{% url 'dashboard'%}">My artworks</a>
+        <a class="nav-link text-white" href="{% url 'dashboard'%}">My Artworks</a>
       </li>
     </ul>
   </div>
@@ -53,9 +53,9 @@
         </div>
         <div class="col-sm">
           {% csrf_token %}
-          Username <input type="text" value="{{ user.profile.user }}" name="username" class="form-control" style="width: 371px;"><br>
-          <input type="hidden" value="{{ user.profile.pk }}" name="user">
-          Email <input type="text" value="{{ user.profile.email }}" name="email" class="form-control" style="width: 371px;"><br>
+          Username <input type="text" value="{{ user }}" name="username" class="form-control" style="width: 371px;"><br>
+          <input type="hidden" value="{{ user.pk }}" name="user">
+          Email <input type="text" value="{{ user.email }}" name="email" class="form-control" style="width: 371px;"><br>
           Bio <textarea name="bio" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
           <strong>Social Media</strong><br><br>
@@ -92,9 +92,9 @@
       <div class="col-sm">
         
         {% csrf_token %}
-        Username <input type="text" value="{{ user.profile.user }}" name="username" class="form-control" style="width: 371px;"><br>
-        <input type="hidden" value="{{ user.profile.pk }}" name="user">
-        Email <input type="text" value="{{ user.profile.email }}" name="email" class="form-control" style="width: 371px;"><br>
+        Username <input type="text" value="{{ user }}" name="username" class="form-control" style="width: 371px;"><br>
+        <input type="hidden" value="{{ user.pk }}" name="user">
+        Email <input type="text" value="{{ user.email }}" name="email" class="form-control" style="width: 371px;"><br>
           Bio <textarea name="biomob" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
 
 
@@ -145,11 +145,11 @@
 
     // Show/hide elements based on viewport width
     if (viewportWidth < 768) {
-      document.getElementById("desktop-content").style.display = "none";
-      document.getElementById("mobile-content").style.display = "block";
+      document.getElementById("desktopcontent").style.display = "none";
+      document.getElementById("mobcontent").style.display = "block";
     } else {
-      document.getElementById("desktop-content").style.display = "block";
-      document.getElementById("mobile-content").style.display = "none";
+      document.getElementById("desktopcontent").style.display = "block";
+      document.getElementById("mobcontent").style.display = "none";
     }
   }
 

@@ -40,14 +40,11 @@
       
 
 <div id="desktopcontent">
-  <div id="tagdiv" style="display: flex; overflow-x: auto;">
+  <div id="tagdiv" style="display: flex; overflow-x: auto;margin-right: 1em;">
     {% for tag in tags %}
       <a href="{% url 'tag' tag %}" class="badge badge-custom rounded-pill" style="white-space: nowrap;">{{ tag.name }} ({{ tag.artwork_count }})</a>&ensp;
     {% endfor %}
   </div>
-  
-  
-  
   <br>
 <div id="albumdesktop">
   <h2>Albums</h2>

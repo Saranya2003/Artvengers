@@ -28,10 +28,11 @@ def delete_comment(request, comment_pk):
 
 def addtoalbum(request,pk):
     if request.method == 'POST':
-        if request.POST['Album_Title'] is not None:
+        if 'Album_Title' in request.POST:
             albumid = request.POST['Album_Title']
-        elif request.POST['Album_Titlemob'] is not None:
+        elif 'Album_Titlemob' in request.POST:
             albumid = request.POST['Album_Titlemob']
+            
         albumcontent = Album.objects.get(pk=albumid)
         
         form = UpdateAlbumForm(request.POST, instance=albumcontent)
@@ -291,7 +292,7 @@ class AddAlbum(CreateView):
 
 class UpdateAlbum(UpdateView):
     model = Album
-    form_class = UpdateAlbumForm
+    form_class = AlbumForm
     template_name = 'update_album.html'
 
     def get_context_data(self, **kwargs):

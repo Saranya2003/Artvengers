@@ -16,7 +16,7 @@
             <td>Title:<br><br></td><td>{{ form.Album_Title }}<br><br></td>
         </tr>
         <tr>
-            <td>Setting as private album?<br><br></td>
+            <td>Setting as private album?<br><br><br></td>
             <td>
               <div class="form-check form-switch form-switch-md">
                 {{ form.Private_Album }}
@@ -37,7 +37,8 @@
                 </div><br><br>
         <br><br></center>
     <div style="text-align: center;">
-        <button type="submit" class="btn btn-custom">Create album/collection</button>
+        <a class="btn btn-secondary" href="{% url 'explore'%}">Cancel</a>&nbsp;
+        <button type="submit" class="btn btn-custom">Create album</button>
     </div>
     </form>
 </div>
@@ -73,7 +74,8 @@
         </div>
         <br>
     <div style="text-align: center;">
-        <button type="submit" class="btn btn-custom">Create album/collection</button>
+        <a class="btn btn-secondary" href="{% url 'explore'%}">Cancel</a>&nbsp;
+        <button type="submit" class="btn btn-custom">Create album</button>
     </div>
     </form>
 </div>
@@ -92,18 +94,48 @@
         document.getElementById("memberpic").value=selectedpic;
         document.getElementById("memberpicmob").value=selectedpic;
     }
-    function PicClick(){
-        if (selectedpic.includes(event.srcElement.id)){
-            selectedpic = selectedpic.filter(function(e) {return e!==event.srcElement.id});
-            event.srcElement.classList.remove('selected');
-            
+
+    // Function to add or remove 'selected' class and update selectedpic array
+    function toggleSelection(imageElement) {
+        const imageId = parseInt(imageElement.id);
+        const index = selectedpic.indexOf(imageId);
+
+        if (index !== -1) {
+            selectedpic.splice(index, 1);
+        } else {
+            selectedpic.push(imageId);
         }
-        else{
-            selectedpic.push(event.srcElement.id);
-            event.srcElement.classList.add('selected');
+
+        imageElement.classList.toggle('selected');
+    }
+
+    function PicClick() {
+        const clickedImage = event.srcElement;
+        toggleSelection(clickedImage);
+
+        console.log(selectedpic);
+    }
+
+    // Function to handle the responsive border effect for selected images
+    function updateSelectedImagesBorder() {
+        const images = document.getElementsByClassName('PicList');
+
+        for (let i = 0; i < images.length; i++) {
+            const imageElement = images[i];
+            const imageId = parseInt(imageElement.id);
+            const isSelected = selectedpic.includes(imageId);
+
+            // Add or remove border based on selection
+            if (isSelected) {
+                imageElement.classList.add('selected');
+            } else {
+                imageElement.classList.remove('selected');
+            }
         }
-        console.log(selectedpic);    
-    };
+    }
+
+    // Attach an event listener to the window resize event
+    window.addEventListener('resize', updateSelectedImagesBorder);
 
     const mouseWheel = document.querySelector('.scrollmenu');
 

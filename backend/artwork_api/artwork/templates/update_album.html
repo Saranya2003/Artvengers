@@ -16,7 +16,7 @@
                         <td>{{ form.Album_Title }}<br><br></td>
                     </tr>
                     <tr>
-                        <td>Setting as private album?</td>
+                        <td>Setting as private album?<br><br><br></td>
                         <td>
                             <div class="form-check form-switch form-switch-md">
                                 {{ form.Private_Album }}
@@ -44,7 +44,8 @@
                             </div><br>
             </center>
             <div style="text-align: center;">
-                <button type="submit" class="btn btn-custom">Update album/collection</button>
+                <a class="btn btn-secondary" href="{% url 'dashboard'%}">Cancel</a>&nbsp;
+                <button type="submit" class="btn btn-custom">Update album</button>
             </div>
         </form>
     </div>
@@ -85,7 +86,8 @@
             </div>
             <br>
             <div style="text-align: center;">
-                <button type="submit" class="btn btn-custom">Update album/collection</button>
+                <a class="btn btn-secondary" href="{% url 'dashboard'%}">Cancel</a>&nbsp;
+                <button type="submit" class="btn btn-custom">Update album</button>
             </div>
         </form>
     </div>
@@ -110,19 +112,49 @@
              document.getElementById("memberpic").value=selectedpic;
              document.getElementById("memberpicmob").value=selectedpic;
          }
-         function PicClick(){
- 
-             if (selectedpic.includes(parseInt(event.srcElement.id))){
-                 selectedpic = selectedpic.filter(function(e) {return e!==parseInt(event.srcElement.id)});
-                 event.srcElement.classList.remove('selected');
-                 
-             }
-             else{
-                 selectedpic.push(parseInt(event.srcElement.id));
-                 event.srcElement.classList.add('selected');
-             }
-             console.log(selectedpic);    
-         };
+         
+         // Function to add or remove 'selected' class and update selectedpic array
+        function toggleSelection(imageElement) {
+            const imageId = parseInt(imageElement.id);
+            const index = selectedpic.indexOf(imageId);
+
+            if (index !== -1) {
+                selectedpic.splice(index, 1);
+            } else {
+                selectedpic.push(imageId);
+            }
+
+            imageElement.classList.toggle('selected');
+        }
+
+        function PicClick() {
+            const clickedImage = event.srcElement;
+            toggleSelection(clickedImage);
+
+            console.log(selectedpic);
+        }
+
+        // Function to handle the responsive border effect for selected images
+        function updateSelectedImagesBorder() {
+            const images = document.getElementsByClassName('PicList');
+
+            for (let i = 0; i < images.length; i++) {
+                const imageElement = images[i];
+                const imageId = parseInt(imageElement.id);
+                const isSelected = selectedpic.includes(imageId);
+
+                // Add or remove border based on selection
+                if (isSelected) {
+                    imageElement.classList.add('selected');
+                } else {
+                    imageElement.classList.remove('selected');
+                }
+            }
+        }
+
+        // Attach an event listener to the window resize event
+        window.addEventListener('resize', updateSelectedImagesBorder);
+
          const mouseWheel = document.querySelector('.scrollmenu');
  
          mouseWheel.addEventListener('wheel', function(e) {

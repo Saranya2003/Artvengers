@@ -28,8 +28,8 @@ class EditProfileForm(forms.ModelForm):
 class CreateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = {'user','email','bio','Instagram','Twitter','Facebook'}
-        field_order = ['user','email','bio','Instagram','Twitter','Facebook']
+        fields = {'user','email','Instagram','Twitter','Facebook'}
+        field_order = ['user','email','Instagram','Twitter','Facebook']
 '''class EditProfileForm(UserChangeForm):
     username = forms.CharField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(label="",max_length=100,widget=forms.TextInput(attrs={'class': 'form-control'}))

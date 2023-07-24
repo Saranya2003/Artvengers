@@ -23,26 +23,33 @@ class CreateProfileView(generic.CreateView):
         return super().form_valid(form)
 
 def create_profile_action(request):
-    userid = request.user.id
     if request.method == 'POST':
-         
-            profile_form = CreateProfileForm(request.POST)
-            
-            
-            
-            if profile_form.is_valid():
-                newprof = profile_form.save(commit=False)
-                newprof.profile_picture = request.FILES['newprofilepic'] 
-                
-                newprof.save()
-           
-                messages.success(request, 'Your profile is updated successfully')
-                return redirect(to='explore')
+        profile_form = CreateProfileForm(request.POST, request.FILES)
+
+        if profile_form.is_valid():
+
+            new_prof = profile_form.save(commit=False)
+            if 'newprofilepic' in request.FILES:
+                new_prof.profile_picture = request.FILES['newprofilepic']
+            elif 'newprofilepicmob' in request.FILES:
+                new_prof.profile_picture = request.FILES['newprofilepicmob']
             else:
-                print(profile_form.errors.as_data())
-                print("can't edit")       
+                new_prof.profile_picture = profile_form.profile_picture
+
+            if 'bio' in request.POST:
+                new_prof.bio = request.POST['bio']
+            elif 'biomob' in request.POST:
+                new_prof.bio = request.POST['biomob']
+
+            new_prof.user = request.user  # Set the 'user' field to the current logged-in user
+            new_prof.save()
+
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect('explore')
+        else:
+            messages.error(request, 'Failed to update your profile. Please check the form data.')
     else:
-            profile_form = CreateProfileForm
+        profile_form = CreateProfileForm()
 
     
 
@@ -96,7 +103,7 @@ def change_password(request):
 
 
 def updateprofile(request, pkreq):
-    userprofile = Profile.objects.get(pk=pkreq)
+    userprofile = Profile.objects.get(user=request.user)
     
     if request.method == 'POST':
         print(request.POST)

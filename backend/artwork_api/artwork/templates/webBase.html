@@ -440,8 +440,8 @@
     }
     .cardimg {
         object-fit: cover;
-        height: 120%;
-        width: 120%;
+        height: 100%;
+        width: 100%;
         object-position: center;
     }
     .cardimgmob {
@@ -497,6 +497,12 @@
       filter: blur(8px); /* You can adjust the blur amount (8px in this case) as needed */
       -webkit-filter: blur(8px); /* For Safari support */
     }
+      footer {
+        flex-shrink: 0;
+        background-color: #EB5160;
+        padding: 20px;
+        color: white;
+      }
     </style>
   </head>
   {% load thumbnail %}
@@ -516,9 +522,9 @@
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                 {% if user.profile.profile_picture %}
-                <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
+                <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;background-color: #FFF;">
                 {% else %}
-                <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
+                <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;background-color: #FFF;">
                 {% endif %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -527,6 +533,10 @@
                 {% else %}
                 <li><a class="dropdown-item" href="{% url 'create_profile' %}">Profile</a></li>
                 {% endif %}
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'add_album' %}">Create new album</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'add_artwork' %}">Post new artwork</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
               </ul>
@@ -614,7 +624,7 @@
         <tr>
               <td> <a class="navbar-brand" href="{% url 'explore'%}"><img src="../../media/logo/explore.png"><br>Explore</a></td>
               <td><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../../media/logo/dashboard.png"><br>My Artworks</a></td>
-              <td><a class="navbar-brand"href="{% url 'upload'%}"><img src="../../media/logo/upload.png"><br>Upload</a></td>
+              <td><a class="navbar-brand"href="{% url 'upload'%}"><img src="../../media/logo/upload.png" style="width: 41px;height: 41px;"><br>Upload</a></td>
               <td>{% if user.profile.id %}
                 <a class="navbar-brand" href="{% url 'edit_profile' user.profile.id %}"><img src="../../media/logo/profile.png"><br>Profile</a>
                 {% else %}
@@ -644,12 +654,16 @@
     {% endblock %}
     
   </body><br><br><br><br>
-  <div class="container-fluid" id="desktopcontent" style="background-color: #EB5160;bottom: 0em;">
-      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top" style="background-color: #EB5160;">
-        <div class="col-md-4 d-flex align-items-center">
-          <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
-          <span class="mb-3 mb-md-0 text-muted">© 2023 Artvengers, Inc</span>
-        </div>
-      </footer>
-    </div>
+  <div class="container-fluid" id="desktopcontent" style="background-color: #EB5160;bottom: 0pt;min-height: 100%;display: flex;flex-direction: column;">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
+      </div>
+      <div class="col-md-4 d-flex align-items-center">
+        <span class="mb-3 mb-md-0 text-muted">© 2023 Artvengers, Inc</span>
+      </div>
+      <div class="col-md-4 d-flex align-items-center">
+      </div>
+    </footer>
+  </div>
 </html>
