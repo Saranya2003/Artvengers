@@ -75,18 +75,17 @@
                 <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
                 <td style="width: 225px;">
-                  <select class="form-select" data-mdb-placeholder="Save to collection" name="Album_Titlemob" form='collectionform'>
-                    {% for albumName in album %}
-                      {% if user.id == albumName.artist_Name.id %}
-                        {% if albumName %}
-                          <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
-                        {% else %}
-                          <option>No album to save.</option>
-                        {% endif %}
+                  <select class="form-select AlbumList" name="Album_Title" form='collectionform'>
+                  {% for albumName in album %}
+                    {% if user.id == albumName.artist_Name.id %}
+                      {% if object not in albumName.memberpic.all %}
+                        <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
+                      
                       {% endif %}
-                    {% endfor %}
-                  </select></td>
-              <td style="width: 50%;">
+                    {% endif %}
+                  {% endfor %}
+                </select></td>
+              <td>
               <button type="submit" class="btn btn-custom rounded-pill">Save to album</button></td>
               </form>
           
