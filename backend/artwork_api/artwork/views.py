@@ -32,7 +32,6 @@ def addtoalbum(request,pk):
             albumid = request.POST['Album_Title']
         elif request.POST['Album_Titlemob'] is not None:
             albumid = request.POST['Album_Titlemob']
-       # print("albumid is", albumid)
         albumcontent = Album.objects.get(pk=albumid)
         
         form = UpdateAlbumForm(request.POST, instance=albumcontent)
@@ -42,21 +41,9 @@ def addtoalbum(request,pk):
             
             form.instance.artist_Name = request.user
             form.instance.Album_Title = oldalbumname
-           # form.instance.Album_Title = albumid
             memlistid = request.POST['colartworkpost_id']
-           
-
-            print(memlistid)
-            print("Before:",form.instance.memberpic.all())
             form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(memlistid)))
             form.instance.save() 
-            print("After:", form.instance.memberpic.all())
-            print("Albumcontent:", albumcontent.memberpic.all())
-           # NewAlbum.memberpic.all()
-           # print(NewAlbum.memberpic.all())
-            
-            
-            #form.save_m2m()
             return HttpResponseRedirect(reverse('artwork_detail',args=[str(pk)]))
         else:
             print(form.errors.as_data())

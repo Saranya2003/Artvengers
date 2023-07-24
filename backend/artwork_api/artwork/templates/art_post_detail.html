@@ -129,7 +129,7 @@
       <div style="display: flex; align-items: center;">
         <strong>
           {{ comment.artist_Name }} - {{ comment.date_added }}
-        </strong>&nbsp;
+        </strong>&emsp;
         {% if comment.artist_Name == user %}
           <form id="delete-comment-form-{{ comment.pk }}" action="{% url 'delete_comment' comment.pk %}" method="POST">
             {% csrf_token %}
@@ -189,16 +189,15 @@
             <tr>
               <form action="{% url 'add_to_album_action' object.pk %}" method="POST" enctype="multipart/form-data" id="collectionform">
                 {% csrf_token %}
-              <td style="width: 225px;">
                 <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
-                <select class="form-select" data-mdb-placeholder="Save to collection" name="Album_Titlemob" form='collectionform'>
-                {% for albumName in album %}
+              <td style="width: 225px;">               
+                <select class="form-select AlbumList" name="Album_Titlemob" form='collectionform'>
+                  {% for albumName in album %}
                   {% if user.id == albumName.artist_Name.id %}
-                    {% if albumName %}
+                    {% if object not in albumName.memberpic.all %}
                       <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
-                    {% else %}
-                      <option>No album to save.</option>
+                    
                     {% endif %}
                   {% endif %}
                 {% endfor %}
@@ -251,7 +250,7 @@
         <div style="display: flex; align-items: center;">
           <strong>
             {{ comment.artist_Name }} - {{ comment.date_added }}
-          </strong>&nbsp;
+          </strong>&emsp;
           {% if comment.artist_Name == user %}
             <form id="delete-comment-form-{{ comment.pk }}" action="{% url 'delete_comment' comment.pk %}" method="POST">
               {% csrf_token %}
