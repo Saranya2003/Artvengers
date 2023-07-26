@@ -161,5 +161,6 @@ LOGOUT_REDIRECT_URL = 'home'
 THUMBNAIL_ALIASES = {
     '': {
         'Artwork': {'size': (306, 280), 'crop': 'smart'},
+        'Profile_picture':{'size':(180,180), 'crop': 'smart'},
     },
 }

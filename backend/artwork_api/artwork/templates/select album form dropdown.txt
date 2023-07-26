@@ -1,0 +1,18 @@
+<form action="{% url 'add_to_album_action' object.pk %}" method="POST" enctype="multipart/form-data" id="collectionform">
+                {% csrf_token %}
+                <input type="hidden" value="{{ user.id }}" name="artist_Name">
+                <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
+                <td style="width: 225px;">
+                  <select class="form-select AlbumList scrollable-menu" name="Album_Title" form='collectionform' id="albumSelect">
+                  {% for albumName in album %}
+                    {% if user.id == albumName.artist_Name.id %}
+                      {% if object not in albumName.memberpic.all %}
+                        <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
+                      
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </select></td>
+              <td>
+              <button type="submit" class="btn btn-custom rounded-pill">Save to album</button></td>
+              </form>

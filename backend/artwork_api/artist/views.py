@@ -27,21 +27,21 @@ def create_profile_action(request):
         profile_form = CreateProfileForm(request.POST, request.FILES)
 
         if profile_form.is_valid():
-
             new_prof = profile_form.save(commit=False)
+            
+            # Check for the profile picture in both desktop and mobile file inputs
             if 'newprofilepic' in request.FILES:
                 new_prof.profile_picture = request.FILES['newprofilepic']
             elif 'newprofilepicmob' in request.FILES:
                 new_prof.profile_picture = request.FILES['newprofilepicmob']
-            else:
-                new_prof.profile_picture = profile_form.profile_picture
-
+            
+            # Get the bio from both desktop and mobile form inputs
             if 'bio' in request.POST:
                 new_prof.bio = request.POST['bio']
             elif 'biomob' in request.POST:
                 new_prof.bio = request.POST['biomob']
 
-            new_prof.user = request.user  # Set the 'user' field to the current logged-in user
+            new_prof.user = request.user
             new_prof.save()
 
             messages.success(request, 'Your profile is updated successfully')

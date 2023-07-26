@@ -13,7 +13,7 @@
   }
   /* Assuming you want to set a fixed height of 200 pixels for the select box */
   #albumSelect, #albumSelectmob {
-    
+    height: 38px;
     overflow-y: auto; /* This will enable vertical scrolling if the content exceeds the height */
   }
 
@@ -75,28 +75,24 @@
                 {% endif %}
               </form>
             </td>
-            
-             
-              <form action="{% url 'add_to_album_action' object.pk %}" method="POST" enctype="multipart/form-data" id="collectionform">
-                {% csrf_token %}
-                <input type="hidden" value="{{ user.id }}" name="artist_Name">
-                <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
-                <td style="width: 225px;">
-                  <select class="form-select AlbumList" name="Album_Title" form='collectionform' id="albumSelect">
-                  {% for albumName in album %}
-                    {% if user.id == albumName.artist_Name.id %}
-                      {% if object not in albumName.memberpic.all %}
-                        <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
-                      
-                      {% endif %}
+            <form action="{% url 'add_to_album_action' object.pk %}" method="POST" enctype="multipart/form-data" id="collectionform">
+              {% csrf_token %}
+              <input type="hidden" value="{{ user.id }}" name="artist_Name">
+              <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
+              <td style="width: 225px;">
+                <select class="form-select AlbumList scrollable-menu" name="Album_Title" form='collectionform' id="albumSelect">
+                {% for albumName in album %}
+                  {% if user.id == albumName.artist_Name.id %}
+                    {% if object not in albumName.memberpic.all %}
+                      <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
+                    
                     {% endif %}
-                  {% endfor %}
-                </select></td>
-              <td>
-              <button type="submit" class="btn btn-custom rounded-pill">Save to album</button></td>
-              </form>
-          
-            
+                  {% endif %}
+                {% endfor %}
+              </select></td>
+            <td>
+            <button type="submit" class="btn btn-custom rounded-pill">Save to album</button></td>
+            </form>
           </tr>
         </table>
         
@@ -118,16 +114,15 @@
         </form>
         </div>
         <br>
-        <hr class="solid" style="background-color: white;">
         <div>
             
             {% if not comments %}
-            
+            <hr class="solid" style="background-color: white;">
               No comments.
             {% else %}
-        <br>
         
         {% for comment in comments %}
+        <hr class="solid" style="background-color: white;">
         <div style="display: flex; align-items: center;">
           <strong>
             {{ comment.artist_Name }} - {{ comment.date_added }}
@@ -143,10 +138,9 @@
           {% endif %}
         </div>
         <div style="margin-left: 1.5em;">{{ comment.artwork_comment }}</div>
-        <br>
+        
       {% endfor %}
         {% endif %}
-        <br>
         </div>
 
         
@@ -184,7 +178,7 @@
         justify-content: center;
         align-items: flex-start;
         flex-shrink: 0;
-        margin-left: -3em">
+        margin-left: -3em;border-color: white;">
           <button type="button" data-section="section1" class="btn btn-outline-light segmentedButton">Description</button>
           <button type="button" data-section="section2" class="btn btn-outline-light segmentedButton">Comments</button>
         </div>
@@ -344,6 +338,29 @@
     $("button[data-section='section1']").addClass("active");
     $("#" + $("button[data-section='section1']").attr("data-section")).show();
   });
+</script>
+<script>
+  // Function to scroll the first <select> element ("albumSelectmob") to the next set of albums
+    function scrollToNextAlbumSetMob() {
+      const albumSelectMob = document.getElementById("albumSelectmob");
+      albumSelectMob.scrollTop += albumSelectMob.clientHeight; // Scroll the height of the container (moves to the next set of albums)
+    }
+
+    // Function to scroll the second <select> element ("albumSelect") to the next set of albums
+    function scrollToNextAlbumSet() {
+      const albumSelect = document.getElementById("albumSelect");
+      albumSelect.scrollTop += albumSelect.clientHeight; // Scroll the height of the container (moves to the next set of albums)
+    }
+
+    // Wait for the document to load before adding the event listeners
+    document.addEventListener("DOMContentLoaded", function () {
+      // Call the scrollToNextAlbumSetMob function after a delay (e.g., 5 seconds)
+      setTimeout(scrollToNextAlbumSetMob, 5000); // Adjust the delay as per your preference (5000 milliseconds = 5 seconds)
+
+      // Call the scrollToNextAlbumSet function after a different delay (e.g., 10 seconds)
+      setTimeout(scrollToNextAlbumSet, 10000); // Adjust the delay as per your preference (10000 milliseconds = 10 seconds)
+    });
+
 </script>
 
 

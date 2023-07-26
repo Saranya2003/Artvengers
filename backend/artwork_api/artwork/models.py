@@ -47,7 +47,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     email = models.EmailField()
     bio = models.TextField()
-    profile_picture = ResizedImageField(size=[180, 180], crop=['middle', 'center'],upload_to="media/img/profile_pic")
+    profile_picture = ThumbnailerImageField(blank=True,upload_to="media/img/profile_pic")
     Instagram = models.CharField(max_length=255)
     Twitter = models.CharField(max_length=255)
     Facebook = models.CharField(max_length=255)
