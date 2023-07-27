@@ -112,14 +112,14 @@
     {% endfor %}
     </div>
 </div>
-<div id="mobcontent" style="padding-right: 10px;margin: 20px;">
+<div id="mobcontent" style="margin-left: 10px;margin-right: 10px;margin: 20px;">
   <h2>Tag: {{ SelectTag }}</h2>
   <br><br>
   {% for artdetail in artwork %}
 
       {% if artdetail.Tags.names %}
           
-      <div class="column"style="padding-right: 1em;width: auto;margin-left:-1.5em">
+      <div class="column" style="padding-right: 1em;width: auto;margin-left: 0em">
         {% if artdetail.Sensitive_content %}
           <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
             <img class="cardimgmob blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">

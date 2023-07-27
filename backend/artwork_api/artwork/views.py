@@ -60,19 +60,10 @@ def insertalbum(request):
             form.instance.artist_Name = request.user
             memlistid = request.POST['memberpiclist'].split(",")
 
+            if memlistid:  # Check if the list is not empty before processing
+                for i in memlistid:
+                    form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
 
-            
-            
-            form.save()
-            for i in memlistid:
-                #print(i)          
-                form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
-
-           # NewAlbum.memberpic.all()
-           # print(NewAlbum.memberpic.all())
-            
-            
-            #form.save_m2m()
             return HttpResponseRedirect(reverse('explore'))
         else:
             print(form.errors.as_data())
