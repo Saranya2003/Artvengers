@@ -51,7 +51,7 @@
         <div>
         <small>
           Create date:{{ object.created_date }}<br><br>
-          By: {{ object.artist_Name }}<br><br>
+          By: {{ object.artist_Name }}&ensp;<a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-secondary">(View Profile)</a><br><br>
         </small><br>
         <p>
           {{ object.Description }}
@@ -211,7 +211,7 @@
           </table><br>
           <small>
                 Create date:{{ object.created_date }}<br><br>
-                By: {{ object.artist_Name }}<br><br>
+                By: {{ object.artist_Name }}&ensp;<a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-secondary">(View Profile)</a><br><br>
               </small><br>
               <p>
                 {{ object.Description }}

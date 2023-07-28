@@ -108,10 +108,13 @@
          }
          
          const checksel = document.getElementsByClassName('PicList');
-         function submem(){
-             document.getElementById("memberpic").value=selectedpic;
-             document.getElementById("memberpicmob").value=selectedpic;
-         }
+         function submem() {
+            // Ensure selectedpic array is not empty before setting the memberpic input value
+            if (selectedpic.length > 0) {
+                document.getElementById("memberpic").value = selectedpic;
+                document.getElementById("memberpicmob").value = selectedpic;
+            }
+        }
          
          // Function to add or remove 'selected' class and update selectedpic array
         function toggleSelection(imageElement) {

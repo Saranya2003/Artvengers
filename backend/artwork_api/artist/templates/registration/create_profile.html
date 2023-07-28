@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {% extends 'webBase.html' %}
+{% load thumbnail %}
 {% block content %}
 <style>
   .fileUpload {
@@ -41,7 +42,7 @@
       <div class="row align-items-start">
         <div class="col-sm" style="text-align: center;">
           {% if user.profile.profile_picture %}
-            <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;background-color: white;" id="profilePic">
+            <img src="{{ user.profile.profile_picture|thumbnail_url:'Profile_picture' }}" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;background-color: white;" id="profilePic">
           {% else %}
             <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;background-color: white;" id="profilePic">
           {% endif %}
@@ -79,7 +80,7 @@
     <div class="row align-items-start">
       <div class="col-sm" style="text-align: center;">
         {% if user.profile.profile_picture %}
-          <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;background-color: white;" id="profilePicmob">
+          <img src="{{ user.profile.profile_picture|thumbnail_url:'Profile_picture' }}" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;background-color: white;" id="profilePicmob">
         {% else %}
           <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;width: 180px;height: 180px;flex-shrink: 0;object-fit: cover;background-color: white;" id="profilePicmob">
         {% endif %}

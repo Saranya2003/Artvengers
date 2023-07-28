@@ -1,5 +1,5 @@
 <!doctype html>
-
+{% load thumbnail %}
 <html lang="en">
   <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -512,7 +512,7 @@
    
     <nav class="navbar  navbar-expand-lg navbar-custom" id="desktopnav">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo white.png" style="width: 105px;height: 118px;"></a>
+        <a class="navbar-brand" href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo white new.png" style="width: 105px;height: 105px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -521,7 +521,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                 {% if user.profile.profile_picture %}
-                <img src="../../media/{{ user.profile.profile_picture }}" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;background-color: #FFF;">
+                <img src="{{ user.profile.profile_picture|thumbnail_url:'Profile_picture' }}" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;background-color: #FFF;">
                 {% else %}
                 <img src="../../media/images/static_profile.png" width="30%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;background-color: #FFF;">
                 {% endif %}
@@ -562,7 +562,7 @@
             <button class="navbar-toggler hamburger-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
               <div class="animated-icon"><span></span><span></span><span></span></div>
           </button></td>
-            <td> <img src="../../media/logo/artvengers-logo white.png" width="105px"></td>
+            <td> <img src="../../media/logo/artvengers-logo white new.png" width="105px"></td>
             <td>
               <a href="{% url 'search_mobile' %}"><img src="../../media/logo/search.png"></a>
             </td>
@@ -577,7 +577,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {% if user.profile.profile_picture %}
-                <img src="../../media/{{ user.profile.profile_picture }}" width="10%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
+                <img src="{{ user.profile.profile_picture|thumbnail_url:'Profile_picture' }}" width="10%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
                 {% else %}
                 <img src="../../media/images/static_profile.png" width="10%" style="border-radius: 50%;float: right;width: 60px;height: 60px;flex-shrink: 0;object-fit: cover;">
                 {% endif %}
@@ -651,12 +651,12 @@
     {% block content %}
     
     {% endblock %}
-    
-  </body><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+  </body>
   <div class="container-fluid" id="desktopcontent" style="background-color: #EB5160;bottom: 0pt;min-height: 100%;display: flex;flex-direction: column;">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col align-items-center">
-        <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo.png" style="width: 105px;height: 118px;"></a>
+        <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo new.png" style="width: 105px;height: 105px;"></a>
       </div>
       <div class="col align-items-center">
         <span class="mb-3 mb-md-0 text-white">© 2023 Artvengers, Inc</span>

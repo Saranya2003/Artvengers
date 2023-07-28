@@ -60,7 +60,7 @@ def insertalbum(request):
             form.instance.artist_Name = request.user
             memlistid = request.POST['memberpiclist'].split(",")
 
-            if memlistid:  # Check if the list is not empty before processing
+            if memlistid is not None:  # Check if the list is not empty before processing
                 for i in memlistid:
                     form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
 
