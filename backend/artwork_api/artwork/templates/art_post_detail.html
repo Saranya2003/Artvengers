@@ -4,9 +4,10 @@
 
 <style>
   .wrapper{
+    width:200px;
     padding:20px;
     height: 150px;
-    }
+  }
   .form-select{
     border-radius: 40px !important;
     width: 205px;
@@ -47,14 +48,14 @@
           {% endif %}
         <h1>{{ object.Title }}</h1><br>
         <center>
-          <img src="{{ object.Artwork.url }}" width="50%" style="border: 5px solid;border-color: white;"><br>
+          <img src="{{ object.Artwork.url }}" width="70%" style="border: 5px solid;border-color: white;"><br>
         </center>
       </div>
       <div class="col-sm">
         <br><br>
         <div>
         <small>
-          Create date:{{ object.created_date }}<br><br>
+          Create date:  {{ object.created_date }}<br><br>
           By: <a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-light">{{ object.artist_Name }}</a><br><br>
         </small><br>
         <p>
@@ -95,12 +96,11 @@
                 {% endfor %}
               </select></td>
             <td>
-            <button type="submit" class="btn btn-custom rounded-pill">Save to album</button></td>
+              <button type="submit" class="btn btn-custom rounded-pill">Save to album</button>
+            </td>
             </form>
           </tr>
         </table>
-        
-        
       </div><br>
         <div>
           <h3>Comments</h3>
@@ -159,7 +159,7 @@
           {% endif %}
 
         <h1>{{ object.Title }}</h1><br>
-        <img src="{{ object.Artwork.url }}" style="width: 100%;margin-left: -0.5em;border: 5px solid;border-color: white;"><br>
+        <img src="{{ object.Artwork.url }}" style="width: 100%;margin-left: -1.5em;border: 5px solid;border-color: white;"><br>
       </div>
       <div class="col-sm">
         <br>
@@ -175,6 +175,7 @@
             {{ object.total_likes }} 
           {% endif %}
         </form>
+        <br>
         <div class="btn-group btn-group-lg" style="display: flex;
         width: 428px;
         height: 42px;

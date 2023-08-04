@@ -40,6 +40,7 @@
 </center>
 
 <div class="form-group" id="mobcontent">
+  <br><br>
   <form method="POST" action="{% url 'artwork_edit_action' object.pk %}" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" value="{{ user.id }}" name="artist_Name">

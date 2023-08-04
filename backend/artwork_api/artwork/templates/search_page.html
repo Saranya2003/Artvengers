@@ -111,7 +111,7 @@
             <div class="carousel-item active">
               {% if artdetail.Sensitive_content %}
                     <div class="card">
-                      <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                      <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="height: 120%;width: 120%;">
                       <a href="{% url 'artwork_detail' artdetail.pk %}">
                         <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                         <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -121,7 +121,7 @@
                     </div>
                     {% else %}
                     <div class="card">
-                      <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                      <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="height: 120%;width: 120%;">
                       <a href="{% url 'artwork_detail' artdetail.pk %}">
                         <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                           <h5 class="caption-header">{{ artdetail.Title }}</h5>
@@ -134,7 +134,7 @@
             <div class="carousel-item">
               {% if artdetail.Sensitive_content %}
                     <div class="card">
-                      <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                      <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="height: 120%;width: 120%;">
                       <a href="{% url 'artwork_detail' artdetail.pk %}">
                         <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                         <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -144,7 +144,7 @@
                     </div>
                     {% else %}
                     <div class="card">
-                      <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                      <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="height: 120%;width: 120%;">
                       <a href="{% url 'artwork_detail' artdetail.pk %}">
                         <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                           <h5 class="caption-header">{{ artdetail.Title }}</h5>

@@ -13,12 +13,11 @@ class ArtworkPost(models.Model):
     Title = models.CharField(max_length=100)
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
-    Description = models.TextField()
+    Description = models.CharField(max_length=500)
     Sensitive_content = models.BooleanField(default=False)
     Tags = TaggableManager()
     Artwork = ThumbnailerImageField(blank=True,upload_to="media/img/")
     likes = models.ManyToManyField(User, related_name='artwork_post')
-    #album = models.TextField()
 
     def total_likes(self):
         return self.likes.count()
@@ -40,13 +39,13 @@ class Album(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(ArtworkPost,related_name="comment", on_delete=models.CASCADE)
     artist_Name = models.ForeignKey(User, on_delete=models.CASCADE)
-    artwork_comment = models.TextField()
+    artwork_comment = models.CharField(max_length=500)
     date_added = models.DateTimeField(auto_now_add=True)
     
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     email = models.EmailField()
-    bio = models.TextField()
+    bio = models.CharField(max_length=500)
     profile_picture = ThumbnailerImageField(blank=True,upload_to="media/img/profile_pic")
     Instagram = models.CharField(max_length=255)
     Twitter = models.CharField(max_length=255)

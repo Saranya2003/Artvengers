@@ -71,6 +71,7 @@
 </center>
 
 <div class="form-group" id="mobcontent">
+    <br><br>
     <form method="POST" action="{% url 'add_artwork_mobile' %}" enctype="multipart/form-data" id="mobform">
         {% csrf_token %}
         <input type="hidden" value="{{ user.id }}" name="artist_Name">

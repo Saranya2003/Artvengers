@@ -2,7 +2,6 @@
 {% extends 'webBase.html' %}
 {% block content %}
 {% load thumbnail %}
-
 <nav class="navbar navbar-expand-lg navbar-custom2">
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
@@ -32,13 +31,13 @@
         {% csrf_token %}
         <table>
           <tr style="height: 30px;">
-            <td>Username</td><td>:</td><td>{{ page_user.user }}</td>
+            <td style="float: right;">Username</td><td>:</td><td>&emsp;{{ page_user.user }}</td>
           </tr>
           <tr style="height: 30px;">
-            <td>Email</td><td>:</td><td>{{ page_user.email }}</td>
+            <td style="float: right;">Email</td><td>:</td><td>&emsp;{{ page_user.email }}</td>
           </tr>
           <tr style="height: 30px;">
-            <td>Bio</td><td>:</td><td>{{ page_user.bio }}</td>
+            <td style="float: right;">Bio</td><td>:</td><td>&emsp;{{ page_user.bio }}</td>
           </tr>
         </table>
         <br>
@@ -46,13 +45,13 @@
         <strong>Social Links</strong><br><br>
         <table>
           <tr style="height: 30px;">
-            <td>Instagram</td><td>:</td><td>{{ page_user.Instagram }}</td>
+            <td style="float: right;">Instagram</td><td>:</td><td>&emsp;{{ page_user.Instagram }}</td>
           </tr>
           <tr style="height: 30px;">
-            <td>Twitter</td><td>:</td><td>{{ page_user.Twitter }}</td>
+            <td style="float: right;">Twitter</td><td>:</td><td>&emsp;{{ page_user.Twitter }}</td>
           </tr>
           <tr style="height: 30px;">
-            <td>Facebook</td><td>:</td><td>{{ page_user.Facebook }}</td>
+            <td style="float: right;">Facebook</td><td>:</td><td>&emsp;{{ page_user.Facebook }}</td>
           </tr>
         </table><br><br>
         
@@ -218,13 +217,13 @@
       {% csrf_token %}
       <table>
         <tr style="height: 30px;">
-          <td>Username</td><td>:</td><td>{{ page_user.user }}</td>
+          <td style="float: right;">Username</td><td>:</td><td>&emsp;{{ page_user.user }}</td>
         </tr>
         <tr style="height: 30px;">
-          <td>Email</td><td>:</td><td>{{ page_user.email }}</td>
+          <td style="float: right;">Email</td><td>:</td><td>&emsp;{{ page_user.email }}</td>
         </tr>
         <tr style="height: 30px;">
-          <td>Bio</td><td>:</td><td>{{ page_user.bio }}</td>
+          <td style="float: right;">Bio</td><td>:</td><td>&emsp;{{ page_user.bio }}</td>
         </tr>
       </table>
       <br>
@@ -232,13 +231,13 @@
       <strong>Social Links</strong><br><br>
       <table>
         <tr style="height: 30px;">
-          <td>Instagram</td><td>:</td><td>{{ page_user.Instagram }}</td>
+          <td style="float: right;">Instagram</td><td>:</td><td>{{ page_user.Instagram }}</td>
         </tr>
         <tr style="height: 30px;">
-          <td>Twitter</td><td>:</td><td>{{ page_user.Twitter }}</td>
+          <td style="float: right;">Twitter</td><td>:</td><td>{{ page_user.Twitter }}</td>
         </tr>
         <tr style="height: 30px;">
-          <td>Facebook</td><td>:</td><td>{{ page_user.Facebook }}</td>
+          <td style="float: right;">Facebook</td><td>:</td><td>{{ page_user.Facebook }}</td>
         </tr>
       </table><br><br>
       <center>
