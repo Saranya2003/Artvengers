@@ -8,7 +8,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
-from artwork.models import Profile
+from artwork.models import Profile,Album,ArtworkPost
 from .forms import ChangePasswordForm, SignupForm, EditProfileForm,CreateProfileForm
 from django.contrib.auth.models import User
 
@@ -75,6 +75,8 @@ class ShowProfileView(generic.DetailView):
         context = super(ShowProfileView, self).get_context_data(*args,**kwargs)
         page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
         context["page_user"] = page_user
+        context['album'] = Album.objects.all().order_by('-pk')
+        context['artwork'] = ArtworkPost.objects.all().order_by('-pk')
         return context
      
 

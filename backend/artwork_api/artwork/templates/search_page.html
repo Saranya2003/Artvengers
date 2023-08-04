@@ -43,16 +43,16 @@
         {% if forloop.first %}
       <div class="carousel-item active" style="height: 298px;">
         <div class="card" id="image4" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">
-          <img src="{{ albumObject.memberpic.all.3.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 100%;width: 100%;{% if albumObject.memberpic.all.3.Sensitive_content %} filter: blur(8px);{% endif %}">
+          <img src="{{ albumObject.memberpic.all.3.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.3.Sensitive_content %} filter: blur(6px);{% endif %}">
         </div>
         <div class="card" id="image3" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">
-          <img src="{{ albumObject.memberpic.all.2.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 100%;width: 100%;{% if albumObject.memberpic.all.2.Sensitive_content %} filter: blur(8px);{% endif %}">
+          <img src="{{ albumObject.memberpic.all.2.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.2.Sensitive_content %} filter: blur(6px);{% endif %}">
         </div>
         <div class="card" id="image2" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">
-          <img src="{{ albumObject.memberpic.all.1.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 100%;width: 100%;{% if albumObject.memberpic.all.1.Sensitive_content %} filter: blur(8px);{% endif %}">
+          <img src="{{ albumObject.memberpic.all.1.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.1.Sensitive_content %} filter: blur(6px);{% endif %}">
         </div>
         <div class="card" id="image" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
-          <img src="{{ albumObject.memberpic.all.0.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 100%;width: 100%;{% if albumObject.memberpic.all.0.Sensitive_content %} filter: blur(8px);{% endif %}">
+          <img src="{{ albumObject.memberpic.all.0.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.0.Sensitive_content %} filter: blur(6px);{% endif %}">
         </div>
     <a href="{% url 'album' albumObject.pk %}">
       <div class="card" style="position: relative; right: 30px;bottom: 1050px; background-color: transparent;width: 335px;">
@@ -65,16 +65,16 @@
         {% else %}
       <div class="carousel-item-album" style="height: 298px;">
         <div class="card" id="image4" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">
-          <img src="{{ albumObject.memberpic.all.3.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 100%;width: 100%;{% if albumObject.memberpic.all.3.Sensitive_content %} filter: blur(8px);{% endif %}">
+          <img src="{{ albumObject.memberpic.all.3.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.3.Sensitive_content %} filter: blur(6px);{% endif %}">
         </div>
         <div class="card" id="image3" style="position: relative; right: -25px;bottom: 260px;width: 80%;opacity: 0.3;">
-          <img src="{{ albumObject.memberpic.all.2.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 100%;width: 100%;{% if albumObject.memberpic.all.2.Sensitive_content %} filter: blur(8px);{% endif %}">
+          <img src="{{ albumObject.memberpic.all.2.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.2.Sensitive_content %} filter: blur(6px);{% endif %}">
         </div>
         <div class="card" id="image2" style="position: relative; right: -10px;bottom: 550px;width: 80%;opacity: 0.5;">
-          <img src="{{ albumObject.memberpic.all.1.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 100%;width: 100%;{% if albumObject.memberpic.all.1.Sensitive_content %} filter: blur(8px);{% endif %}">
+          <img src="{{ albumObject.memberpic.all.1.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.1.Sensitive_content %} filter: blur(6px);{% endif %}">
         </div>
         <div class="card" id="image" style="position: relative; right: 10px;bottom: 840px;width: 80%;">
-          <img src="{{ albumObject.memberpic.all.0.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 100%;width: 100%;{% if albumObject.memberpic.all.0.Sensitive_content %} filter: blur(8px);{% endif %}">
+          <img src="{{ albumObject.memberpic.all.0.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.0.Sensitive_content %} filter: blur(6px);{% endif %}">
         </div>
         <a href="{% url 'album' albumObject.pk %}">
           <div class="card" style="position: relative; right: 30px;bottom: 1050px; background-color: transparent;width: 335px;">
@@ -93,81 +93,81 @@
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
 </div>
-<br><br> 
+<br><br> <br><br> 
     </center>
     <h2>Artwork</h2>
     <center>
-        <div class="multiple-card-slider">
-  <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
-      <div class="carousel-inner">
-      {% for artdetail in artwork %} 
-      {% if forloop.first %}
-        <div class="carousel-item active">
-          {% if artdetail.Sensitive_content %}
-                <div class="card">
-                  <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                  <a href="{% url 'artwork_detail' artdetail.pk %}">
-                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
+      <div class="multiple-card-slider">
+      <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
+          <div class="carousel-inner">
+          {% for artdetail in artwork %} 
+          {% if forloop.first %}
+            <div class="carousel-item active">
+              {% if artdetail.Sensitive_content %}
+                    <div class="card">
+                      <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                      <a href="{% url 'artwork_detail' artdetail.pk %}">
+                        <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                        <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                          <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-                {% else %}
-                <div class="card">
-                  <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                  <a href="{% url 'artwork_detail' artdetail.pk %}">
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    {% else %}
+                    <div class="card">
+                      <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                      <a href="{% url 'artwork_detail' artdetail.pk %}">
+                        <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                          <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-                {% endif %}
+                    {% endif %}
+            </div>
+              {% else %}
+            <div class="carousel-item">
+              {% if artdetail.Sensitive_content %}
+                    <div class="card">
+                      <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                      <a href="{% url 'artwork_detail' artdetail.pk %}">
+                        <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                        <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                          <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                        </div>
+                      </a>
+                    </div>
+                    {% else %}
+                    <div class="card">
+                      <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                      <a href="{% url 'artwork_detail' artdetail.pk %}">
+                        <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                          <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                        </div>
+                      </a>
+                    </div>
+                    {% endif %}
+            </div>
+            {% endif %}
+          {% endfor %}
+          </div>
+          
+          <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev" style="padding-right: 1em;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next" style="padding-right: 1em;">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-          {% else %}
-        <div class="carousel-item">
-          {% if artdetail.Sensitive_content %}
-                <div class="card">
-                  <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                  <a href="{% url 'artwork_detail' artdetail.pk %}">
-                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                    </div>
-                  </a>
-                </div>
-                {% else %}
-                <div class="card">
-                  <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                  <a href="{% url 'artwork_detail' artdetail.pk %}">
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                    </div>
-                  </a>
-                </div>
-                {% endif %}
-        </div>
-        {% endif %}
-      {% endfor %}
-      </div>
       
-      <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  
-    </div>
+        </div>
     </center>    
     {% else %}
     <div style="text-align: center;padding-top: 400px;">

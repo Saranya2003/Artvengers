@@ -60,7 +60,7 @@ def insertalbum(request):
             form.instance.artist_Name = request.user
             memlistid = request.POST['memberpiclist'].split(",")
 
-            if memlistid is not None:  # Check if the list is not empty before processing
+            if memlistid:  # Check if the list is not empty before processing
                 for i in memlistid:
                     form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
 
@@ -318,8 +318,8 @@ class SearchView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['album'] = Album.objects.filter(Q(Album_Title__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
-        context['artwork'] = ArtworkPost.objects.filter(Q(Title__icontains=self.request.GET['keyword'])| Q(Tags__name__icontains=self.request.GET['keyword'])).order_by('pk').distinct()
+        context['album'] = Album.objects.filter(Q(Album_Title__icontains=self.request.GET['keyword'])).order_by('-pk').distinct()
+        context['artwork'] = ArtworkPost.objects.filter(Q(Title__icontains=self.request.GET['keyword'])| Q(Tags__name__icontains=self.request.GET['keyword'])).order_by('-pk').distinct()
         context['Tags'] = Tag.objects.all()
        
         return context

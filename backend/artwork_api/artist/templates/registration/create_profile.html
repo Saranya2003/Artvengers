@@ -59,7 +59,7 @@
           Email <input type="text" value="{{ user.email }}" name="email" class="form-control" style="width: 371px;"><br>
           Bio <textarea name="bio" form="profileform" class="form-control" style="width: 371px;">{{ user.profile.bio }}</textarea><br><br>
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
-          <strong>Social Media</strong><br><br>
+          <strong>Social Links</strong><br><br>
           Instagram <input type="text" value="{{ user.profile.Instagram }}" name="Instagram" class="form-control" style="width: 371px;"><br>
           Twitter <input type="text" value="{{ user.profile.Twitter }}" name="Twitter" class="form-control" style="width: 371px;"><br>
           Facebook <input type="text" value="{{ user.profile.Facebook }}" name="Facebook" class="form-control" style="width: 371px;"><br>
@@ -101,7 +101,7 @@
 
           <a href="{% url 'changePassword' %}" class="btn btn-custom" role="button">Change user's password</a><br><br>
           
-          <strong>Social Media</strong><br><br>
+          <strong>Social Links</strong><br><br>
           
           Instagram <input type="text" value="{{ user.profile.Instagram }}" name="Instagram" class="form-control" style="width: 371px;"><br>
           Twitter <input type="text" value="{{ user.profile.Twitter }}" name="Twitter" class="form-control" style="width: 371px;"><br>

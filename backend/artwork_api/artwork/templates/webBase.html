@@ -16,6 +16,7 @@
         padding-left: 1em;
         padding-right: 1em;
       }
+      
       #desktopcontent{
         display: block;
       }
@@ -62,6 +63,9 @@
       }
     }
       @media (max-width:414px){
+        .container-fluid footer {
+          display: none;
+        }
         .navbar-custom {
         font-family: 'Chakra Petch', sans-serif;
         font-size: 20px;
@@ -334,6 +338,9 @@
     background-color: #330C2F;
   }
   @media (max-width: 414px) {
+    .container-fluid footer {
+      display: none;
+    }
   #tagdiv{
     display:none;
   }
@@ -362,7 +369,8 @@
     
     .multiple-card-slider .carousel-inner {
         display: flex;
-        
+        flex-wrap: nowrap;
+        overflow: hidden;
         height: 400px;
     }
     .multiple-card-slider .carousel-item {
@@ -446,7 +454,9 @@
         object-fit: cover;
         height: 100%;
         width: 100%;
-        object-position: center;
+    }
+    .card{
+      border: none;
     }
     h5{
     font-weight: 900;
@@ -493,8 +503,9 @@
     /* CSS for the blur effect */
     .blur-background {
       /* Set the filter property to apply the blur effect */
-      filter: blur(8px); /* You can adjust the blur amount (8px in this case) as needed */
-      -webkit-filter: blur(8px); /* For Safari support */
+      filter: blur(6px); /* You can adjust the blur amount (8px in this case) as needed */
+      -webkit-filter: blur(6px); /* For Safari support */
+      
     }
       footer {
         flex-shrink: 0;
@@ -555,14 +566,14 @@
       </div>
     </nav>
 
-    <nav class="navbar  navbar-expand-lg navbar-custom" id="mobnavtop">
-      <div class="container-fluid">
+    <nav class="navbar  navbar-expand-lg navbar-custom" id="mobnavtop" style="height: 140px;">
+      <div class="container-fluid" style="padding-top: 1em;">
         <table style="width:100%">
-          <tr><td> 
+          <tr><td style="width: 33%;"> 
             <button class="navbar-toggler hamburger-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
               <div class="animated-icon"><span></span><span></span><span></span></div>
           </button></td>
-            <td> <img src="../../media/logo/artvengers-logo white new.png" width="105px"></td>
+            <td><img src="../../media/logo/artvengers-logo white new.png" width="105px" style="align-items: center;"></td>
             <td>
               <a href="{% url 'search_mobile' %}"><img src="../../media/logo/search.png"></a>
             </td>
@@ -651,10 +662,9 @@
     {% block content %}
     
     {% endblock %}
-    <br><br><br><br><br><br><br><br>
-  </body>
-  <div class="container-fluid" id="desktopcontent" style="background-color: #EB5160;bottom: 0pt;min-height: 100%;display: flex;flex-direction: column;">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <br><br><br><br>
+    <div class="container-fluid footer" id="desktopcontent" style="background-color: #EB5160;bottom: 0pt;min-height: 100%;display: flex;flex-direction: column;">
+    <footer class="row ">
       <div class="col align-items-center">
         <a href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo new.png" style="width: 105px;height: 105px;"></a>
       </div>
@@ -664,14 +674,13 @@
       <div class="col align-items-center" style="float: right;">
         <h3>Social Links</h3>
         <a class="btn btn-social text-white btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
-        <a class="btn btn-social text-white btn-github"><i class="fa fa-github"></i> GitHub</a>
-        <a class="btn btn-social text-white btn-google-plus"><i class="fa fa-google-plus"></i> Google</a>
         <a class="btn btn-social text-white btn-instagram"><i class="fa fa-instagram"></i> Instagram</a>
         <a class="btn btn-social text-white btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>
         <a class="btn btn-social text-white btn-pinterest"><i class="fa fa-pinterest"></i> Pinterest</a>
-        <a class="btn btn-social text-white btn-tumblr"><i class="fa fa-tumblr"></i> Tumblr</a>
         <a class="btn btn-social text-white btn-twitter"><i class="fa fa-twitter"></i> Twitter</a>
       </div>
     </footer>
   </div>
+  </body>
+  
 </html>

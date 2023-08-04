@@ -3,6 +3,10 @@
 {% block content %}
 
 <style>
+  .wrapper{
+    padding:20px;
+    height: 150px;
+    }
   .form-select{
     border-radius: 40px !important;
     width: 205px;
@@ -43,7 +47,7 @@
           {% endif %}
         <h1>{{ object.Title }}</h1><br>
         <center>
-          <img src="{{ object.Artwork.url }}" width="50%"><br>
+          <img src="{{ object.Artwork.url }}" width="50%" style="border: 5px solid;border-color: white;"><br>
         </center>
       </div>
       <div class="col-sm">
@@ -51,7 +55,7 @@
         <div>
         <small>
           Create date:{{ object.created_date }}<br><br>
-          By: {{ object.artist_Name }}&ensp;<a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-secondary">(View Profile)</a><br><br>
+          By: <a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-light">{{ object.artist_Name }}</a><br><br>
         </small><br>
         <p>
           {{ object.Description }}
@@ -80,7 +84,7 @@
               <input type="hidden" value="{{ user.id }}" name="artist_Name">
               <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
               <td style="width: 225px;">
-                <select class="form-select AlbumList scrollable-menu" name="Album_Title" form='collectionform' id="albumSelect">
+                <select class="form-select AlbumList" name="Album_Title" form='collectionform' id="albumSelect" >
                 {% for albumName in album %}
                   {% if user.id == albumName.artist_Name.id %}
                     {% if object not in albumName.memberpic.all %}
@@ -155,7 +159,7 @@
           {% endif %}
 
         <h1>{{ object.Title }}</h1><br>
-        <img src="{{ object.Artwork.url }}" style="width: 100%;margin-left: -0.5em;"><br>
+        <img src="{{ object.Artwork.url }}" style="width: 100%;margin-left: -0.5em;border: 5px solid;border-color: white;"><br>
       </div>
       <div class="col-sm">
         <br>
@@ -172,13 +176,13 @@
           {% endif %}
         </form>
         <div class="btn-group btn-group-lg" style="display: flex;
-        width: 388px;
+        width: 428px;
         height: 42px;
         padding-bottom: 0px;
         justify-content: center;
         align-items: flex-start;
         flex-shrink: 0;
-        margin-left: -3em;border-color: white;">
+        margin-left: -3.5em;border-color: white;">
           <button type="button" data-section="section1" class="btn btn-outline-light segmentedButton">Description</button>
           <button type="button" data-section="section2" class="btn btn-outline-light segmentedButton">Comments</button>
         </div>
@@ -202,7 +206,7 @@
                   {% endif %}
                 {% endfor %}
               </select>
-              </td>
+              </td></td><td style="width: 20px;"></td>
               <td style="width: 50%;">
                 <button type="submit" class="btn btn-custom rounded-pill" >Save to album</button>
               </td>
@@ -211,25 +215,28 @@
           </table><br>
           <small>
                 Create date:{{ object.created_date }}<br><br>
-                By: {{ object.artist_Name }}&ensp;<a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-secondary">(View Profile)</a><br><br>
+                By: <a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-light">{{ object.artist_Name }}</a><br><br>
               </small><br>
               <p>
                 {{ object.Description }}
               </p>
               <br>
-              {% for tag in object.Tags.names %}
-                <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>&nbsp;
-              {% endfor %}
+              <div style="display: flex; overflow-x: auto;margin-right: 1em;">
+                {% for tag in object.Tags.names %}
+                  <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>&nbsp;
+                {% endfor %}
+              </div>
               <br><br>
         </div>
         <div class="content-section" id="section2">
           <br>
-          <form action ="{% url 'add_comment' object.pk %}" method="POST" style="width: 390px;">
+          
+          <form action ="{% url 'add_comment' object.pk %}" method="POST" style="width: 388px;">
             {% csrf_token %}
             <table>
               <tr>
                 <td style="width: 20%;"><input type="hidden" value="{{ user.id }}" name="artist_Name">
-            {{ form.artwork_comment }}</td><td style="width: 20px;"></td>
+            {{ form.artwork_comment }}</td><td style="width: 10px;"></td>
                 <td><button type="submit" name="addcommentbutton" value="{{ object.pk }}" class="btn btn-custom rounded-pill">Post</button></td>
               </tr>
             </table>
