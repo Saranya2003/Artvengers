@@ -87,7 +87,7 @@
         <div class="column">
           {% if artdetail.Sensitive_content %}
             <div class="card">
-              <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+              <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;">
               <a href="{% url 'artwork_detail' artdetail.pk %}">
                 <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                 <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -97,7 +97,7 @@
             </div>
           {% else %}
                 <div class="card">
-                  <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                  <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;">
                   <a href="{% url 'artwork_detail' artdetail.pk %}">
                     <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                   <h5 class="caption-header">{{ artdetail.Title }}</h5>
@@ -122,7 +122,7 @@
       <div class="column" style="padding-right: 1em;width: auto;margin-left: 0em">
         {% if artdetail.Sensitive_content %}
           <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-            <img class="cardimgmob blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+            <img class="cardimgmob blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;">
             <a href="{% url 'artwork_detail' artdetail.pk %}">
               <span class="badge rounded-pill bg-danger topleft">NSFW</span>
               <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -132,7 +132,7 @@
           </div>
         {% else %}
               <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-                <img class="cardimgmob" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+                <img class="cardimgmob" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;">
                 <a href="{% url 'artwork_detail' artdetail.pk %}">
                   <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                 <h5 class="caption-header">{{ artdetail.Title }}</h5>

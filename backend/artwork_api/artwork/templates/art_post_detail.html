@@ -197,12 +197,11 @@
                 <input type="hidden" value="{{ user.id }}" name="artist_Name">
                 <input type="hidden" value="{{ object.pk }}" name="colartworkpost_id">
                 <select class="form-select AlbumList" name="Album_Titlemob" form='collectionformmob' id="albumSelectmob">
-                {% for albumName in album %}
+                  {% for albumName in album %}
                   {% if user.id == albumName.artist_Name.id %}
-                    {% if albumName %}
+                    {% if object not in albumName.memberpic.all %}
                       <option value="{{ albumName.pk }}">{{ albumName.Album_Title }}</option>
-                    {% else %}
-                      <option>No album to save.</option>
+                    
                     {% endif %}
                   {% endif %}
                 {% endfor %}

@@ -59,10 +59,10 @@ def insertalbum(request):
         if form.is_valid():
             form.instance.artist_Name = request.user
             memlistid = request.POST['memberpiclist'].split(",")
-
-            if memlistid:  # Check if the list is not empty before processing
-                for i in memlistid:
-                    form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
+            form.save()
+            for i in memlistid:
+                #print(i)          
+                form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))
 
             return HttpResponseRedirect(reverse('explore'))
         else:
@@ -313,13 +313,20 @@ class UpdateArtworks(UpdateView):
 class SearchView(ListView):
     model = ArtworkPost
     template_name = 'search_page.html'
-    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['album'] = Album.objects.filter(Q(Album_Title__icontains=self.request.GET['keyword'])).order_by('-pk').distinct()
-        context['artwork'] = ArtworkPost.objects.filter(Q(Title__icontains=self.request.GET['keyword'])| Q(Tags__name__icontains=self.request.GET['keyword'])).order_by('-pk').distinct()
+        keyword = self.request.GET.get('keyword', '')
+
+        # Filter albums and artworks based on the keyword (case-insensitive)
+        albums = Album.objects.filter(Album_Title__icontains=keyword).order_by('-pk').distinct()
+        artworks = ArtworkPost.objects.filter(Q(Title__icontains=keyword) | Q(Tags__name__icontains=keyword)).order_by('-pk').distinct()
+
+        # Provide default values for album and artwork in case there are no matches
+        context['album'] = albums if albums.exists() else None
+        context['artwork'] = artworks if artworks.exists() else None
+
         context['Tags'] = Tag.objects.all()
        
         return context
