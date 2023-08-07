@@ -46,7 +46,6 @@
       height: 350px;
       object-fit: cover;
     }
-
     .carousel-caption{
       max-width: 110%;
       bottom: -1px;
@@ -85,14 +84,16 @@
     <br>
     <div id="desktopcontent">
       <h1>{{ album.0.Album_Title }}</h1>
-      <small>Created date: {{ album.0.created_date }}</small>
+      <small>Created date: {{ album.0.created_date }}<br>
+        Created by: {{ album.0.artist_Name }}
+      </small>
       <br><br>
       <div class="row">
           {% for artdetail in artwork %}
           <div class="column">
             {% if artdetail.Sensitive_content %}
             <div class="card">
-              <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+              <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}" style="overflow: hidden;">
               <a href="{% url 'artwork_detail' artdetail.pk %}">
                 <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                 <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -100,48 +101,47 @@
                 </div>
               </a>
             </div>
-          {% else %}
-                <div class="card">
-                  <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                  <a href="{% url 'artwork_detail' artdetail.pk %}">
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+            {% else %}
+            <div class="card" style="background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');background-size: cover;">
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                   <h5 class="caption-header">{{ artdetail.Title }}</h5>
                 </div>
               </a>
             </div>
-          {% endif %}
-            </div>
+            {% endif %}
+          </div>
           {% endfor %}
 
       </div>
     </div>
     <div id="mobcontent" style="margin-left: 10px;margin-right: 10px;margin: 20px;">
       <h1>{{ album.0.Album_Title }}</h1>
-      <small>Created date: {{ album.0.created_date }}</small>
+      <small>Created date: {{ album.0.created_date }}<br>
+        Created by: {{ album.0.artist_Name }}</small>
       <br><br>
           {% for artdetail in artwork %}
           <div class="column" style="padding-right: 1em;width: auto;margin-left: 0em">
             {% if artdetail.Sensitive_content %}
             <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-              <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+              <img class="cardimgmob blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
               <a href="{% url 'artwork_detail' artdetail.pk %}">
                 <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                 <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                   <h5 class="caption-header">{{ artdetail.Title }}</h5>
                 </div>
               </a>
             </div>
           {% else %}
-                <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-                  <img class="cardimg" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                  <a href="{% url 'artwork_detail' artdetail.pk %}">
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                    </div>
-                  </a>
-                </div>
+          <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');background-size: cover;"">
+            <a href="{% url 'artwork_detail' artdetail.pk %}">
+              <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                <h5 class="caption-header">{{ artdetail.Title }}</h5>
+              </div>
+            </a>
+          </div>
           {% endif %}
-            </div>
+          </div>
           {% endfor %}
     </div>
     </body>

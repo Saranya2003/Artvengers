@@ -30,13 +30,13 @@
       <div class="col-sm">
         {% csrf_token %}
         <table>
-          <tr style="height: 30px;">
+          <tr>
             <td style="float: right;">Username</td><td>:</td><td>&emsp;{{ page_user.user }}</td>
           </tr>
-          <tr style="height: 30px;">
+          <tr>
             <td style="float: right;">Email</td><td>:</td><td>&emsp;{{ page_user.email }}</td>
           </tr>
-          <tr style="height: 30px;">
+          <tr>
             <td style="float: right;">Bio</td><td>:</td><td>&emsp;{{ page_user.bio }}</td>
           </tr>
         </table>
@@ -44,13 +44,13 @@
           
         <strong>Social Links</strong><br><br>
         <table>
-          <tr style="height: 30px;">
+          <tr>
             <td style="float: right;">Instagram</td><td>:</td><td>&emsp;{{ page_user.Instagram }}</td>
           </tr>
-          <tr style="height: 30px;">
+          <tr>
             <td style="float: right;">Twitter</td><td>:</td><td>&emsp;{{ page_user.Twitter }}</td>
           </tr>
-          <tr style="height: 30px;">
+          <tr>
             <td style="float: right;">Facebook</td><td>:</td><td>&emsp;{{ page_user.Facebook }}</td>
           </tr>
         </table><br><br>
@@ -61,10 +61,10 @@
         
       </div>
     </div>
-    {% if artwork.count > 0 or album.count > 0 %}
+    {% if artwork.count > 0 and album.count > 0 %}
       {% if album.count > 0 %}
       <div id="albumdesktop">
-        <h2>Albums</h2>
+        <h2 id="AlbumHeader">Albums</h2>
         <br>
         <div class="multiple-card-slider">
         <div id="Artvengerscarousel" class="carousel" data-bs-ride="carousel">
@@ -137,7 +137,7 @@
 
       {% if artwork.count > 0 %}
         <div id="artdesktop">
-          <h2>Artworks</h2><br>
+          <h2 id="ArtworkHeader">Artworks</h2><br>
           <div class="multiple-card-slider">
             <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
               <div class="carousel-inner">
@@ -226,13 +226,13 @@
     <div class="col-sm">
       {% csrf_token %}
       <table>
-        <tr style="height: 30px;">
+        <tr>
           <td style="float: right;">Username</td><td>:</td><td>&emsp;{{ page_user.user }}</td>
         </tr>
-        <tr style="height: 30px;">
+        <tr>
           <td style="float: right;">Email</td><td>:</td><td>&emsp;{{ page_user.email }}</td>
         </tr>
-        <tr style="height: 30px;">
+        <tr>
           <td style="float: right;">Bio</td><td>:</td><td>&emsp;{{ page_user.bio }}</td>
         </tr>
       </table>
@@ -240,13 +240,13 @@
         
       <strong>Social Links</strong><br><br>
       <table>
-        <tr style="height: 30px;">
+        <tr>
           <td style="float: right;">Instagram</td><td>:</td><td>{{ page_user.Instagram }}</td>
         </tr>
-        <tr style="height: 30px;">
+        <tr>
           <td style="float: right;">Twitter</td><td>:</td><td>{{ page_user.Twitter }}</td>
         </tr>
-        <tr style="height: 30px;">
+        <tr>
           <td style="float: right;">Facebook</td><td>:</td><td>{{ page_user.Facebook }}</td>
         </tr>
       </table><br><br>
@@ -326,14 +326,18 @@
           </a>
         </div>
       {% else %}
-            <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-              <img class="cardimgmob" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-              <a href="{% url 'artwork_detail' artdetail.pk %}">
-                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+        <a href="{% url 'artwork_detail' artdetail.pk %}">
+          <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+            <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            <div style="float: right;">
+              <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+              <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
+      </div>
       {% endif %}
     </div>
     <br>
@@ -350,14 +354,18 @@
           </a>
         </div>
       {% else %}
-            <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-              <img class="cardimgmob" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-              <a href="{% url 'artwork_detail' artdetail.pk %}">
-                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+        <a href="{% url 'artwork_detail' artdetail.pk %}">
+          <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+            <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            <div style="float: right;">
+              <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+              <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
             </div>
-          </a>
-        </div>
+          </div>
+        </a>
+      </div>
       {% endif %}
     </div>
     <br>
@@ -443,6 +451,18 @@ $('.multiple-card-slider .carousel').each(function(){
   }
 });
 
+</script>
+<script>
+  // Check the count of carousel items
+  const carouselItemsCount = document.querySelectorAll('#Artvengerscarousel .carousel-item').length;
+
+  // Get the carousel element
+  const carousel = document.getElementById('Artvengerscarousel');
+
+  // Hide the carousel if it's empty (has no carousel items)
+  if (carouselItemsCount === 0) {
+    carousel.style.display = 'none';
+  }
 </script>
 
 

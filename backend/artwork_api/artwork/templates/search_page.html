@@ -33,7 +33,7 @@
     
 
     <br>  
-    <h2>Albums</h2>
+    <h2 id="AlbumHeader">Albums</h2>
     <center>
         <div class="multiple-card-slider">
   <div id="Artvengerscarousel" class="carousel" data-bs-ride="carousel">
@@ -101,7 +101,7 @@
 </div>
 <br><br> <br><br> 
     </center>
-    <h2>Artworks</h2>
+    <h2 id="ArtworkHeader">Artworks</h2><br>
     <center>
       <div class="multiple-card-slider">
       <div id="Artvengerscarousel2" class="carousel" data-bs-ride="carousel">
@@ -234,7 +234,7 @@
           {% endfor %}
       
       </div>
-      <div id="artmob" class="content" style="padding-right: 1em;width: auto;margin-left: 0em">
+      <div id="artmob" class="content" style="padding-left: 10px;padding-right: 10px;margin: 20px;margin-left: 0em;">
         {% for artdetail in artwork %}
           {% if forloop.last %}
             <div>
@@ -249,14 +249,13 @@
                   </a>
                 </div>
               {% else %}
-                    <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-                      <img class="cardimgmob" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                      <a href="{% url 'artwork_detail' artdetail.pk %}">
-                        <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                          <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                        </div>
-                      </a>
-                    </div>
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+                <a href="{% url 'artwork_detail' artdetail.pk %}">
+                  <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                  </div>
+                </a>
+              </div>
               {% endif %}
               </div><br>
           {% else %}
@@ -272,14 +271,13 @@
                   </a>
                 </div>
               {% else %}
-                    <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-                      <img class="cardimgmob" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                      <a href="{% url 'artwork_detail' artdetail.pk %}">
-                        <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                          <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                        </div>
-                      </a>
-                    </div>
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+                <a href="{% url 'artwork_detail' artdetail.pk %}">
+                  <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                  </div>
+                </a>
+              </div>
               {% endif %}
             </div><br>
           {% endif %}
@@ -369,6 +367,43 @@ $('.multiple-card-slider .carousel').each(function(){
         });
     });
 </script>
+<!-- JavaScript to check if the carousels are empty and hide the headers and carousels if necessary -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Check the count of carousel items for albums
+    const albumCarouselItemsCount = document.querySelectorAll('#Artvengerscarousel .carousel-item').length;
 
+    // Get the album carousel element
+    const albumCarousel = document.getElementById('Artvengerscarousel');
+
+    // Hide the album carousel if it's empty (has no carousel items)
+    if (albumCarouselItemsCount === 0) {
+      albumCarousel.style.display = 'none';
+
+      // Hide the album header
+      const albumHeader = document.getElementById("albumHeader");
+      if (albumHeader) {
+        albumHeader.style.display = "none";
+      }
+    }
+
+    // Check the count of carousel items for artworks
+    const artworkCarouselItemsCount = document.querySelectorAll('#Artvengerscarousel2 .carousel-item').length;
+
+    // Get the artwork carousel element
+    const artworkCarousel = document.getElementById('Artvengerscarousel2');
+
+    // Hide the artwork carousel if it's empty (has no carousel items)
+    if (artworkCarouselItemsCount === 0) {
+      artworkCarousel.style.display = 'none';
+
+      // Hide the artwork header
+      const artworkHeader = document.getElementById("artworkHeader");
+      if (artworkHeader) {
+        artworkHeader.style.display = "none";
+      }
+    }
+  });
+</script>
 
 {% endblock %}

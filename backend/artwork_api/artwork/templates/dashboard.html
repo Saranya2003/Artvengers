@@ -264,7 +264,7 @@
       {% endfor %}
   
   </div>
-  <div id="artmob" class="content" style="padding-left: 10px;padding-right: 10px;margin: 20px;margin-left: -1em;">
+  <div id="artmob" class="content" style="padding-left: 10px;padding-right: 10px;margin: 20px;margin-left: 0em;">
       <center>
         {% for artdetail in artwork %}
         {% if user.id == artdetail.artist_Name.id %} 
@@ -285,18 +285,17 @@
                 </a>
               </div>
             {% else %}
-                  <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-                    <img class="cardimgmob" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                    <a href="{% url 'artwork_detail' artdetail.pk %}">
-                      <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                        <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                        <div style="float: right;">
-                          <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                          <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                        </div>
-                      </div>
-                </a>
-              </div>
+            <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                  <div style="float: right;">
+                    <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                    <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                  </div>
+                </div>
+              </a>
+            </div>
             {% endif %}
           </div><br>
           {% else %}
@@ -316,18 +315,17 @@
                 </a>
               </div>
             {% else %}
-                  <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-                    <img class="cardimgmob" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-                    <a href="{% url 'artwork_detail' artdetail.pk %}">
-                      <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                        <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                        <div style="float: right;">
-                          <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
-                          <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
-                        </div>
-                      </div>
-                </a>
-              </div>
+            <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                  <div style="float: right;">
+                    <a class="btn btn-light" href="{%  url 'artwork_edit' artdetail.pk %}" role="button">Edit</a>
+                    <a class="btn btn-danger" href="{%  url 'delete_artwork' artdetail.pk %}" role="button">Delete</a>
+                  </div>
+                </div>
+              </a>
+            </div>
             {% endif %}
           </div><br>
           {% endif %}
