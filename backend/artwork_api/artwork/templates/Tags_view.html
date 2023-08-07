@@ -86,8 +86,7 @@
             
         <div class="column">
           {% if artdetail.Sensitive_content %}
-          <div class="card">
-            <img class="cardimg blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+          <div class="card blur-background" style="background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');background-size: cover;">
             <a href="{% url 'artwork_detail' artdetail.pk %}">
               <span class="badge rounded-pill bg-danger topleft">NSFW</span>
               <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -118,26 +117,25 @@
 
       {% if artdetail.Tags.names %}
           
-      <div class="column" style="padding-right: 1em;width: auto;margin-left: 0em">
+      <div class="column">
         {% if artdetail.Sensitive_content %}
-        <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-          <img class="cardimgmob blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
-          <a href="{% url 'artwork_detail' artdetail.pk %}">
-            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-             <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-              <h5 class="caption-header">{{ artdetail.Title }}</h5>
-            </div>
-          </a>
-        </div>
-      {% else %}
-      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');background-size: cover;"">
-        <a href="{% url 'artwork_detail' artdetail.pk %}">
-          <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-            <h5 class="caption-header">{{ artdetail.Title }}</h5>
-          </div>
-        </a>
-      </div>
-      {% endif %}
+                <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                    </div>
+                  </a>
+                </div>
+              {% else %}
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+                <a href="{% url 'artwork_detail' artdetail.pk %}">
+                  <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                  </div>
+                </a>
+              </div>
+              {% endif %}
       </div>
       {% else %}
           <h2>No artworks available</h2>

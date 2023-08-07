@@ -245,8 +245,7 @@
     {% if forloop.last %}
     <div>
       {% if artdetail.Sensitive_content %}
-        <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-          <img class="cardimgmob blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+        <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
           <a href="{% url 'artwork_detail' artdetail.pk %}">
             <span class="badge rounded-pill bg-danger topleft">NSFW</span>
              <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -268,8 +267,7 @@
     {% else %}
     <div>
       {% if artdetail.Sensitive_content %}
-        <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;">
-          <img class="cardimgmob blur-background" src="{{ artdetail.Artwork|thumbnail_url:'Artwork' }}">
+        <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
           <a href="{% url 'artwork_detail' artdetail.pk %}">
             <span class="badge rounded-pill bg-danger topleft">NSFW</span>
              <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
