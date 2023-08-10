@@ -59,12 +59,12 @@ def insertalbum(request):
         if form.is_valid():
             form.instance.artist_Name = request.user
 
-            if request.POST['memberpiclist'] is not None:
+            if len(request.POST['memberpiclist']) != 0:
                 memlistid = request.POST['memberpiclist'].split(",")
 
             form.save()
 
-            if request.POST['memberpiclist'] is not None:
+            if len(request.POST['memberpiclist']) != 0:
                 for i in memlistid:
                     #print(i)          
                     form.instance.memberpic.add(ArtworkPost.objects.get(pk=int(i)))

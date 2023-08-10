@@ -12,7 +12,7 @@
       .navbar-custom {
         font-family: 'Chakra Petch', sans-serif;
         font-size: 20px;
-        background-color: #3F7CAC;
+        background-color: #393939;
         padding-left: 1em;
         padding-right: 1em;
       }
@@ -91,7 +91,7 @@
 
       body{
         font-family: 'Chakra Petch', sans-serif;
-        background-color: black;
+        background-color: #0a0a0a;
         color: white;
         
       }
@@ -406,8 +406,6 @@
     .multiple-card-slider .carousel-control-prev, .multiple-card-slider .carousel-control-next{
         background-color: #EB5160;
         width: 60px;
-        height: 308px;
-        top: 50%;
         padding: 117px 27px 132px 21px;
         transform: translateY(-50%);
     }
@@ -417,6 +415,15 @@
 
     .carousel-control-next {
       margin-right: -70px;
+    }
+    .control-artwork {
+      top: 48%;
+      height: 288px;
+    }
+
+    .control-album {
+      top: 57%;
+      height: 350px;
     }
     .carousel{
         width: 1704px;
@@ -437,7 +444,7 @@
     }
 
     .carousel-caption-album{
-    background-color: black;
+    background-color: #0a0a0a;
     color: white;
     width: 335px;
     bottom:-1px;
@@ -551,7 +558,7 @@
           </ul>
           <form class="navbar-form d-flex rounded-pill" action="{% url 'search_result' %}">
             {% csrf_token %}
-            <div class="input-group rounded-pill" style="background-color: rgba(0, 0, 0, 0.36);border: 1px solid #FFF;">
+            <div class="input-group rounded-pill" style="background-color: rgba(255, 255, 255, 0.36);border: 1px solid #FFF;">
               <input class="form-control rounded-pill shadow-none" type="search" placeholder="Search" aria-label="Search" name="keyword" style="background-color: transparent;border: none;color: #fff;">
               <div class="input-group-append">
                 <button type="submit" class="btn btn-outline-secondary rounded-pill" style="margin-left: -40px;"><i class="fa fa-search"></i></button>
@@ -626,16 +633,16 @@
       </div>
     </div>
 
-    <nav class="navbar fixed-bottom navbar-light" id="mobnavbar">
-      <table style="width:100%; text-align:center;  background-color:#C0E0DE;">
+    <nav class="navbar fixed-bottom navbar-dark" id="mobnavbar">
+      <table style="width:100%; text-align:center;  background-color:#C0E0DE;color: black;">
         <tr>
-              <td style="text-align: center;"> <a class="navbar-brand" href="{% url 'explore'%}"><img src="../../media/logo/explore.png"><br>Explore</a></td>
-              <td style="text-align: center;"><a class="navbar-brand" href="{% url 'dashboard'%}"><img src="../../media/logo/dashboard.png"><br>My Artworks</a></td>
-              <td style="text-align: center;"><a class="navbar-brand"href="{% url 'upload'%}"><img src="../../media/logo/upload.png" style="width: 41px;height: 41px;"><br>Upload</a></td>
-              <td style="text-align: center;">{% if user.profile.id %}
-                <a class="navbar-brand" href="{% url 'edit_profile' user.profile.id %}"><img src="../../media/logo/profile.png" style="width: 41px;height: 41px;"><br>Profile</a>
+              <td style="text-align: center;width: 103.5px;"> <a href="{% url 'explore'%}" style="text-align: center;color: black;"><img src="../../media/logo/explore.png"><br>Explore</a></td>
+              <td style="text-align: center;width: 103.5px;"><a href="{% url 'dashboard'%}" style="text-align: center;color: black;"><img src="../../media/logo/dashboard.png"><br>My Artworks</a></td>
+              <td style="text-align: center;width: 103.5px;"><a href="{% url 'upload'%}" style="text-align: center;color: black;"><img src="../../media/logo/upload.png" style="width: 41px;height: 41px;"><br>Upload</a></td>
+              <td style="text-align: center;width: 103.5px;">{% if user.profile.id %}
+                <a  href="{% url 'edit_profile' user.profile.id %}" style="text-align: center;color: black;"><img src="../../media/logo/profile.png" style="width: 41px;height: 41px;"><br>Profile</a>
                 {% else %}
-                <a class="navbar-brand" href="{% url 'create_profile' %}"><img src="../../media/logo/profile.png" style="width: 41px;height: 41px;"><br>Profile</a>
+                <a  href="{% url 'create_profile' %}" style="text-align: center;color: black;"><img src="../../media/logo/profile.png" style="width: 41px;height: 41px;"><br>Profile</a>
                 {% endif %}</td>
         </tr>
       </table>
@@ -662,11 +669,10 @@
     <br><br><br><br>
     <div class="container-fluid footer" id="desktopcontent" style="background-color: #EB5160;bottom: 0pt;min-height: 100%;display: flex;flex-direction: column;">
       <footer class="row ">
-        <div class="col align-items-center"><br><br>
-          <span class="mb-3 mb-md-0 text-white">© 2023 Artvengers, Inc</span>
+        <div class="col align-items-center" style="margin-top: 10px;">
+          <span class="mb-3 mb-md-0 text-white"><h5>© 2023 Artvengers, Inc</h5></span>
         </div>
         <div class="col align-items-center" style="float: right;">
-          <h3>Social Links</h3>
           <a class="btn btn-social text-white btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
           <a class="btn btn-social text-white btn-instagram"><i class="fa fa-instagram"></i> Instagram</a>
           <a class="btn btn-social text-white btn-linkedin"><i class="fa fa-linkedin"></i> LinkedIn</a>

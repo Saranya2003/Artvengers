@@ -92,13 +92,15 @@
           {% for artdetail in artwork %}
           <div class="column">
             {% if artdetail.Sensitive_content %}
-            <div class="card blur-background" style="background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');background-size: cover;">
+            <div class="card" style="background-color: transparent;">
+              <div class="card blur-background" style="width: 98%;height: 97%;margin-left: 0.25em;margin-top: 0.25em;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');background-size: cover;">
+              </div>
               <a href="{% url 'artwork_detail' artdetail.pk %}">
-                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                  <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                </div>
-              </a>
+                  <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                  <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                  </div>
+                </a>
             </div>
             {% else %}
             <div class="card" style="background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');background-size: cover;">

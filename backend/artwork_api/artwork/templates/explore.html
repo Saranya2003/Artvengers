@@ -104,11 +104,11 @@
     {% endfor %}
     </div>
     
-    <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;">
+    <button class="carousel-control-prev control-album" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;">
+    <button class="carousel-control-next control-album" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -172,11 +172,11 @@
           {% endif %}
           {% endfor %}
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev" style="padding-right: 1em;">
+        <button class="carousel-control-prev control-artwork" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev" style="padding-right: 1em;">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next" style="padding-right: 1em;">
+        <button class="carousel-control-next control-artwork" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next" style="padding-right: 1em;">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
@@ -267,13 +267,14 @@
     {% else %}
     <div>
       {% if artdetail.Sensitive_content %}
-        <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
+        <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-color: transparent;">
+          <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
           <a href="{% url 'artwork_detail' artdetail.pk %}">
-            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-             <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-              <h5 class="caption-header">{{ artdetail.Title }}</h5>
-            </div>
-          </a>
+              <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+               <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                <h5 class="caption-header">{{ artdetail.Title }}</h5>
+              </div>
+            </a>
         </div>
       {% else %}
       <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
