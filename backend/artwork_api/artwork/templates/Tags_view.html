@@ -112,13 +112,14 @@
     {% endfor %}
     </div>
 </div>
+
 <div id="mobcontent" style="padding-left: 10px;padding-right: 10px;margin: 20px;margin-left: 0em;">
   <h2>Tag: {{ SelectTag }}</h2>
   <br>
   {% for artdetail in artwork %}
 
       {% if artdetail.Tags.names %}
-          
+  <center>        
       <div class="column">
         {% if artdetail.Sensitive_content %}
         <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-color: transparent;">
@@ -143,6 +144,7 @@
       {% else %}
           <h2>No artworks available</h2>
       {% endif %}
-  {% endfor %}
+  {% endfor %}<br><br></center>
 </div>
+
 {% endblock %}

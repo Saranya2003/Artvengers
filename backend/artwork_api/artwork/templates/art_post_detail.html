@@ -59,7 +59,7 @@
           By: <a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-light">{{ object.artist_Name }}</a><br><br>
         </small><br>
         <p>
-          {{ object.Description }}
+          <h5>{{ object.Description }}</h5>
         </p>
         <br>
         {% for tag in object.Tags.names %}
