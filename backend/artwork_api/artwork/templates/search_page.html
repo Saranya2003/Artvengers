@@ -87,11 +87,11 @@
           {% endfor %}
           </div>
           
-          <button class="carousel-control-prev control-album" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;">
+          <button class="carousel-control-prev " type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;top: 57%;height: 350px;">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next control-album" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;">
+          <button class="carousel-control-next " type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;top: 57%;height: 350px;">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -157,11 +157,11 @@
           {% endfor %}
           </div>
           
-          <button class="carousel-control-prev control-artwork" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev" style="padding-right: 1em;">
+          <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev" style="padding-right: 1em;top: 47%;height: 280px;">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button class="carousel-control-next control-artwork" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next" style="padding-right: 1em;">
+          <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next" style="padding-right: 1em;top: 47%;height: 280px;">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
@@ -180,19 +180,21 @@
 </div>
 
 <div style="margin-left: 10px;margin-right: 10px;margin: 20px;" id="mobcontent">
-    <div id="selectdiv">
-      <select class="form-select" id="selectContent">
-        <option value="albummob" selected>Albums</option>
-        <option value="artmob">Artworks</option>
-      </select>
-    </div>
-  <br>
+
   {% if album.count == 0 or artwork.count == 0 %}
         <script>
             document.getElementById("selectContent").disabled = true;
         </script>
     {% endif %}
     {% if artwork.count > 0 or album.count > 0 %}
+      {% if artwork.count > 0 and album.count > 0 %}
+      <div id="selectdiv">
+        <select class="form-select" id="selectContent">
+          <option value="albummob" selected>Albums</option>
+          <option value="artmob">Artworks</option>
+        </select>
+      </div>
+      {% endif %}
     <br>
       <div id="albummob" class="content">
         {% for albumObject in album %}
@@ -248,6 +250,7 @@
               {% if artdetail.Sensitive_content %}
               <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-color: transparent;">
                 <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
+                <div class="blur-background" style="margin-left: 0.05em;width: 300px;height: 270px;flex-shrink: 0;background-color: white;margin-top:-17.25em;z-index: -1;"></div>
                 <a href="{% url 'artwork_detail' artdetail.pk %}">
                     <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                      <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
@@ -268,14 +271,16 @@
           {% else %}
             <div>
               {% if artdetail.Sensitive_content %}
-                <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
-                  <a href="{% url 'artwork_detail' artdetail.pk %}">
+              <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-color: transparent;">
+                <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
+                <div class="blur-background" style="margin-left: 0.05em;width: 300px;height: 270px;flex-shrink: 0;background-color: white;margin-top:-17.25em;z-index: -1;"></div>
+                <a href="{% url 'artwork_detail' artdetail.pk %}">
                     <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                     <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                       <h5 class="caption-header">{{ artdetail.Title }}</h5>
                     </div>
                   </a>
-                </div>
+              </div>
               {% else %}
               <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
                 <a href="{% url 'artwork_detail' artdetail.pk %}">
@@ -302,208 +307,146 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script>
-$('.multiple-card-slider .carousel').each(function(){
+  $(document).ready(function() {
+  // Initialize carousels
+  $('.multiple-card-slider .carousel').each(function(){
     var currentCarouselId = '#' + $(this).attr('id');
     const multipleItemCarousel = document.querySelector(currentCarouselId);
 
     if(window.matchMedia("(min-width:390px)").matches){
-        const carousel = new bootstrap.Carousel(multipleItemCarousel, {
-            interval: false,
-            wrap: false
-        })
-        var carouselWidth = $(currentCarouselId + ' .carousel-inner')[0].scrollWidth;
-        var cardWidth = $(currentCarouselId + ' .carousel-item').width();
-        var scrollPosition = 0;    
-        $(currentCarouselId + ' .carousel-control-next').on('click', function(){
-            if(scrollPosition < (carouselWidth - (cardWidth * 4))){
-                console.log('next');
-                scrollPosition = scrollPosition + cardWidth;
-                $(currentCarouselId + ' .carousel-inner').animate({scrollLeft: scrollPosition},600);
-            }
-        });
-        $(currentCarouselId + ' .carousel-control-prev').on('click', function(){
-            if(scrollPosition > 0){
-                console.log('prev');
-                scrollPosition = scrollPosition - cardWidth;
-                $(currentCarouselId + ' .carousel-inner').animate({scrollLeft: scrollPosition},600);
-            }
-        });
-    }else{
-        $(multipleItemCarousel).addClass('slide');
-    }
-});
-</script>
-
-<script>
-  // Select in mobile
-  $(function() {
-    var albumCount = {{ album.count }};
-    var artworkCount = {{ artwork.count }};
-    var selectContent = $('#selectContent');
-
-    $('.content').hide();
-
-    if (albumCount == 0 && artworkCount > 0) {
-      selectContent.val('artmob');
-      $('#artmob').show();
-    } else if (artworkCount == 0 && albumCount > 0) {
-      selectContent.val('albummob');
-      $('#albummob').show();
-    } else if (albumCount > 0 && artworkCount > 0) {
-      selectContent.val('albummob'); // Set the default option to "albummob"
-      $('#albummob').show(); // Show the selected content
-      selectContent.prop('disabled', false); // Enable the select dropdown
+      const carousel = new bootstrap.Carousel(multipleItemCarousel, {
+        interval: false,
+        wrap: false
+      });
+      var carouselWidth = $(currentCarouselId + ' .carousel-inner')[0].scrollWidth;
+      var cardWidth = $(currentCarouselId + ' .carousel-item').width();
+      var scrollPosition = 0;    
+      $(currentCarouselId + ' .carousel-control-next').on('click', function(){
+        if(scrollPosition < (carouselWidth - (cardWidth * 4))){
+          scrollPosition = scrollPosition + cardWidth;
+          $(currentCarouselId + ' .carousel-inner').animate({scrollLeft: scrollPosition},600);
+        }
+      });
+      $(currentCarouselId + ' .carousel-control-prev').on('click', function(){
+        if(scrollPosition > 0){
+          scrollPosition = scrollPosition - cardWidth;
+          $(currentCarouselId + ' .carousel-inner').animate({scrollLeft: scrollPosition},600);
+        }
+      });
     } else {
-      // No results for either albums or artworks
-      $('#mobcontent').html('<div style="text-align: center; padding-top: 200px; margin-bottom: 200px;" id="mobcontent"><h1>No results</h1></div>');
-      selectContent.prop('disabled', true); // Disable the select dropdown
+      $(multipleItemCarousel).addClass('slide');
     }
-
-    // Disable select options based on availability
-    $('#selectContent option').each(function() {
-      if ((albumCount == 0 && $(this).val() == 'albummob') || (artworkCount == 0 && $(this).val() == 'artmob')) {
-        $(this).prop('disabled', true);
-      }
-    });
-
-    selectContent.change(function() {
-      $('.content').hide();
-      $('#' + $(this).val()).show();
-    });
   });
-</script>
 
-<script>
-  window.addEventListener("DOMContentLoaded", function() {
+  // Select in mobile
+  var albumCount = {{ album.count }};
+  var artworkCount = {{ artwork.count }};
+  var selectContent = $('#selectContent');
+  $('.content').hide();
+
+  if (albumCount == 0 && artworkCount > 0) {
+    selectContent.val('artmob');
+    $('#artmob').show();
+  } else if (artworkCount == 0 && albumCount > 0) {
+    selectContent.val('albummob');
+    $('#albummob').show();
+  } else if (albumCount > 0 && artworkCount > 0) {
+    selectContent.val('albummob'); // Set the default option to "albummob"
+    $('#albummob').show(); // Show the selected content
+    selectContent.prop('disabled', false); // Enable the select dropdown
+  } else {
+    // No results for either albums or artworks
+    $('#mobcontent').html('<div style="text-align: center; padding-top: 200px; margin-bottom: 200px;" id="mobcontent"><h1>No results</h1></div>');
+    selectContent.prop('disabled', true); // Disable the select dropdown
+  }
+
+  // Disable select options based on availability
+  $('#selectContent option').each(function() {
+    if ((albumCount == 0 && $(this).val() == 'albummob') || (artworkCount == 0 && $(this).val() == 'artmob')) {
+      $(this).prop('disabled', true);
+    }
+  });
+
+  selectContent.change(function() {
+    $('.content').hide();
+    $('#' + $(this).val()).show();
+  });
+
+  // Hide or show the select dropdown based on the carousel content
+  const albumDropdownMob = document.getElementById('selectdiv');
+  if (
+    (albumCount === 0 && artworkCount > 0) ||
+    (artworkCount === 0 && albumCount > 0)
+  ) {
+    albumDropdownMob.style.display = 'none';
+  } else {
+    albumDropdownMob.style.display = 'block';
+  }
+
+  // Function to show initial cards in album carousel (mobile version)
   var album = document.getElementById("albummob");
   var cards = album.getElementsByClassName("card");
 
   for (var i = 0; i < Math.min(cards.length, 4); i++) {
     cards[i].style.display = "block";
   }
+
+  // Function to enable horizontal scrolling for scrollmenu elements
+  const scrollMenus = document.querySelectorAll('.scrollmenu');
+
+  scrollMenus.forEach(scrollMenu => {
+    scrollMenu.addEventListener('wheel', function(e) {
+      const race = 50; // How many pixels to scroll
+
+      if (e.deltaY > 0) // Scroll right
+        scrollMenu.scrollLeft += race;
+      else // Scroll left
+        scrollMenu.scrollLeft -= race;
+
+      e.preventDefault();
+    });
+  });
+
+  // Function to check if carousels are empty and hide/show the elements accordingly
+  const checkCarouselContent = (carouselSelector, itemsCount, noResultElementId, headerElementId) => {
+    const carousel = document.getElementById(carouselSelector);
+    const noResultElement = document.getElementById(noResultElementId);
+
+    if (itemsCount === 0) {
+      carousel.style.display = 'none';
+      noResultElement.style.display = 'block';
+      const headerElement = document.getElementById(headerElementId);
+      if (headerElement) {
+        headerElement.style.display = 'none';
+      }
+    } else {
+      carousel.style.display = itemsCount > 0 ? 'block' : 'none';
+      noResultElement.style.display = itemsCount === 0 ? 'block' : 'none';
+      const headerElement = document.getElementById(headerElementId);
+      if (headerElement) {
+        headerElement.style.display = itemsCount > 0 ? 'block' : 'none';
+      }
+    }
+  };
+
+  // Check the count of carousel items for albums (desktop version)
+  checkCarouselContent('Artvengerscarousel', {{ album.count }}, 'noAlbumResult', 'albumHeader');
+
+  // Check the count of carousel items for albums (mobile version)
+  checkCarouselContent('Artvengerscarouselmob', {{ album.count }}, 'noAlbumResultmob', 'albumHeader');
+
+  // Check the count of carousel items for artworks (desktop version)
+  checkCarouselContent('Artvengerscarousel2', {{ artwork.count }}, 'noArtworkResult', 'artworkHeader');
+
+  // Check the count of carousel items for artworks (mobile version)
+  checkCarouselContent('Artvengerscarousel2mob', {{ artwork.count }}, 'noArtworkResultmob', 'artworkHeader');
 });
 
+
 </script>
 
-<script>
-    // Get all scrollmenu elements
-    const scrollMenus = document.querySelectorAll('.scrollmenu');
 
-    scrollMenus.forEach(scrollMenu => {
-        scrollMenu.addEventListener('wheel', function(e) {
-            const race = 50; // How many pixels to scroll
 
-            if (e.deltaY > 0) // Scroll right
-                scrollMenu.scrollLeft += race;
-            else // Scroll left
-                scrollMenu.scrollLeft -= race;
-                
-            e.preventDefault();
-        });
-    });
-</script>
-
-<!-- JavaScript to check if the carousels are empty and hide/show the elements accordingly -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Check the count of carousel items for albums (desktop version)
-    const albumCarouselItemsCount = document.querySelectorAll('#Artvengerscarousel .carousel-item').length;
-
-    // Check the count of carousel items for albums (mobile version)
-    const albumCarouselItemsCountMob = document.querySelectorAll('#Artvengerscarouselmob .carousel-item').length;
-
-    // Get the album carousel element (desktop version)
-    const albumCarousel = document.getElementById('Artvengerscarousel');
-
-    // Get the album carousel element (mobile version)
-    const albumCarouselMob = document.getElementById('Artvengerscarouselmob');
-
-    // Get the "No result" div for albums (desktop version)
-    const noAlbumResult = document.getElementById('noAlbumResult');
-
-    // Get the "No result" div for albums (mobile version)
-    const noAlbumResultMob = document.getElementById('noAlbumResultmob');
-
-    // Hide or show the album carousel and "No result" div based on the carousel content (desktop version)
-    if (albumCarouselItemsCount === 0) {
-      albumCarousel.style.display = 'none';
-      noAlbumResult.style.display = 'block';
-      // Hide the album header
-      const albumHeader = document.getElementById("albumHeader");
-      if (albumHeader) {
-        albumHeader.style.display = "none";
-      }
-    } else {
-      albumCarousel.style.display = 'block';
-      noAlbumResult.style.display = 'none';
-    }
-
-    // Hide or show the album carousel and "No result" div based on the carousel content (mobile version)
-    if (albumCarouselItemsCountMob === 0) {
-      albumCarouselMob.style.display = 'none';
-      noAlbumResultMob.style.display = 'block';
-      // Hide the album header
-      const albumHeader = document.getElementById("albumHeader");
-      if (albumHeader) {
-        albumHeader.style.display = "none";
-      }
-    } else {
-      albumCarouselMob.style.display = 'block';
-      noAlbumResultMob.style.display = 'none';
-    }
-
-    // Check the count of carousel items for artworks (desktop version)
-    const artworkCarouselItemsCount = document.querySelectorAll('#Artvengerscarousel2 .carousel-item').length;
-
-    // Check the count of carousel items for artworks (mobile version)
-    const artworkCarouselItemsCountMob = document.querySelectorAll('#Artvengerscarousel2mob .carousel-item').length;
-
-    // Get the artwork carousel element (desktop version)
-    const artworkCarousel = document.getElementById('Artvengerscarousel2');
-
-    // Get the artwork carousel element (mobile version)
-    const artworkCarouselMob = document.getElementById('Artvengerscarousel2mob');
-
-    // Get the "No result" div for artworks (desktop version)
-    const noArtworkResult = document.getElementById('noArtworkResult');
-
-    // Get the "No result" div for artworks (mobile version)
-    const noArtworkResultMob = document.getElementById('noArtworkResultmob');
-
-    // Hide or show the artwork carousel and "No result" div based on the carousel content (desktop version)
-    if (artworkCarouselItemsCount === 0) {
-      artworkCarousel.style.display = 'none';
-      noArtworkResult.style.display = 'block';
-      // Hide the artwork header
-      const artworkHeader = document.getElementById("artworkHeader");
-      if (artworkHeader) {
-        artworkHeader.style.display = "none";
-      }
-    } else {
-      artworkCarousel.style.display = 'block';
-      noArtworkResult.style.display = 'none';
-    }
-
-    // Hide or show the artwork carousel and "No result" div based on the carousel content (mobile version)
-    if (artworkCarouselItemsCountMob === 0) {
-      artworkCarouselMob.style.display = 'none';
-      noArtworkResultMob.style.display = 'block';
-      // Hide the artwork header
-      const artworkHeader = document.getElementById("artworkHeader");
-      if (artworkHeader) {
-        artworkHeader.style.display = "none";
-      }
-    } else {
-      artworkCarouselMob.style.display = artworkCarouselItemsCountMob > 0 ? 'block' : 'none';
-      noArtworkResultMob.style.display = artworkCarouselItemsCountMob === 0 ? 'block' : 'none';
-      // Hide or show the artwork header based on the carousel content
-      const artworkHeader = document.getElementById("artworkHeader");
-      if (artworkHeader) {
-        artworkHeader.style.display = artworkCarouselItemsCountMob > 0 ? "block" : "none";
-      }
-    }
-  });
-</script>
 
 
 {% endblock %}

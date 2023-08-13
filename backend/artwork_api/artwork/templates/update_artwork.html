@@ -4,7 +4,7 @@
 
 <br><br>
 <center>
-  <div id="desktopcontent">
+  <div id="desktopcontent" style="margin-bottom: 200px;">
   <form method="POST" action="{% url 'artwork_edit_action' object.pk %}" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" value="{{ user.id }}" name="artist_Name">

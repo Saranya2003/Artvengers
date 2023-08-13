@@ -3,7 +3,7 @@
 {% block content %}
     <br>
     <br>
-    <div id="desktopcontent">
+    <div id="desktopcontent" style="margin-bottom: 200px;">
         <form method="POST" action="{% url 'update_album_action' object.pk %}" onsubmit="submem()" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="hidden" value="{{ user.id }}" name="artist_Name">

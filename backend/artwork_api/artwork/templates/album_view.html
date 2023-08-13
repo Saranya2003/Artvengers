@@ -82,7 +82,7 @@
         </div>
       </nav>
     <br>
-    <div id="desktopcontent">
+    <div id="desktopcontent" style="margin-bottom: 200px;">
       <h1>{{ album.0.Album_Title }}</h1>
       <small>Created date: {{ album.0.created_date }}<br>
         Created by: {{ album.0.artist_Name }}
@@ -124,14 +124,16 @@
           {% for artdetail in artwork %}
           <div class="column" style="padding-right: 1em;width: auto;margin-left: 0em">
             {% if artdetail.Sensitive_content %}
-                <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
-                  <a href="{% url 'artwork_detail' artdetail.pk %}">
-                    <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-                    <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                      <h5 class="caption-header">{{ artdetail.Title }}</h5>
-                    </div>
-                  </a>
-                </div>
+            <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-color: transparent;">
+              <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
+              <div class="blur-background" style="margin-left: 0.05em;width: 300px;height: 270px;flex-shrink: 0;background-color: white;margin-top:-17.25em;z-index: -1;"></div>
+              <a href="{% url 'artwork_detail' artdetail.pk %}">
+                  <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+                   <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+                    <h5 class="caption-header">{{ artdetail.Title }}</h5>
+                  </div>
+                </a>
+            </div>
               {% else %}
               <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
                 <a href="{% url 'artwork_detail' artdetail.pk %}">

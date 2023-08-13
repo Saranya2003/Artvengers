@@ -104,11 +104,11 @@
     {% endfor %}
     </div>
     
-    <button class="carousel-control-prev control-album" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;">
+    <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;top: 57%;height: 350px;">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next control-album" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;">
+    <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;top: 57%;height: 350px;">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
@@ -172,18 +172,17 @@
           {% endif %}
           {% endfor %}
         </div>
-        <button class="carousel-control-prev control-artwork" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev" style="padding-right: 1em;">
+        <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="prev" style="padding-right: 1em;top: 47%;height: 280px;">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next control-artwork" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next" style="padding-right: 1em;">
+        <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel2" data-bs-slide="next" style="padding-right: 1em;top: 47%;height: 280px;">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
     </div>
   </div>
-  
 </div>
 
 <div id="mobcontent" style="margin-left: 10px;margin-right: 10px;margin: 20px;">
@@ -245,14 +244,16 @@
     {% if forloop.last %}
     <div>
       {% if artdetail.Sensitive_content %}
-        <div class="card blur-background" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
-          <a href="{% url 'artwork_detail' artdetail.pk %}">
+      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-color: transparent;">
+        <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
+        <div class="blur-background" style="margin-left: 0.05em;width: 300px;height: 270px;flex-shrink: 0;background-color: white;margin-top:-17.25em;z-index: -1;"></div>
+        <a href="{% url 'artwork_detail' artdetail.pk %}">
             <span class="badge rounded-pill bg-danger topleft">NSFW</span>
              <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
               <h5 class="caption-header">{{ artdetail.Title }}</h5>
             </div>
           </a>
-        </div>
+      </div>
       {% else %}
       <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
         <a href="{% url 'artwork_detail' artdetail.pk %}">
@@ -267,15 +268,16 @@
     {% else %}
     <div>
       {% if artdetail.Sensitive_content %}
-        <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-color: transparent;">
-          <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
-          <a href="{% url 'artwork_detail' artdetail.pk %}">
-              <span class="badge rounded-pill bg-danger topleft">NSFW</span>
-               <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
-                <h5 class="caption-header">{{ artdetail.Title }}</h5>
-              </div>
-            </a>
-        </div>
+      <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-color: transparent;">
+        <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
+        <div class="blur-background" style="margin-left: 0.05em;width: 300px;height: 270px;flex-shrink: 0;background-color: white;margin-top:-17.25em;z-index: -1;"></div>
+        <a href="{% url 'artwork_detail' artdetail.pk %}">
+            <span class="badge rounded-pill bg-danger topleft">NSFW</span>
+             <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
+              <h5 class="caption-header">{{ artdetail.Title }}</h5>
+            </div>
+          </a>
+      </div>
       {% else %}
       <div class="card" style="width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');">
         <a href="{% url 'artwork_detail' artdetail.pk %}">
@@ -300,7 +302,7 @@ $('.multiple-card-slider .carousel').each(function(){
     var currentCarouselId = '#' + $(this).attr('id');
     const multipleItemCarousel = document.querySelector(currentCarouselId);
 
-    if(window.matchMedia("(min-width:390px)").matches){
+    if(window.matchMedia("(min-width:576px)").matches){
         const carousel = new bootstrap.Carousel(multipleItemCarousel, {
             interval: false,
             wrap: false
