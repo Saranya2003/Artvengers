@@ -54,12 +54,10 @@
       <div class="col-sm">
         <br><br>
         <div>
-        <small>
           Create date:  {{ object.created_date }}<br><br>
-          By: <a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-light">{{ object.artist_Name }}</a><br><br>
-        </small><br>
+          By: <a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-light">{{ object.artist_Name }}</a><br><br><br>
         <p>
-          <h5>{{ object.Description }}</h5>
+          {{ object.Description }}
         </p>
         <br>
         {% for tag in object.Tags.names %}
@@ -213,15 +211,13 @@
               </form>
             </tr>
           </table><br>
-          <small>
-                Create date:{{ object.created_date }}<br><br>
-                By: <a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-light">{{ object.artist_Name }}</a><br><br>
-              </small><br>
+          Create date:{{ object.created_date }}<br><br>
+                By: <a href="{% url 'profile' object.artist_Name.profile.id %}" class="link-light">{{ object.artist_Name }}</a><br><br><br>
               <p>
                 {{ object.Description }}
               </p>
               <br>
-              <div style="display: flex; overflow-x: auto;margin-right: 1em;">
+              <div style="display: flex; overflow-x: auto;margin-right: 1em;" id="taglist">
                 {% for tag in object.Tags.names %}
                   <a href="{% url 'tag' tag %}" class="badge badge-custom2 rounded-pill">{{ tag }}</a>&nbsp;
                 {% endfor %}
@@ -369,6 +365,15 @@
     });
 
 </script>
+<script>
+  const tagdiv = document.getElementById("taglist");
 
+  tagdiv.addEventListener("wheel", (event) => {
+    event.preventDefault();
+
+    const scrollDistance = event.deltaY || event.deltaX;
+    tagdiv.scrollLeft += scrollDistance;
+  });
+</script>
 
 {% endblock %}
