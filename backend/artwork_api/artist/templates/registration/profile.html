@@ -72,7 +72,7 @@
             {% for albumObject in album %}
             {% if page_user.id == albumObject.artist_Name.id or not albumObject.artist_Name %}
               {% if forloop.first %}
-            <div class="carousel-item active" style="height: 298px;">
+            <div class="carousel-item active" style="height: 298px;width: 330px;">
               <div class="card" id="image4" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">
                 <img src="{{ albumObject.memberpic.all.3.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.3.Sensitive_content %} filter: blur(6px);{% endif %}">
               </div>
@@ -283,7 +283,7 @@
       
       <a href="{% url 'album' albumObject.pk %}">
         <div class="card" style="position: relative; right: 43px;bottom: 782px; background-color: transparent;width: 335px;">
-          <div class="carousel-caption-album">
+          <div class="carousel-caption-album-mobile">
             <h5 class="caption-header">{{ albumObject.Album_Title }}</h5>
           </div>
         </div>
@@ -302,7 +302,7 @@
       
       <a href="{% url 'album' albumObject.pk %}">
         <div class="card" style="position: relative; right: 43px;bottom: 782px; background-color: transparent;width: 335px;">
-          <div class="carousel-caption-album">
+          <div class="carousel-caption-album-mobile">
             <h5 class="caption-header">{{ albumObject.Album_Title }}</h5>
           </div>
         </div>
@@ -339,7 +339,7 @@
       </div>
       {% endif %}
     </div>
-    <br>
+    <br><br><br><br>
     {% else %}
     <div>
       {% if artdetail.Sensitive_content %}
@@ -363,7 +363,7 @@
       </div>
       {% endif %}
     </div>
-    <br>
+    <br><br><br><br>
     {% endif %}
     {% endif %}
     {% endfor %}

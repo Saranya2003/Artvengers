@@ -39,7 +39,7 @@
             {% for albumObject in album %}
             {% if not albumObject.Private_Album %}
               {% if forloop.first %}
-            <div class="carousel-item active" style="height: 298px;">
+            <div class="carousel-item active" style="height: 298px;width: 330px;">
               <div class="card" id="image4" style="position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;">
                 <img src="{{ albumObject.memberpic.all.3.Artwork|thumbnail_url:'Artwork' }}" style="object-fit: cover;height: 120%;width: 130%;{% if albumObject.memberpic.all.3.Sensitive_content %} filter: blur(6px);{% endif %}">
               </div>
@@ -212,12 +212,12 @@
                 
                 <a href="{% url 'album' albumObject.pk %}">
                   <div class="card" style="position: relative; right: 43px;bottom: 782px; background-color: transparent;width: 335px;">
-                    <div class="carousel-caption-album">
+                    <div class="carousel-caption-album-mobile">
                       <h5 class="caption-header">{{ albumObject.Album_Title }}</h5>
                     </div>
                   </div>
                 </a>
-              </div>
+              </div><br><br><br><br>
               {% else %}
               <div class="carousel-item-album" style="height: 298px;">
                 <div class="card" id="image4" style="width: 306px;height: 280px;position: relative; right: -40px; bottom: -30px;width: 80%;opacity: 0.2;background-image: url('{{ albumObject.memberpic.all.3.Artwork|thumbnail_url:"Artwork" }}');">
@@ -231,12 +231,12 @@
                 
                 <a href="{% url 'album' albumObject.pk %}">
                   <div class="card" style="position: relative; right: 43px;bottom: 782px; background-color: transparent;width: 335px;">
-                    <div class="carousel-caption-album">
+                    <div class="carousel-caption-album-mobile">
                       <h5 class="caption-header">{{ albumObject.Album_Title }}</h5>
                     </div>
                   </div>
                 </a>
-              </div><br><br>
+              </div><br><br><br><br>
             {% endif %}
             {% endif %}
           {% endfor %}
@@ -267,7 +267,7 @@
                 </a>
               </div>
               {% endif %}
-              </div><br>
+              </div><br><br>
           {% else %}
             <div>
               {% if artdetail.Sensitive_content %}
@@ -290,7 +290,7 @@
                 </a>
               </div>
               {% endif %}
-            </div><br>
+            </div><br><br>
           {% endif %}
               
         {% endfor %}

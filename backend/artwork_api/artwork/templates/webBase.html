@@ -373,7 +373,7 @@
   @media (min-width: 414px) {
     
     .multiple-card-slider .carousel-item {
-      width: 306px;
+        width: 306px;
         height: 280px;
         margin-right: 0;
         display: block;
@@ -448,6 +448,15 @@
     left: -3px;
     font-size: 24px;
     }
+    .carousel-caption-album-mobile{
+    background-color: transparent;
+    color: white;
+    width: 335px;
+    bottom:-10px;
+    position:absolute;
+    left: -3px;
+    font-size: 24px;
+    }
     .cardimg {
         object-fit: cover;
         height: 100%;
@@ -469,11 +478,6 @@
     }
     .caption-header{
       padding-left: 10px;
-      width: 50%;
-      display: inline-block;
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis;
     }
     .topleft {
       position: absolute;
@@ -544,12 +548,22 @@
       .fa-search {
         color: black;
       }
+
+      .album-actions{
+        margin-top: -30px;
+        float: right;
+      }
+      .album-actions-mobile{
+        margin-top: -4px;
+        float: right;
+      }
+      
     </style>
   </head>
   {% load thumbnail %}
   <body><i class="bi bi-upload" style="color:white"></i>
 
-    <nav class="navbar  navbar-expand-lg navbar-custom" id="desktopnav">
+    <nav class="navbar navbar-expand-lg navbar-custom" id="desktopnav" style="height: 140px;">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'explore'%}"><img src="../../media/logo/artvengers-logo white new.png" style="width: 105px;height: 105px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
