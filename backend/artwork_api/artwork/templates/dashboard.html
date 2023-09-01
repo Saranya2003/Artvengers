@@ -91,11 +91,11 @@
             {% endfor %}
             </div>
             
-            <button class="carousel-control-prev " type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;top: 57%;height: 350px;">
+            <button class="carousel-control-prev" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="prev" style="padding-right: 1em;top: 57%;height: 350px;">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next " type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;top: 57%;height: 350px;">
+            <button class="carousel-control-next" type="button" data-bs-target="#Artvengerscarousel" data-bs-slide="next" style="padding-right: 1em;top: 57%;height: 350px;">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
@@ -224,7 +224,8 @@
                   <h5 class="caption-header" style="width:106px">
                     <table>
                       <tr>
-                        <td style="width:65%; display: inline-block;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                        <td style="width:50%; display: inline-block;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ albumObject.Album_Title }}</td>
+                        <td style="width: 10%;left: 1em;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
                         <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
                       </tr>
                     </table>
@@ -250,7 +251,7 @@
                   <h5 class="caption-header">
                     <table style="width:306px">
                       <tr>
-                        <td style="width:65%; display: inline-block;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ albumObject.Album_Title }}</td><td style="width: 10%;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
+                        <td style="width:50%; display: inline-block;white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ albumObject.Album_Title }}</td><td style="width: 10%;left: 1em;"><a class="btn btn-light btn-sm" href="{%  url 'album_edit' albumObject.pk %}" role="button">Edit</a></td>
                           <td style="width: 10%;"><a class="btn btn-danger btn-sm" href="{% url 'delete_album' albumObject.pk %}" role="button">Delete</a></td>
                       </tr>
                     </table>

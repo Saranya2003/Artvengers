@@ -327,12 +327,13 @@ class SearchView(ListView):
         # Filter albums and artworks based on the keyword (case-insensitive)
         albums = Album.objects.filter(Album_Title__icontains=keyword).order_by('-pk').distinct()
         artworks = ArtworkPost.objects.filter(Q(Title__icontains=keyword) | Q(Tags__name__icontains=keyword)).order_by('-pk').distinct()
+        tags = Tag.objects.all()
 
         # Provide default values for album and artwork in case there are no matches
         context['album'] = albums if albums.exists() else None
         context['artwork'] = artworks if artworks.exists() else None
 
-        context['Tags'] = Tag.objects.all()
+        context['Tags'] = tags if tags.exists() else None
        
         return context
     
