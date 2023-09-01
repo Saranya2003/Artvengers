@@ -196,7 +196,7 @@
       </div>
       {% endif %}
     <br>
-      <div id="albummob" class="content">
+      <div id="Artvengerscarouselmob" class="content">
         {% for albumObject in album %}
             {% if not albumObject.Private_Album %}
               {% if forloop.last %}
@@ -342,8 +342,15 @@
   <script>
     // Select in mobile
     $(function() {
-      var albumCount = {{ album.count }};
-      var artworkCount = {{ artwork.count }};
+      var albumCount = 0;
+      var artworkCount = 0;
+      {% if album.count > 0 %}
+        albumCount = {{ album.count }};
+      {% endif %}
+      {% if artwork.count > 0 %}
+        artworkCount = {{ artwork.count }};
+      {% endif %}
+
       var selectContent = $('#selectContent');
   
       $('.content').hide();
@@ -493,9 +500,6 @@
     if (artworkCarouselItemsCount === 0) {
       artworkCarousel.style.display = 'none';
       noArtworkResult.style.display = 'block';
-      if (artworkHeader) {
-        artworkHeader.style.display = "none";
-      }
     } else {
       artworkCarousel.style.display = 'block';
       noArtworkResult.style.display = 'none';
