@@ -241,6 +241,8 @@
             {% endif %}
           {% endfor %}
       <!-- Div to show "No result" text when the album section is empty -->
+      <div id="noAlbumResultmob" style="display: none;text-align: center;padding-top: 100px;"><h2>No results for albums</h2></div>
+      </div>
       <div id="artmob" class="content" style="padding-left: 10px;padding-right: 10px;margin: 20px;margin-left: 0em;">
         {% for artdetail in artwork %}
           {% if forloop.last %}
@@ -292,6 +294,9 @@
           {% endif %}
               
         {% endfor %}
+        <!-- Div to show "No result" text when the artwork carousel is empty -->
+        <div id="noArtworkResultmob" style="display: none;text-align: center;padding-top: 100px;"><h2>No results for artworks</h2></div>
+        </div>
     {% else %}
     <div style="text-align: center;padding-top: 200px;margin-bottom: 200px;" id="mobcontent">
         <h1>
@@ -428,6 +433,9 @@
       // Get the "No result" div for albums (desktop version)
       const noAlbumResult = document.getElementById('noAlbumResult');
   
+      // Get the "No result" div for albums (mobile version)
+      const noAlbumResultMob = document.getElementById('noAlbumResultmob');
+  
       // Hide or show the album carousel and "No result" div based on the carousel content (desktop version)
       if (albumCarouselItemsCount === 0) {
         albumCarousel.style.display = 'none';
@@ -445,6 +453,7 @@
       // Hide or show the album carousel and "No result" div based on the carousel content (mobile version)
       if (albumCarouselItemsCountMob === 0) {
         albumCarouselMob.style.display = 'none';
+        noAlbumResultMob.style.display = 'block';
         // Hide the album header
         const albumHeader = document.getElementById("albumHeader");
         if (albumHeader) {
@@ -452,6 +461,7 @@
         }
       } else {
         albumCarouselMob.style.display = 'block';
+        noAlbumResultMob.style.display = 'none';
       }
   
       // Check the count of carousel items for artworks (desktop version)
@@ -463,6 +473,7 @@
     // Check the count of carousel items for artworks (mobile version)
     const artworkCarouselItemsCountMob = document.querySelectorAll('#artmob .carousel-item-album').length;
     const artworkCarouselMob = document.getElementById('artmob');
+    const noArtworkResultMob = document.getElementById('noArtworkResultmob');
 
     // Hide or show the album carousel and "No result" div based on the carousel content (desktop version)
     if (albumCarouselItemsCount === 0) {
@@ -481,6 +492,7 @@
       albumCarouselMob.style.display = 'none';
     } else {
       albumCarouselMob.style.display = 'block';
+      noAlbumResultMob.style.display = 'none';
     }
 
     // Hide or show the artwork carousel and "No result" div based on the carousel content (desktop version)
@@ -495,8 +507,10 @@
     // Hide or show the artwork carousel and "No result" div based on the carousel content (mobile version)
     if (artworkCarouselItemsCountMob === 0) {
       artworkCarouselMob.style.display = 'none';
+      noArtworkResultMob.style.display = 'block';
     } else {
       artworkCarouselMob.style.display = 'block';
+      noArtworkResultMob.style.display = 'none';
     }
   });
   </script>
