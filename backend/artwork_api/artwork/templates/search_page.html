@@ -490,6 +490,7 @@
     // Hide or show the album carousel and "No result" div based on the carousel content (mobile version)
     if (albumCarouselItemsCountMob === 0) {
       albumCarouselMob.style.display = 'none';
+      noAlbumResultMob.style.display = 'none';
     } else {
       albumCarouselMob.style.display = 'block';
       noAlbumResultMob.style.display = 'none';
@@ -513,6 +514,25 @@
       noArtworkResultMob.style.display = 'none';
     }
   });
+  window.addEventListener("DOMContentLoaded", function () {
+  // Check the count of carousel items for albums (mobile version)
+  const albumCarouselItemsCountMob = document.querySelectorAll('#albummob .carousel-item').length;
+  const albumCarouselMob = document.getElementById('albummob');
+  const noAlbumResultMob = document.getElementById('noAlbumResultmob');
+
+  // Hide or show the album carousel based on the carousel content (mobile version)
+  if (albumCarouselItemsCountMob === 0) {
+    albumCarouselMob.style.display = 'none';
+    // Hide the "No results for albums" div
+    noAlbumResultMob.style.display = 'none';
+  } else {
+    albumCarouselMob.style.display = 'block';
+    // You can choose to hide or show the "No results for albums" div based on your requirements
+    // In this example, it's set to 'none' if there are items, but you can change it as needed
+    noAlbumResultMob.style.display = 'none';
+  }
+});
+
   </script>
     
 {% endblock %}
