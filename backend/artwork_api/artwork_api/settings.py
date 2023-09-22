@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'taggit',
     'easy_thumbnails',
     #'taggit_bootstrap',
-    'django_bootstrap5',
     'django_toggle_switch_widget',
     #'pwa',
     #'import_export',
