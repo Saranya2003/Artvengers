@@ -99,20 +99,17 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'artvengers', 
-#        'USER': 'artvengers',
-#        'PASSWORD': 'Artvengers2023',
-#        'HOST': '127.0.0.1', 
-#        'PORT': '5432',
-#    }
-#}
-DATABASE_URL = os.getenv('DATABASE_URL')
 DATABASES = {
-    'default': dj_database_url.config(),
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'artvengers', 
+        'USER': 'artvengers',
+        'PASSWORD': 'Artvengers2023',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
+    }
 }
+DATABASES['default'] = dj_database_url.parse("postgres://admin:VnLOZ7VGTxwluvtcoQVHXmxg8yOIXAIa@dpg-ck6mur9i0euc73do8a40-a.singapore-postgres.render.com/artvengers")
 
 
 # Password validation
