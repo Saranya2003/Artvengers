@@ -31,6 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'artvengers.onrender.com',
+    '127.0.0.1',
 ]
 
 
@@ -98,7 +99,13 @@ TEMPLATES = [
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+'''
 
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
+
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -109,8 +116,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-DATABASES['default'] = dj_database_url.parse("postgres://admin:VnLOZ7VGTxwluvtcoQVHXmxg8yOIXAIa@dpg-ck6mur9i0euc73do8a40-a.singapore-postgres.render.com/artvengers")
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
