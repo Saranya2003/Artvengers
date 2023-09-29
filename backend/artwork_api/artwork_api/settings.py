@@ -99,7 +99,7 @@ TEMPLATES = [
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -111,7 +111,11 @@ DATABASES = {
     }
 }
 DATABASES['default'] = dj_database_url.parse("postgres://artvengers_ptsg_user:DlG48AwM4x3ZzExRZLlZ1Ux2zv434xyz@dpg-ck9stu5drqvc738oavl0-a/artvengers_ptsg")
+'''
 
+DATABASES = {
+	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
