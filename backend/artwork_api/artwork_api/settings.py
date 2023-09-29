@@ -114,7 +114,11 @@ DATABASES['default'] = dj_database_url.parse("postgres://artvengers_ptsg_user:Dl
 '''
 
 DATABASES = {
-	"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgres://artvengers_ptsg_user:DlG48AwM4x3ZzExRZLlZ1Ux2zv434xyz@dpg-ck9stu5drqvc738oavl0-a.singapore-postgres.render.com/artvengers_ptsg',
+        conn_max_age=600
+    )
 }
 
 # Password validation
