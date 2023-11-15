@@ -75,14 +75,14 @@
             <div class="scrollmenu" style="padding-right: 1em;width: auto;">
                 {% for artdetail in artwork %}
                     {% if user.id == artdetail.artist_Name.id %}
-                        <img src="{{ artdetail.Artwork.url }}" class="PicList" id='{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
+                        <img src="{{ artdetail.Artwork.url }}" class="PicList" id='mob{{ artdetail.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
                     {% endif %}
                 {% endfor %}
 
                 <!-- Display other user's artwork already saved to the album -->
                 {% for other_artwork in other_user_artwork %}
                     {% if other_artwork in album.memberpic.all %}
-                        <img src="{{ other_artwork.Artwork.url }}" class="PicList" id='{{ other_artwork.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
+                        <img src="{{ other_artwork.Artwork.url }}" class="PicList" id='mob{{ other_artwork.pk }}' onClick="PicClick()" style="width: 200px; height: 200px; object-fit: cover; padding-bottom: 1em;">
                     {% endif %}
                 {% endfor %}
             </div>
@@ -107,6 +107,7 @@
              console.log(selectedpic[i]);
              let si = selectedpic[i]
              document.getElementById(si).classList.add('selected');
+             document.getElementById("mob"+si).classList.add('selected');
          }
          
          const checksel = document.getElementsByClassName('PicList');

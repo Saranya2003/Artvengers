@@ -158,12 +158,20 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'thumbnail_processors.face_scale_and_crop',
+    'easy_thumbnails.processors.filters',
+    'easy_thumbnails.processors.background',
+)
+
 LOGIN_REDIRECT_URL = 'explore'
 LOGOUT_REDIRECT_URL = 'home'
 
 THUMBNAIL_ALIASES = {
     '': {
-        'Artwork': {'size': (306, 280), 'crop': 'smart'},
-        'Profile_picture':{'size':(180,180), 'crop': 'smart'},
+        'Artwork': {'size': (306, 280)},
+        'Profile_picture':{'size':(180,180)},
     },
 }
