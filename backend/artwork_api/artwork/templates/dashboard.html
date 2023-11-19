@@ -280,6 +280,7 @@
               <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
               <div class="blur-background" style="margin-left: 0.5em;width: 291px;height: 262px;flex-shrink: 0;background-color: white;margin-top:-17em;z-index: -1;"></div>
               <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                 <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                   <h5 class="caption-header">{{ artdetail.Title }}</h5>
                   <div style="float: right;">
@@ -310,6 +311,7 @@
               <div class="blur-background" style="margin-left: 0em;width: 306px;height: 280px;flex-shrink: 0;background-image: url('{{ artdetail.Artwork|thumbnail_url:'Artwork' }}');"></div>
               <div class="blur-background" style="margin-left: 0.5em;width: 291px;height: 262px;flex-shrink: 0;background-color: white;margin-top:-17em;z-index: -1;"></div>
               <a href="{% url 'artwork_detail' artdetail.pk %}">
+                <span class="badge rounded-pill bg-danger topleft">NSFW</span>
                 <div class="carousel-caption" style="max-width: 120%;width: 101%;bottom: -1px;left: -18px;">
                   <h5 class="caption-header">{{ artdetail.Title }}</h5>
                   <div style="float: right;">

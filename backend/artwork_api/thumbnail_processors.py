@@ -32,7 +32,7 @@ def image_entropy(image, neighbor_size):
 
 def detect_face(image):
     greyIm = np.array(image.convert('L'))
-    face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+    face_cascade = cv2.CascadeClassifier("backend/artwork_api/haarcascade_frontalface_default.xml")
     faces = face_cascade.detectMultiScale(greyIm, 1.3, 7)
     return faces
 
@@ -50,6 +50,7 @@ def face_scale_and_crop(image, size, **kwargs):
     faces = detect_face(image)
     rx, ry = nw/sw, nh/sh
     faces = [(int(x*rx),int(y*ry),int(w*rx),int(h*ry)) for (x,y,w,h) in faces]
+    #faces = []
 
     image = image.resize((nw,nh))
 
@@ -73,9 +74,9 @@ def face_scale_and_crop(image, size, **kwargs):
     maxEntropyValue = np.max(entropyMap)
     Image.fromarray((entropyMap/maxEntropyValue*255).astype(np.uint8)).save("entropy_with_face.png")
 
-    for (x,y,w,h) in faces:
-        draw = ImageDraw.Draw(image)
-        draw.rectangle(((x,y),(x+w,y+h)), outline="red", width=1)
+    #for (x,y,w,h) in faces:
+    #    draw = ImageDraw.Draw(image)
+    #    draw.rectangle(((x,y),(x+w,y+h)), outline="red", width=1)
 
     if direction == 'h':
         best_offset = 0
@@ -120,7 +121,7 @@ def face_scale_and_crop(image, size, **kwargs):
         
 
 if __name__ == "__main__":
-    image = Image.open('Resident-Evil-Death-Island-scaled.jpg')
+    image = Image.open('backend/artwork_api/media/a-student-poses-for-a-photo-during-a-visit-with-exercise-71f593-1024.jpg')
 
     faces = detect_face(image)
     face_image = image.copy()
