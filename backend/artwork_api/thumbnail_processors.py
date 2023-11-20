@@ -32,7 +32,7 @@ def image_entropy(image, neighbor_size):
 
 def detect_face(image):
     greyIm = np.array(image.convert('L'))
-    face_cascade = cv2.CascadeClassifier("backend/artwork_api/haarcascade_frontalface_default.xml")
+    face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
     faces = face_cascade.detectMultiScale(greyIm, 1.3, 7)
     return faces
 
